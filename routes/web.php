@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClassesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProfileController;
-use App\Models\User;
-use App\Http\Controllers\Auth\RegisteredAdminController;
-use Illuminate\Support\Arr;
 
 Route::get('/', function () {
     return view('home');
@@ -170,17 +167,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/admins/{data}/edit', [AdminController::class, 'edit'])->name('admin.edit');
     Route::patch('/admins/{data}/update', [AdminController::class, 'update'])->name('admin.update');
     Route::put('/admins/{data}/update', [AdminController::class, 'updatepassword'])->name('userpassword.update');
+    Route::get('/admins/{data}/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
+
+    Route::get('/users', [AdminController::class, 'usersonly'])->name('users');
+
+
+
+    Route::get('/classes', [ClassesController::class, 'show'])->name('classes');
+    Route::post('/classes', [ClassesController::class, 'store'])->name('classes.store');
+    Route::post('/classes/{data}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
+    Route::patch('/classes', [ClassesController::class, 'update'])->name('classes.update');
+    // Route::post('/classes/{data}/update', [ClassesController::class, 'update'])->name('classes.update');
+    Route::get('/classes/{data}/destroy', [ClassesController::class, 'destroy'])->name('classes.destroy');
 });
   
 
-Route::get('/users', function () {
-    return view('admin.users');
-});
 
 
-Route::get('/classes', function () {
-    return view('admin.classes');
-});
 
 Route::get('/adsubjects', function () {
     return view('admin.adsubjects');

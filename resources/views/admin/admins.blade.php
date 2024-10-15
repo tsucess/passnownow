@@ -29,6 +29,8 @@
             <p class="m-0">{{\Session::get('success')}}</p>
         </div>
     @endif
+
+    {{$sn= 0;}}
     {{-- <php if (isset($output)) {?> --}}
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
@@ -41,13 +43,12 @@
                     <th scope="col">Role</th>
                     <th scope="col">Date</th>
                     <th scope="col">Actions</th>
-
                 </tr>
             </thead>
             <tbody>
                 @foreach ($fetchAdmins as $Admin)
                     <tr>
-                        <th>{{ $Admin['id'] }}</th>
+                        <th>{{  ++$sn }}</th>
                         <td> {{ $Admin->first_name }} {{ $Admin->last_name }}</td>
                         <td>{{ $Admin->username }}</td>
                         <td>{{ $Admin->email }}</td>
@@ -61,8 +62,10 @@
                             @endif
                           </td>
                         <td>{{ $Admin['created_at'] }}</td>
-                        {{-- <td> <a href="/viewdata/{{ $Admin['unique_id'] }}" class="btn btn-primary p-1 px-3">view</a></td> --}}
-                        <td> <a href="{{ route('admin.edit', ['data' => $Admin])}}" class="btn btn-primary p-1 px-3">view</a></td>
+                        <td> 
+                            <a href="{{ route('admin.edit', ['data' => $Admin])}}" class="btn btn-primary p-1 px-3">view</a>
+                            <a href="{{ route('admin.destroy', ['data' => $Admin->id])}}" class="btn btn-danger p-1 px-3">Delete</a>
+                        </td>
 
                     </tr>
                 @endforeach
@@ -133,6 +136,7 @@
                                         <option value ="undefined">Select Role</option>
                                         <option value="sadmin">Super Admin</option>
                                         <option value="admin">Admin</option>
+                                        {{-- <option value="user">User</option> --}}
                                     </select>
                                 </div>
                             </div>

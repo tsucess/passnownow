@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-use Illuminate\Auth\Events\Registered;
-use App\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rules\Password;
@@ -20,10 +18,22 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $users = Admin::get();
+        /**
+         * Get all data with user role only
+         */
+        $users = Admin::wherenot('role', 'user')->get();
         return view('admin.admins', ['fetchAdmins' => $users]);
     }
-
+    
+    public function usersonly()
+    {
+        /**
+         * Get all data with user role only
+         */
+        $users = Admin::where('role', 'user')->get();
+        // $users = Admin::get();
+        return view('admin.users', ['fetchUsers' => $users]);
+    }
     /**
      * Show the form for creating a new resource.
      */
@@ -105,7 +115,6 @@ class AdminController extends Controller
      */
     public function update(Admin $data, Request $request)
     {
-        // dd($request);
 
         $request->validate([
 
@@ -124,41 +133,38 @@ class AdminController extends Controller
             'role' => $request->role,
         ]);
 
-        if ($done){
-            return back()->with('status', 'User updated Successfully');
-            // return redirect('/admins')->with('success', 'User updated Successfully');
-        }
-        else
-        {
+        if ($done) {
+            // return back()->with('status', 'User updated Successfully');
+            return redirect('/admins')->with('success', 'User updated Successfully');
+        } else {
             return redirect('/admins')->with('error', 'Something went wrong');
         };
-        
-        // $request->user()->save();
     }
 
-/**
+    /**
      * Update the user's password.
      */
-    public function updatepassword(Admin $data, Request $request): RedirectResponse
+    public function updatepassword(Admin $data, Request $request)
     {
 
         // dd($request);
-        $validated = $request->validateWithBag('updatePassword', [
-            'current_password' => ['required', 'current_password'],
-            'password' => ['required', Password::defaults(), 'confirmed'],
+        $validated = $request->validate([
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        dd($data);
-        $data->update([
+        $done = $data->update([
             'password' => Hash::make($validated['password']),
         ]);
-
-        return back()->with('status', 'Password updated successfully');
+        // dd($done);
+        if ($done) {
+            return back()->with('status', 'success');
+            // return redirect('/admins')->with('success', 'User updated Successfully');
+        } else {
+            return back()->with('status', 'error');
+            // return redirect('/admins')->with('error', 'Something went wrong');
+        };
+       
     }
-
-
-
-
 
 
 
@@ -169,8 +175,13 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Admin $data)
     {
-        dd('ok');
+        $done = $data->delete();
+        if ($done) {
+            return redirect('/admins')->with('success', 'User deleted successfully');
+        } else {
+            return redirect('/admins')->with('error', 'Something went wrong');
+        };
     }
 }

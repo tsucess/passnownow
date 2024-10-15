@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Classes extends Model
 {
+    protected $table = 'classes';
     use HasFactory;
-    protected $table = 'classess';
 
     protected $fillable = [
+        'unique_id',
         'user_unique_id',
         'title',
         'description'

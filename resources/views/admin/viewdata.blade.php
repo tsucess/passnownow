@@ -7,10 +7,6 @@
                 <div class="top">
                     <h5>Account Information</h5>
                 </div>
-
-                {{-- <form id="send-verification" method="post" action="{{ route('verification.send') }}">
-                    @csrf
-                </form> --}}
                 <form method="POST" action="{{ route('admin.update', $user->id) }}">
                     @csrf
                     @method('patch')
@@ -60,14 +56,16 @@
                             @endif 
                         
                         </div>
-                        <div class="mb-3">
-                            <x-input-label class="form-label" :value="__('User Role')" />
-                            <select name="role" class="form-control py-2" :value="old('email', $user->role)">
-                                <option value ="undefined">Select Role</option>
-                                <option value="sadmin">Super Admin</option>
-                                <option value="admin">Admin</option>
-                            </select>
-                        </div>
+                        @if ($user->role !== 'user' ) 
+                            <div class="mb-3">
+                                <x-input-label class="form-label" :value="__('User Role')" />
+                                <select name="role" class="form-control py-2" :value="old('role', $user->role)">
+                                    <option value ="{{$user->role}}">Select Role</option>
+                                    <option value="sadmin">Super Admin</option>
+                                    <option value="admin">Admin</option>
+                                </select>
+                            </div>
+                        @endif
                         <div class="mb-3">
                             <input type="submit" class="btn btn-primary" value="Save changes" />
                             @if (session('status') === 'profile-updated')
@@ -81,11 +79,6 @@
                     @method('put')
                     <div class="row shadow py-2">
                         <div class="mb-3">
-                            <x-input-label for="update_password_current_password" :value="__('Current Password')" class="form-label" />
-                            <x-text-input id="update_password_current_password" name="current_password" type="password" class="form-control" autocomplete="current-password" />
-                            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
-                        </div>
-                        <div class="mb-3">
                             <x-input-label for="update_password_password" :value="__('New Password')" class="form-label" />
                             <x-text-input id="update_password_password" name="password" type="password" class="form-control" autocomplete="new-password" />
                             <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
@@ -97,29 +90,18 @@
                         </div>
                         <div class="mb-3">
                             <input type="submit" class="btn btn-primary" value="Save changes" />
-                            @if (session('status') === 'password-updated')
-                        <p  x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                    class="text-sm text-success" >{{ __('Saved.') }}</p>
+                            @if (session('status') === 'success')
+                                    <p  x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                                    class="text-sm text-success" >{{ __('Password successfully updated.') }}</p>
+                            @endif
+                            @if (session('status') === 'error')
+                                    <p  x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
+                                    class="text-sm text-danger" >{{ __('Something went wrong.') }}</p>
                             @endif
                         </div>
                     </div>
                 </form>
-                <div class="row shadow py-2">
-                    <div class="mb-3">
-                        <h2>Delete Account</h2>
-                        <p>
-                            Once your account is deleted, all of its resources and data will be permanently deleted. 
-                            Before deleting your account, please download any data or information that 
-                            you wish to retain.
-                        </p>
-                    </div>
-                    <div class="mb-3">
-                        {{-- <x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-                            type="submit" >{{ __('Delete Account') }} </x-danger-button> --}}
-                        <button data-bs-toggle="modal" data-bs-target="#deleteAccountModal"
-                            type="button" class="btn btn-danger"  >{{ __('Delete Account') }} </button>
-                    </div>
-                </div>
+                
             </div>
             <div class="col-12 col-lg-5 profile">
                 <div class="image_wrapper">
@@ -132,6 +114,8 @@
             </div>
         </div>
     </section>
+
+    @if ($user->role === 'user' ) 
     <section class="container-fluid history__container">
         <div class="row">
             <div class="col-12 mt-5">
@@ -207,36 +191,5 @@
             </div>
         </div>
     </section>
-
-     <!-- Modal -->
-     <div class="modal fade" id="deleteAccountModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form method="post" action="{{ route('profile.destroy') }}" >
-                    @csrf
-                    @method('delete')
-                    <div class="modal-body">
-                        <h5 class="text-lg font-medium text-gray-900">
-                            {{ __('Are you sure you want to delete your account?') }}
-                        </h5>
-                        <p class="mt-1 text-sm text-gray-600">
-                            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
-                        </p>
-                        <div class="mt-6">
-                            <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
-                            <x-text-input id="password" name="password" type="password" class="form-control" placeholder="{{ __('Password') }}" />
-                            <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <x-secondary-button class="btn btn-secondary text-dark" data-bs-dismiss="modal"> {{ __('Cancel') }}</x-secondary-button>
-                        <x-danger-button class="ms-3"> {{ __('Delete Account') }} </x-danger-button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    @endif
 @endsection
