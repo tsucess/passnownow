@@ -1,0 +1,1196 @@
+/* RESPONSIVENESS  */
+@media (min-width: 375px) {
+    .container__review .reviews .review {
+        width: 80%;
+    }
+
+    .container__register .heading h6 {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+@media (min-width: 425px) {
+
+    .container__review .reviews .review {
+        width: 70%;
+    }
+
+    .navbar .navbar-brand img {
+        width: 6rem;
+    }
+
+    .container__footer .title {
+        font-size: 0.8rem;
+        margin-top: 0rem;
+        font-weight: 700;
+    }
+
+    .container__footer ul li,
+    .container__footer ul li a {
+        font-size: 0.8rem;
+    }
+
+    .account-ask p a,
+    .account-ask p {
+        font-size: 1rem;
+    }
+
+    .container__banner h1 span,
+    .container__banner h1 {
+        font-size: 2rem;
+    }
+
+    /* Motivate  */
+    .container__subjects.motivate .image-wrapped img {
+        width: 100%;
+    }
+
+
+
+}
+
+
+/* TABLET SIZE  */
+@media (min-width: 768px) {
+
+    .container__hero {
+        padding: 1rem 2rem;
+    }
+
+    .container__hero .row {
+        border-radius: 1.5rem;
+    }
+
+    .container__review .heading {
+        margin: auto;
+    }
+
+    /* .container__review .reviews {
+        padding: 1rem;
+    } */
+
+    .container__review .reviews .row {
+        padding: 3rem 5rem;
+    }
+
+    /* .container__review .reviews .review {
+        width: 50%;
+    } */
+
+    .container__top {
+        display: block;
+    }
+
+    .container__top .row {
+        display: flex;
+        padding-top: 1rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .container__top .row .col-md-2 {
+        text-align: center;
+    }
+
+    .container__top img {
+        width: 3rem;
+    }
+
+    .container__top p {
+        font-size: 0.8rem;
+    }
+
+
+    .container__guide {}
+
+    .container__guide .guides {
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .container__guide .guides .guide {
+        margin: 0.3rem auto;
+        width: 32%;
+    }
+
+    .container__guide .formular-image {
+        display: block;
+        width: 80%;
+        margin: auto;
+    }
+
+    .container__hero-down .hero-down-image,
+    .container__hero-down .hero-down__content {
+        padding: 2rem;
+    }
+
+
+    /* STUDENT (STD) REVIEW CSS  */
+    .container__std_review .quote-down-image {
+        width: 2.2rem;
+    }
+
+    .container__std_review .heading h6 {
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        font-weight: 700;
+    }
+
+    .swiper-slide p {
+        padding: 0.5rem 3rem;
+    }
+
+    .container__std_review .reviews .row {
+        padding: 1rem;
+        padding-top: 1.5rem;
+    }
+
+    .container__std_review .reviews .review {
+        gap: 0.8rem;
+        width: 25%;
+        justify-content: center;
+        margin: 0;
+    }
+
+    .container__std_review .reviews .review h5 {
+        font-size: 2rem;
+    }
+
+    .container__std_review .reviews .review p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    .swiper .review {
+        padding: 0 3rem !important;
+    }
+
+    .container__std_review .frame.mobile {
+        padding: 0;
+    }
+
+
+    /* PERFORMANCE CSS  */
+    .container__performance .barchart img {
+        width: 70%;
+    }
+
+    .container__performance .quote-down-image {
+        width: 2.2rem;
+    }
+
+    .container__performance .heading h6 {
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        font-weight: 700;
+    }
+
+
+    /* CLASS NOTES  */
+    .container__notes h6 {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .container__notes .image-wrapper img {
+        width: 100%;
+    }
+
+    .container__notes .note_info h5 {
+        font-size: 1.4rem;
+
+    }
+
+    .container__notes .note_info p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+
+    }
+
+    .container__parent_review .quote-down-image {
+        width: 2.2rem;
+    }
+
+    .container__parent_review .heading h6 {
+        font-size: 1.6rem;
+        line-height: 1.8rem;
+        font-weight: 700;
+    }
+
+
+
+
+
+
+    /* SUBJECT PAGE  */
+    .container__subjects h6 {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .container__subjects .image-wrapper img {
+        width: 100%;
+    }
+
+    .container__subjects .note_info h5 {
+        font-size: 1.4rem;
+
+    }
+
+    .container__subjects .note_info p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+
+    }
+
+
+    .container__subjects .only_subjects a.note_btn {
+        width: 100%;
+    }
+
+    .container__subjects.contact {
+        padding-bottom: 0;
+    }
+
+    .container__subjects.contact h6 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-align: left;
+        margin: 0;
+        margin-bottom: 0.4rem;
+    }
+
+    .container__subjects.contact p {
+        font-size: 0.8725rem;
+        margin: 0;
+        line-height: 1.5rem;
+        color: #878787fd;
+    }
+
+    .container__subjects.contact p b {
+        font-size: 1rem;
+        margin: 0;
+        margin-bottom: 3rem;
+        line-height: 1.5rem;
+    }
+
+
+    .container__banner .row .banner p {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .teacher__subjects h6 {
+        line-height: 3rem;
+    }
+
+    .teacher__subjects .header p {
+        width: 60%;
+        text-align: center;
+    }
+
+    /* LEADERSHIP  */
+    .leadership .bg-tertiary-accent p {
+        font-size: 1rem;
+    }
+
+    .container__programs .guides .guide {
+        margin: 0.3rem;
+        width: 32%;
+    }
+
+    .container__programs .program .image-wrapper {
+        border-radius: 0;
+    }
+
+    .container__programs .program h5 {
+        font-size: 1.2rem;
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .container__programs .program p {
+        font-size: 0.8rem;
+    }
+
+
+    .subscription .bg-plan .header{
+       padding: 0 5rem;
+    }
+
+
+
+    /* =========================
+     FORM PAGE  
+============================*/
+
+    .container__register .side-bg {
+        background-image: url('/assets/images/form-bg.png');
+        background-size: contain;
+        color: var(--color-text-white);
+        padding: 1.5rem;
+        display: flex;
+        align-items: self-end;
+    }
+
+    .container__register .side-bg .content {
+        width: 90%;
+        margin-bottom: 12rem;
+    }
+
+    .container__register .side-bg .content h1 {
+        font-weight: 700;
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+    }
+
+    .container__register .side-bg .content p {
+        line-height: 2rem;
+    }
+
+    .container__register .form__section {
+        padding: 0 1.2rem;
+    }
+
+    .container__register .heading h6 {
+        font-size: 1.125rem;
+    }
+
+    .teacher__subjects.explicit {
+        padding-bottom: 0rem;
+    }
+
+    .teacher__subjects.explicit .linechart {
+        display: flex;
+    }
+
+    .container__subjects.motivate h6 {
+        line-height: 1.8rem;
+    }
+
+    .container__programs .red_header {
+        font-size: 1.4rem;
+    }
+
+    .bg-time {
+        padding: 1.4rem;
+        line-height: 1.19rem;
+    }
+    .bg-time div b,
+    .bg-time div{
+       font-size: 0.9rem;
+    }
+  
+    .career_bottom  h6{
+        line-height: 2rem;
+        font-size: 1.5rem !important;
+    }
+
+    .accordion_temp h2 button{
+        font-size: 1rem;
+    }
+
+    .checkout h5 {
+        font-size: 1.3rem;
+    }
+
+    .payment-logos {
+        width: 100%;
+    }
+ 
+ }
+
+
+
+@media (min-width: 1024px) {
+    .btn-style {
+        width: 8.313rem;
+        padding: 0.75rem 1.5rem;
+    }
+
+    .top__section .fa-star {
+        font-size: 1rem;
+    }
+
+    .top__section span {
+        font-size: 1rem;
+    }
+
+
+    .navbar .navbar-nav .nav-item a {
+        font-size: 0.8rem;
+    }
+
+    .container__hero {
+        padding: 1rem 4rem;
+    }
+
+    .container__hero .hero__content {
+        line-height: 3rem;
+        padding-left: 2rem;
+    }
+
+    .container__hero .hero__content .total-enrol {
+        font-size: 1.5rem;
+    }
+
+    .container__hero .hero__content h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .container__hero .hero__info {
+        font-size: 1.3rem;
+        line-height: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .container__hero .hero-btn {
+        gap: 2rem;
+    }
+
+    .container__hero .hero-btn .btn-style {
+        font-size: 1.4rem;
+        width: 14rem;
+        padding: 1rem;
+        border-radius: 0.6rem;
+    }
+
+    .container__hero .hero-btn .btn-style-secondary {
+        border: 2px solid var(--color-text-white);
+    }
+
+    .container__hero .row .hero-image {
+        justify-content: center;
+        padding: 1rem;
+        padding-bottom: 0rem;
+    }
+
+    .container__hero .row .hero-image img {
+        width: 100%;
+    }
+
+    .container__review .heading h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 2.5rem;
+
+    }
+
+
+    /* CONTAINER GUIDE  */
+    .container__guide {
+        padding: 2rem 6rem;
+    }
+
+    .container__guide .guides {
+        margin-top: 2rem;
+    }
+
+    .container__guide .row:first-child {
+        width: 90%;
+        margin: auto;
+    }
+
+    .container__guide .formular-image {
+        width: 70%;
+    }
+
+
+
+
+
+    /* CONTAINER HERO-DOWN */
+    .container__hero-down .total-enrol {
+        font-size: 1.2rem;
+    }
+
+    .container__hero-down .hero-down__content {
+        line-height: 3rem;
+        padding: 4rem 3rem;
+    }
+
+    .container__hero-down .hero-down__content h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .container__hero-down .hero-down__info {
+        font-size: 1.2rem;
+        line-height: 2rem;
+        margin-bottom: 2rem;
+        width: 90%;
+    }
+
+    .container__hero-down .hero-btn {
+        gap: 2rem;
+    }
+
+    .container__hero-down .hero-btn .btn-style {
+        font-size: 1.4rem;
+        width: 14rem;
+        padding: 1rem;
+        border-radius: 0.6rem;
+    }
+
+    .container__hero-down .hero-btn .btn-style-secondary {
+        border: 2px solid var(--color-text-white);
+    }
+
+
+    .container__hero-down .row .hero-down-image {
+        justify-content: center;
+        padding: 4rem;
+    }
+
+    .container__hero-down .row .hero-down-image img {
+        width: 100%;
+    }
+
+
+
+
+    /* STUDENT (STD) REVIEW CSS  */
+    .container__std_review {
+        padding: 5rem;
+    }
+
+    .container__std_review .quote-down-image {
+        width: 6.95rem;
+    }
+
+    .container__std_review .heading h6 {
+        font-size: 2rem;
+        line-height: 3rem;
+        font-weight: 700;
+        padding: 1rem 4.5rem;
+    }
+
+    .swiper-slide p {
+        padding: 0.5rem 4rem;
+        font-size: 1.25rem;
+    }
+
+    .container__review .reviews .row {
+        padding: 1rem;
+        padding-top: 1.5rem;
+
+    }
+
+    .container__review .reviews .review {
+        gap: 0.8rem;
+        width: 25%;
+        justify-content: center;
+        margin: 0;
+    }
+
+
+    .container__std_review .frame {
+        padding: 0;
+    }
+
+
+
+    /* PERFORMANCE CSS  */
+    .container__performance .bg-image {
+        padding: 5rem;
+    }
+
+    .container__performance .performance__content h1 {
+        font-size: 2rem;
+    }
+
+    .container__performance .barchart {
+        padding: 2rem;
+    }
+
+    .container__performance .performance__info {
+        padding: 2rem;
+    }
+
+    .container__performance .performance__info p {
+        font-size: 1rem;
+    }
+
+    .container__performance .performance__info .lists {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .container__performance .quote-down-image {
+        width: 6.95rem;
+    }
+
+    .container__performance .heading h6 {
+        font-size: 2rem;
+        line-height: 3rem;
+        font-weight: 700;
+        padding: 3rem 4.5rem;
+    }
+
+
+
+    /* CLASS NOTES  */
+    .container__notes {
+        padding: 5rem;
+    }
+
+    .container__notes h6 {
+        font-size: 2.5rem;
+    }
+
+    .container__notes .image-wrapper img {
+        width: 100%;
+    }
+
+    .container__notes .note_info h5 {
+        font-size: 1.75rem;
+    }
+
+    .container__notes .note_info p {
+        font-size: 1.125rem;
+        line-height: 1.725rem;
+        margin: 2rem 0;
+
+    }
+
+    /* PARENT REVIEW  */
+    .container__parent_review {
+        padding: 5rem;
+    }
+
+    .container__parent_review .quote-down-image {
+        width: 6.95rem;
+    }
+
+    .container__parent_review .heading h6 {
+        font-size: 2rem;
+        line-height: 3rem;
+        font-weight: 700;
+        padding: 3rem 4.5rem;
+    }
+
+    .container__subscribe-form form {
+        background-size: contain;
+        background-position: center center;
+        padding: 5rem;
+    }
+
+    .container__subscribe-form .form form p {
+        font-size: 1.3rem;
+        line-height: 2.2rem;
+    }
+
+    .container__subscribe-form .form form .sub-form {
+        display: flex;
+        padding: 0.3rem;
+        background-color: var(--color-text-white);
+    }
+
+    .container__subscribe-form form .sub-form input {
+        outline: none;
+        width: 95%;
+        border-radius: 0.25rem 0 0 0.25rem;
+        padding-left: 0.5rem;
+    }
+
+    .container__subscribe-form form .sub-form .btn-submit {
+        border-radius: 0.25rem;
+    }
+
+
+    /* FOOTER CSS  */
+    .container__footer {
+        margin-top: 3rem;
+    }
+
+    .container__footer a {
+        color: var(--color-text-white);
+    }
+
+
+    .container__footer footer {
+        padding: 1rem;
+        padding-top: 2rem;
+    }
+
+    .container__footer footer .address {
+        padding: 1rem 3.5rem !important;
+    }
+
+    .container__footer footer .address h5 {
+        font-size: 1.25rem;
+        font-weight: 700;
+    }
+
+    .container__footer footer .address span,
+    .container__footer footer .address p {
+        font-size: 1rem;
+    }
+
+    .container__footer .title {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+    }
+
+    .container__footer ul li,
+    .container__footer ul li a {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+
+
+    .container__footer .copy__right {
+        text-align: center;
+        color: var(--color-text-white);
+        padding-top: 1rem;
+    }
+
+    .container__footer .copy__right p {
+        font-size: 1rem;
+    }
+
+    .container__footer .copy__right ul li a i {
+        font-size: 1.2rem;
+    }
+
+
+
+
+
+
+    .container__subjects {
+        padding: 5rem;
+        padding-top: 0;
+    }
+
+    .container__subjects h6 {
+        font-size: 2.5rem;
+    }
+
+    .container__subjects .image-wrapper img {
+        width: 100%;
+    }
+
+    .container__subjects .note_info h5 {
+        /* font-size: 1.75rem; */
+
+    }
+
+    .container__subjects .note_info p {
+        font-size: 1.125rem;
+        line-height: 1.725rem;
+        margin: 1rem 0;
+
+    }
+
+    .container__subjects .only_subjects a.note_btn {
+        width: 60%;
+    }
+
+    .teacher__subjects.explicit .linechart img {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+
+
+    .container__banner .row .banner p {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .container__subjects.motivate .header h6 {
+        line-height: 2.5rem;
+        font-size: 2rem;
+    }
+
+
+    /* .container__subjects.contact h6 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .container__subjects.contact p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    .container__subjects.contact p b{
+        font-size: 1.2rem;
+        margin: 0;
+        line-height: 2rem;
+    } */
+
+
+    .subscription .bg-plan {
+        padding: 2rem;
+    }
+
+    .subscription .bg-plan .header{
+        padding: 0 15rem;
+     }
+ 
+
+    /* LEADERSHIP  */
+    .leadership .bg-tertiary-accent p b,
+    .leadership .bg-tertiary-accent p {
+        font-size: 1.2rem;
+    }
+
+    .container__programs .program h5 {
+        font-size: 1.2rem;
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .container__programs .program p {
+        font-size: 0.8rem;
+    }
+
+    .team_profiles {
+        /* width: 50%; */
+        margin: 0 auto;
+    }
+
+    .team {
+        padding: 2.5rem;
+    }
+    .team .address_info {
+        padding-right: 3rem;
+    }
+
+
+    /* =====================
+     FORM PAGE  
+=========================*/
+    .container__register .side-bg {
+        padding: 1.5rem 3rem;
+    }
+
+    .container__register .side-bg .content {
+        width: 85%;
+        margin-bottom: 12rem;
+    }
+
+    .container__register .side-bg .content h1 {
+        font-weight: 700;
+        font-size: 2.2rem;
+        line-height: 3rem;
+    }
+
+    .container__register .side-bg .content p {
+        font-size: 1.25rem;
+        line-height: 2rem;
+    }
+
+    .container__register .form__section {
+        padding: 0 3.5rem;
+    }
+
+    .container__login .row .side-bg {
+        height: 100vh;
+    }
+
+    .container__register .heading h6 {
+        font-size: 1.325rem;
+        line-height: 1.725rem;
+    }
+
+    .container__programs .red_header {
+        font-size: 1.5rem;
+    }
+
+    .bg-time {
+        padding: 2.5rem 1rem;
+    }
+ 
+ 
+    .payment-logos {
+        width: 80%;
+    }  
+
+ 
+}
+
+
+
+
+
+@media (min-width: 1440px) {
+
+    .navbar .navbar-nav .nav-item {
+        margin: 0 0.5rem;
+    }
+
+
+    .navbar .navbar-nav .nav-item a {
+        font-size: 1rem;
+    }
+
+
+    .btn-style {
+        width: 8rem;
+        padding: 0.6rem 1.5rem;
+        border-radius: 4px;
+        border: 1px solid var(--color-primary);
+    }
+
+    .btn-style-secondary {
+        border: none;
+    }
+
+    .container__hero .total-enrol {
+        font-size: 2.5rem;
+    }
+
+    .container__hero .hero__content {
+        line-height: 6rem;
+        padding: 2rem;
+    }
+
+    .container__hero .hero__content h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .container__hero .hero__info {
+        font-size: 1.6rem;
+        line-height: 2.5rem;
+    }
+
+
+    .container__std_review .quote-down-image {
+        width: 6.95rem;
+    }
+
+    .container__std_review .heading h6 {
+        font-size: 2.375rem;
+    }
+
+    .swiper-slide p {
+        padding: 0.5rem 18rem;
+        font-size: 1.5rem;
+    }
+
+
+    /* CONTAINER HERO-DOWN */
+    .container__hero-down .total-enrol {
+        font-size: 1.5rem;
+    }
+
+    .container__hero-down .hero-down__content {
+        line-height: 3rem;
+        padding: 4rem;
+    }
+
+    .container__hero-down .hero-down__content h1 {
+        font-size: 3rem;
+    }
+
+    .container__hero-down .hero-down__info {
+        font-size: 1.3rem;
+        width: 80%;
+    }
+
+
+    .container__hero-down .row .hero-down-image {
+        padding: 5rem;
+    }
+
+    .container__subjects .note_info h5 {
+        font-size: 1.75rem;
+
+    }
+
+    /* PERFORMANCE CSS  */
+    .container__performance .performance__content h1 {
+        font-size: 3rem;
+    }
+
+
+    .container__performance .performance__info p {
+        font-size: 1.5rem;
+    }
+
+    .container__performance .quote-down-image {
+        width: 6.95rem;
+    }
+
+    .container__parent_review .heading h6 {
+        font-size: 2.375rem;
+    }
+
+
+    .container__subscribe-form form {
+        padding: 5rem 12rem;
+    }
+
+    .container__subscribe-form .form form p {
+        font-size: 1.5rem;
+        line-height: 2.4rem;
+    }
+
+    .container__subscribe-form .form form .sub-form {
+        padding: 0.5rem;
+    }
+
+
+
+    .container__banner h1 span,
+    .container__banner h1 {
+        font-size: 2.5rem;
+    }
+
+    .container__banner .banner p {
+        font-size: 1.2rem;
+    }
+
+
+    .container__subjects .image-wrapped img {
+        width: 80%;
+    }
+
+    .container__subjects .image-wrapped.skills_hero img {
+        width: 100%;
+    }
+
+
+
+
+
+    .teacher__subjects.explicit .header p {
+        font-size: 1.5rem;
+    }
+
+
+    .teacher__subjects.command .header p {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        line-height: 2rem;
+    }
+
+    .teacher__subjects.command ul {
+        margin-top: 1.5rem;
+        padding: 2rem;
+    }
+
+    .teacher__subjects.command ul li {
+        font-size: 1.2rem;
+        line-height: 2rem;
+    }
+
+
+    .container__parentresources .notepink img {
+        width: 80%;
+    }
+
+    .container__parentresources .header p {
+        font-size: 1.25rem;
+    }
+
+    .container__parentresources .peoplelaugh_img {
+        text-align: center;
+    }
+
+    .container__parentresources .peoplelaugh_img img {
+        width: 80%;
+    }
+
+    .container__parentresources ol li {
+        font-size: 1.2rem;
+    }
+
+    .container__banner {
+        height: 15rem;
+    }
+
+
+    /* FORM PAGE CSS  */
+    .container__register .side-bg .content {
+        width: 80%;
+    }
+
+    .container__register .side-bg .content h1 {
+        font-size: 3rem;
+        line-height: 4rem;
+    }
+
+
+    .container__register .heading h6 {
+        font-size: 1.5rem;
+        line-height: 1.725rem;
+    }
+
+    .container__register .form__section {
+        padding: 0 10rem;
+    }
+
+
+    .container__subjects.contact h6 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .container__subjects.contact p {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .container__subjects.contact p b {
+        font-size: 1.2rem;
+        margin: 0;
+        line-height: 2rem;
+    }
+
+    /* OUR LEADERS  */
+    .leadership .bg-tertiary-accent p b,
+    .leadership .bg-tertiary-accent p {
+        font-size: 1.5rem;
+    }
+
+    .container__programs .guides .guide {
+        padding: 2rem;
+    }
+
+    .container__programs .guides .guide h3 {
+        font-size: 1.5rem;
+    }
+
+    .container__programs .guides .guide p {
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+    }
+
+    .container__programs .program h5 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .container__programs .program p {
+        font-size: 1.1rem;
+    }
+
+    .subscription_profiles {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .bg-time {
+        padding: 2.7rem 2rem;
+        line-height: 2.5rem;
+    }
+    .bg-time div {
+       font-size: 1.5rem;
+    }
+
+
+    .about ul li {
+        font-size: 1rem;
+        line-height: 2rem;
+    }
+  
+ }
