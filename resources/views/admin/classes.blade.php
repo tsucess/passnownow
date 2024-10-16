@@ -148,7 +148,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="submit" id="updateClass" class="btn btn-success">Update
+                        <button type="submit" name="submit" id="updateClass" class="btn btn-success">Update
                             changes</button>
                     </div>
                 </form>
@@ -188,17 +188,16 @@
                 var title = $(this).data('title');
                 var description = $(this).data('description');
 
-                console.log(id);
-                console.log(title);
-                console.log(description);
-                console.log("===================");
+                // console.log(id);
+                // console.log(title);
+                // console.log(description);
+                // console.log("===================");
 
                 $('#edit-id').val(id);
                 $('#edit-title').val(title);
                 $('#edit-description').val(description);
             });
 
-           
         });
 
      

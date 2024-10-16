@@ -66,48 +66,57 @@ class ClassesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
-    {
+    // public function edit($id)
+    // {
 
-        $class = Classes::find($id);
-        if ($class) {
-            return response()->json([
-                'status' => 200,
-                'employee' => $class
-            ]);
-        } else {
-            return response()->json([
-                'status' => 404,
-                'message' => 'Employee not found'
-            ]);
-        }
-    }
+    //     $class = Classes::find($id);
+    //     if ($class) {
+    //         return response()->json([
+    //             'status' => 200,
+    //             'employee' => $class
+    //         ]);
+    //     } else {
+    //         return response()->json([
+    //             'status' => 404,
+    //             'message' => 'Employee not found'
+    //         ]);
+    //     }
+    // }
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request)
     {
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+        ]);
+
+
         $class = Classes::find($request->id);
         if ($class) {
-            $class->name = $request->name;
-            $class->email = $request->email;
-            $class->address = $request->address;
-            $class->phone = $request->phone;
+            $class->title = $request->title;
+            $class->description = $request->description;
             $class->save();
-            return response()->json([
-                'status' => 200,
-                'message' => 'Employee updated successfully'
-            ]);
-        } else {
-            return response()->json([
-                'status' => 404,
-                'message' => 'Employee not found'
-            ]);
-        }
+        // if ($done) {
+            return redirect('/classes')->with('success', 'Class updated Successfully');
+            } else {
+                return redirect('/classes')->with('error', 'Something went wrong');
+            };
 
+        //     return response()->json([
+        //         'status' => 200,
+        //         'message' => 'Employee updated successfully'
+        //     ]);
+        // } else {
+        //     return response()->json([
+        //         'status' => 404,
+        //         'message' => 'Employee not found'
+        //     ]);
+        // }
 
-        return view('admin.classes');
     }
 
 
@@ -123,7 +132,7 @@ class ClassesController extends Controller
     {
         $done = $data->delete();
         if ($done) {
-            return redirect('/classes')->with('success', 'Classes deleted successfully');
+            return redirect('/classes')->with('success', 'Class deleted successfully');
         } else {
             return redirect('/classes')->with('error', 'Something went wrong');
         };
