@@ -10,7 +10,26 @@
             </div>
         </div>
     </div>
-    {{-- <php if (isset($output)) {?> --}}
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger pb-0">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="m-0">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @elseif(\Session::has('error'))
+        <div class="alert alert-danger">
+            <p class="m-0">{{ \Session::get('error') }}</p>
+        </div>
+    @endif
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <p class="m-0">{{ \Session::get('success') }}</p>
+        </div>
+    @endif
+  
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
@@ -26,17 +45,18 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- <php foreach  ($output as $admin) { ?> --}}
+                @php $sn = 0  @endphp
+                @foreach ($fetchSubjects as $Subject)
                 <tr>
-                    <th>1</th>
-                    <td>English Language</td>
-                    <td>This constist of Alphabets to Concord</td>
-                    <td>JSS 1</td>
-                    <td>20-9-2024</td>
+                    <th>{{ ++$sn }}</th>
+                    <td>{{ $Subject->title }}</td>
+                    <td>{{ $Subject->description }}</td>
+                    <td>{{ $Subject->class_unique_id }}</td>
+                    <td>{{ $Subject->created_at }}</td>
                     <td>
                         <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
+                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>"  {{if($video['status'] == 1){ 'checked';}} /> --}}
+                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked />
                         </div>
                     </td>
                     <td>
@@ -44,174 +64,14 @@
                             <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
                             {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
                             <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
+                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Subject->id }}" data-title="{{ $Subject->title }}" data-description="{{ $Subject->description }}" data-class="{{ $Subject->class }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
                                 <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
+                                <li><a onclick="validate(this)" href="{{ route('adsubjects.destroy', ['data' => $Subject->id]) }}" class="btn btn-danger p-1">delete</a></li>
                             </ul>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <th>2</th>
-                    <td>English Language</td>
-                    <td>This constist of topics from Concord to Syllable</td>
-                    <td>JSS 2</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>English Language</td>
-                    <td>This constist of Alphabets to Concord</td>
-                    <td>JSS 3</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>Mathematics</td>
-                    <td>This constist of Numbers to Algebra</td>
-                    <td>JSS 1</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <td>Mathematics</td>
-                    <td>This constist of Numbers to Algebra</td>
-                    <td>JSS 2</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>6</th>
-                    <td>Mathematics</td>
-                    <td>This constist of Numbers to Algebra</td>
-                    <td>JSS 3</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>7</th>
-                    <td>Biology</td>
-                    <td>This constist of Hitory of Biology to Respiration</td>
-                    <td>SSS 1</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-
-
-                {{-- <php }}?>		 --}}
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -235,63 +95,48 @@
                     <h1 class="modal-title fs-5" id="addModalLabel">Add New Subject</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                    <form method="POST" action="{{ route('adsubjects.store') }}" enctype="multipart/form-data" >
+                        @csrf
                     <div class="modal-body">
-                        <input type="hidden" name="page" value="<= $page ?>" class="form-control py-2"
-                            id="addInputPage" required>
+                        <x-text-input type="hidden" class="form-control" name="unique_id"
+                            value="{{ rand(time(), 10000000) }}" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addInputFirstname" class="form-label">Title</label>
-                                    <input type="text" name="fname" class="form-control py-2"
-                                        id="addInputFirstname" required>
+                                    <x-input-label :value="__('Title')" />
+                                    <x-text-input type="text" class="form-control" name="title" :value="old('title')"
+                                        aria-describedby="textBlock" placeholder="Enter class title" />
+                                    <x-input-error :messages="$errors->get('title')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addInputLastname" class="form-label">Description</label>
-                                    <input type="text" name="lname" class="form-control py-2" id="addInputLastname"
-                                        required>
+                                    <x-input-label :value="__('Description')" class="form-label" />
+                                    <textarea name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
+                                    <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addavatar" class="form-label">Subject Image</label>
-                                    <input type="file" name="avatar" class="form-control py-2" id="addavatar"
-                                        required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            {{-- <div class="col-6">
-                                <div class="mb-3">
-                                    <label for="addInputphone" class="form-label">Phone number</label>
-                                    <input type="text" name="phone" class="form-control py-2" id="addInputphone"
-                                        required>
-                                </div>
-                            </div> --}}
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="addInputuserole" class="form-label">Class</label>
-                                    <select name="userrole" id="addInputuserole" class="form-control py-2">
-                                        <option value ="undefined">Select Class</option>
-                                        {{-- <php if ($page === "admin") {?> --}}
+                                    <x-input-label :value="__('Class')" class="form-label" />
+                                    <select  class="form-control py-2" name = "class_id" >
+                                        <option value ="">Select Class</option>
                                         <option value="jss1">JSS 1</option>
                                         <option value="jss2">Jss 2</option>
                                         <option value="jss3">Jss 3</option>
-                                        {{-- <php } else {?> --}}
-                                        {{-- <option value="member">Member</option>
-                                        <option value="author">Author</option> --}}
-                                        {{-- <php }?> --}}
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Subject Image</label>
+                                    <input type="file" name="avatar" class="form-control py-2" />
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <button type="button" name="submit" id="save" class="btn btn-primary">Save
-                            changes</button>
+                        <button type="submit" name="submit" id="save" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -311,54 +156,49 @@
                     <h1 class="modal-title fs-5" id="editModalLabel">Edit Subject</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form id="edit-form" method="POST" action="{{ route('adsubjects.update') }}" enctype="multipart/form-data">
+                        @csrf
+                        @method('patch')
                     <div class="modal-body">
-                        <input type="hidden" name="page" value="<= page ?>" class="form-control py-2"
-                            id="editInputPage" required>
+                        <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
                                     <input type="hidden" name="user_id" class="form-control py-2" id="editInputId">
                                     <label for="editInputFirstname" class="form-label">Title</label>
-                                    <input type="text" name="fname" class="form-control py-2"
-                                        id="editInputFirstname">
+                                    <input type="text" name="title" class="form-control py-2" id="edit-title" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="editInputLastname" class="form-label">Description</label>
-                                    <input type="text" name="lname" class="form-control py-2"
-                                        id="editInputLastname">
+                                    <input type="text" name="description" class="form-control py-2" id="edit-description">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            {{-- <div class="col-6">
-                                <div class="mb-3">
-                                    <label for="editInputphone" class="form-label">Phone number</label>
-                                    <input type="number" name="phone" class="form-control py-2" id="editInputphone">
-                                </div>
-                            </div> --}}
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="editInputuserole" class="form-label">Class</label>
-                                    <select name="userrole" id="editInputuserole" class="form-control py-2">
-                                        <option value ="undefined">Select Class</option>
-                                        {{-- <php if ($page === "admin") {?> --}}
+                                    <label for="edit-class" class="form-label">Class</label>
+                                    <select name="class_id" id="edit-class" class="form-control py-2">
+                                        <option value ="">Select Class</option>
                                         <option value="jss1">JSS 1</option>
                                         <option value="jss2">Jss 2</option>
                                         <option value="jss3">Jss 3</option>
-                                        {{-- <php } else {?> --}}
-                                        {{-- <option value="member">Member</option> --}}
-                                        {{-- <php }?> --}}
                                     </select>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="edit-avatar" class="form-label">Subject Image</label>
+                                <input type="file" name="avatar" id="edit-avatar" class="form-control py-2" />
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="submit" id="updateUser" class="btn btn-success">Update
+                        <button type="submit" name="submit" id="updateUser" class="btn btn-success">Update
                             changes</button>
                     </div>
                 </form>
@@ -384,4 +224,24 @@
     <script>
         let table = new DataTable('#admin-table');
     </script>
+
+<script>
+    $(document).ready(function() {
+
+        $('#admin-table tbody').on('click', '.edit-btn', function() {
+            var id = $(this).data('id');
+            var title = $(this).data('title');
+            var description = $(this).data('description');
+            var editclass = $(this).data('class');
+
+            $('#edit-id').val(id);
+            $('#edit-title').val(title);
+            $('#edit-description').val(description);
+            $('#edit-class').val(editclass);
+        });
+
+    });
+
+ 
+</script>
 @endsection

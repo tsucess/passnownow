@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubjectsController;
+use App\Models\Subjects;
 
 Route::get('/', function () {
     return view('home');
@@ -172,22 +174,29 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [AdminController::class, 'usersonly'])->name('users');
 
 
-
+// Classes Routes 
     Route::get('/classes', [ClassesController::class, 'show'])->name('classes');
     Route::post('/classes', [ClassesController::class, 'store'])->name('classes.store');
     Route::post('/classes/{data}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
     Route::patch('/classes', [ClassesController::class, 'update'])->name('classes.update');
-    // Route::post('/classes/{data}/update', [ClassesController::class, 'update'])->name('classes.update');
     Route::get('/classes/{data}/destroy', [ClassesController::class, 'destroy'])->name('classes.destroy');
+    
+    
+    // Subjects Routes 
+    Route::get('/adsubjects', [SubjectsController::class, 'show'])->name('adsubjects');
+    Route::post('/adsubjects', [SubjectsController::class, 'store'])->name('adsubjects.store');
+    Route::post('/adsubjects/{data}/edit', [SubjectsController::class, 'edit'])->name('adsubjects.edit');
+    Route::patch('/adsubjects', [SubjectsController::class, 'update'])->name('adsubjects.update');
+    Route::get('/adsubjects/{data}/destroy', [SubjectsController::class, 'destroy'])->name('adsubjects.destroy');
 });
   
 
 
 
 
-Route::get('/adsubjects', function () {
-    return view('admin.adsubjects');
-});
+// Route::get('/adsubjects', function () {
+//     return view('admin.adsubjects');
+// });
 
 
 Route::get('/adpastquestions', function () {

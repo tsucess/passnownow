@@ -19,10 +19,7 @@ class ClassesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    // public function create()
-    // {
-    //     return view('admin.classes');
-    // }
+   
 
     /**
      * Store a newly created resource in storage.
@@ -59,29 +56,10 @@ class ClassesController extends Controller
      */
     public function show()
     {
-        $classes = Classes::get();
-        return view('admin.classes', ['fetchClasses' => $classes]);
+        $output = Classes::get();
+        return view('admin.classes', ['fetchClasses' => $output]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    // public function edit($id)
-    // {
-
-    //     $class = Classes::find($id);
-    //     if ($class) {
-    //         return response()->json([
-    //             'status' => 200,
-    //             'employee' => $class
-    //         ]);
-    //     } else {
-    //         return response()->json([
-    //             'status' => 404,
-    //             'message' => 'Employee not found'
-    //         ]);
-    //     }
-    // }
 
     /**
      * Update the specified resource in storage.
@@ -106,17 +84,7 @@ class ClassesController extends Controller
                 return redirect('/classes')->with('error', 'Something went wrong');
             };
 
-        //     return response()->json([
-        //         'status' => 200,
-        //         'message' => 'Employee updated successfully'
-        //     ]);
-        // } else {
-        //     return response()->json([
-        //         'status' => 404,
-        //         'message' => 'Employee not found'
-        //     ]);
-        // }
-
+    
     }
 
 

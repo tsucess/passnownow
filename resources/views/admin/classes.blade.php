@@ -42,7 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                {{ $sn = 0 }}
+                @php $sn = 0  @endphp
                 @foreach ($fetchClasses as $Class)
                     <tr>
                         <th>{{ ++$sn }}</th>
@@ -104,8 +104,7 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <button type="submit" name="submit" class="btn btn-primary">Save
-                            changes</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -141,8 +140,7 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="editInputLastname" class="form-label">Description</label>
-                                    <input type="text" name="description" id="edit-description"
-                                        class="form-control py-2" />
+                                    <input type="text" name="description" id="edit-description" class="form-control py-2" />
                                 </div>
                             </div>
                         </div>
