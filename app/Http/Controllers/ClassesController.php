@@ -50,7 +50,7 @@ class ClassesController extends Controller
         } else {
             return redirect('/classes')->with('error', 'Something went wrong');
         };
-        
+
 
     }
 
@@ -136,6 +136,6 @@ class ClassesController extends Controller
         } else {
             return redirect('/classes')->with('error', 'Something went wrong');
         };
-       
+
     }
 }

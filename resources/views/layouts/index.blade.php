@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/css/brands.css') }} ">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+
     {{-- SWIPER JS  --}}
     <link rel="stylesheet" href="{{ 'assets/css/swiper-bundle.min.css' }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">

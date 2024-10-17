@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ExamsController;
 use App\Http\Controllers\ClassesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -126,7 +127,7 @@ Route::get('/checkout', function () {
 });
 
 
-// DASHBOARD ROUTING 
+// DASHBOARD ROUTING
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -161,7 +162,7 @@ Route::get('/subscription', function () {
 
 
 
-Route::middleware('auth')->group(function () { 
+Route::middleware('auth')->group(function () {
     Route::get('/admins', [AdminController::class, 'index'])->name('admins');
     Route::post('/admins', [AdminController::class, 'store'])->name('admin.store');
     Route::get('/admins/{data}/edit', [AdminController::class, 'edit'])->name('admin.edit');
@@ -180,7 +181,7 @@ Route::middleware('auth')->group(function () {
     // Route::post('/classes/{data}/update', [ClassesController::class, 'update'])->name('classes.update');
     Route::get('/classes/{data}/destroy', [ClassesController::class, 'destroy'])->name('classes.destroy');
 });
-  
+
 
 
 
@@ -198,6 +199,8 @@ Route::get('/adexams', function () {
     return view('admin.adexams');
 });
 
+Route::post('/adexams', [ExamsController::class, 'store'])->name('adexams.store');
+
 Route::get('/viewtopics', function () {
     return view('admin.viewtopics');
 });
@@ -207,14 +210,14 @@ Route::get('/instructors', function () {
     return view('admin.instructors');
 });
 
-//  To reduce longer url 
+//  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');
 // })->name('edresources');
 
 // {{ route('edresources')}} to references the route in the view page
 
-// Access a nested view page with uri parameter 
+// Access a nested view page with uri parameter
 // Route::get('/dashboard/{name}/{lname}', function ($name, $lname) {
 //     return view('admin.dashboard',['name'=>$name, 'lname'=>$lname]);
 // });
@@ -222,5 +225,5 @@ Route::get('/instructors', function () {
 // Route::get('user', [UserController::class, 'getUser']);
 // Route::get('username/{name}', [UserController::class, 'getUsername']);
 
-// How to get access view from controller 
+// How to get access view from controller
 // Route::get('home', [UserController::class, 'getHome']);

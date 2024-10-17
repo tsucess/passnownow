@@ -125,45 +125,50 @@
                     <h1 class="modal-title fs-5" id="addModalLabel">Add Exams</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('adexams.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
-                        <input type="hidden" name="page" value="<= $page ?>" class="form-control py-2"
-                            id="addInputPage" required>
+                        <x-text-input type="hidden" class="form-control" name="unique_id"
+                        value="{{ rand(time(), 10000000) }}" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addInputFirstname" class="form-label">Title</label>
-                                    <input type="text" name="fname" class="form-control py-2"
-                                        id="addInputFirstname" required>
+                                    <x-input-label :value="__('Title')" />
+                                        <x-text-input type="text" class="form-control" name="title" :value="old('title')"
+                                        aria-describedby="textBlock"/>
+                                    <x-input-error :messages="$errors->get('title')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addInputLastname" class="form-label">Description</label>
-                                    <input type="text" name="lname" class="form-control py-2" id="addInputLastname"
-                                        required>
+                                    <x-input-label :value="__('Description')" />
+                                    <x-text-input type="text" class="form-control" name="description" :value="old('description')"
+                                        aria-describedby="textBlock" />
+                                    <x-input-error :messages="$errors->get('description')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addavatar" class="form-label">Subject Image</label>
-                                    <input type="file" name="avatar" class="form-control py-2" id="addavatar"
-                                        required>
+                                    <x-input-label :value="__('Subject Image')" />
+                                        <input type="file" class="form-control" name="avatar" :value="old('avatar')"
+                                        aria-describedby="textBlock" />
+                                    <x-input-error :messages="$errors->get('avatar')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             {{-- <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="addInputphone" class="form-label">Phone number</label>
-                                    <input type="text" name="phone" class="form-control py-2" id="addInputphone"
+                                    <input-label for="addInputphone" :value="__('Class')" class="form-label">Phone number</label>
+                                    <input type="text" name="phone" :value="old('class')" class="form-control py-2" id="addInputphone"
                                         required>
                                 </div>
+                                <input-error :messages="$errors->get('class')" class="mt-2 text-danger" />
                             </div> --}}
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="addInputuserole" class="form-label">Class</label>
-                                    <select name="userrole" id="addInputuserole" class="form-control py-2">
+                                    <select name="" id="addInputuserole" class="form-control py-2">
                                         <option value ="undefined">Select Class</option>
                                         {{-- <php if ($page === "admin") {?> --}}
                                         <option value="jss1">JSS 1</option>
@@ -180,7 +185,7 @@
                     </div>
                     <div class="modal-footer">
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <button type="button" name="submit" id="save" class="btn btn-primary">Save
+                        <button type="submit" name="submit" id="save" class="btn btn-primary">Save
                             changes</button>
                     </div>
                 </form>

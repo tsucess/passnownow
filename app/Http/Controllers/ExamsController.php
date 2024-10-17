@@ -13,6 +13,7 @@ class ExamsController extends Controller
     public function index()
     {
         //
+        return view('admin.adExams');
     }
 
     /**
@@ -29,7 +30,45 @@ class ExamsController extends Controller
     public function store(Request $request)
     {
         //
+        //dd($request);
+        $request->validate([
+            'unique_id' => ['required', 'string', 'max:255', 'unique:'.Exams::class],
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            // 'subject_image' => ['required|image|mimes:jpeg, jpg, gif, png|max:2048'],
+            'avatar' => ['required', 'mimes:jpeg, jpg, png, gif', 'max:2048'],
+        ]);
+
+
+
+        //dd($request);
+        // Add class
+        $finish = Exams::create([
+            'unique_id' => $request->unique_id,
+            'user_unique_id' => Auth::user()->unique_id,
+            'title' => $request->title,
+            'description' => $request->description,
+            'avatar' => $request->avatar,
+            // 'class' => $request->class
+        ]);
+
+
+
+
+
+
+        if ($finish) {
+            return redirect('/adexams')->with('success', 'New Exam Information Created successfully');
+        } else {
+            return redirect('/adexams')->with('error', 'Something went wrong');
+        };
+
+
     }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -62,4 +101,44 @@ class ExamsController extends Controller
     {
         //
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
