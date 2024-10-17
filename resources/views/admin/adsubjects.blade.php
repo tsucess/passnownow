@@ -64,7 +64,7 @@
                             <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
                             {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
                             <ul class="more-options">
-                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Subject->id }}" data-title="{{ $Subject->title }}" data-description="{{ $Subject->description }}" data-class="{{ $Subject->class }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
+                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Subject->id }}" data-title="{{ $Subject->title }}" data-description="{{ $Subject->description }}" data-class="{{ $Subject->class_unique_id }}" data-avatar="{{ $Subject->avatar }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
                                 <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
                                 <li><a onclick="validate(this)" href="{{ route('adsubjects.destroy', ['data' => $Subject->id]) }}" class="btn btn-danger p-1">delete</a></li>
                             </ul>
@@ -181,6 +181,7 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="edit-class" class="form-label">Class</label>
+                                    <input type="hidden" name="prevclass" id="prev-class" class="form-control py-2" />
                                     <select name="class_id" id="edit-class" class="form-control py-2">
                                         <option value ="">Select Class</option>
                                         <option value="jss1">JSS 1</option>
@@ -193,7 +194,8 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label for="edit-avatar" class="form-label">Subject Image</label>
-                                <input type="file" name="avatar" id="edit-avatar" class="form-control py-2" />
+                                <input type="hidden" name="prevavatar" id="prev-avatar" class="form-control py-2" />
+                                <input type="file" name="avatar" class="form-control py-2" />
                             </div>
                         </div>
                     </div>
@@ -232,12 +234,14 @@
             var id = $(this).data('id');
             var title = $(this).data('title');
             var description = $(this).data('description');
-            var editclass = $(this).data('class');
+            var editclass = $(this).data('class_unique_id');
+            var editavatar = $(this).data('avatar');
 
             $('#edit-id').val(id);
             $('#edit-title').val(title);
             $('#edit-description').val(description);
-            $('#edit-class').val(editclass);
+            $('#prev-class').val(editclass);
+            $('#prev-avatar').val(editavatar);
         });
 
     });

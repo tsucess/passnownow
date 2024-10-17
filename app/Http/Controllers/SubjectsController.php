@@ -7,6 +7,7 @@ use App\Models\Subjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 
 class SubjectsController extends Controller
 {
@@ -36,8 +37,10 @@ class SubjectsController extends Controller
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Subjects::class],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
+            'prevclass' => ['required', 'string', 'max:255'],
             'class_id' => ['required', 'string', 'max:255'],
-            'avatar' => ['required', 'mimes:jpg,png,jpeg', 'max:2048', 'image']
+            'prevavatar' => ['required', 'mimes:jpg,png,jpeg', 'max:2048'],
+            'avatar' => ['required', 'mimes:jpg,png,jpeg', 'max:2048']
         ]);
 
         $avatar = $request->file('avatar')->store('upload');
@@ -73,22 +76,25 @@ class SubjectsController extends Controller
      */
     public function update(Request $request)
     {
+
+        dd($request);
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
             'class_id' => ['required', 'string', 'max:255'],
             'avatar' => ['sometimes', 'mimes:jpg,png,jpeg', 'max:2048', 'image']
-
         ]);
 
        
 
         $class = Subjects::find($request->id);
+        // dd($class);
         if ($class) {
             $class->title = $request->title;
             $class->description = $request->description;
             $class->class_unique_id = $request->class_id;
-            if ($request->avatar) {
+            if ($request->hasFile('avatar')) {
+                File::delete(storage_path('app/upload/'.$class->avatar));
                 $avatar = $request->file('avatar')->store('upload');
                 $class->avatar = $avatar;
             }
