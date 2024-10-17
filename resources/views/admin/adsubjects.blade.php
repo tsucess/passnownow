@@ -234,7 +234,7 @@
             var id = $(this).data('id');
             var title = $(this).data('title');
             var description = $(this).data('description');
-            var editclass = $(this).data('class_unique_id');
+            var editclass = $(this).data('class');
             var editavatar = $(this).data('avatar');
 
             $('#edit-id').val(id);

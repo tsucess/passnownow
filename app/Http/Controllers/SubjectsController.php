@@ -37,9 +37,7 @@ class SubjectsController extends Controller
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Subjects::class],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'prevclass' => ['required', 'string', 'max:255'],
             'class_id' => ['required', 'string', 'max:255'],
-            'prevavatar' => ['required', 'mimes:jpg,png,jpeg', 'max:2048'],
             'avatar' => ['required', 'mimes:jpg,png,jpeg', 'max:2048']
         ]);
 
@@ -77,11 +75,15 @@ class SubjectsController extends Controller
     public function update(Request $request)
     {
 
-        dd($request);
+        // dd($request);
+
+
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'class_id' => ['required', 'string', 'max:255'],
+            'class_id' => ['sometimes', 'string', 'max:255'],
+            'prevclass' => ['required', 'string'],
+            'prevavatar' => ['required', 'string'],
             'avatar' => ['sometimes', 'mimes:jpg,png,jpeg', 'max:2048', 'image']
         ]);
 
@@ -92,11 +94,21 @@ class SubjectsController extends Controller
         if ($class) {
             $class->title = $request->title;
             $class->description = $request->description;
-            $class->class_unique_id = $request->class_id;
+            if ($request->class_id) {
+                $class->class_unique_id = $request->class_id;
+            }
+            else
+            {
+                $class->class_unique_id = $request->prevclass;
+            }
             if ($request->hasFile('avatar')) {
                 File::delete(storage_path('app/upload/'.$class->avatar));
                 $avatar = $request->file('avatar')->store('upload');
                 $class->avatar = $avatar;
+            }
+            else
+            {
+                $class->avatar = $request->prevavatar;
             }
             $class->save();
             return redirect('/adsubjects')->with('success', 'Subjects updated Successfully');
