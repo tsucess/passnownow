@@ -74,6 +74,7 @@ class ExamsController extends Controller
     public function show()
     {
         $output = Exams::get();
+        // dd($output);
         return view('admin.adexams', ['fetchExams' => $output]);
     }
 

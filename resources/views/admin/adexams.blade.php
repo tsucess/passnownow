@@ -16,8 +16,8 @@
             <thead class="bg-info">
                 <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
+                    <th scope="col" >Title</th>
+                    <th scope="col" class="col-3">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
@@ -33,83 +33,29 @@
                     <td>{{ $Exam->title }}</td>
                     <td>{{ $Exam->description }}</td>
                     <td>{{ $Exam->created_at }}</td>
+                    <td>
+                        <div class="form-check form-switch">
+                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
+                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
+                        </div>
+                    </td>
+                    <td>
+                        <div class="action">
+                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
+                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
+                            <ul class="more-options">
+                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
+                                        data-bs-target="#editModal">edit</button></li>
+                                <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a></li>
+                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
+                                        class="btn btn-danger p-1">delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
 
                 </tr>
-                <tr>
-                    <th>1</th>
-                    <td>SSCE West African Examination</td>
-                    <td>This an Exam for Senior Secondary Students</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>UTME JAMB</td>
-                    <td>This an Exam for obtaining Admission into Higher Institution</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>Junior Secondary Certificate Examination</td>
-                    <td>This an Exam for Junior Secondary Students</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
+                @endforeach
+              
                 {{-- <php }}?>		 --}}
             </tbody>
         </table>
@@ -150,7 +96,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <x-input-label :value="__('Description')"  class = "form-label" />
+                                    <x-input-label :value="__('Description')" />
                                     <x-text-input type="text" class="form-control" name="description" :value="old('description')"
                                         aria-describedby="textBlock" />
                                     <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
@@ -158,35 +104,8 @@
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                        {{-- <label class="form-label">Subject Image</label> --}}
-                                        <x-input-label :value="__('avatar')"  class = "form-label" />
+                                        <x-input-label :value="__('Subject Image')"  />
                                         <input type="file" class="form-control" name="avatar" aria-describedby="textBlock" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            {{-- <div class="col-6">
-                                <div class="mb-3">
-                                    <input-label for="addInputphone" :value="__('Class')" class="form-label">Phone number</label>
-                                    <input type="text" name="phone" :value="old('class')" class="form-control py-2" id="addInputphone"
-                                        required>
-                                </div>
-                                <input-error :messages="$errors->get('class')" class="mt-2 text-danger" />
-                            </div> --}}
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="addInputuserole" class="form-label">Class</label>
-                                    <select name="" id="addInputuserole" class="form-control py-2">
-                                        <option value ="undefined">Select Class</option>
-                                        {{-- <php if ($page === "admin") {?> --}}
-                                        <option value="jss1">JSS 1</option>
-                                        <option value="jss2">Jss 2</option>
-                                        <option value="jss3">Jss 3</option>
-                                        {{-- <php } else {?> --}}
-                                        {{-- <option value="member">Member</option>
-                                        <option value="author">Author</option> --}}
-                                        {{-- <php }?> --}}
-                                    </select>
                                 </div>
                             </div>
                         </div>

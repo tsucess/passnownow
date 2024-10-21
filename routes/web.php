@@ -198,6 +198,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/viewtopics/{data}/edit', [TopicsController::class, 'edit'])->name('viewtopics.edit');
     Route::patch('/viewtopics', [TopicsController::class, 'update'])->name('viewtopics.update');
     Route::get('/viewtopics/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewtopics.destroy');
+
+
+
+
+    // Exams Routes 
+    Route::get('/adexams', [ExamsController::class, 'show'])->name('adexams');
+    Route::post('/adexams', [ExamsController::class, 'store'])->name('adexams.store');
+    // Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
+    // Route::patch('/adexams', [ExamsController::class, 'update'])->name('adexams.update');
+    // Route::get('/adexams/{data}/destroy', [ExamsController::class, 'destroy'])->name('adexams.destroy');
 });
   
 
@@ -206,9 +216,9 @@ Route::get('/adpastquestions', function () {
     return view('admin.adpastquestions');
 });
 
-Route::get('/adexams', function () {
-    return view('admin.adexams');
-});
+// Route::get('/adexams', function () {
+//     return view('admin.adexams');
+// });
 
 
 
