@@ -107,6 +107,8 @@ class AdminController extends Controller
     public function edit(Admin $data)
     {
         $user = $data;
+        // $page = request('page'); // Used for Query Strings
+        // dd(compact('user', 'page'));
         return view('admin.viewdata', compact('user'));
     }
 

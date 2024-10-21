@@ -76,8 +76,6 @@ class SubjectsController extends Controller
     {
 
         // dd($request);
-
-
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],

@@ -5,6 +5,7 @@ use App\Http\Controllers\ClassesController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\TopicsController;
 use App\Models\Subjects;
 
 Route::get('/', function () {
@@ -188,15 +189,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/adsubjects/{data}/edit', [SubjectsController::class, 'edit'])->name('adsubjects.edit');
     Route::patch('/adsubjects', [SubjectsController::class, 'update'])->name('adsubjects.update');
     Route::get('/adsubjects/{data}/destroy', [SubjectsController::class, 'destroy'])->name('adsubjects.destroy');
+
+
+    // Subjects Routes 
+    Route::get('/viewtopics/{data}/view', [TopicsController::class, 'show'])->name('viewtopics');
+    Route::post('/viewtopics', [TopicsController::class, 'store'])->name('viewtopics.store');
+    Route::post('/viewtopics/{data}/edit', [TopicsController::class, 'edit'])->name('viewtopics.edit');
+    Route::patch('/viewtopics', [TopicsController::class, 'update'])->name('viewtopics.update');
+    Route::get('/viewtopics/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewtopics.destroy');
 });
   
-
-
-
-
-// Route::get('/adsubjects', function () {
-//     return view('admin.adsubjects');
-// });
 
 
 Route::get('/adpastquestions', function () {
@@ -207,9 +209,7 @@ Route::get('/adexams', function () {
     return view('admin.adexams');
 });
 
-Route::get('/viewtopics', function () {
-    return view('admin.viewtopics');
-});
+
 
 
 Route::get('/instructors', function () {
