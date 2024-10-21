@@ -37,7 +37,7 @@ class TopicsController extends Controller
             'url' => ['required', 'string', 'max:255'],
             'order' => ['sometimes', 'integer', 'max:255']
         ]);
-
+// new 
         $data = $request->sub_id;
 
         // dd($request);
@@ -105,7 +105,7 @@ class TopicsController extends Controller
             } else {
                 return redirect('/viewtopics/' . $request->id . '/view')->with('error', 'Something went wrong');
             };
-        
+
     }
 
     /**
