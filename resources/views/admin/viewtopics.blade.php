@@ -2,15 +2,33 @@
 
 @section('admincontent')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Topics</h1>
+        <h1 class="h2">Topics</h1> 
         <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2">
-                <button type="button" class="btn btn-md btn-outline-primary" data-bs-toggle="modal"
-                    data-bs-target="#addModal">Add topic</button>
+            <div class="btn-group me-2" id="topButton">
+                <a href="/adsubjects" class="btn btn-secondary p-1 px-5 shadow">Back</a>
+                <button type="button" class="btn btn-md btn-outline-primary addTopic px-4" data-subject_id="{{ $subject }}" data-id="{{ $sub_id }}" data-bs-toggle="modal" data-bs-target="#addModal">Add topic</button>
             </div>
         </div>
     </div>
-    {{-- <php if (isset($output)) {?> --}}
+    @if (count($errors) > 0)
+    <div class="alert alert-danger pb-0">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li class="m-0">{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@elseif(\Session::has('error'))
+    <div class="alert alert-danger">
+        <p class="m-0">{{ \Session::get('error') }}</p>
+    </div>
+@endif
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <p class="m-0">{{ \Session::get('success') }}</p>
+    </div>
+@endif
+
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
@@ -26,111 +44,26 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- <php foreach  ($output as $admin) { ?> --}}
+                @php $sn = 0  @endphp
+                @foreach ($fetchTopics as $Topic)
                 <tr>
-                    <th>1</th>
-                    <td>Alphabets</td>
-                    <td>https://lumi/english-language/xyz</td>
-                    <td>English Language</td>
-                    <th>1</th>
-                    <td>20-9-2024</td>
+                    <th>{{ ++$sn }}</th>
+                    <td>{{ $Topic->title }}</td>
+                    <td>{{ $Topic->url }}</td>
+                    <td>{{ $subject }}</td>
+                    <th>{{ $Topic->order }}</th>
+                    <td>{{ $Topic->created_at }}</td>
                     <td>
                         <div class="action">
                             <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
                             <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
+                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Topic->id }}" data-title="{{ $Topic->title }}" data-url="{{ $Topic->url }}" data-order="{{ $Topic->order }}" data-subjectu_id="{{ $subject }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
+                                <li><a onclick="validate(this)" href="{{ route('viewtopics.destroy', ['data' => $Topic->id]) }}" class="btn btn-danger p-1">delete</a></li>
                             </ul>
                         </div>
                     </td>
                 </tr>
-                <tr>
-                    <th>2</th>
-                    <td>Oral English</td>
-                    <td>https://lumi/english-language/idxyz</td>
-                    <td>English Language</td>
-                    <th>2</th>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>Vowel Sound</td>
-                    <td>https://lumi/english-language/idxyz</td>
-                    <td>English Language</td>
-                    <th>3</th>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>Consonant Sounds</td>
-                    <td>https://lumi/english-language/idxyz</td>
-                    <td>English Language</td>
-                    <th>3</th>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>Part of Speech</td>
-                    <td>https://lumi/english-language/xyz</td>
-                    <td>English Language</td>
-                    <th>4</th>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-
-
-
-                {{-- <php }}?>		 --}}
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -145,61 +78,44 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" id="form_add">
-                <div class="form-response text-center mb-3">
-                    <span class="error hidden"></span>
-                </div>
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="addModalLabel">Add new topic</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form method="POST" action="{{ route('viewtopics.store') }}" >
+                    @csrf
                     <div class="modal-body">
-                        <input type="hidden" name="page" value="<= $page ?>" class="form-control py-2"
-                            id="addInputPage" required>
+                        <x-text-input type="hidden" class="form-control" name="unique_id" value="{{ rand(time(), 10000000) }}" />
+                        <x-text-input type="hidden" class="form-control" name="sub_id" id="sub_id" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addInputFirstname" class="form-label">Title</label>
-                                    <input type="text" name="fname" class="form-control py-2"
-                                        id="addInputFirstname" required>
+                                    <label for="title" class="form-label">Subject</label>
+                                    <input type="text" name="subject_id" class="form-control py-2" id="subject_id"  readonly />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addInputLastname" class="form-label">Url</label>
-                                    <input type="text" name="lname" class="form-control py-2" id="addInputLastname"
-                                        required>
+                                    <label for="title" class="form-label">Title</label>
+                                    <input type="text" name="title" class="form-control py-2" id="title" required />
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3">
-                                <label for="addInputLastname" class="form-label">Subject</label>
-                                <input type="text" name="lname" class="form-control py-2" value="English Language"
-                                    disabled id="addInputLastname" required>
-                            </div>
-                            {{-- <div class="col-12">
+                            <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addInputuserole" class="form-label">Subject</label>
-                                        <select name="userrole" id="addInputuserole" class="form-control py-2">
-                                        <option value ="undefined">Select Class</option>
-                                        <php if ($page === "admin") {?>
-                                        <option value="jss1">JSS 1</option>
-                                        <option value="jss2">Jss 2</option>
-                                        <option value="jss3">Jss 3</option>
-                                        <php } else {?>
-                                        <option value="member">Member</option>
-                                        <option value="author">Author</option>
-                                        <php }?>
-                                    </select> 
+                                    <label for="url" class="form-label">Url</label>
+                                    <input type="text" name="url" class="form-control py-2" id="url" required />
                                 </div>
-                            </div> --}}
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="order" class="form-label">Order</label>
+                                    <input type="text" name="order" class="form-control py-2" id="order" required />
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                        <button type="button" name="submit" id="save" class="btn btn-primary">Save
-                            changes</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -212,31 +128,27 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" id="form">
-                <div class="form-response text-center mb-3">
-                    <span class="error hidden"></span>
-                </div>
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="editModalLabel">Edit topic</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form id="edit-form" method="POST" action="{{ route('viewtopics.update') }}" >
+                    @csrf
+                    @method('patch')
                     <div class="modal-body">
-                        <input type="hidden" name="page" value="<= page ?>" class="form-control py-2"
-                            id="editInputPage" required>
+                        <input type="hidden" name="subject_id" id="subjectu_id" class="form-control py-2" />
+                        <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <input type="hidden" name="user_id" class="form-control py-2" id="editInputId">
-                                    <label for="editInputFirstname" class="form-label">Title</label>
-                                    <input type="text" name="fname" class="form-control py-2"
-                                        id="editInputFirstname">
+                                    <label for="edit-title" class="form-label">Title</label>
+                                    <input type="text" name="title" class="form-control py-2" id="edit-title" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="editInputLastname" class="form-label">Url</label>
-                                    <input type="text" name="lname" class="form-control py-2"
-                                        id="editInputLastname">
+                                    <label for="edit-url" class="form-label">Url</label>
+                                    <input type="text" name="url" class="form-control py-2" id="edit-url">
                                 </div>
                             </div>
                         </div>
@@ -244,28 +156,14 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="addInputLastname" class="form-label">Subject</label>
-                                    <input type="text" name="lname" class="form-control py-2"
-                                        value="English Language" disabled id="addInputLastname" required>
+                                    <label for="edit-order" class="form-label">Order</label>
+                                    <input type="text" name="edit_order" class="form-control py-2" id="edit-order" >
                                 </div>
-                                {{-- <div class="mb-3">
-                                    <label for="editInputuserole" class="form-label">User Role</label>
-                                    <select name="userrole" id="editInputuserole" class="form-control py-2">
-                                        <option value ="undefined">Select Role</option>
-                                        <php if ($page === "admin") {?>
-                                        <option value="sadmin">Super Admin</option>
-                                        <option value="admin">Admin</option>
-                                        <php } else {?>
-                                        <option value="member">Member</option>
-                                        <php }?>
-                                    </select>
-                                </div> --}}
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="submit" id="updateUser" class="btn btn-success">Update
-                            changes</button>
+                        <button type="submit" name="submit" id="updateUser" class="btn btn-success">Update changes</button>
                     </div>
                 </form>
             </div>
@@ -276,19 +174,46 @@
 
 
 
-
-
-
-
-
-
-    <script src="{{ 'assets/js/table/jquery-3.3.1.min.js' }}"></script>
-    <script src="{{ 'assets/js/table/jquery.dataTables.min.js' }}"></script>
-    <script src="{{ 'assets/js/table/dataTables.bootstrap.min.js' }}"></script>
+    <script src="{{ url('assets/js/table/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url('assets/js/table/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ url('assets/js/table/dataTables.bootstrap.min.js')}}"></script>
 
 
 
     <script>
         let table = new DataTable('#admin-table');
     </script>
+
+<script>
+    $(document).ready(function() {
+        $('#topButton').on('click', '.addTopic', function () {
+            var subject_id = $(this).data('subject_id');
+            var sub_id = $(this).data('id');
+            $('#subject_id').val(subject_id);
+            console.log(sub_id);
+            $('#sub_id').val(sub_id);
+        });
+
+
+        $('#admin-table tbody').on('click', '.edit-btn', function() {
+            var subjectu_id = $(this).data('subjectu_id');
+            var id = $(this).data('id');
+            var title = $(this).data('title');
+            var url = $(this).data('url');
+            var editorder = $(this).data('order');
+        
+            $('#subjectu_id').val(subjectu_id);
+            $('#edit-id').val(id);
+            $('#edit-title').val(title);
+            $('#edit-url').val(url);
+            $('#edit-order').val(editorder);
+            
+        });
+
+     
+
+    });
+
+ 
+</script>
 @endsection

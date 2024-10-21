@@ -65,7 +65,7 @@
                             {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
                             <ul class="more-options">
                                 <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Subject->id }}" data-title="{{ $Subject->title }}" data-description="{{ $Subject->description }}" data-class="{{ $Subject->class_unique_id }}" data-avatar="{{ $Subject->avatar }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
+                                <li><a href="{{ route('viewtopics', ['data' => $Subject]) }}" class="btn btn-primary p-1">Topics</a></li>
                                 <li><a onclick="validate(this)" href="{{ route('adsubjects.destroy', ['data' => $Subject->id]) }}" class="btn btn-danger p-1">delete</a></li>
                             </ul>
                         </div>
@@ -98,8 +98,7 @@
                     <form method="POST" action="{{ route('adsubjects.store') }}" enctype="multipart/form-data" >
                         @csrf
                     <div class="modal-body">
-                        <x-text-input type="hidden" class="form-control" name="unique_id"
-                            value="{{ rand(time(), 10000000) }}" />
+                        <x-text-input type="hidden" class="form-control" name="unique_id" value="{{ rand(time(), 10000000) }}" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">

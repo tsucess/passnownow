@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Topics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Subjects;
 
 class TopicsController extends Controller
 {
@@ -13,7 +14,7 @@ class TopicsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.viewtopics');
     }
 
     /**
@@ -29,8 +30,6 @@ class TopicsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-
         // dd($request);
         $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Topics::class],
@@ -56,15 +55,20 @@ class TopicsController extends Controller
         } else {
             return redirect('/viewtopics/' . $data . '/view')->with('error', 'Something went wrong');
         };
-
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Topics $topics)
+    public function show(Subjects $data, Topics $topics)
     {
-        //
+        // dd($data);
+
+        $subject_id = $data->id;
+        $sub_id = $data->id;
+
+        $output = Topics::where('subject_unique_id', $sub_id)->get();
+        return view('admin.viewtopics', ['subject' => $subject_id, 'sub_id' => $sub_id, 'fetchTopics' => $output]);
     }
 
     /**
@@ -78,18 +82,17 @@ class TopicsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Topics $topics)
+    public function update(Request $request, Topics $data)
     {
-
         // dd($request);
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
-            'edit_order' => ['sometimes', 'integer', 'max:255']
+            'edit_order' => ['sometimes', 'integer', 'max:255'],
         ]);
 
-
-
+        $data_id = $request->subject_id;
+      
         $class = Topics::find($request->id);
         // dd($class);
         if ($class) {
@@ -98,11 +101,10 @@ class TopicsController extends Controller
             $class->order = $request->edit_order;
 
             $class->save();
-                return redirect('/viewtopics/' . $request->id . '/view')->with('success', 'Topic updated successfully');
-            } else {
-                return redirect('/viewtopics/' . $request->id . '/view')->with('error', 'Something went wrong');
-            };
-
+            return redirect('/viewtopics/' . $data_id . '/view')->with('success', 'Topic updated successfully');
+        } else {
+            return redirect('/viewtopics/' . $data_id . '/view')->with('error', 'Something went wrong');
+        };
     }
 
     /**
@@ -110,7 +112,6 @@ class TopicsController extends Controller
      */
     public function destroy(Topics $data)
     {
-
         // dd($data);
         $done = $data->delete();
         if ($done) {
@@ -118,6 +119,5 @@ class TopicsController extends Controller
         } else {
             return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('error', 'Something went wrong');
         };
-    } 
-
+    }
 }
