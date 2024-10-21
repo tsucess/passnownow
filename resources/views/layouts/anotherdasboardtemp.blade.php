@@ -24,10 +24,6 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
 
-    <!-- Chart.js -->
-   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
     <style>
         @media (min-width: 768px) {
             /* .bd-placeholder-img-lg {
@@ -84,6 +80,7 @@
         </div>
     </header>
 
+
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
@@ -95,6 +92,7 @@
                                 Dashboard
                             </x-sidebar-link>
                         </li>
+                        {{-- request()->is('admins/'.$user->id.'/edit')  --}}
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('admins') }}" href="/admins">
                                 <i class="fa-solid fa-user-tie"></i>
@@ -119,6 +117,15 @@
                                 Subjects
                             </x-sidebar-link>
                         </li>
+
+                        <li class="nav-item">
+                            <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
+                                <i class="fa-solid fa-swatchbook"></i>
+                                Upload Past Question
+                            </x-sidebar-link>
+                        </li>
+
+                        
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
                                 <i class="fa-solid fa-list"></i>
@@ -170,6 +177,9 @@
             </main>
         </div>
     </div>
-</body>
 
+
+    @yield('addashboarcontent')
+
+</body>
 </html>

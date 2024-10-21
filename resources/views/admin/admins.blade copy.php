@@ -67,20 +67,12 @@
         </table>
     </div>
 
-    {{-- <section>
-    <iframe src="https://app.Lumi.education/api/v1/run/CSLOMd/embed" width="1088" height="720" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe>
-    <script src="https://app.Lumi.education/api/v1/h5p/core/js/h5p-resizer.js" charset="UTF-8"></script>
-</section> --}}
-
-
-
-
     <!-- Add User Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" id="form_add">
-              
+
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="addModalLabel">Add Admin</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -229,21 +221,11 @@
                         <div class="modal-footer">
                             <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                             <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-                        </div>   
+                        </div>
                 </form>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
 
     <script src="{{ 'assets/js/table/jquery-3.3.1.min.js' }}"></script>
     <script src="{{ 'assets/js/table/jquery.dataTables.min.js' }}"></script>
