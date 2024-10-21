@@ -194,10 +194,10 @@ Route::middleware('auth')->group(function () {
 
     // Topics Routes 
     Route::get('/viewtopics/{data}/view', [TopicsController::class, 'show'])->name('viewtopics');
-    Route::post('/viewtopics', [TopicsController::class, 'store'])->name('viewtopics.store');
-    Route::post('/viewtopics/{data}/edit', [TopicsController::class, 'edit'])->name('viewtopics.edit');
-    Route::patch('/viewtopics', [TopicsController::class, 'update'])->name('viewtopics.update');
-    Route::get('/viewtopics/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewtopics.destroy');
+    // Route::post('/viewtopics', [TopicsController::class, 'store'])->name('viewtopics.store');
+    // Route::post('/viewtopics/{data}/edit', [TopicsController::class, 'edit'])->name('viewtopics.edit');
+    // Route::patch('/viewtopics', [TopicsController::class, 'update'])->name('viewtopics.update');
+    // Route::get('/viewtopics/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewtopics.destroy');
 });
   
 

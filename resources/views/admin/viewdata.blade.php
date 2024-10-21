@@ -7,9 +7,9 @@
                 <div class="top">
 <<<<<<< HEAD
                     @if ($user->role !== 'user')
-                        <a href="/admins" class="mb-5"><i class="fa-solid fa-arrow-left-long mb-5 fs-3"></i></a>
+                    <a href="/admins" class="btn btn-secondary p-2 px-5 mb-5 shadow">Back</a>
                     @else
-                        <a href="/users" class="mb-5"><i class="fa-solid fa-arrow-left-long mb-5 fs-3"></i></a>
+                    <a href="/users" class="btn btn-secondary p-2 px-5 mb-5 shadow">Back</a>
                     @endif
 =======
 >>>>>>> parent of cd22f4e (project updated)
