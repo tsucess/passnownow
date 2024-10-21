@@ -1,6 +1,7 @@
 @extends('layouts.dasboardtemp')
 
 @section('admincontent')
+
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Administrators</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -32,7 +33,6 @@
         @php
             $sn= 0;
         @endphp
-    {{-- <php if (isset($output)) {?> --}}
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
