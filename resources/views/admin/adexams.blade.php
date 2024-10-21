@@ -25,7 +25,16 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- <php foreach  ($output as $admin) { ?> --}}
+                
+                @php $sn = 0  @endphp
+                @foreach ($fetchExams as $Exam)
+                <tr>
+                    <th>{{ ++$sn }}</th>
+                    <td>{{ $Exam->title }}</td>
+                    <td>{{ $Exam->description }}</td>
+                    <td>{{ $Exam->created_at }}</td>
+
+                </tr>
                 <tr>
                     <th>1</th>
                     <td>SSCE West African Examination</td>

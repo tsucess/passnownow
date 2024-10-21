@@ -210,9 +210,9 @@ Route::get('/adexams', function () {
 
 Route::post('/adexams', [ExamsController::class, 'store'])->name('adexams.store');
 
-Route::get('/viewtopics', function () {
-    return view('admin.viewtopics');
-});
+// Route::get('/viewtopics', function () {
+//     return view('admin.viewtopics');
+// });
 
 
 Route::get('/instructors', function () {
