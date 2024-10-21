@@ -219,6 +219,26 @@ Route::get('/instructors', function () {
     return view('admin.instructors');
 });
 
+Route::get('/addashboard', function () {
+    return view('admin.addashboard');
+});
+
+Route::get('/addetailedstat', function () {
+    return view('admin.addetailedstat');
+});
+
+Route::get('/adtotalsales', function () {
+    return view('admin.adtotalsales');
+});
+
+Route::get('/product', function () {
+    return view('admin.product');
+});
+
+Route::get('/order', function () {
+    return view('admin.order');
+});
+
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');

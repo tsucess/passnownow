@@ -1,11 +1,11 @@
+@extends('layouts.dasboardtemp')
 
-
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html>
 
 <head>
   <title>Subjects</title>
-  
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -144,7 +144,7 @@ color: red;
             <span><img src="Images/imagenotification.png" width = "50px" height = "30px" /></span>
             <span><img src="Images/global.png" width = "50px" height = "40px" /></span>
             <span style = "border: 1px solid gray; border-radius: 10px; margin-top: 20px; padding: 6px; line-height: 2px;  justify-content: center; align-items: center;"><i class="fa fa-user-circle" aria-hidden="true"></i> <i class="fas fa-caret-down"></i></span>
-        
+
         </div>
 
 
@@ -158,7 +158,7 @@ color: red;
 
 <div class = "container-fluid mb-3 ml-5" style = "border-top: 1px solid gray;">
 <div class = "row">
-  
+
 
 <div class="col-sm-3 col-md-4 col-lg-2 col-xl-2 h-100 text-md-start mt-3">
   <nav class="nav flex-column">
@@ -187,17 +187,18 @@ color: red;
         <i class="fa fa-history me-3"></i> History
       </a>
   </nav>
-</div>
+</div> --}}
 
 
 
 
 
-    
 
-   
-   
-   <div class = "container-fluid col-sm-9" style = "border-left: 1px solid blue;" >
+
+
+
+   {{-- <div class = "container-fluid col-sm-9" style = "border-left: 1px solid blue;" > --}}
+    @section('admincontent')
     <span class = "float-start mt-2">Date range:</span><br><br>
 
 
@@ -206,13 +207,13 @@ color: red;
             <span class = "float-start"><strong>Month to date(Sep 1 - 30, 2024)</span></strong><br>
             <span class = "float-start">vs Previous year(Sep 1 - 30, 2023)</span>
         </a>
-      
+
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
 
     </ul>
     </div>
-   
+
 
     <div class = "row ms-1 mt-2">
         <div>
@@ -223,7 +224,7 @@ color: red;
 
 
         <table class="table table-bordered">
-            
+
               <tr>
                 <td>
                     <p class = "m-0 p-0 mt-2">Gross Sales</p>
@@ -243,12 +244,12 @@ color: red;
                 </td>
               </tr>
               </table>
-              
+
 
 
 
               <table class="table table-bordered">
-            
+
                 <tr>
                   <td>
                       <p class = "m-0 p-0 mt-2">Total Sales</p>
@@ -263,13 +264,13 @@ color: red;
 
                 <div class = "row ms-1 mt-2">
                     <div class = "col">
-                         
+
                             <label class="form-check-label mt-2 a" for="flexCheckChecked">
                                 <span><b>Gross sales</b></span>
                             <input class="form-check-input ms-4 " type="checkbox" value="" id="flexCheckChecked" checked>
                                 Month to date(Sep 1 - 30, 2024)
                             </label>
-                        
+
                             <label class="form-check-label mt-2 ms-4 b" for="flexCheckChecked">20,000</label>
 
                             <label class="form-check-label mt-2 " for="flexCheckChecked">
@@ -293,7 +294,7 @@ color: red;
                         <tr>
                             <th>Net Sales</th>
                         </tr>
-            
+
                         <tr>
                           <td>$20</td>
                           <td>$20</td>
@@ -305,30 +306,30 @@ color: red;
                             <tr>
                                 <th>Orders</th>
                             </tr>
-                
+
                             <tr>
                               <td>$27</td>
                               <td>$18</td>
                               </tr>
-                              </table> -->             
-                
+                              </table> -->
+
 
                               <div class = "row">
                                 <div class="col mb-5">
                                     <canvas id="parabolaAreaChart" width="1300" height="200"></canvas>
                                   </div>
-                            
+
                             </div>
 
 
-                            
-<div class="container mt-5">
+
+{{-- <div class="container mt-5">
   <div class="row">
     <div class="col pt-2">
       &copy;2023 Passnownow 2024, All Rights Reserved.
     </div>
-    
-    
+
+
     <div class="col text-center text-md-end">
 
 
@@ -345,9 +346,9 @@ color: red;
 
 
 </div>
- 
 
-  
+
+
 
 
 
@@ -370,7 +371,7 @@ color: red;
 
 </div>
 
-   </div>
+   </div> --}}
 
     <script>
         const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
@@ -396,7 +397,7 @@ color: red;
               }
             },
             scales: {
-              x: { 
+              x: {
                   grid: {display: false},
               },
               y: {
@@ -435,7 +436,7 @@ color: red;
               }
             },
             scales: {
-              x: { 
+              x: {
                   grid: {display: false},
               },
               y: {
@@ -451,8 +452,5 @@ color: red;
   <!-- <script type = "text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+@endsection
 
-
-</body>
-
-</html>
