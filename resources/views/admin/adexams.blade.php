@@ -135,24 +135,23 @@
                                 <div class="mb-3">
                                     <x-input-label :value="__('Title')" />
                                         <x-text-input type="text" class="form-control" name="title" :value="old('title')"
-                                        aria-describedby="textBlock"/>
+                                        aria-describedby="textBlock" aria-placeholder="Enter Title"/>
                                     <x-input-error :messages="$errors->get('title')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <x-input-label :value="__('Description')" />
+                                    <x-input-label :value="__('Description')"  class = "form-label" />
                                     <x-text-input type="text" class="form-control" name="description" :value="old('description')"
                                         aria-describedby="textBlock" />
-                                    <x-input-error :messages="$errors->get('description')" class="mt-2 text-danger" />
+                                    <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <x-input-label :value="__('Subject Image')" />
-                                        <input type="file" class="form-control" name="avatar" :value="old('avatar')"
-                                        aria-describedby="textBlock" />
-                                    <x-input-error :messages="$errors->get('avatar')" class="mt-2 text-danger" />
+                                        {{-- <label class="form-label">Subject Image</label> --}}
+                                        <x-input-label :value="__('avatar')"  class = "form-label" />
+                                        <input type="file" class="form-control" name="avatar" aria-describedby="textBlock" />
                                 </div>
                             </div>
                         </div>

@@ -14,6 +14,6 @@ class Exams extends Model
         'unique_id',
         'title',
         'description',
-        'avatar'
+        'avatar',
     ];
 }

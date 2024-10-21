@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Classes;
 use App\Models\Exams;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\File;
 
 class ExamsController extends Controller
 {
@@ -29,37 +33,34 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //dd($request);
-        $request->validate([
-            'unique_id' => ['required', 'string', 'max:255', 'unique:'.Exams::class],
+          //dd($request);
+          //dd($request->input('avatar'));
+       $data = $request->validate([
+            'unique_id' => ['required', 'string', 'max:255', 'unique:' . Exams::class],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            // 'subject_image' => ['required|image|mimes:jpeg, jpg, gif, png|max:2048'],
-            'avatar' => ['required', 'mimes:jpeg, jpg, png, gif', 'max:2048'],
+            'avatar' => ['required', 'mimes:jpeg,jpg,png', 'max:2048']
         ]);
 
 
 
-        //dd($request);
+        $avatar = $request->file('avatar')->store('upload');
+
+
         // Add class
-        $finish = Exams::create([
+        $done = Exams::create([
             'unique_id' => $request->unique_id,
             'user_unique_id' => Auth::user()->unique_id,
             'title' => $request->title,
             'description' => $request->description,
-            'avatar' => $request->avatar,
-            // 'class' => $request->class
+            'avatar' => $avatar
         ]);
 
 
-
-
-
-
-        if ($finish) {
+        if($done) {
             return redirect('/adexams')->with('success', 'New Exam Information Created successfully');
         } else {
+            // Log::error('Exam creation failed:', ['data' => $data]);
             return redirect('/adexams')->with('error', 'Something went wrong');
         };
 

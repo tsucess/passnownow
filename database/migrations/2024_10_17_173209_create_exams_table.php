@@ -14,11 +14,9 @@ return new class extends Migration
         Schema::create('exams', function (Blueprint $table) {
             $table->id();
             $table->integer('unique_id');
-            $table->integer('user_unique_id');
             $table->string('title');
             $table->text('description');
-            $table->binary('subject_image');
-            $table->string('class');
+            $table->string('avatar');
             $table->timestamps();
         });
     }

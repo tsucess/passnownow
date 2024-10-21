@@ -32,7 +32,7 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
+        //dd($request);
         $data = $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Subjects::class],
             'title' => ['required', 'string', 'max:255'],
@@ -42,7 +42,7 @@ class SubjectsController extends Controller
         ]);
 
         $avatar = $request->file('avatar')->store('upload');
-  
+
         $done = Subjects::create([
             'unique_id' => $request->unique_id,
             'user_unique_id' => Auth::user()->unique_id,
@@ -52,7 +52,7 @@ class SubjectsController extends Controller
             'avatar' => $avatar
         ]);
 
-        if ($done) {
+        if($done) {
             return redirect('/adsubjects')->with('success', 'New Subject Created successfully');
         } else {
             return redirect('/adsubjects')->with('error', 'Something went wrong');
@@ -87,7 +87,7 @@ class SubjectsController extends Controller
             'avatar' => ['sometimes', 'mimes:jpg,png,jpeg', 'max:2048', 'image']
         ]);
 
-       
+
 
         $class = Subjects::find($request->id);
         // dd($class);
