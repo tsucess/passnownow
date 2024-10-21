@@ -108,8 +108,16 @@ class TopicsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Topics $topics)
+    public function destroy(Topics $data)
     {
-        //
-    }
+
+        // dd($data);
+        $done = $data->delete();
+        if ($done) {
+            return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('success', 'Topic deleted successfully');
+        } else {
+            return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('error', 'Something went wrong');
+        };
+    } 
+
 }
