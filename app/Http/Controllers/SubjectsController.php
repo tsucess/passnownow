@@ -6,7 +6,7 @@ use App\Models\Classes;
 use App\Models\Subjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\UploadedFile;
+// use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 
 class SubjectsController extends Controller
@@ -76,14 +76,10 @@ class SubjectsController extends Controller
     {
 
         // dd($request);
-
-
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'class_id' => ['sometimes', 'string', 'max:255'],
-            'prevclass' => ['required', 'string'],
-            'prevavatar' => ['required', 'string'],
+            'class_id' => ['sometimes', 'nullable', 'max:255'],
             'avatar' => ['sometimes', 'mimes:jpg,png,jpeg', 'max:2048', 'image']
         ]);
 
@@ -101,8 +97,10 @@ class SubjectsController extends Controller
             {
                 $class->class_unique_id = $request->prevclass;
             }
-            if ($request->hasFile('avatar')) {
-                File::delete(storage_path('app/upload/'.$class->avatar));
+
+            if ($request->avatar) {
+                // dd($request->prevavatar);
+                File::delete(storage_path('app/public/'.$request->prevavatar));
                 $avatar = $request->file('avatar')->store('upload');
                 $class->avatar = $avatar;
             }

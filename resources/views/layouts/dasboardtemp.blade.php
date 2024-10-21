@@ -91,6 +91,7 @@
                                 Dashboard
                             </x-sidebar-link>
                         </li>
+                        {{-- request()->is('admins/'.$user->id.'/edit')  --}}
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('admins') }}" href="/admins">
                                 <i class="fa-solid fa-user-tie"></i>
