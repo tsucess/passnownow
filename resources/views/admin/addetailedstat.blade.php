@@ -1,11 +1,13 @@
+@extends('layouts.dasboardtemp')
 
+@section('admincontent')
 
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html>
 
 <head>
   <title>Subjects</title>
-  
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,8 +20,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
-     <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <style>
     @media (max-width: 576px) {
@@ -126,7 +126,7 @@ height: 80px;
             <span><img src="Images/imagenotification.png" width = "50px" height = "30px" /></span>
             <span><img src="Images/global.png" width = "50px" height = "40px" /></span>
             <span style = "border: 1px solid gray; border-radius: 10px; margin-top: 20px; padding: 6px; line-height: 2px;  justify-content: center; align-items: center;"><i class="fa fa-user-circle" aria-hidden="true"></i> <i class="fas fa-caret-down"></i></span>
-        
+
         </div>
 
 
@@ -140,7 +140,7 @@ height: 80px;
 
 <div class = "container-fluid mb-3 ml-5" style = "border-top: 1px solid gray;">
 <div class = "row">
-  
+
 
 <div class="col-sm-3 col-md-4 col-lg-2 col-xl-2 h-100 text-md-start mt-3">
   <nav class="nav flex-column">
@@ -169,17 +169,17 @@ height: 80px;
         <i class="fa fa-history me-3"></i> History
       </a>
   </nav>
-</div>
+</div> --}}
 
 
 
 
 
-    
 
-   
-   
-   <div class = "container-fluid col-sm-9" style = "border-left: 1px solid blue;" >
+
+
+@section('admincontent')
+   {{-- <div class = "container-fluid col-sm-9" style = "border-left: 1px solid blue;" > --}}
     <span class = "float-start mt-2">Date range:</span><br><br>
 
 
@@ -188,13 +188,13 @@ height: 80px;
             <span class = "float-start"><strong>Month to date(Sep 1 - 30, 2024)</span></strong><br>
             <span class = "float-start">vs Previous year(Sep 1 - 30, 2023)</span>
         </a>
-      
+
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
 
     </ul>
     </div>
-   
+
 
     <div class = "row ms-1 mt-2">
         <div>
@@ -205,7 +205,7 @@ height: 80px;
 
 
         <table class="table table-bordered">
-            
+
               <tr>
                 <td>
                     <p class = "m-0 p-0 mt-2">Total Sales</p>
@@ -225,12 +225,12 @@ height: 80px;
                 </td>
               </tr>
               </table>
-              
+
 
 
 
               <table class="table table-bordered">
-            
+
                 <tr>
                   <td>
                       <p class = "m-0 p-0 mt-2">Order</p>
@@ -239,8 +239,8 @@ height: 80px;
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                       </span>
                   </td>
-  
-  
+
+
                   <td>
                       <p class = "m-0 p-0 mt-2">Product Sold</p>
                       <span class = "float-start"><strong>18</strong></span>
@@ -269,7 +269,7 @@ height: 80px;
                         <tr>
                             <th>Net Sales</th>
                         </tr>
-            
+
                         <tr>
                           <td>$20</td>
                           <td>$20</td>
@@ -281,7 +281,7 @@ height: 80px;
                             <tr>
                                 <th>Orders</th>
                             </tr>
-                
+
                             <tr>
                               <td>$27</td>
                               <td>$18</td>
@@ -301,7 +301,7 @@ height: 80px;
                                     <td>$20</td>
                                   </tr>
                                 </table>
-                                
+
 
                                 <table class="table table-bordered w-50 ms-3">
                                   <tr>
@@ -324,7 +324,7 @@ height: 80px;
                                 <div class="col-4  w-50">
                                     <canvas id="parabolaAreaChart" width="1300" height="200"></canvas>
                                   </div>
-                            
+
                                   <div class="col-4  w-50">
                                     <canvas id="parabolaAreaCharts" width="1300" height="200"></canvas>
                                   </div>
@@ -332,7 +332,7 @@ height: 80px;
 
                             <div class = "row container-fluid mt-3 ms-1">
                             <table class="col table table-bordered w-100 ">
-            
+
                                 <tr>
                                   <td>
                                       <span class = "float-start">
@@ -349,8 +349,8 @@ height: 80px;
                                             </label>
                                           </div>
                                         </span>
-                                      
-                                      
+
+
                                       <span class = "float-end mb-2">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
@@ -367,10 +367,10 @@ height: 80px;
                                   </td>
                                   </tr>
                                   </table>
-   
+
 <!-- Another table -->
 <table class="col ms-5 w-100 table table-bordered">
-            
+
     <tr>
       <td>
           <span class = "float-start">
@@ -387,8 +387,8 @@ height: 80px;
                 </label>
               </div>
             </span>
-          
-          
+
+
           <span class = "float-end mb-2">
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
@@ -434,23 +434,23 @@ height: 80px;
             <td>Item sold</td>
             <td>Net Sides</td>
           </tr>
-        
+
           <tr>
             <td class = "text-primary">webpay</td>
             <td>100</td>
             <td>#100,000.00</td>
           </tr>
-        
+
           <tr>
             <td class="text-primary">Bank deposit</td>
             <td>200</td>
             <td>#100,000.00</td>
           </tr>
-        
+
         </tbody>
-      
+
       </table>
-      </div>        
+      </div>
 
 
       <!-- another selling table -->
@@ -499,17 +499,17 @@ height: 80px;
         </tbody>
       </table>
     </div>
-    
+
 </div>
 
 
-<div class="container mt-5">
+{{-- <div class="container mt-5">
   <div class="row">
     <div class="col pt-2">
       &copy;2023 Passnownow 2024, All Rights Reserved.
     </div>
-    
-    
+
+
     <div class="col text-center text-md-end">
 
 
@@ -520,38 +520,40 @@ height: 80px;
 
 
     </div>
+
   </div>
+</div> --}}
+
+
+
+{{-- </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 
+   </div> --}}
 
-
-</div>
- 
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-
-   </div>
 
     <script>
         const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
@@ -577,7 +579,7 @@ height: 80px;
               }
             },
             scales: {
-              x: { 
+              x: {
                   grid: {display: false},
               },
               y: {
@@ -616,7 +618,7 @@ height: 80px;
               }
             },
             scales: {
-              x: { 
+              x: {
                   grid: {display: false},
               },
               y: {
@@ -634,6 +636,5 @@ height: 80px;
 
 
 
-</body>
+  @endsection
 
-</html>
