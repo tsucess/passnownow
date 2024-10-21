@@ -33,15 +33,6 @@
         @php
             $sn= 0;
         @endphp
-<<<<<<< HEAD
-=======
-
-    {{$sn= 0;}}
-    {{-- <php if (isset($output)) {?> --}}
->>>>>>> parent of cd22f4e (project updated)
-=======
-    {{-- <php if (isset($output)) {?> --}}
->>>>>>> parent of 052999d (Topic edit feature updated)
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
