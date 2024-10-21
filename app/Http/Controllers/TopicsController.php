@@ -120,5 +120,5 @@ class TopicsController extends Controller
         } else {
             return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('error', 'Something went wrong');
         };
-    }
+    } 
 }
