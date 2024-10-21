@@ -65,7 +65,7 @@
                             {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
                             <ul class="more-options">
                                 <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Subject->id }}" data-title="{{ $Subject->title }}" data-description="{{ $Subject->description }}" data-class="{{ $Subject->class_unique_id }}" data-avatar="{{ $Subject->avatar }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ route('viewtopics', ['data' => $Subject]) }}" class="btn btn-primary p-1">Topics</a></li>
+                                <li><a href="{{ url('viewtopics') }}" class="btn btn-primary p-1">Topics</a></li>
                                 <li><a onclick="validate(this)" href="{{ route('adsubjects.destroy', ['data' => $Subject->id]) }}" class="btn btn-danger p-1">delete</a></li>
                             </ul>
                         </div>
@@ -165,7 +165,7 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <input type="hidden" name="user_id" class="form-control py-2" id="editInputId">
-                                    <label for="edit-title" class="form-label">Title</label>
+                                    <label for="editInputFirstname" class="form-label">Title</label>
                                     <input type="text" name="title" class="form-control py-2" id="edit-title" />
                                 </div>
                             </div>

@@ -5,13 +5,15 @@
         <div class="row">
             <div class="col-12 col-lg-7 profile_data">
                 <div class="top">
+<<<<<<< HEAD
                     @if ($user->role !== 'user')
                         <a href="/admins" class="mb-5"><i class="fa-solid fa-arrow-left-long mb-5 fs-3"></i></a>
                     @else
                         <a href="/users" class="mb-5"><i class="fa-solid fa-arrow-left-long mb-5 fs-3"></i></a>
                     @endif
+=======
+>>>>>>> parent of cd22f4e (project updated)
                     <h5>Account Information</h5>
-
                 </div>
                 <form method="POST" action="{{ route('admin.update', $user->id) }}">
                     @csrf

@@ -30,9 +30,15 @@
             <p class="m-0">{{\Session::get('success')}}</p>
         </div>
     @endif
+<<<<<<< HEAD
         @php
             $sn= 0;
         @endphp
+=======
+
+    {{$sn= 0;}}
+    {{-- <php if (isset($output)) {?> --}}
+>>>>>>> parent of cd22f4e (project updated)
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
