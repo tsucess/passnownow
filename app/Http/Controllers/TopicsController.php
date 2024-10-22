@@ -37,7 +37,7 @@ class TopicsController extends Controller
             'url' => ['required', 'string', 'max:255'],
             'order' => ['sometimes', 'integer', 'max:255']
         ]);
-// new 
+
         $data = $request->sub_id;
 
         // dd($request);
@@ -82,17 +82,17 @@ class TopicsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, Topics $data)
     {
         // dd($request);
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
-            'edit_order' => ['sometimes', 'integer', 'max:255']
+            'edit_order' => ['sometimes', 'integer', 'max:255'],
         ]);
 
-
-
+        $data_id = $request->subject_id;
+      
         $class = Topics::find($request->id);
         // dd($class);
         if ($class) {
@@ -101,11 +101,10 @@ class TopicsController extends Controller
             $class->order = $request->edit_order;
 
             $class->save();
-                return redirect('/viewtopics/' . $request->id . '/view')->with('success', 'Topic updated successfully');
-            } else {
-                return redirect('/viewtopics/' . $request->id . '/view')->with('error', 'Something went wrong');
-            };
-
+            return redirect('/viewtopics/' . $data_id . '/view')->with('success', 'Topic updated successfully');
+        } else {
+            return redirect('/viewtopics/' . $data_id . '/view')->with('error', 'Something went wrong');
+        };
     }
 
     /**
@@ -120,5 +119,5 @@ class TopicsController extends Controller
         } else {
             return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('error', 'Something went wrong');
         };
-    } 
+    }
 }

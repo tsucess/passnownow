@@ -57,7 +57,7 @@
                         <div class="action">
                             <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
                             <ul class="more-options">
-                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Topic->id }}" data-title="{{ $Topic->title }}" data-url="{{ $Topic->url }}" data-order="{{ $Topic->order }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
+                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Topic->id }}" data-title="{{ $Topic->title }}" data-url="{{ $Topic->url }}" data-order="{{ $Topic->order }}" data-subjectu_id="{{ $subject }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
                                 <li><a onclick="validate(this)" href="{{ route('viewtopics.destroy', ['data' => $Topic->id]) }}" class="btn btn-danger p-1">delete</a></li>
                             </ul>
                         </div>
@@ -136,6 +136,7 @@
                     @csrf
                     @method('patch')
                     <div class="modal-body">
+                        <input type="hidden" name="subject_id" id="subjectu_id" class="form-control py-2" />
                         <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
                             <div class="col-12">
@@ -195,12 +196,13 @@
 
 
         $('#admin-table tbody').on('click', '.edit-btn', function() {
+            var subjectu_id = $(this).data('subjectu_id');
             var id = $(this).data('id');
             var title = $(this).data('title');
             var url = $(this).data('url');
             var editorder = $(this).data('order');
         
-
+            $('#subjectu_id').val(subjectu_id);
             $('#edit-id').val(id);
             $('#edit-title').val(title);
             $('#edit-url').val(url);

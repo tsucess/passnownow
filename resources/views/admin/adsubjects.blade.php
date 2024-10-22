@@ -98,8 +98,7 @@
                     <form method="POST" action="{{ route('adsubjects.store') }}" enctype="multipart/form-data" >
                         @csrf
                     <div class="modal-body">
-                        <x-text-input type="hidden" class="form-control" name="unique_id"
-                            value="{{ rand(time(), 10000000) }}" />
+                        <x-text-input type="hidden" class="form-control" name="unique_id" value="{{ rand(time(), 10000000) }}" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
@@ -165,7 +164,7 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <input type="hidden" name="user_id" class="form-control py-2" id="editInputId">
-                                    <label for="edit-title" class="form-label">Title</label>
+                                    <label for="editInputFirstname" class="form-label">Title</label>
                                     <input type="text" name="title" class="form-control py-2" id="edit-title" />
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 @extends('layouts.dasboardtemp')
 
 @section('admincontent')
-
+ 
         <div class = "row  justify-content-between ms-2 mt-3 rounded-2" style="background-color: #1A69AF;">
 
             <div class="col-4 mt-4 mb-3">
@@ -20,8 +20,6 @@
 
 
         </div>
-
-
 
         <div class ="row mb-3">
 
@@ -80,7 +78,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class = "row ms-2 border border-1 border-black p-2 mb-4">
             <div class = "border-bottom border-black border-1 ">
@@ -228,60 +225,12 @@
         </div>
 
 
-
-
-
-
-
-
-
-
-
-        {{-- <div class="row mt-5">
-            <div class="col pt-2">
-                &copy;2023 Passnownow 2024, All Rights Reserved.
-            </div>
-
-
-            <div class="col">
-
-
-                <button type="button" class="btn btn-link footerLinks">License</button>
-                <button type="button" class="btn btn-link footerLinks">More Themes</button>
-                <button type="button" class="btn btn-link footerLinks">Documentation</button>
-                <button type="button" class="btn btn-link footerLinks">Support</button>
-
-
-            </div>
-        </div> --}}
-
-{{--
-    </div>
-
-    </div>
-
-    </div> --}}
-
 @endsection
 
-<!-- </div>
-
-
-
-
-
-
-
-    <div class="container"> -->
 
 
 
 <!-- jQuery (necessary for Bootstrap's - 5JavaScript plugins) -->
 <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-</body>
-
-</html> --}}
+ --}}

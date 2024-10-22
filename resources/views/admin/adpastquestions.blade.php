@@ -5,6 +5,7 @@
         <h1 class="h2">Past Questions</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
+                <a href="/adexams" class="btn btn-secondary p-1 px-5 shadow">Back</a>
                 <button type="button" class="btn btn-md btn-outline-primary" data-bs-toggle="modal"
                     data-bs-target="#addModal">Add Past Questions</button>
             </div>

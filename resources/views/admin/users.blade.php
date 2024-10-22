@@ -10,9 +10,7 @@
             </div>
         </div>
     </div>
-        @php
-            $sn= 0;
-        @endphp
+    {{$sn= 0;}}
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
                 <thead class="bg-info">
