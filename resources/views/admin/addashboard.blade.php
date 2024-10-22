@@ -27,10 +27,10 @@
 
             <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
-                <span class = "ms-2 mt-3">Total Profit</span><br>
-                <span class  = "ms-2 mb-4 fw-bold fs-5 ">$23, 523</span><span
+                <span class = "ms-2 mt-3 profit">Total Profit</span><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5  profit">$23, 523</span><span
                     class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
-                    style = "font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                    style = "font-size: 8px; profit"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                         aria-hidden="true"></i>6.7%</span>
 
                 <br><br>
@@ -98,9 +98,9 @@
             <div class="d-flex justify-content-between border-bottom border-black border-1">
                 <div class=" col-6 me-3 mt-2 mb-3">
                     <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
-                    <span>Total Sales</span> <br>
-                    <span class  = "fw-3 ">$23, 523</span><span
-                        class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
+                    <span class = "profit">Total Sales</span> <br>
+                    <span class  = "fw-3 profit">$23, 523</span><span
+                        class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3 profit"
                         style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                             aria-hidden="true"></i>6.7%</span>
                     </a>
@@ -108,9 +108,9 @@
 
                 <div class="col-6 border-start border-black border-1 me-5 ms-2 mt-2">
                     <a class = "text-decoration-none text-dark" href = "{{ url('order') }}">
-                    <span class = "ms-2">Orders</span> <br>
-                    <span class  = "fw-3 ms-2 ">10</span><span
-                        class = "float-end rounded-5 mb-2  me-3 text-bg-success text-success p-2  bg-opacity-25 opacity-10 pe-3"
+                    <span class = "ms-2 profit">Orders</span> <br>
+                    <span class  = "fw-3 ms-2 profit">10</span><span
+                        class = "float-end rounded-5 mb-2  me-3 text-bg-success text-success p-2  bg-opacity-25 opacity-10 pe-3 profit"
                         style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                             aria-hidden="true"></i>6.7%</span>
                     </a>
@@ -119,7 +119,7 @@
             </div>
 
             <div class = "float-start  mt-2">
-                <a href = "{{ url('addetailedstat') }}" class = "float-start mb-1">View detailed stats</a>
+                <a href = "{{ url('addetailedstat') }}" class = "float-start mb-1 text-decoration-none detailedstat">View detailed stats</a>
             </div>
 
         </div>

@@ -31,8 +31,8 @@
 
               <tr>
                 <td>
-                    <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">Total Sales</a></p>
-                    <span class = "float-start"><strong>$23,523</strong></span>
+                    <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">Total Sales</a></p>
+                    <span class = "float-start profit"><strong>$23,523</strong></span>
                     <span class = "float-end mb-2">
                       <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                     </span>
@@ -40,9 +40,9 @@
 
 
                 <td>
-                    <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">Total Sales</a></p>
-                    <span class = "float-start"><strong>$23,523</strong></span>
-                    <span class = "float-end mb-2">
+                    <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">Total Sales</a></p>
+                    <span class = "float-start profit"><strong>$23,523</strong></span>
+                    <span class = "float-end mb-2 profit">
                       <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                     </span>
                 </td>
@@ -56,20 +56,24 @@
 
                 <tr>
                   <td>
-                      <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark" href = "{{ url('order') }}">Order</a></p>
-                      <span class = "float-start"><strong>18</strong></span>
+                      <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">Order</a></p>
+                      <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">18</a></strong></span>
                       <span class = "float-end mb-2">
+                        <a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                      </span>
+                        </a>
+                    </span>
                   </td>
 
 
                   <td>
-                      <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark" href = "{{ url('product') }}">Product Sold</a></p>
-                      <span class = "float-start"><strong>18</strong></span>
+                      <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark product" href = "{{ url('product') }}">Product Sold</a></p>
+                      <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">18</a></strong></span>
                       <span class = "float-end mb-2">
+                        <a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                      </span>
+                        </a>
+                    </span>
                   </td>
                 </tr>
                 </table>
@@ -98,6 +102,9 @@
                                     <tr>
                                     <td>$20</td>
                                   </tr>
+                                  <tr>
+                                    <td>$20</td>
+                                  </tr>
                                 </table>
 
 
@@ -111,10 +118,13 @@
                                     <tr>
                                     <td>$18</td>
                                   </tr>
+                                  <tr>
+                                    <td>9</td>
+                                  </tr>
                                 </table>
                               </div>
-                              <span>$20</span>
-                              <span style = "padding-left: 450px;">9</span>
+                              {{-- <span>$20</span>
+                              <span style = "padding-left: 450px;">9</span> --}}
 
 
                               <div class = "row">

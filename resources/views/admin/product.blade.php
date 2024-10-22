@@ -33,10 +33,16 @@
 
               <tr>
                 <td>
-                    <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
+                    <a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">
                     <p class = "m-0 p-0 mt-2">Item Sold</p>
+                </a>
+
+                    <a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">
                     <span class = "float-start"><strong>2</strong></span>
+                    </a>
+
                     <span class = "float-end mb-2">
+                        <a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">
                       <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                     </span>
                 </a>
@@ -55,12 +61,12 @@
 
 
 
-
+              <a class = "text-decoration-none text-dark profit" href = "{{ url('order') }}">
               <table class="table table-bordered">
 
                 <tr>
                   <td>
-                  <a href = "{{ url('/order') }}" class = "text-decoration-none text-black">
+                  <a href = "{{ url('/order') }}" class = "text-decoration-none text-black order">
                       <p class = "m-0 p-0 mt-2">Order</p>
                       <span class = "float-start"><strong>18</strong></span>
                       <span class = "float-end mb-2">
@@ -70,6 +76,7 @@
                   </td>
                 </tr>
                 </table>
+            </a>
 
 
                 <div class = "row ms-1 mt-2">
