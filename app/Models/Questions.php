@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Topics extends Model
+class Questions extends Model
 {
+    protected $table = 'questions';
     use HasFactory;
+
     use HasFactory;
 
     protected $fillable = [
@@ -15,7 +17,7 @@ class Topics extends Model
         'user_unique_id',
         'title',
         'url',
-        'subject_unique_id',
+        'exam_unique_id',
         'order'
     ];
 }

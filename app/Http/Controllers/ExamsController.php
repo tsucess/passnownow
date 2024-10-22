@@ -6,7 +6,7 @@ use App\Models\Classes;
 use App\Models\Exams;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\UploadedFile;
+// use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 
 class ExamsController extends Controller
@@ -78,13 +78,6 @@ class ExamsController extends Controller
         return view('admin.adexams', ['fetchExams' => $output]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Exams $exams)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -97,8 +90,6 @@ class ExamsController extends Controller
             'description' => ['required', 'string', 'max:255'],
             'avatar' => ['sometimes', 'mimes:jpeg,jpg,png', 'max:2048']
         ]);
-
-
 
         $exam = Exams::find($request->id);
         // dd($class);
@@ -117,9 +108,9 @@ class ExamsController extends Controller
                 $exam->avatar = $request->prevavatar;
             }
             $exam->save();
-            return redirect('/adsubjects')->with('success', 'Exam updated Successfully');
+            return redirect('/adexams')->with('success', 'Exam updated Successfully');
         } else {
-            return redirect('/adsubjects')->with('error', 'Something went wrong');
+            return redirect('/adexams')->with('error', 'Something went wrong');
         };
     }
 
@@ -128,9 +119,12 @@ class ExamsController extends Controller
      */
     public function destroy(Exams $data)
     {
+    
+        File::delete(storage_path('app/public/'.$data->avatar));
         $done = $data->delete();
         if ($done) {
-            return redirect('/adexams')->with('success', 'Exam` deleted successfully');
+
+            return redirect('/adexams')->with('success', 'Exam deleted successfully');
         } else {
             return redirect('/adexams')->with('error', 'Something went wrong');
         };

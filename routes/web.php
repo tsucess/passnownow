@@ -205,9 +205,9 @@ Route::middleware('auth')->group(function () {
     // Exams Routes 
     Route::get('/adexams', [ExamsController::class, 'show'])->name('adexams');
     Route::post('/adexams', [ExamsController::class, 'store'])->name('adexams.store');
-    // Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
-    // Route::patch('/adexams', [ExamsController::class, 'update'])->name('adexams.update');
-    // Route::get('/adexams/{data}/destroy', [ExamsController::class, 'destroy'])->name('adexams.destroy');
+    Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
+    Route::patch('/adexams', [ExamsController::class, 'update'])->name('adexams.update');
+    Route::get('/adexams/{data}/destroy', [ExamsController::class, 'destroy'])->name('adexams.destroy');
 });
   
 

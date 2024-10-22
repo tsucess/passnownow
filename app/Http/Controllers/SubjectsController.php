@@ -124,6 +124,7 @@ class SubjectsController extends Controller
      */
     public function destroy(Subjects $data)
     {
+        File::delete(storage_path('app/public/'.$data->avatar));
         $done = $data->delete();
         if ($done) {
             return redirect('/adsubjects')->with('success', 'Subject` deleted successfully');
