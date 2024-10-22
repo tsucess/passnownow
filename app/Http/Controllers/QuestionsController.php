@@ -14,7 +14,7 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        return view('admin.viewtopics');
+        return view('admin.adquestions');
     }
 
     /**
@@ -38,7 +38,7 @@ class QuestionsController extends Controller
             'order' => ['sometimes', 'integer', 'max:255']
         ]);
 
-        $data = $request->sub_id;
+        $data = $request->ex_id;
 
         // dd($request);
         $done = Questions::create([
@@ -46,14 +46,14 @@ class QuestionsController extends Controller
             'user_unique_id' => Auth::user()->unique_id,
             'title' => $request->title,
             'url' => $request->url,
-            'subject_unique_id' => $request->subject_id,
+            'exam_unique_id' => $request->exam_id,
             'order' => $request->order
         ]);
 
         if ($done) {
-            return redirect('/viewtopics/' . $data . '/view')->with('success', 'New Topic added successfully');
+            return redirect('/adquestions/' . $data . '/view')->with('success', 'New Topic added successfully');
         } else {
-            return redirect('/viewtopics/' . $data . '/view')->with('error', 'Something went wrong');
+            return redirect('/adquestions/' . $data . '/view')->with('error', 'Something went wrong');
         };
     }
 
@@ -64,11 +64,11 @@ class QuestionsController extends Controller
     {
         // dd($data);
 
-        $subject_id = $data->id;
-        $sub_id = $data->id;
+        $exam_id = $data->id;
+        $ex_id = $data->id;
 
-        $output = Questions::where('subject_unique_id', $sub_id)->get();
-        return view('admin.viewtopics', ['subject' => $subject_id, 'sub_id' => $sub_id, 'fetchQuestions' => $output]);
+        $output = Questions::where('exam_unique_id', $ex_id)->get();
+        return view('admin.adquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'fetchQuestions' => $output]);
     }
 
     /**
@@ -91,7 +91,7 @@ class QuestionsController extends Controller
             'edit_order' => ['sometimes', 'integer', 'max:255'],
         ]);
 
-        $data_id = $request->subject_id;
+        $data_id = $request->exam_id;
       
         $class = Questions::find($request->id);
         // dd($class);
@@ -101,9 +101,9 @@ class QuestionsController extends Controller
             $class->order = $request->edit_order;
 
             $class->save();
-            return redirect('/viewtopics/' . $data_id . '/view')->with('success', 'Topic updated successfully');
+            return redirect('/adquestions/' . $data_id . '/view')->with('success', 'Topic updated successfully');
         } else {
-            return redirect('/viewtopics/' . $data_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/adquestions/' . $data_id . '/view')->with('error', 'Something went wrong');
         };
     }
 
@@ -115,9 +115,9 @@ class QuestionsController extends Controller
         // dd($data);
         $done = $data->delete();
         if ($done) {
-            return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('success', 'Topic deleted successfully');
+            return redirect('/adquestions/' . $data->exam_unique_id . '/view')->with('success', 'Topic deleted successfully');
         } else {
-            return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/adquestions/' . $data->exam_unique_id . '/view')->with('error', 'Something went wrong');
         };
     }
 }

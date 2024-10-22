@@ -11,7 +11,24 @@
             </div>
         </div>
     </div>
-    {{-- <php if (isset($output)) {?> --}}
+    @if (count($errors) > 0)
+    <div class="alert alert-danger pb-0">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li class="m-0">{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@elseif(\Session::has('error'))
+    <div class="alert alert-danger">
+        <p class="m-0">{{ \Session::get('error') }}</p>
+    </div>
+@endif
+@if (\Session::has('success'))
+    <div class="alert alert-success">
+        <p class="m-0">{{ \Session::get('success') }}</p>
+    </div>
+@endif
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
@@ -27,7 +44,26 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- <php foreach  ($output as $admin) { ?> --}}
+                @php $sn = 0  @endphp
+                @foreach ($fetchQuestions as $Question)
+                <tr>
+                    <th>{{ ++$sn }}</th>
+                    <td>{{ $Question->title }}</td>
+                    <td>{{ $Question->url }}</td>
+                    <td>{{ $exam }}</td>
+                    <th>{{ $Question->order }}</th>
+                    <td>{{ $Question->created_at }}</td>
+                    <td>
+                        <div class="action">
+                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
+                            <ul class="more-options">
+                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Question->id }}" data-title="{{ $Question->title }}" data-url="{{ $Question->url }}" data-order="{{ $Question->order }}" data-subjectu_id="{{ $subject }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
+                                <li><a onclick="validate(this)" href="{{ route('viewtopics.destroy', ['data' => $Question->id]) }}" class="btn btn-danger p-1">delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
                 <tr>
                     <th>1</th>
                     <td>Mathematics</td>

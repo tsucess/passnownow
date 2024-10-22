@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TopicsController;
+use App\Http\Controllers\QuestionsController;
 use App\Models\Subjects;
 
 Route::get('/', function () {
@@ -208,6 +209,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
     Route::patch('/adexams', [ExamsController::class, 'update'])->name('adexams.update');
     Route::get('/adexams/{data}/destroy', [ExamsController::class, 'destroy'])->name('adexams.destroy');
+
+
+
+     // Questions Routes 
+     Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
+     Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
+     Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
+     Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
+     Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
 });
   
 
