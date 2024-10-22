@@ -34,6 +34,41 @@
             font-size: 3.5rem;
           } */
         }
+
+        .profit:hover
+        {
+            background-color: #1A69AF;
+            color:#fff;
+            border-radius:10px;
+            padding:6px;
+        }
+
+        
+
+        .detailedstat:hover
+        {
+            background-color: #1A69AF;
+            color:#fff;
+            border-radius:10px;
+            padding:6px;
+        }
+
+        .product:hover
+        {
+            background-color: #1A69AF;
+            color:#fff;
+            border-radius:10px;
+            padding:6px;
+        }
+
+        .order:hover
+        {
+            background-color: #1A69AF;
+            color:#fff;
+            border-radius:10px;
+            padding:6px;
+        }
+
     </style>
 </head>
 
