@@ -33,11 +33,13 @@
 
               <tr>
                 <td>
+                    <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <p class = "m-0 p-0 mt-2">Item Sold</p>
                     <span class = "float-start"><strong>2</strong></span>
                     <span class = "float-end mb-2">
                       <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                     </span>
+                </a>
                 </td>
 
 
@@ -58,13 +60,13 @@
 
                 <tr>
                   <td>
-                  <a href = "{{ url('/totalsales') }}" class = "text-decoration-none text-black">
+                  <a href = "{{ url('/order') }}" class = "text-decoration-none text-black">
                       <p class = "m-0 p-0 mt-2">Order</p>
                       <span class = "float-start"><strong>18</strong></span>
                       <span class = "float-end mb-2">
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                       </span>
-</a>
+</a>                  </a>
                   </td>
                 </tr>
                 </table>
@@ -100,30 +102,6 @@
 
 
 
-                    <!-- <table class="table table-bordered w-50">
-                        <tr>
-                            <th>Net Sales</th>
-                        </tr>
-
-                        <tr>
-                          <td>$20</td>
-                          <td>$20</td>
-                          </tr>
-                          </table>
-
-
-                          <table class="table table-bordered w-50">
-                            <tr>
-                                <th>Orders</th>
-                            </tr>
-
-                            <tr>
-                              <td>$27</td>
-                              <td>$18</td>
-                              </tr>
-                              </table> -->
-
-
                               <div class = "row">
                                 <div class="col mb-3">
                                     <canvas id="parabolaAreaChart" width="1300" height="200"></canvas>
@@ -134,7 +112,7 @@
 
                             <div class = "row ms-1 mt-2 mb-3 border">
         <div>
-            <span style = "font-size: 16px;"><strong>Order</strong></span>
+            <span style = "font-size: 16px;"><strong><a class = "text-decoration-none text-dark" href = "{{ url('order') }}">Order</a></strong></span>
             <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
         </div>
         </div>
