@@ -1,184 +1,7 @@
 @extends('layouts.dasboardtemp')
 
 @section('admincontent')
-    {{-- <!DOCTYPE html>
-<html>
-
-<head>
-  <title>Subjects</title>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-  <!--- bootstrap-5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!--- font-awesome --->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-
-  <style>
-    @media (max-width: 576px) {
-    body
-    {
-      margin: 0;
-      padding: 0;
-    }
-  }
-    * {
-      border-collapse: border-box;
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    #header {
-      width: 100%;
-      height: 70px;
-    }
-
-    #links {
-      padding-left: 400px;
-      padding-top: 20px;
-    }
-
-    #links li {
-      padding-left: 15px;
-      list-style-type: none;
-      display: inline;
-    }
-
-    #links a {
-      text-decoration: none;
-      font-size: 20px;
-      color: #000;
-    }
-
-    #section1 {
-      width: 100%;
-      height: 150px;
-    }
-
-    h3 {
-      font-size: 14px;
-      padding-left: 490px;
-    }
-
-
-
-    .heading-text {
-      /* Additional custom styling if needed */
-      color: #000;
-      /* Adjust text color if needed */
-    }
-
-
-@media(max-width: 900px)
-{
-.myLogo
-{
-width: 120px;
-height: 80px;
-}
-}
-
-.footerLinks
-{
-    text-decoration: none;
-    color: gray;
-}
-
-.jss
-{
-    color:#1A69AF;
-
-}
-
-.active, .b
-{
-  color: black;
-}
-
-  </style>
-</head>
-
-<body>
-
-  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="border-top: 1px solid gray; border-left: 1px solid gray; border-right: 1px solid gray;">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#"><img src="Images/logo.png" width="150px" height="50px" class = "myLogo"
-          style="padding-left:30px; padding-top:3px; float: left;"></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-
-        <div class="input-group mt-2 w-100 offset-md-3">
-            <input type="search" class="form-control" placeholder="Search" aria-label="Search..." aria-describedby="searchIcon">
-          </div>
-
-
-          <div class = "container text-md-end">
-            <span><img src="Images/imagenotification.png" width = "50px" height = "30px" /></span>
-            <span><img src="Images/global.png" width = "50px" height = "40px" /></span>
-            <span style = "border: 1px solid gray; border-radius: 10px; margin-top: 20px; padding: 6px; line-height: 2px;  justify-content: center; align-items: center;"><i class="fa fa-user-circle" aria-hidden="true"></i> <i class="fas fa-caret-down"></i></span>
-
-        </div>
-
-
-
-        </div>
-    </div>
-  </nav> --}}
-
-
-    {{-- @section('addashboardcontent') --}}
-    {{-- <div class = "container-fluid ml-5" style = "border-top: 1px solid gray;">
-    <div class = "row"> --}}
-
-
-    {{-- <div class="col-sm-3 col-md-4 col-lg-2 col-xl-2 h-100 text-md-start mt-3">
-            <nav class="nav flex-column">
-                <a class="nav-link active" href="#">
-                    <i class="fa fa-th-large me-3"></i> Dashboard
-                </a>
-                <a class="nav-link active" href="#">
-                    <i class="fa fa-user-md me-3 ms-1" aria-hidden="true"></i>Admin
-                </a>
-                <a class="nav-link b" href="#">
-                    <i class="fa fa-user me-3"></i> Users
-                </a>
-                <a class="nav-link b" href="#">
-                    <i class="fa fa-calendar me-3"></i> Class
-                </a>
-                <a class="nav-link b" href="#">
-                    <i class="fa fa-book me-4" aria-hidden="true"></i>Subjects
-                </a>
-                <a class="nav-link b" href="#">
-                    <i class="fa fa-newspaper me-3"></i>Upload Past Questions
-                </a>
-                <a class="nav-link b" href="#">
-                    <i class="fa fa-headphones me-3"></i> Subscription
-                </a>
-                <a class="nav-link b" href="#">
-                    <i class="fa fa-history me-3"></i> History
-                </a>
-            </nav>
-        </div> --}}
-
-
-
-
-
-
-
-
-
-    {{-- <div class = "container-fluid col-sm-9" style = "border-left: 1px solid blue;"> --}}
+ 
         <div class = "row  justify-content-between ms-2 mt-3 rounded-2" style="background-color: #1A69AF;">
 
             <div class="col-4 mt-4 mb-3">
@@ -197,8 +20,6 @@ height: 80px;
 
 
         </div>
-
-
 
         <div class ="row mb-3">
 
@@ -256,7 +77,6 @@ height: 80px;
                 </div>
             </div>
         </div>
-
 
         <div class = "row ms-2 border border-1 border-black p-2 mb-4">
             <div class = "border-bottom border-black border-1 ">
@@ -402,60 +222,12 @@ height: 80px;
         </div>
 
 
-
-
-
-
-
-
-
-
-
-        {{-- <div class="row mt-5">
-            <div class="col pt-2">
-                &copy;2023 Passnownow 2024, All Rights Reserved.
-            </div>
-
-
-            <div class="col">
-
-
-                <button type="button" class="btn btn-link footerLinks">License</button>
-                <button type="button" class="btn btn-link footerLinks">More Themes</button>
-                <button type="button" class="btn btn-link footerLinks">Documentation</button>
-                <button type="button" class="btn btn-link footerLinks">Support</button>
-
-
-            </div>
-        </div> --}}
-
-{{--
-    </div>
-
-    </div>
-
-    </div> --}}
-
 @endsection
 
-<!-- </div>
-
-
-
-
-
-
-
-    <div class="container"> -->
 
 
 
 <!-- jQuery (necessary for Bootstrap's - 5JavaScript plugins) -->
 <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-
-</body>
-
-</html> --}}
+ --}}

@@ -29,7 +29,6 @@
             <p class="m-0">{{\Session::get('success')}}</p>
         </div>
     @endif
-<<<<<<< HEAD
         @php
             $sn= 0;
         @endphp

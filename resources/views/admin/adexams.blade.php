@@ -10,13 +10,32 @@
             </div>
         </div>
     </div>
-    {{-- <php if (isset($output)) {?> --}}
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger pb-0">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="m-0">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @elseif(\Session::has('error'))
+        <div class="alert alert-danger">
+            <p class="m-0">{{ \Session::get('error') }}</p>
+        </div>
+    @endif
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <p class="m-0">{{ \Session::get('success') }}</p>
+        </div>
+    @endif
+
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
                 <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col" >Title</th>
+                    <th scope="col">Title</th>
                     <th scope="col" class="col-3">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Status</th>
@@ -25,37 +44,40 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 @php $sn = 0  @endphp
                 @foreach ($fetchExams as $Exam)
-                <tr>
-                    <th>{{ ++$sn }}</th>
-                    <td>{{ $Exam->title }}</td>
-                    <td>{{ $Exam->description }}</td>
-                    <td>{{ $Exam->created_at }}</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
+                    <tr>
+                        <th>{{ ++$sn }}</th>
+                        <td>{{ $Exam->title }}</td>
+                        <td>{{ $Exam->description }}</td>
+                        <td>{{ $Exam->created_at }}</td>
+                        <td>
+                            <div class="form-check form-switch">
+                                {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if ($video['status'] == 1) {
+                                    echo 'checked'; } ?> > --}}
+                                <input class="form-check-input enable-btn" value="" type="checkbox" data-value =""
+                                    checked>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action">
+                                <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
+                                {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
+                                <ul class="more-options">
+                                    <li><button id="" class="btn btn-warning user-edit-btn p-1"
+                                            data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
+                                    <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a>
+                                    </li>
+                                    <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
+                                            class="btn btn-danger p-1">delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
 
-                </tr>
+                    </tr>
                 @endforeach
-              
+
                 {{-- <php }}?>		 --}}
             </tbody>
         </table>
@@ -84,13 +106,13 @@
                     @csrf
                     <div class="modal-body">
                         <x-text-input type="hidden" class="form-control" name="unique_id"
-                        value="{{ rand(time(), 10000000) }}" />
+                            value="{{ rand(time(), 10000000) }}" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
                                     <x-input-label :value="__('Title')" />
-                                        <x-text-input type="text" class="form-control" name="title" :value="old('title')"
-                                        aria-describedby="textBlock" aria-placeholder="Enter Title"/>
+                                    <x-text-input type="text" class="form-control" name="title" :value="old('title')"
+                                        aria-describedby="textBlock" aria-placeholder="Enter Title" />
                                     <x-input-error :messages="$errors->get('title')" class="mt-2 text-danger" />
                                 </div>
                             </div>
@@ -104,8 +126,9 @@
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                        <x-input-label :value="__('Subject Image')"  />
-                                        <input type="file" class="form-control" name="avatar" aria-describedby="textBlock" />
+                                    <x-input-label :value="__('Subject Image')" />
+                                    <input type="file" class="form-control" name="avatar"
+                                        aria-describedby="textBlock" />
                                 </div>
                             </div>
                         </div>
