@@ -37,6 +37,7 @@
                     <th scope="col">Title</th>
                     <th scope="col">url</th>
                     <th scope="col">Subject</th>
+                    <th scope="col">Term</th>
                     <th scope="col">Order</th>
                     <th scope="col">Date</th>
                     <th scope="col">Actions</th>
@@ -51,13 +52,14 @@
                     <td>{{ $Topic->title }}</td>
                     <td>{{ $Topic->url }}</td>
                     <td>{{ $subject }}</td>
+                    <th>{{ $Topic->term }}</th>
                     <th>{{ $Topic->order }}</th>
                     <td>{{ $Topic->created_at }}</td>
                     <td>
                         <div class="action">
                             <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
                             <ul class="more-options">
-                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Topic->id }}" data-title="{{ $Topic->title }}" data-url="{{ $Topic->url }}" data-order="{{ $Topic->order }}" data-subjectu_id="{{ $subject }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
+                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Topic->id }}" data-title="{{ $Topic->title }}" data-url="{{ $Topic->url }}" data-order="{{ $Topic->order }}" data-term="{{ $Topic->term }}" data-subjectu_id="{{ $subject }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
                                 <li><a onclick="validate(this)" href="{{ route('viewtopics.destroy', ['data' => $Topic->id]) }}" class="btn btn-danger p-1">delete</a></li>
                             </ul>
                         </div>
@@ -108,6 +110,19 @@
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
+                                    <div class="mb-3">
+                                        <x-input-label :value="__('Term')" class="form-label" />
+                                        <select  class="form-control py-2" name = "term" >
+                                            <option value ="">Select Term</option>
+                                            <option value="first">First Term</option>
+                                            <option value="second">Second Term</option>
+                                            <option value="third">Thrid Term</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
                                     <label for="order" class="form-label">Order</label>
                                     <input type="text" name="order" class="form-control py-2" id="order" required />
                                 </div>
@@ -151,9 +166,18 @@
                                     <input type="text" name="url" class="form-control py-2" id="edit-url">
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <x-input-label :value="__('Term')" class="form-label" />
+                                    <input type="hidden" name="prevterm" id="prev-term" class="form-control py-2" />
+                                    <select  class="form-control py-2" name = "term" >
+                                        <option value ="">Select Term</option>
+                                        <option value="first">First Term</option>
+                                        <option value="second">Second Term</option>
+                                        <option value="third">Thrid Term</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="edit-order" class="form-label">Order</label>
@@ -190,7 +214,6 @@
             var subject_id = $(this).data('subject_id');
             var sub_id = $(this).data('id');
             $('#subject_id').val(subject_id);
-            console.log(sub_id);
             $('#sub_id').val(sub_id);
         });
 
@@ -201,12 +224,14 @@
             var title = $(this).data('title');
             var url = $(this).data('url');
             var editorder = $(this).data('order');
+            var editterm = $(this).data('term');
         
             $('#subjectu_id').val(subjectu_id);
             $('#edit-id').val(id);
             $('#edit-title').val(title);
             $('#edit-url').val(url);
             $('#edit-order').val(editorder);
+            $('#prev-term').val(editterm);
             
         });
 

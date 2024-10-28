@@ -16,6 +16,7 @@ class Topics extends Model
         'title',
         'url',
         'subject_unique_id',
+        'term',
         'order'
     ];
 }

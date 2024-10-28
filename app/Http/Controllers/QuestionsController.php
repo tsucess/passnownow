@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Questions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Subjects;
+use App\Models\Exams;
 
 class QuestionsController extends Controller
 {
@@ -14,7 +14,7 @@ class QuestionsController extends Controller
      */
     public function index()
     {
-        return view('admin.adquestions');
+        return view('admin.adpastquestions');
     }
 
     /**
@@ -34,6 +34,7 @@ class QuestionsController extends Controller
         $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Questions::class],
             'title' => ['required', 'string', 'max:255'],
+            'year' => ['required', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
             'order' => ['sometimes', 'integer', 'max:255']
         ]);
@@ -45,22 +46,23 @@ class QuestionsController extends Controller
             'unique_id' => $request->unique_id,
             'user_unique_id' => Auth::user()->unique_id,
             'title' => $request->title,
+            'year' => $request->year,
             'url' => $request->url,
             'exam_unique_id' => $request->exam_id,
             'order' => $request->order
         ]);
 
         if ($done) {
-            return redirect('/adquestions/' . $data . '/view')->with('success', 'New Topic added successfully');
+            return redirect('/adpastquestions/' . $data . '/view')->with('success', 'New Question added successfully');
         } else {
-            return redirect('/adquestions/' . $data . '/view')->with('error', 'Something went wrong');
+            return redirect('/adpastquestions/' . $data . '/view')->with('error', 'Something went wrong');
         };
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Subjects $data, Questions $topics)
+    public function show(Exams $data, Questions $questions)
     {
         // dd($data);
 
@@ -68,13 +70,13 @@ class QuestionsController extends Controller
         $ex_id = $data->id;
 
         $output = Questions::where('exam_unique_id', $ex_id)->get();
-        return view('admin.adquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'fetchQuestions' => $output]);
+        return view('admin.adpastquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'fetchQuestions' => $output]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Questions $topics)
+    public function edit(Questions $questions)
     {
         //
     }
@@ -100,10 +102,17 @@ class QuestionsController extends Controller
             $class->url = $request->url;
             $class->order = $request->edit_order;
 
+            if ($request->year) {
+                $class->year = $request->year;
+            }
+            else
+            {
+                $class->year = $request->prevyear;
+            }
             $class->save();
-            return redirect('/adquestions/' . $data_id . '/view')->with('success', 'Topic updated successfully');
+            return redirect('/adpastquestions/' . $data_id . '/view')->with('success', 'Question updated successfully');
         } else {
-            return redirect('/adquestions/' . $data_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/adpastquestions/' . $data_id . '/view')->with('error', 'Something went wrong');
         };
     }
 
@@ -115,9 +124,9 @@ class QuestionsController extends Controller
         // dd($data);
         $done = $data->delete();
         if ($done) {
-            return redirect('/adquestions/' . $data->exam_unique_id . '/view')->with('success', 'Topic deleted successfully');
+            return redirect('/adpastquestions/' . $data->exam_unique_id . '/view')->with('success', 'Question deleted successfully');
         } else {
-            return redirect('/adquestions/' . $data->exam_unique_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/adpastquestions/' . $data->exam_unique_id . '/view')->with('error', 'Something went wrong');
         };
     }
 }

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('unique_id');
             $table->integer('user_unique_id');
+            $table->integer('year');
             $table->string('title');
             $table->text('url');
             $table->integer('exam_unique_id');

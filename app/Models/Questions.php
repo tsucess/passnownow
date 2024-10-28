@@ -16,6 +16,7 @@ class Questions extends Model
         'unique_id',
         'user_unique_id',
         'title',
+        'year',
         'url',
         'exam_unique_id',
         'order'

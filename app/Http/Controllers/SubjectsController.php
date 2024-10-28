@@ -64,8 +64,9 @@ class SubjectsController extends Controller
      */
     public function show()
     {
-        $output = Subjects::get();
-        return view('admin.adsubjects', ['fetchSubjects' => $output]);
+        $classdata = Classes::get();
+        $output = Subjects::orderBy('class_unique_id', 'asc')->get();
+        return view('admin.adsubjects', ['fetchSubjects' => $output, 'fetchClasses' => $classdata]);
     }
 
 

@@ -35,6 +35,7 @@ class TopicsController extends Controller
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Topics::class],
             'title' => ['required', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
+            'term' => ['sometimes', 'string', 'max:255'],
             'order' => ['sometimes', 'integer', 'max:255']
         ]);
 
@@ -47,6 +48,7 @@ class TopicsController extends Controller
             'title' => $request->title,
             'url' => $request->url,
             'subject_unique_id' => $request->subject_id,
+            'term' => $request->term,
             'order' => $request->order
         ]);
 
@@ -67,7 +69,7 @@ class TopicsController extends Controller
         $subject_id = $data->id;
         $sub_id = $data->id;
 
-        $output = Topics::where('subject_unique_id', $sub_id)->get();
+        $output = Topics::where('subject_unique_id', $sub_id)->orderBy('term', 'asc')->orderBy('order', 'asc')->get();
         return view('admin.viewtopics', ['subject' => $subject_id, 'sub_id' => $sub_id, 'fetchTopics' => $output]);
     }
 
@@ -99,6 +101,14 @@ class TopicsController extends Controller
             $class->title = $request->title;
             $class->url = $request->url;
             $class->order = $request->edit_order;
+            if ($request->term) {
+                $class->term = $request->term;
+            }
+            else
+            {
+                $class->term = $request->prevterm;
+            }
+
 
             $class->save();
             return redirect('/viewtopics/' . $data_id . '/view')->with('success', 'Topic updated successfully');

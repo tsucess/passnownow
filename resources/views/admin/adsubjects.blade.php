@@ -120,9 +120,9 @@
                                     <x-input-label :value="__('Class')" class="form-label" />
                                     <select  class="form-control py-2" name = "class_id" >
                                         <option value ="">Select Class</option>
-                                        <option value="jss1">JSS 1</option>
-                                        <option value="jss2">Jss 2</option>
-                                        <option value="jss3">Jss 3</option>
+                                        @foreach ($fetchClasses as $Class)
+                                        <option value="{{ $Class->title }}">{{ $Class->title }}</option>
+                                    @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -183,9 +183,9 @@
                                     <input type="hidden" name="prevclass" id="prev-class" class="form-control py-2" />
                                     <select name="class_id" id="edit-class" class="form-control py-2">
                                         <option value ="">Select Class</option>
-                                        <option value="jss1">JSS 1</option>
-                                        <option value="jss2">Jss 2</option>
-                                        <option value="jss3">Jss 3</option>
+                                        @foreach ($fetchClasses as $Class)
+                                            <option value="{{ $Class->title }}">{{ $Class->title }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>

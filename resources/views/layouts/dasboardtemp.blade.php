@@ -172,6 +172,12 @@
                                 Subscription
                             </x-sidebar-link>
                         </li>
+                        <li class="nav-item">
+                            <x-sidebar-link active="{{ request()->is('subscription') }}" href="/subscription">
+                                <i class="fa-solid fa-dollar"></i>
+                                Pricing
+                            </x-sidebar-link>
+                        </li>
                         {{-- <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('#') }}" href="#">
                                 <i class="fa-solid fa-clock-rotate-left"></i>

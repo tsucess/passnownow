@@ -222,13 +222,7 @@ Route::middleware('auth')->group(function () {
   
 
 
-Route::get('/adpastquestions', function () {
-    return view('admin.adpastquestions');
-});
 
-// Route::get('/adexams', function () {
-//     return view('admin.adexams');
-// });
 
 
 

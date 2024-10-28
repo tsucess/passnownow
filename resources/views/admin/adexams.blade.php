@@ -65,22 +65,17 @@
                                 <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
                                 {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
                                 <ul class="more-options">
-                                    {{-- <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li> --}}
                                 <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Exam->id }}" data-title="{{ $Exam->title }}" data-description="{{ $Exam->description }}" data-avatar="{{ $Exam->avatar }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
                                     
-                                    <li><a href="{{ url('adpastquestions', ['data' => $Exam]) }}" class="btn btn-primary p-1">Questions</a>
+                                    <li><a href="{{ route('adpastquestions', ['data' => $Exam]) }}" class="btn btn-primary p-1">Questions</a>
                                     </li>
                                 <li><a onclick="validate(this)" href="{{ route('adexams.destroy', ['data' => $Exam->id]) }}" class="btn btn-danger p-1">delete</a></li>
-
-                                    {{-- <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page=" class="btn btn-danger p-1">delete</a></li> --}}
                                 </ul>
                             </div>
                         </td>
 
                     </tr>
                 @endforeach
-
-                {{-- <php }}?>		 --}}
             </tbody>
         </table>
     </div>
