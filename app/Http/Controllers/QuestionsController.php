@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Topics;
+use App\Models\Questions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Subjects;
+use App\Models\Exams;
 
-class TopicsController extends Controller
+class QuestionsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.viewtopics');
+        return view('admin.adpastquestions');
     }
 
     /**
@@ -32,51 +32,51 @@ class TopicsController extends Controller
     {
         // dd($request);
         $request->validate([
-            'unique_id' => ['required', 'string', 'max:255', 'unique:' . Topics::class],
+            'unique_id' => ['required', 'string', 'max:255', 'unique:' . Questions::class],
             'title' => ['required', 'string', 'max:255'],
+            'year' => ['required', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
-            'term' => ['sometimes', 'string', 'max:255'],
             'order' => ['sometimes', 'integer', 'max:255']
         ]);
 
-        $data = $request->sub_id;
+        $data = $request->ex_id;
 
         // dd($request);
-        $done = Topics::create([
+        $done = Questions::create([
             'unique_id' => $request->unique_id,
             'user_unique_id' => Auth::user()->unique_id,
             'title' => $request->title,
+            'year' => $request->year,
             'url' => $request->url,
-            'subject_unique_id' => $request->subject_id,
-            'term' => $request->term,
+            'exam_unique_id' => $request->exam_id,
             'order' => $request->order
         ]);
 
         if ($done) {
-            return redirect('/viewtopics/' . $data . '/view')->with('success', 'New Topic added successfully');
+            return redirect('/adpastquestions/' . $data . '/view')->with('success', 'New Question added successfully');
         } else {
-            return redirect('/viewtopics/' . $data . '/view')->with('error', 'Something went wrong');
+            return redirect('/adpastquestions/' . $data . '/view')->with('error', 'Something went wrong');
         };
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Subjects $data, Topics $topics)
+    public function show(Exams $data, Questions $questions)
     {
         // dd($data);
 
-        $subject_id = $data->id;
-        $sub_id = $data->id;
+        $exam_id = $data->id;
+        $ex_id = $data->id;
 
-        $output = Topics::where('subject_unique_id', $sub_id)->orderBy('term', 'asc')->orderBy('order', 'asc')->get();
-        return view('admin.viewtopics', ['subject' => $subject_id, 'sub_id' => $sub_id, 'fetchTopics' => $output]);
+        $output = Questions::where('exam_unique_id', $ex_id)->get();
+        return view('admin.adpastquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'fetchQuestions' => $output]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Topics $topics)
+    public function edit(Questions $questions)
     {
         //
     }
@@ -84,7 +84,7 @@ class TopicsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Topics $data)
+    public function update(Request $request, Questions $data)
     {
         // dd($request);
         $request->validate([
@@ -93,41 +93,40 @@ class TopicsController extends Controller
             'edit_order' => ['sometimes', 'integer', 'max:255'],
         ]);
 
-        $data_id = $request->subject_id;
+        $data_id = $request->exam_id;
       
-        $class = Topics::find($request->id);
+        $class = Questions::find($request->id);
         // dd($class);
         if ($class) {
             $class->title = $request->title;
             $class->url = $request->url;
             $class->order = $request->edit_order;
-            if ($request->term) {
-                $class->term = $request->term;
+
+            if ($request->year) {
+                $class->year = $request->year;
             }
             else
             {
-                $class->term = $request->prevterm;
+                $class->year = $request->prevyear;
             }
-
-
             $class->save();
-            return redirect('/viewtopics/' . $data_id . '/view')->with('success', 'Topic updated successfully');
+            return redirect('/adpastquestions/' . $data_id . '/view')->with('success', 'Question updated successfully');
         } else {
-            return redirect('/viewtopics/' . $data_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/adpastquestions/' . $data_id . '/view')->with('error', 'Something went wrong');
         };
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Topics $data)
+    public function destroy(Questions $data)
     {
         // dd($data);
         $done = $data->delete();
         if ($done) {
-            return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('success', 'Topic deleted successfully');
+            return redirect('/adpastquestions/' . $data->exam_unique_id . '/view')->with('success', 'Question deleted successfully');
         } else {
-            return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/adpastquestions/' . $data->exam_unique_id . '/view')->with('error', 'Something went wrong');
         };
     }
 }

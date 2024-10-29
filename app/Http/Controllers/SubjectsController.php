@@ -64,8 +64,9 @@ class SubjectsController extends Controller
      */
     public function show()
     {
-        $output = Subjects::get();
-        return view('admin.adsubjects', ['fetchSubjects' => $output]);
+        $classdata = Classes::get();
+        $output = Subjects::orderBy('class_unique_id', 'asc')->get();
+        return view('admin.adsubjects', ['fetchSubjects' => $output, 'fetchClasses' => $classdata]);
     }
 
 
@@ -76,6 +77,8 @@ class SubjectsController extends Controller
     {
 
         // dd($request);
+
+
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
@@ -122,6 +125,7 @@ class SubjectsController extends Controller
      */
     public function destroy(Subjects $data)
     {
+        File::delete(storage_path('app/public/'.$data->avatar));
         $done = $data->delete();
         if ($done) {
             return redirect('/adsubjects')->with('success', 'Subject` deleted successfully');

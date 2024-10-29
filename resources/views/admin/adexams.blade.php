@@ -10,14 +10,33 @@
             </div>
         </div>
     </div>
-    {{-- <php if (isset($output)) {?> --}}
+
+    @if (count($errors) > 0)
+        <div class="alert alert-danger pb-0">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="m-0">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @elseif(\Session::has('error'))
+        <div class="alert alert-danger">
+            <p class="m-0">{{ \Session::get('error') }}</p>
+        </div>
+    @endif
+    @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <p class="m-0">{{ \Session::get('success') }}</p>
+        </div>
+    @endif
+
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
                 <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Title</th>
-                    <th scope="col">Description</th>
+                    <th scope="col" class="col-3">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Status</th>
                     <th scope="col">Actions</th>
@@ -25,83 +44,38 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- <php foreach  ($output as $admin) { ?> --}}
-                <tr>
-                    <th>1</th>
-                    <td>SSCE West African Examination</td>
-                    <td>This an Exam for Senior Secondary Students</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>2</th>
-                    <td>UTME JAMB</td>
-                    <td>This an Exam for obtaining Admission into Higher Institution</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>Junior Secondary Certificate Examination</td>
-                    <td>This an Exam for Junior Secondary Students</td>
-                    <td>20-9-2024</td>
-                    <td>
-                        <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if($video['status'] == 1 ){echo 'checked';}?> > --}}
-                            <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked >
-                        </div>
-                    </td>
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning user-edit-btn p-1" data-bs-toggle="modal"
-                                        data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ url('adpastquestions') }}" class="btn btn-primary p-1">Questions</a></li>
-                                <li><a onclick="validate(this)" href="assets/php/includes/deletedata.inc.php?id=&page="
-                                        class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                {{-- <php }}?>		 --}}
+
+                @php $sn = 0  @endphp
+                @foreach ($fetchExams as $Exam)
+                    <tr>
+                        <th>{{ ++$sn }}</th>
+                        <td>{{ $Exam->title }}</td>
+                        <td>{{ $Exam->description }}</td>
+                        <td>{{ $Exam->created_at }}</td>
+                        <td>
+                            <div class="form-check form-switch">
+                                {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if ($video['status'] == 1) {
+                                    echo 'checked'; } ?> > --}}
+                                <input class="form-check-input enable-btn" value="" type="checkbox" data-value =""
+                                    checked>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="action">
+                                <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
+                                {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
+                                <ul class="more-options">
+                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Exam->id }}" data-title="{{ $Exam->title }}" data-description="{{ $Exam->description }}" data-avatar="{{ $Exam->avatar }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
+                                    
+                                    <li><a href="{{ route('adpastquestions', ['data' => $Exam]) }}" class="btn btn-primary p-1">Questions</a>
+                                    </li>
+                                <li><a onclick="validate(this)" href="{{ route('adexams.destroy', ['data' => $Exam->id]) }}" class="btn btn-danger p-1">delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -129,55 +103,27 @@
                     @csrf
                     <div class="modal-body">
                         <x-text-input type="hidden" class="form-control" name="unique_id"
-                        value="{{ rand(time(), 10000000) }}" />
+                            value="{{ rand(time(), 10000000) }}" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
                                     <x-input-label :value="__('Title')" />
-                                        <x-text-input type="text" class="form-control" name="title" :value="old('title')"
-                                        aria-describedby="textBlock" aria-placeholder="Enter Title"/>
+                                    <x-text-input type="text" class="form-control" name="title" :value="old('title')"
+                                        aria-describedby="textBlock" aria-placeholder="Enter Title" />
                                     <x-input-error :messages="$errors->get('title')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <x-input-label :value="__('Description')"  class = "form-label" />
-                                    <x-text-input type="text" class="form-control" name="description" :value="old('description')"
-                                        aria-describedby="textBlock" />
+                                    <x-input-label :value="__('Description')" />
+                                    <x-text-input type="text" class="form-control" name="description" :value="old('description')" aria-describedby="textBlock" />
                                     <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                        {{-- <label class="form-label">Subject Image</label> --}}
-                                        <x-input-label :value="__('avatar')"  class = "form-label" />
-                                        <input type="file" class="form-control" name="avatar" aria-describedby="textBlock" />
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            {{-- <div class="col-6">
-                                <div class="mb-3">
-                                    <input-label for="addInputphone" :value="__('Class')" class="form-label">Phone number</label>
-                                    <input type="text" name="phone" :value="old('class')" class="form-control py-2" id="addInputphone"
-                                        required>
-                                </div>
-                                <input-error :messages="$errors->get('class')" class="mt-2 text-danger" />
-                            </div> --}}
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="addInputuserole" class="form-label">Class</label>
-                                    <select name="" id="addInputuserole" class="form-control py-2">
-                                        <option value ="undefined">Select Class</option>
-                                        {{-- <php if ($page === "admin") {?> --}}
-                                        <option value="jss1">JSS 1</option>
-                                        <option value="jss2">Jss 2</option>
-                                        <option value="jss3">Jss 3</option>
-                                        {{-- <php } else {?> --}}
-                                        {{-- <option value="member">Member</option>
-                                        <option value="author">Author</option> --}}
-                                        {{-- <php }?> --}}
-                                    </select>
+                                    <x-input-label :value="__('Exam Image')" />
+                                    <input type="file" class="form-control" name="avatar" aria-describedby="textBlock" />
                                 </div>
                             </div>
                         </div>
@@ -205,55 +151,38 @@
                     <h1 class="modal-title fs-5" id="editModalLabel">Edit Subject</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('adexams.update') }}" method="POST" enctype="multipart/form-data">
+
+                    @csrf
+                    @method('patch')
+
                     <div class="modal-body">
-                        <input type="hidden" name="page" value="<= page ?>" class="form-control py-2"
-                            id="editInputPage" required>
+                        <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
                                     <input type="hidden" name="user_id" class="form-control py-2" id="editInputId">
                                     <label for="editInputFirstname" class="form-label">Title</label>
-                                    <input type="text" name="fname" class="form-control py-2"
-                                        id="editInputFirstname">
+                                    <input type="text" name="title" class="form-control py-2" id="edit-title" />
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="editInputLastname" class="form-label">Description</label>
-                                    <input type="text" name="lname" class="form-control py-2"
-                                        id="editInputLastname">
+                                    <input type="text" name="description" class="form-control py-2" id="edit-description">
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            {{-- <div class="col-6">
-                                <div class="mb-3">
-                                    <label for="editInputphone" class="form-label">Phone number</label>
-                                    <input type="number" name="phone" class="form-control py-2" id="editInputphone">
-                                </div>
-                            </div> --}}
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="editInputuserole" class="form-label">Class</label>
-                                    <select name="userrole" id="editInputuserole" class="form-control py-2">
-                                        <option value ="undefined">Select Class</option>
-                                        {{-- <php if ($page === "admin") {?> --}}
-                                        <option value="jss1">JSS 1</option>
-                                        <option value="jss2">Jss 2</option>
-                                        <option value="jss3">Jss 3</option>
-                                        {{-- <php } else {?> --}}
-                                        {{-- <option value="member">Member</option> --}}
-                                        {{-- <php }?> --}}
-                                    </select>
-                                </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <x-input-label :value="__('Exam Image')" />
+                                <input type="hidden" name="prevavatar" id="prev-avatar" class="form-control py-2" />
+                                <input type="file" class="form-control" name="avatar" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" name="submit" id="updateUser" class="btn btn-success">Update
-                            changes</button>
+                        <button type="submit" name="submit" id="updateUser" class="btn btn-success">Update changes</button>
                     </div>
                 </form>
             </div>
@@ -278,4 +207,26 @@
     <script>
         let table = new DataTable('#admin-table');
     </script>
+
+<script>
+    $(document).ready(function() {
+
+        $('#admin-table tbody').on('click', '.edit-btn', function() {
+            var id = $(this).data('id');
+            var title = $(this).data('title');
+            var description = $(this).data('description');
+            // var editclass = $(this).data('class');
+            var editavatar = $(this).data('avatar');
+
+            $('#edit-id').val(id);
+            $('#edit-title').val(title);
+            $('#edit-description').val(description);
+            // $('#prev-class').val(editclass);
+            $('#prev-avatar').val(editavatar);
+        });
+
+    });
+
+ 
+</script>
 @endsection

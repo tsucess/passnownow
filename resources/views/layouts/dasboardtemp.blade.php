@@ -142,7 +142,6 @@
                                 Dashboard
                             </x-sidebar-link>
                         </li>
-                        {{-- request()->is('admins/'.$user->id.'/edit')  --}}
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('admins') }}" href="/admins">
                                 <i class="fa-solid fa-user-tie"></i>
@@ -183,6 +182,12 @@
                             <x-sidebar-link active="{{ request()->is('subscriptiondetails') }}" href="/subscriptiondetails">
                                 <i class="fa-solid fa-hand-holding-dollar"></i>
                                 Subscription
+                            </x-sidebar-link>
+                        </li>
+                        <li class="nav-item">
+                            <x-sidebar-link active="{{ request()->is('subscription') }}" href="/subscription">
+                                <i class="fa-solid fa-dollar"></i>
+                                Pricing
                             </x-sidebar-link>
                         </li>
                         {{-- <li class="nav-item">
