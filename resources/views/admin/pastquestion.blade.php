@@ -1,4 +1,4 @@
-@extends('layouts.anotherdasboardtemp')
+@extends('layouts.dasboard2')
 
 @section('admincontent')
 
