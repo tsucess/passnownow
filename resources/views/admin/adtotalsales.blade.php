@@ -5,7 +5,7 @@
 
 
     <div class="dropdown">
-        <a class="btn btn-light dropdown-toggle justify-content-between" style = "width: 350px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="btn btn-light dropdown-toggle justify-content-between" style = "width: 300px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <span class = "float-start"><strong>Month to date(Sep 1 - 30, 2024)</span></strong><br>
             <span class = "float-start">vs Previous year(Sep 1 - 30, 2023)</span>
         </a>
@@ -62,7 +62,7 @@
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                         </a>
                     </span>
-                    
+
                   </td>
 
                 </tr>
@@ -73,20 +73,25 @@
                 <div class = "row ms-1 mt-2">
                     <div class = "col">
 
-                            <label class="form-check-label mt-2 a" for="flexCheckChecked">
+                            <label class="form-check-label mt-2" for="flexCheckChecked">
                                 <span><b>Gross sales</b></span>
-                            <input class="form-check-input ms-4 " type="checkbox" value="" id="flexCheckChecked" checked>
+                            <input class="form-check-input ms-4" type="checkbox" value="" id="flexCheckChecked" checked>
                                 Month to date(Sep 1 - 30, 2024)
+
+                                <span class="form-check-label mt-2 ms-4 me-3" for="flexCheckChecked">20,000</span>
                             </label>
 
-                            <label class="form-check-label mt-2 ms-4 b" for="flexCheckChecked">20,000</label>
 
-                            <label class="form-check-label mt-2 " for="flexCheckChecked">
-                                <input class="form-check-input ms-5 " type="checkbox" value="" id="flexCheckChecked" checked>
+
+                            <label class="form-check-label mt-2" for="flexCheckChecked">
+                                <input class="form-check-input  show" type="checkbox" value="" id="flexCheckChecked" checked>
                                     Previous year(Sep 1 - 30, 2024)
+
+                                    <span class="form-check-label mt-2 ms-4" for="flexCheckChecked">20,000</span>
+
                                 </label>
 
-                                <label class="form-check-label mt-2 ms-4 " for="flexCheckChecked">20,000</label>
+
 
                         <span class = "float-end  mb-2 ">
                             <button class="btn btn-light dropdown-toggle mt-1 mb-2 me-1 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">

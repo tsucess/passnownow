@@ -27,6 +27,9 @@
     <!-- Chart.js -->
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+   <!-- <script type = "text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
     <style>
         @media (min-width: 768px) {
@@ -43,7 +46,7 @@
             padding:6px;
         }
 
-        
+
 
         .detailedstat:hover
         {
@@ -68,6 +71,15 @@
             border-radius:10px;
             padding:6px;
         }
+
+    @media only screen and (max-width: 320px)
+    {
+        .show
+        {
+            margin-left:0;
+            background: red;
+        }
+    }
 
     </style>
 </head>
