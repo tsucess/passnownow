@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/table/dataTables.bootstrap5.min.css') }} ">
 
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/responsiveness.css') }}">
 
     <!-- Chart.js -->
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -143,48 +142,35 @@
                                 Dashboard
                             </x-sidebar-link>
                         </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('admins') }}" href="/admins">
-                                <i class="fa-solid fa-user-tie"></i>
-                                Admin
-                            </x-sidebar-link>
-                        </li>
+
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
                                 <i class="fa-regular fa-user"></i>
-                                Users
+                                Student Profile
                             </x-sidebar-link>
                         </li>
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('classes') }}" href="/classes">
                                 <i class="fa-solid fa-layer-group"></i>
-                                Classes
+                                Class
                             </x-sidebar-link>
                         </li>
+
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
                                 <i class="fa-solid fa-swatchbook"></i>
-                                Subjects
+                                Past Questions
                             </x-sidebar-link>
                         </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
-                                <i class="fa-solid fa-list"></i>
-                                Exams
-                            </x-sidebar-link>
-                        </li>
+
+
                         {{-- <li class="nav-item">
                             <a class="nav-link" href="{{url('adpastquestions')}}">
                                 <i class="fa-solid fa-list"></i>
                                 Pass Questions
                             </a>
                         </li> --}}
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('subscriptiondetails') }}" href="/subscriptiondetails">
-                                <i class="fa-solid fa-hand-holding-dollar"></i>
-                                Subscription
-                            </x-sidebar-link>
-                        </li>
+                        
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('subscription') }}" href="/subscription">
                                 <i class="fa-solid fa-dollar"></i>
@@ -210,7 +196,7 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
                 @yield('admincontent')
-                
+
                 <section class="container-fluid footer__container">
                     <div class="row">
                         <div class="col-12 col-md-5 col-lg-6 mb-2">&copy; Copyright Passnownow 2024, All Right Reserverd</div>

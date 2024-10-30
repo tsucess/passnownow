@@ -71,7 +71,6 @@
             border-radius:10px;
             padding:6px;
         }
-
     @media only screen and (max-width: 320px)
     {
         .show
@@ -133,98 +132,199 @@
 
     <div class="container-fluid">
         <div class="row">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+                <div class="position-sticky">
+                    <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+            <strong>Topic 1 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
-                <a href = "#" class = "btn btn-light w-100"><span class = "float-start ps-2"><i class="fa fa-angle-left pe-2" aria-hidden="true"></i>Back</span></a>
+            <strong>Topic 2 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
 
-                <h5 class = "h5 fw-bold ps-4 mb-3 mt-2">JSCE PAST QUESTION</h5>
+            <strong>Topic 3 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
 
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item d-flext justify-content-between w-100">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                          <span class = "w-100">2022</span> <span class = "pe-2">20</span>
+            <strong>Topic 4 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
 
-                        </button>
-                      </h2>
-                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <strong>English</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
+            <strong>Topic 5 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
 
-                            <strong>Mathematics</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
+            <strong>Topic 6 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <strong>Topic 1 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
 
-                            <strong>Computer Science</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
+            <strong>Topic 2 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
 
-                            <strong>Home Economics</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
+            <strong>Topic 3 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
 
+            <strong>Topic 4 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+            <strong>Topic 5 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+            <strong>Topic 6 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <strong>Topic 1 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+            <strong>Topic 2 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+            <strong>Topic 3 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+            <strong>Topic 4 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+            <strong>Topic 5 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+            <strong>Topic 6 - Part of Speech</strong>
+            <p>Lorem ipsum dolorsit amec consecteur</p>
+      </div>
+    </div>
+  </div>
+</div>
+                    {{-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                        <a href = "#" class = "btn btn-light"><span class = "float-start ps-2"><i class="fa fa-angle-left pe-2"
+                                    aria-hidden="true"></i>Back</span></a>
+            
+                        <h6 class = "h6 fw-bold ps-4 mb-3">English Language</h6>
+            
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        <span class = "container-fluid ms-0 ps-0">First Term</span><span class = "pe-2">20</span>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <strong>Topic 1 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 2 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 3 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 4 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 5 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 6 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        <span class = "container-fluid ms-0 ps-0">Second Term</span><span class = "pe-2">20</span>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <strong>Topic 1 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 2 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 3 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 4 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 5 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 6 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                        <span class = "container-fluid ms-0 ps-0">Third Term</span> <span class = "pe-2">20</span>
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                    data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <strong>Topic 1 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 2 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 3 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 4 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 5 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+            
+                                        <strong>Topic 6 - Part of Speech</strong>
+                                        <p>Lorem ipsum dolorsit amec consecteur</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item"></div>
                         </div>
-                      </div>
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                            <span class = "w-100">2023</span> <span class = "pe-2">20</span>
-                        </button>
-                      </h2>
-                      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <strong>English</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
-
-                            <strong>Mathematics</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
-
-                            <strong>Computer Science</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
-
-                            <strong>Home Economics</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
-
-                        </div>
-
-                    </div>
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                            <span class = "w-100">2024</span> <span class = "pe-2">20</span>
-                        </button>
-                      </h2>
-                      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <strong>English</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
-
-                            <strong>Mathematics</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
-
-                            <strong>Computer Science</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
-
-                            <strong>Home Economics</strong>
-                            <p>Lorem ipsum dolorsit amec consecteur</p>
-                        </div>
-
-                      </div>
-
-                    </div>
-
-
-                    <div class="accordion-item"></div>
-
-                  </div>
-
+            
+                    </div> --}}
                 </div>
-
-            </div>
-            @yield('admincontent')
-
-
+            </nav>
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
+                @yield('admincontent')
 
                 <section class="container-fluid footer__container">
                     <div class="row">

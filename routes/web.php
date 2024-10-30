@@ -138,7 +138,7 @@ Route::get('/dashboard', function () {
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
     $users = Admin::where('role', 'user')->get();
-    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $Subjects]);
+    return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $Subjects]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -151,10 +151,34 @@ Route::middleware('auth')->group(function () {
     Route::get('/detailedstat', function () {
         return view('admin.detailedstat');
     });
-    
+
     Route::get('/totalsales', function () {
         return view('admin.totalsales');
     });
+
+
+
+    Route::get('/pastquestion', function () {
+        return view('admin.pastquestion');
+    });
+
+    Route::get('/learning', function () {
+        return view('admin.learning');
+    });
+
+    Route::get('/class', function () {
+        return view('admin.class');
+    });
+
+
+    Route::get('/price', function () {
+        return view('admin.price');
+    });
+
+
+
+
+
 });
 
 require __DIR__ . '/auth.php';
@@ -192,7 +216,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [AdminController::class, 'usersonly'])->name('users');
 
 
-// Classes Routes
+    // Classes Routes
     Route::get('/classes', [ClassesController::class, 'show'])->name('classes');
     Route::post('/classes', [ClassesController::class, 'store'])->name('classes.store');
     Route::post('/classes/{data}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
@@ -208,7 +232,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/adsubjects/{data}/destroy', [SubjectsController::class, 'destroy'])->name('adsubjects.destroy');
 
 
-    // Topics Routes 
+    // Topics Routes
     Route::get('/viewtopics/{data}/view', [TopicsController::class, 'show'])->name('viewtopics');
     Route::post('/viewtopics', [TopicsController::class, 'store'])->name('viewtopics.store');
     Route::post('/viewtopics/{data}/edit', [TopicsController::class, 'edit'])->name('viewtopics.edit');
@@ -218,7 +242,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-    // Exams Routes 
+    // Exams Routes
     Route::get('/adexams', [ExamsController::class, 'show'])->name('adexams');
     Route::post('/adexams', [ExamsController::class, 'store'])->name('adexams.store');
     Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
@@ -230,14 +254,16 @@ Route::middleware('auth')->group(function () {
 
 
 
-     // Questions Routes 
-     Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
-     Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
-     Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
-     Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
-     Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
+    // Questions Routes
+    Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
+    Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
+    Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
+    Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
+    Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
+
+
 });
-  
+
 
 
 
@@ -256,10 +282,9 @@ Route::get('/order', function () {
     return view('admin.order');
 });
 
-Route::get('/pastquestion', function()
-{
-    return view('admin.pastquestion');
-});
+
+
+
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');
