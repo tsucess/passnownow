@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="#" class="btn btn-primary card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="#" class="btn btn-primary card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="#" class="btn btn-primary card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="#" class="btn btn-primary card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -185,7 +185,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="#" class="btn btn-primary card-link">Learn more</a>
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="#" class="btn btn-primary card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>

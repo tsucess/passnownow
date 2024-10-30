@@ -115,6 +115,19 @@ class ExamsController extends Controller
     }
 
     /**
+     * Update the specified resource in storage.
+     */
+    public function enableStatus(Request $request)
+    {
+        dd($request);
+        // $exam = Exams::find($request->id);
+        // dd($exam);
+        // $exam->status = $request->status;
+        // $exam->save();
+       
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Exams $data)

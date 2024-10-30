@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\QuestionsController;
+use App\Models\Admin;
 use App\Models\Subjects;
 
 Route::get('/', function () {
@@ -133,13 +134,28 @@ Route::get('/checkout', function () {
 
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    $countAdmins = Admin::wherenot('role', 'user')->count();
+    $countUsers = Admin::where('role', 'user')->count();
+    $users = Admin::where('role', 'user')->get();
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+
+
+
+    Route::get('/detailedstat', function () {
+        return view('admin.detailedstat');
+    });
+    
+    Route::get('/totalsales', function () {
+        return view('admin.totalsales');
+    });
 });
 
 require __DIR__ . '/auth.php';
@@ -209,6 +225,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
     Route::patch('/adexams', [ExamsController::class, 'update'])->name('adexams.update');
     Route::get('/adexams/{data}/destroy', [ExamsController::class, 'destroy'])->name('adexams.destroy');
+    Route::get('/enableExam', [ExamsController::class, 'enableStatus'])->name('enableExam');
 
 
 
@@ -223,25 +240,12 @@ Route::middleware('auth')->group(function () {
 
 
 
-
-
-
-
 Route::get('/instructors', function () {
     return view('admin.instructors');
 });
 
-Route::get('/addashboard', function () {
-    return view('admin.addashboard');
-});
 
-Route::get('/addetailedstat', function () {
-    return view('admin.addetailedstat');
-});
 
-Route::get('/adtotalsales', function () {
-    return view('admin.adtotalsales');
-});
 
 Route::get('/product', function () {
     return view('admin.product');

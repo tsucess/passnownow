@@ -15,5 +15,6 @@ class Exams extends Model
         'title',
         'description',
         'avatar',
+        'status'
     ];
 }

@@ -35,7 +35,7 @@
             <thead class="bg-info">
                 <tr>
                     <th scope="col">S/N</th>
-                    <th scope="col">Title</th>
+                    <th scope="col" class="col-3">Title</th>
                     <th scope="col" class="col-3">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Status</th>
@@ -54,10 +54,8 @@
                         <td>{{ $Exam->created_at }}</td>
                         <td>
                             <div class="form-check form-switch">
-                                {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if ($video['status'] == 1) {
-                                    echo 'checked'; } ?> > --}}
-                                <input class="form-check-input enable-btn" value="" type="checkbox" data-value =""
-                                    checked>
+                                {{-- <input class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" value=""  {{ $Exam->status?'checked': ''}}    /> --}}
+                                <input class="form-check-input enable-btn"  data-id="{{ $Exam->id }}" value="{{ $Exam->status }}" type="checkbox"  @if($Exam->status === 1 ) {{ 'checked'}} @endif />
                             </div>
                         </td>
                         <td>
@@ -193,12 +191,6 @@
 
 
 
-
-
-
-
-
-
     <script src="{{ 'assets/js/table/jquery-3.3.1.min.js' }}"></script>
     <script src="{{ 'assets/js/table/jquery.dataTables.min.js' }}"></script>
     <script src="{{ 'assets/js/table/dataTables.bootstrap.min.js' }}"></script>
@@ -225,8 +217,51 @@
             $('#prev-avatar').val(editavatar);
         });
 
+        $('#admin-table tbody').on('change', '.enable-btn', function() {
+        
+            let statusVal = $(this).prop('checked') === true ? 1 : 0;
+            let id = $(this).data('id');
+                console.log(id);
+                console.log(statusVal);
+    
+            // $.ajax({
+            //     type: "get",
+            //     dataType: "json",
+            //     url: "/enableExam",
+            //     data: {"status": statusVal, "id": exam_id},
+            //     success: function (data) {
+            //         console.log("Success");
+            //     }
+            // });
+
+        let url = "/enableExam";
+		let xhr = new XMLHttpRequest(); //creating XML object
+		xhr.open("GET", url, true);
+		xhr.onload = () => {
+			if (xhr.readyState === XMLHttpRequest.DONE) {
+				if (xhr.status === 200) {
+					let data = xhr.response;
+					console.log(data);
+					// if (data === "success") {
+						
+                            
+					// } else {
+					// 	console.log(data);
+					// }
+				}
+			}
+		}
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.send('status=' + statusVal + '&id=' + id);
+
+
+    
+        });
+
     });
 
  
 </script>
+
+
 @endsection
