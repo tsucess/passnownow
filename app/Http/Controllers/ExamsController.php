@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Models\Classes;
 use App\Models\Exams;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 
 class ExamsController extends Controller
@@ -119,11 +120,11 @@ class ExamsController extends Controller
      */
     public function enableStatus(Request $request)
     {
-        dd($request);
-        // $exam = Exams::find($request->id);
+        // dd($request);
+        $exam = Exams::find($request()->id);
         // dd($exam);
-        // $exam->status = $request->status;
-        // $exam->save();
+        $exam->status = $request->status;
+        $exam->save();
        
     }
 

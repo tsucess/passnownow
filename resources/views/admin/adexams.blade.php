@@ -220,40 +220,25 @@
         $('#admin-table tbody').on('change', '.enable-btn', function() {
         
             let statusVal = $(this).prop('checked') === true ? 1 : 0;
-            let id = $(this).data('id');
-                console.log(id);
-                console.log(statusVal);
+            let exam_id = $(this).data('id');
+                // console.log(id);
+                // console.log(statusVal);
     
-            // $.ajax({
-            //     type: "get",
-            //     dataType: "json",
-            //     url: "/enableExam",
-            //     data: {"status": statusVal, "id": exam_id},
-            //     success: function (data) {
-            //         console.log("Success");
-            //     }
-            // });
-
-        let url = "/enableExam";
-		let xhr = new XMLHttpRequest(); //creating XML object
-		xhr.open("GET", url, true);
-		xhr.onload = () => {
-			if (xhr.readyState === XMLHttpRequest.DONE) {
-				if (xhr.status === 200) {
-					let data = xhr.response;
-					console.log(data);
-					// if (data === "success") {
-						
-                            
-					// } else {
-					// 	console.log(data);
-					// }
-				}
-			}
-		}
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        xhr.send('status=' + statusVal + '&id=' + id);
-
+            $.ajax({
+                type: "GET",
+                dataType: "application/json",
+                // url: "/enableExam",
+                url:  "{{ url('/adexams/enableExam')}}",
+                _token: '{{ csrf_token() }}',
+                contentType: 'application/json; charset=utf-8',
+                data: {"status": statusVal, "id": exam_id},
+                success: function (data) {
+                    console.log("Success");
+                },
+                error: function(data){
+                    alert("fail");
+                }
+            });
 
     
         });

@@ -32,19 +32,22 @@
                 <h5>Top Subjects Pick for You</h5>
                 <a href="#">See All</a>
             </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                <div class="card courses">
-                    <div class="image_wrapper">
-                        <img src="{{ asset('assets/images/admin/course-img1.png') }}" class="course-img" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class="courses-tag">Passnownow</div>
-                        <h5 class="card-title">English Language</h5>
-                        <button type="button" class="buton">View Details</button>
+            {{-- subjects --}}
+            @foreach ($subjects as $subject)
+                <div class="col-12 col-md-6 col-lg-4 mb-2">
+                    <div class="card courses">
+                        <div class="image_wrapper">
+                            <img src="{{ asset('storage/'.$subject->avatar) }}" class="course-img" alt="Avatar">
+                        </div>
+                        <div class="card-body">
+                            <div class="courses-tag">Passnownow</div>
+                            <h5 class="card-title">{{$subject->title}}</h5>
+                            <button type="button" class="buton">View Details</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-2">
+            @endforeach
+            {{-- <div class="col-12 col-md-6 col-lg-4 mb-2">
                 <div class="card courses">
                     <div class="image_wrapper">
                         <img src="{{ asset('assets/images/admin/course-img2.png') }}" class="course-img" alt="...">
@@ -67,7 +70,7 @@
                         <button type="button" class="buton">View Details</button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </section>
     <section class="container-fluid history__container">
@@ -271,7 +274,8 @@
                     </span>
                 </div>
             </a>
-            <a class = "col-12 col-md-6 me-3 mt-2 mb-3 col-12 col-md-6 border-start border-black border-1 text-decoration-none text-dark" href = "{{ url('order') }}">
+            <a class = "col-12 col-md-6 me-3 mt-2 mb-3 col-12 col-md-6 border-start border-black border-1 text-decoration-none text-dark"
+                href = "{{ url('order') }}">
                 <div class="">
                     <span class = "ms-2 profit">Orders</span> <br>
                     <span class  = "fw-3 ms-2 profit">10</span><span

@@ -134,18 +134,17 @@ Route::get('/checkout', function () {
 
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
+    $Subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
     $users = Admin::where('role', 'user')->get();
-    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins]);
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $Subjects]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-
 
 
 
@@ -225,7 +224,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
     Route::patch('/adexams', [ExamsController::class, 'update'])->name('adexams.update');
     Route::get('/adexams/{data}/destroy', [ExamsController::class, 'destroy'])->name('adexams.destroy');
-    Route::get('/enableExam', [ExamsController::class, 'enableStatus'])->name('enableExam');
+    Route::get('/adexams/enableExam', [ExamsController::class, 'enableStatus']);
+    // Route::post('/adexams/enableExam', [ExamsController::class, 'enableStatus']);
+    // Route::get('enableExam', [ExamsController::class, 'enableStatus'])->name('enableExam');
 
 
 
