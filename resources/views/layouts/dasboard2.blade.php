@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
+    <title>Student</title>
 
 
     <!-- Fonts -->
@@ -20,16 +20,15 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- Datatables  -->
-    <link rel="stylesheet" href="{{ asset('assets/css/table/dataTables.bootstrap5.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('assets/css/table/dataTables.bootstrap5.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
 
     <!-- Chart.js -->
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-   <!-- <script type = "text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
+   <!-- bootstrap.js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 
     <style>
         @media (min-width: 768px) {
@@ -71,7 +70,7 @@
             border-radius:10px;
             padding:6px;
         }
-
+/*
     @media only screen and (max-width: 320px)
     {
         .show
@@ -79,7 +78,7 @@
             margin-left:0;
             background: red;
         }
-    }
+    } */
 
     </style>
 </head>
@@ -131,85 +130,10 @@
         </div>
     </header>
 
-    <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
-                <div class="position-sticky">
-                    <ul class="nav flex-column ">
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('dashboard') }}" href="/dashboard">
-                                <i class="fa-solid fa-table-list"></i>
-                                Dashboard
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('admins') }}" href="/admins">
-                                <i class="fa-solid fa-user-tie"></i>
-                                Admin
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
-                                <i class="fa-regular fa-user"></i>
-                                Users
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('classes') }}" href="/classes">
-                                <i class="fa-solid fa-layer-group"></i>
-                                Classes
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
-                                <i class="fa-solid fa-swatchbook"></i>
-                                Subjects
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
-                                <i class="fa-solid fa-list"></i>
-                                Exams
-                            </x-sidebar-link>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{url('adpastquestions')}}">
-                                <i class="fa-solid fa-list"></i>
-                                Pass Questions
-                            </a>
-                        </li> --}}
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('subscriptiondetails') }}" href="/subscriptiondetails">
-                                <i class="fa-solid fa-hand-holding-dollar"></i>
-                                Subscription
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('subscription') }}" href="/subscription">
-                                <i class="fa-solid fa-dollar"></i>
-                                Pricing
-                            </x-sidebar-link>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('#') }}" href="#">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                                History
-                            </x-sidebar-link>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                Signout
-                            </a>
-                        </li> --}}
-                    </ul>
-                </div>
-            </nav>
+    @yield('admincontent')
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-                @yield('admincontent')
-                
                 <section class="container-fluid footer__container">
                     <div class="row">
                         <div class="col-12 col-md-5 col-lg-6 mb-2">&copy; Copyright Passnownow 2024, All Right Reserverd</div>
@@ -222,8 +146,7 @@
                     </div>
                 </section>
             </main>
-        </div>
-    </div>
+
 </body>
 
 </html>

@@ -193,7 +193,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/adsubjects/{data}/destroy', [SubjectsController::class, 'destroy'])->name('adsubjects.destroy');
 
 
-    // Topics Routes 
+    // Topics Routes
     Route::get('/viewtopics/{data}/view', [TopicsController::class, 'show'])->name('viewtopics');
     Route::post('/viewtopics', [TopicsController::class, 'store'])->name('viewtopics.store');
     Route::post('/viewtopics/{data}/edit', [TopicsController::class, 'edit'])->name('viewtopics.edit');
@@ -203,7 +203,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-    // Exams Routes 
+    // Exams Routes
     Route::get('/adexams', [ExamsController::class, 'show'])->name('adexams');
     Route::post('/adexams', [ExamsController::class, 'store'])->name('adexams.store');
     Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
@@ -212,14 +212,14 @@ Route::middleware('auth')->group(function () {
 
 
 
-     // Questions Routes 
+     // Questions Routes
      Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
      Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
      Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
      Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
      Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
 });
-  
+
 
 
 
@@ -253,7 +253,24 @@ Route::get('/order', function () {
 
 Route::get('/pastquestion', function()
 {
-    return view('admin.pastquestion');
+    return view('added.pastquestion');
+});
+
+
+Route::get('/learning', function()
+{
+    return view('added.learning');
+});
+
+Route::get('/class', function()
+{
+    return view('added.class');
+});
+
+
+Route::get('/subscription', function()
+{
+    return view('added.subscription');
 });
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
