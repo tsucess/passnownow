@@ -7,6 +7,8 @@
     .container__register .heading h6 {
         font-size: 1.2rem;
     }
+
+   
 }
 
 
@@ -47,6 +49,7 @@
         width: 100%;
     }
 
+   
 
 
 }
@@ -401,6 +404,10 @@
     .payment-logos {
         width: 100%;
     }
+
+    .subscription_history table .status {
+        width: 75%;
+      }
  
  }
 
