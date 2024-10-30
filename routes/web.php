@@ -255,6 +255,10 @@ Route::get('/order', function () {
     return view('admin.order');
 });
 
+Route::get('/pastquestion', function()
+{
+    return view('admin.pastquestion');
+});
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');

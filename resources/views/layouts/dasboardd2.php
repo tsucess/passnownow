@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/table/dataTables.bootstrap5.min.css') }} ">
 
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/responsiveness.css') }}">
 
     <!-- Chart.js -->
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -134,82 +133,99 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
-                <div class="position-sticky">
-                    <ul class="nav flex-column ">
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('dashboard') }}" href="/dashboard">
-                                <i class="fa-solid fa-table-list"></i>
-                                Dashboard
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('admins') }}" href="/admins">
-                                <i class="fa-solid fa-user-tie"></i>
-                                Admin
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
-                                <i class="fa-regular fa-user"></i>
-                                Users
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('classes') }}" href="/classes">
-                                <i class="fa-solid fa-layer-group"></i>
-                                Classes
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
-                                <i class="fa-solid fa-swatchbook"></i>
-                                Subjects
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
-                                <i class="fa-solid fa-list"></i>
-                                Exams
-                            </x-sidebar-link>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{url('adpastquestions')}}">
-                                <i class="fa-solid fa-list"></i>
-                                Pass Questions
-                            </a>
-                        </li> --}}
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('subscriptiondetails') }}" href="/subscriptiondetails">
-                                <i class="fa-solid fa-hand-holding-dollar"></i>
-                                Subscription
-                            </x-sidebar-link>
-                        </li>
-                        <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('subscription') }}" href="/subscription">
-                                <i class="fa-solid fa-dollar"></i>
-                                Pricing
-                            </x-sidebar-link>
-                        </li>
-                        {{-- <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('#') }}" href="#">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                                History
-                            </x-sidebar-link>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                Signout
-                            </a>
-                        </li> --}}
-                    </ul>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
+                <a href = "#" class = "btn btn-light w-100"><span class = "float-start ps-2"><i class="fa fa-angle-left pe-2" aria-hidden="true"></i>Back</span></a>
+
+                <h5 class = "h5 fw-bold ps-4 mb-3 mt-2">JSCE PAST QUESTION</h5>
+
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item d-flext justify-content-between w-100">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                          <span class = "w-100">2022</span> <span class = "pe-2">20</span>
+
+                        </button>
+                      </h2>
+                      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <strong>English</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Mathematics</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Computer Science</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Home Economics</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            <span class = "w-100">2023</span> <span class = "pe-2">20</span>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <strong>English</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Mathematics</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Computer Science</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Home Economics</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                        </div>
+
+                    </div>
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            <span class = "w-100">2024</span> <span class = "pe-2">20</span>
+                        </button>
+                      </h2>
+                      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <strong>English</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Mathematics</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Computer Science</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+
+                            <strong>Home Economics</strong>
+                            <p>Lorem ipsum dolorsit amec consecteur</p>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="accordion-item"></div>
+
+                  </div>
+
                 </div>
-            </nav>
+
+            </div>
+            @yield('admincontent')
+
+
 
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
-                @yield('admincontent')
                 <section class="container-fluid footer__container">
                     <div class="row">
                         <div class="col-12 col-md-5 col-lg-6 mb-2">&copy; Copyright Passnownow 2024, All Right Reserverd</div>

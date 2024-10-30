@@ -31,18 +31,20 @@
 
               <tr>
                 <td>
-                    <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">Total Sales</a></p>
+                    <a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">
+                    <p class = "m-0 p-0 mt-2">Total Sales</p>
                     <span class = "float-start profit"><strong>$23,523</strong></span>
                     <span class = "float-end mb-2">
                       <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                     </span>
+                </a>
                 </td>
 
 
                 <td>
-                    <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">Total Sales</a></p>
-                    <span class = "float-start profit"><strong>$23,523</strong></span>
-                    <span class = "float-end mb-2 profit">
+                    <p class = "m-0 p-0 mt-2" >Net Sales</p>
+                    <span class = "float-start"><strong>$23,523</strong></span>
+                    <span class = "float-end mb-2">
                       <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                     </span>
                 </td>
