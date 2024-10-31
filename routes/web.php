@@ -134,17 +134,18 @@ Route::get('/checkout', function () {
 
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
-    $Subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
     $users = Admin::where('role', 'user')->get();
-    return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $Subjects]);
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
 
 
 
@@ -155,30 +156,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/totalsales', function () {
         return view('admin.totalsales');
     });
-
-
-
-    Route::get('/pastquestion', function () {
-        return view('admin.pastquestion');
-    });
-
-    Route::get('/learning', function () {
-        return view('admin.learning');
-    });
-
-    Route::get('/class', function () {
-        return view('admin.class');
-    });
-
-
-    Route::get('/price', function () {
-        return view('admin.price');
-    });
-
-
-
-
-
 });
 
 require __DIR__ . '/auth.php';
@@ -216,7 +193,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [AdminController::class, 'usersonly'])->name('users');
 
 
-    // Classes Routes
+// Classes Routes
     Route::get('/classes', [ClassesController::class, 'show'])->name('classes');
     Route::post('/classes', [ClassesController::class, 'store'])->name('classes.store');
     Route::post('/classes/{data}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
@@ -248,20 +225,16 @@ Route::middleware('auth')->group(function () {
     Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
     Route::patch('/adexams', [ExamsController::class, 'update'])->name('adexams.update');
     Route::get('/adexams/{data}/destroy', [ExamsController::class, 'destroy'])->name('adexams.destroy');
-    Route::get('/adexams/enableExam', [ExamsController::class, 'enableStatus']);
-    // Route::post('/adexams/enableExam', [ExamsController::class, 'enableStatus']);
-    // Route::get('enableExam', [ExamsController::class, 'enableStatus'])->name('enableExam');
+    Route::get('/enableExam', [ExamsController::class, 'enableStatus'])->name('enableExam');
 
 
 
-    // Questions Routes
-    Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
-    Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
-    Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
-    Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
-    Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
-
-
+     // Questions Routes
+     Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
+     Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
+     Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
+     Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
+     Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
 });
 
 
@@ -282,28 +255,34 @@ Route::get('/order', function () {
     return view('admin.order');
 });
 
+Route::get('/pastquestion', function()
+{
+    return view('admin.pastquestion');
+});
 
 
+Route::get('/learning', function()
+{
+    return view('admin.learning');
+});
 
-<<<<<<< HEAD
 Route::get('/class', function()
 {
-    return view('added.class');
+    return view('admin.class');
 });
 
 
 Route::get('/subscription', function()
 {
-    return view('added.subscription');
+    return view('admin.subscription');
 });
 
-Route::get('/subscription', function()
+
+
+Route::get('/subject', function()
 {
-    return view('added.subscription');
+    return view('admin.subject');
 });
-
-=======
->>>>>>> 040c7bab7ab9879a0bd0e1de7caa4169e0ee3e3e
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');
