@@ -1,4 +1,4 @@
-@extends('layouts.dasboard2')
+@extends('layouts.dasboardtemp')
 
 @section('admincontent')
 <div class="container-fluid">

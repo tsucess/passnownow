@@ -65,3 +65,24 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 # passnownow.com Redevlopement
+
+
+
+
+ $.ajax({
+                type: "POST",
+                // dataType: "json",
+                url: "{{ url('/adexams/enableExam')}}",
+                data: { 
+                    _token: '{{ csrf_token() }}',
+                    "status": statusVal,
+                    "id" : id
+                },
+                success: function (response) {
+                    // console.log("Success");
+                    alert(response.message)
+                },
+                error: function (xhr) {
+                    alert('Error:' +xhr.status+ '_' + xhr.statusText)
+                }
+            });
