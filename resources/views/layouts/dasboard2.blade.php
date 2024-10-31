@@ -28,7 +28,7 @@
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
    <!-- <script type = "text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 
 
     <style>
@@ -71,14 +71,14 @@
             border-radius:10px;
             padding:6px;
         }
-    @media only screen and (max-width: 320px)
+    /* @media only screen and (max-width: 320px)
     {
         .show
         {
             margin-left:0;
             background: red;
         }
-    }
+    } */
 
     </style>
 </head>
@@ -132,16 +132,16 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white collapse">
                 <div class="position-sticky">
                     <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Accordion Item #1
+        First Term <span class = "ps-4 w-25">20</span>
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
             <strong>Topic 1 - Part of Speech</strong>
             <p>Lorem ipsum dolorsit amec consecteur</p>
@@ -166,7 +166,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Accordion Item #2
+        Second Term <span class = "ps-1 w-25">20</span>
       </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -194,7 +194,7 @@
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Accordion Item #3
+        Third Term <span class = "ps-3 w-25">20</span>
       </button>
     </h2>
     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -223,9 +223,9 @@
                     {{-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 col-4">
                         <a href = "#" class = "btn btn-light"><span class = "float-start ps-2"><i class="fa fa-angle-left pe-2"
                                     aria-hidden="true"></i>Back</span></a>
-            
+
                         <h6 class = "h6 fw-bold ps-4 mb-3">English Language</h6>
-            
+
                         <div class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
@@ -238,19 +238,19 @@
                                     <div class="accordion-body">
                                         <strong>Topic 1 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 2 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 3 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 4 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 5 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 6 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
                                     </div>
@@ -267,19 +267,19 @@
                                     <div class="accordion-body">
                                         <strong>Topic 1 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 2 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 3 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 4 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 5 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 6 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
                                     </div>
@@ -297,19 +297,19 @@
                                     <div class="accordion-body">
                                         <strong>Topic 1 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 2 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 3 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 4 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 5 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
-            
+
                                         <strong>Topic 6 - Part of Speech</strong>
                                         <p>Lorem ipsum dolorsit amec consecteur</p>
                                     </div>
@@ -317,7 +317,7 @@
                             </div>
                             <div class="accordion-item"></div>
                         </div>
-            
+
                     </div> --}}
                 </div>
             </nav>

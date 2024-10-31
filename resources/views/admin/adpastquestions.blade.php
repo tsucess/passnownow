@@ -75,10 +75,7 @@
         </table>
     </div>
 
-    {{-- <section>
-        <iframe src="https://app.Lumi.education/api/v1/run/gWQ6dY/embed" width="1088" height="720" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe>
-        <script src="https://app.Lumi.education/api/v1/h5p/core/js/h5p-resizer.js" charset="UTF-8"></script>
-    </section> --}}
+  
 
 
 
@@ -91,14 +88,14 @@
                     <h1 class="modal-title fs-5" id="addModalLabel">Add Past Questions</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
+
                 <form method="POST" action="{{ route('adpastquestions.store') }}" >
                     @csrf
 
                     <div class="modal-body">
                         <x-text-input type="hidden" class="form-control" name="unique_id" value="{{ rand(time(), 10000000) }}" />
                         <x-text-input type="hidden" class="form-control" name="ex_id" id="ex_id" />
-                        
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
@@ -248,7 +245,7 @@
                             </div>
                         </div>
 
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" name="submit" id="updateUser" class="btn btn-success">Update changes</button>
@@ -297,20 +294,20 @@
             var edityear = $(this).data('year');
 
             console.log(examu_id);
-        
+
             $('#examu_id').val(examu_id);
             $('#edit-id').val(id);
             $('#edit-title').val(title);
             $('#edit-url').val(url);
             $('#edit-order').val(editorder);
             $('#prev-year').val(edityear);
-            
+
         });
 
-     
+
 
     });
 
- 
+
 </script>
 @endsection
