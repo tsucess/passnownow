@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/table/dataTables.bootstrap5.min.css') }} ">
 
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/responsiveness.css') }}">
 
     <!-- Chart.js -->
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -81,6 +83,13 @@
         }
     }
 
+    .view:hover
+    {
+        background: blue;
+        color: #fff;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
     </style>
 </head>
 
@@ -170,7 +179,7 @@
                                 Pass Questions
                             </a>
                         </li> --}}
-                        
+
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('subscription') }}" href="/subscription">
                                 <i class="fa-solid fa-dollar"></i>

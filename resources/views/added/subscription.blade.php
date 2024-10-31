@@ -3,8 +3,8 @@
 
 @section('admincontent')
 
-<section class="container-fluid checkoutsummary__container mb-5">
-      
+<section class="container-fluid checkoutsummary__container mb-5 subscription">
+
           <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3 ">
               <div class="col">
                   <div class="card plan">
@@ -150,7 +150,7 @@
                           </div>
                       </div>
                       <div class="card-body text-center">
-                          <a href="#" class="card-link text-dark">Learn more</a>
+                          <a href="#" class="card-link text-dark">Subscribe</a>
                       </div>
                   </div>
               </div>
@@ -187,7 +187,7 @@
                           </div>
                       </div>
                       <div class="card-body text-center">
-                          <a href="#" class="card-link text-white">Learn more</a>
+                          <a href="#" class="card-link text-white">Subscribe</a>
                       </div>
                   </div>
               </div>
@@ -224,7 +224,7 @@
                           </div>
                       </div>
                       <div class="card-body text-center">
-                          <a href="#" class="card-link text-dark">Learn more</a>
+                          <a href="#" class="card-link text-dark">Subscribe</a>
                       </div>
 
                   </div>

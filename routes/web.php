@@ -152,7 +152,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/detailedstat', function () {
         return view('admin.detailedstat');
     });
-    
+
     Route::get('/totalsales', function () {
         return view('admin.totalsales');
     });
@@ -276,6 +276,12 @@ Route::get('/subscription', function()
 {
     return view('added.subscription');
 });
+
+Route::get('/subscription', function()
+{
+    return view('added.subscription');
+});
+
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');
