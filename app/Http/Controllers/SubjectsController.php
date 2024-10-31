@@ -6,7 +6,6 @@ use App\Models\Classes;
 use App\Models\Subjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 
 class SubjectsController extends Controller

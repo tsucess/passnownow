@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Classes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ClassesController extends Controller
 {
@@ -30,8 +31,12 @@ class ClassesController extends Controller
         $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:'.Classes::class],
             'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255']
+            'description' => ['required', 'string', 'max:255'],
+            'avatar' => ['required', 'mimes:jpg,png,jpeg', 'max:2048']
         ]);
+
+        $avatar = $request->file('avatar')->store('upload');
+
 
         // dd($request);
         // Add class
@@ -40,6 +45,7 @@ class ClassesController extends Controller
             'user_unique_id' => Auth::user()->unique_id,
             'title' => $request->title,
             'description' => $request->description,
+            'avatar' => $avatar
         ]);
 
         if ($done) {
@@ -66,10 +72,11 @@ class ClassesController extends Controller
      */
     public function update(Request $request)
     {
-
+    
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
+            'avatar' => ['sometimes', 'mimes:jpg,png,jpeg', 'max:2048', 'image']
         ]);
 
 
@@ -77,6 +84,17 @@ class ClassesController extends Controller
         if ($class) {
             $class->title = $request->title;
             $class->description = $request->description;
+
+            if ($request->avatar) {
+                // dd($request->prevavatar);
+                File::delete(storage_path('app/public/'.$request->prevavatar));
+                $avatar = $request->file('avatar')->store('upload');
+                $class->avatar = $avatar;
+            }
+            else
+            {
+                $class->avatar = $request->prevavatar;
+            }
             $class->save();
         // if ($done) {
             return redirect('/classes')->with('success', 'Class updated Successfully');
@@ -98,6 +116,7 @@ class ClassesController extends Controller
      */
     public function destroy(Classes $data)
     {
+        File::delete(storage_path('app/public/'.$data->avatar));
         $done = $data->delete();
         if ($done) {
             return redirect('/classes')->with('success', 'Class deleted successfully');
