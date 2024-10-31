@@ -1,6 +1,15 @@
 @extends('layouts.dasboardtemp')
 
 @section('admincontent')
+
+
+
+
+{{-- @if (Auth::user()->role === 'user')
+    
+@else
+    
+@endif --}}
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Classes</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -168,15 +177,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
 
 
     <script src="{{ 'assets/js/table/jquery-3.3.1.min.js' }}"></script>
