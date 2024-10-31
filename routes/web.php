@@ -200,6 +200,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/classes/{data}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
     Route::patch('/classes', [ClassesController::class, 'update'])->name('classes.update');
     Route::get('/classes/{data}/destroy', [ClassesController::class, 'destroy'])->name('classes.destroy');
+    Route::get('/subject/{data}/view', [SubjectsController::class, 'view'])->name('adsubjects');
 
 
     // Subjects Routes
