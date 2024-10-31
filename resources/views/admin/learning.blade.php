@@ -7,7 +7,7 @@
             <h6 class = "h6 mb-3 mt-3">Topic 1: Part of Speech</h6>
             <div class="w-100">
 
-                <iframe width="100%" height="415" src="https://app.Lumi.education/api/v1/run/gWQ6dY/embed" frameborder="0"
+                <iframe width="100%" height="690" src="https://app.Lumi.education/api/v1/run/gWQ6dY/embed" frameborder="0"
                     title = "YouTube video" allowfullscreen></iframe>
 
             </div>

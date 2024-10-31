@@ -27,8 +27,8 @@
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-   <!-- <script type = "text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
-  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
+    <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 
 
     <style>
@@ -79,20 +79,14 @@
 
 <body>
 
-    <header class="navbar sticky-top bg-white flex-md-nowrap p-1 g-1 shadow pe-md-3">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="">
-        </a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
-            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    {{-- <header class="navbar sticky-top bg-white flex-md-nowrap p-1 g-1 shadow pe-md-3">
+
+        
         {{-- <div class="row p-0 ">
-            <div class="col-12 p-0"> --}}
+            <div class="col-12 p-0"> 
         <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
         {{-- </div>
-        </div> --}}
+        </div> 
         <div class="navbar-nav">
             <span class="top_icon">
                 <i class="fa-regular fa-bell"></i>
@@ -123,23 +117,29 @@
                 </li>
             </div>
         </div>
-    </header>
+    </header> --}}
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white collapse shadow">
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
+                    <img src="{{ asset('assets/images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
+                </a>
+                <a class="btn btn-light rounded-pill ms-4 border" href="{{ url('classes') }}"><i class="fa-solid fa-arrow-left"></i> Back</a>
                 <div class="position-sticky">
                     <div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        First Term <span class = "ps-4 w-25">20</span>
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-            <strong>Topic 1 - Part of Speech</strong>
-            <p>Lorem ipsum dolorsit amec consecteur</p>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                    First Term <span class = "ps-4 w-25">20</span>
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>Topic 1 - Part of Speech</strong>
+                                    <p>Lorem ipsum dolorsit amec consecteur</p>
 
                                     <strong>Topic 2 - Part of Speech</strong>
                                     <p>Lorem ipsum dolorsit amec consecteur</p>
@@ -153,21 +153,23 @@
                                     <strong>Topic 5 - Part of Speech</strong>
                                     <p>Lorem ipsum dolorsit amec consecteur</p>
 
-            <strong>Topic 6 - Part of Speech</strong>
-            <p>Lorem ipsum dolorsit amec consecteur</p>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        Second Term <span class = "ps-1 w-25">20</span>
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            <strong>Topic 1 - Part of Speech</strong>
-            <p>Lorem ipsum dolorsit amec consecteur</p>
+                                    <strong>Topic 6 - Part of Speech</strong>
+                                    <p>Lorem ipsum dolorsit amec consecteur</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Second Term <span class = "ps-1 w-25">20</span>
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>Topic 1 - Part of Speech</strong>
+                                    <p>Lorem ipsum dolorsit amec consecteur</p>
 
                                     <strong>Topic 2 - Part of Speech</strong>
                                     <p>Lorem ipsum dolorsit amec consecteur</p>
@@ -181,21 +183,23 @@
                                     <strong>Topic 5 - Part of Speech</strong>
                                     <p>Lorem ipsum dolorsit amec consecteur</p>
 
-            <strong>Topic 6 - Part of Speech</strong>
-            <p>Lorem ipsum dolorsit amec consecteur</p>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Third Term <span class = "ps-3 w-25">20</span>
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            <strong>Topic 1 - Part of Speech</strong>
-            <p>Lorem ipsum dolorsit amec consecteur</p>
+                                    <strong>Topic 6 - Part of Speech</strong>
+                                    <p>Lorem ipsum dolorsit amec consecteur</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Third Term <span class = "ps-3 w-25">20</span>
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <strong>Topic 1 - Part of Speech</strong>
+                                    <p>Lorem ipsum dolorsit amec consecteur</p>
 
                                     <strong>Topic 2 - Part of Speech</strong>
                                     <p>Lorem ipsum dolorsit amec consecteur</p>
