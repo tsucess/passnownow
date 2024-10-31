@@ -283,6 +283,12 @@ Route::get('/subject', function()
 {
     return view('admin.subject');
 });
+
+
+Route::get('/pqexams', function()
+{
+    return view('pqexams');
+});
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');

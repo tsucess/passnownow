@@ -15,7 +15,7 @@
 </div>
 
 
-    <div class = "col-sm-4"><img src="{{asset('/assets/images/mathematics.png')}}" class = "img-fluid mb-2" /><span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">JSS 2 Class Note</span>
+    <div class = "col-sm-4"><img src="{{ asset('/assets/images/mathematics.png')}}" class = "img-fluid mb-2" /><span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">JSS 2 Class Note</span>
     <p class = "p text-md-start">Start Studying  with our wide collection of
         all Class Notes for all Terms and all Subjects
         </p>
@@ -25,7 +25,7 @@
     </div>
 
 
-    <div class = "col-sm-4"><img src="{{asset('/assets/images/computerscience.png')}}"  class = "img-fluid mb-2" /><span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">JSS 3 Class Note</span>
+    <div class = "col-sm-4"><img src="{{ asset('assets/images/computerscience.png')}}"  class = "img-fluid mb-2" /><span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">JSS 3 Class Note</span>
         <p class = "p text-md-start">Start Studying  with our wide collection of
             all Class Notes for all Terms and all Subjects
             </p>
@@ -61,7 +61,7 @@
         </div>
 
 
-        <div class = "col-sm-4"><img src="{{asset('/assets/images/computerscience.png')}}"  class = "img-fluid mb-2" /><span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">JSS 3 Class Note</span>
+        <div class = "col-sm-4"><img src="{{asset('/assets/images/computerscience.png')}}"  class = "img-fluid mb-2" /><span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">SS 3 Class Note</span>
             <p class = "p text-md-start">Start Studying  with our wide collection of
                 all Class Notes for all Terms and all Subjects
                 </p>

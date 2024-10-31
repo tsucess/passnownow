@@ -9,7 +9,7 @@
                 all Class Notes for all Terms and all Subjects
             </p>
             <div class="d-flex justify-content-center mb-3">
-                <button type="button" class="btn btn-outline-primary mb-3 ">VIEW ALL SUBJECTS</button>
+                <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
             </div>
         </div>
 
@@ -20,7 +20,7 @@
                 all Class Notes for all Terms and all Subjects
             </p>
             <div class="d-flex justify-content-center mb-3">
-                <button type="button" class="btn btn-outline-primary mb-3 ">VIEW ALL SUBJECTS</button>
+                <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
             </div>
         </div>
 
@@ -31,7 +31,7 @@
                 all Class Notes for all Terms and all Subjects
             </p>
             <div class="d-flex justify-content-center mb-3">
-                <button type="button" class="btn btn-outline-primary mb-3 ">VIEW ALL SUBJECTS</button>
+                <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
             </div>
         </div>
 
@@ -47,7 +47,7 @@
                 all Class Notes for all Terms and all Subjects
             </p>
             <div class="d-flex justify-content-center mb-3">
-                <button type="button" class="btn btn-outline-primary mb-3 ">VIEW ALL SUBJECTS</button>
+                <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
             </div>
         </div>
 
@@ -58,7 +58,7 @@
                 all Class Notes for all Terms and all Subjects
             </p>
             <div class="d-flex justify-content-center mb-3">
-                <button type="button" class="btn btn-outline-primary mb-3 ">VIEW ALL SUBJECTS</button>
+                <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
             </div>
         </div>
 
@@ -70,7 +70,7 @@
                 all Class Notes for all Terms and all Subjects
             </p>
             <div class="d-flex justify-content-center mb-3">
-                <button type="button" class="btn btn-outline-primary mb-3 ">VIEW ALL SUBJECTS</button>
+                <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
             </div>
         </div>
 
