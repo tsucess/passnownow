@@ -58,6 +58,27 @@ class SubjectsController extends Controller
         };
     }
 
+
+
+
+
+
+
+ /**
+     * Display the specified subject data resource.
+     */
+    public function display(Classes $data)
+    {
+        // dd($data);
+       
+        $subject_id = $data->id;
+        $class_id = $data->title;
+
+        $output = Subjects::where('class_unique_id', $class_id)->orderBy('title', 'asc')->get();
+        return view('admin.subject', ['fetchSubjects' => $output]);
+    }
+
+
     /**
      * Display the specified resource.
      */

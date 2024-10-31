@@ -14,7 +14,7 @@
                     <p class = "p text-md-center ms-4 me-4">{{$Class->description}}
                     </p>
                     <div class="d-flex justify-content-center mb-3">
-                        <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
+                        <a class="btn btn-outline-primary mb-3" href = "{{ route('subject', ['data' => $Class]) }}">VIEW ALL SUBJECTS</a>
                     </div>
                 </div>
             @endforeach
