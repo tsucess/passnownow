@@ -156,7 +156,7 @@
                             </x-sidebar-link>
                         </li>
                         <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('classes') }}" href="/classes">
+                            <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}" href="/classes">
                                 <i class="fa-solid fa-layer-group"></i>
                                 Classes
                             </x-sidebar-link>
