@@ -36,6 +36,7 @@
                     <th scope="col">S/N</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
+                    {{-- <th scope="col">Avatar</th> --}}
                     <th scope="col">Date</th>
                     <th scope="col">Actions</th>
 
@@ -48,6 +49,7 @@
                         <th>{{ ++$sn }}</th>
                         <td>{{ $Class->title }}</td>
                         <td>{{ $Class->description }}</td>
+                        {{-- <td>{{ $Class->avatar }}</td> --}}
                         <td>{{ $Class->created_at }}</td>
                         <td>
                             <div class="action">
@@ -55,7 +57,7 @@
                                 {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
                                 <ul class="more-options">
                                     <li><button class="btn btn-warning user-edit-btn p-1" data-id="{{ $Class->id }}"
-                                            data-title="{{ $Class->title }}" data-description="{{ $Class->description }}"
+                                            data-title="{{ $Class->title }}" data-avatar="{{ $Class->avatar }}" data-description="{{ $Class->description }}"
                                             data-bs-toggle="modal" data-bs-target="#editModal">edit</button>
                                     </li>
                                     <li><a href="{{ route('classes.destroy', ['data' => $Class->id]) }}"
@@ -79,7 +81,7 @@
                     <h1 class="modal-title fs-5" id="addModalLabel">Add Class</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="{{ route('classes.store') }}">
+                <form method="POST" action="{{ route('classes.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
                         <x-text-input type="hidden" class="form-control" name="unique_id"
@@ -98,6 +100,12 @@
                                     <x-input-label :value="__('Description')" class="form-label" />
                                     <textarea name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
                                     <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Subject Image</label>
+                                    <input type="file" name="avatar" class="form-control py-2" />
                                 </div>
                             </div>
                         </div>
@@ -124,7 +132,7 @@
                     <h1 class="modal-title fs-5" id="editModalLabel">Edit Class</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="edit-form" method="POST" action="{{ route('classes.update') }}">
+                <form id="edit-form" method="POST" action="{{ route('classes.update') }}" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
                     <div class="modal-body">
@@ -141,6 +149,13 @@
                                 <div class="mb-3">
                                     <label for="editInputLastname" class="form-label">Description</label>
                                     <input type="text" name="description" id="edit-description" class="form-control py-2" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="edit-avatar" class="form-label">Subject Image</label>
+                                    <input type="hidden" name="prevavatar" id="prev-avatar" class="form-control py-2" />
+                                    <input type="file" name="avatar" class="form-control py-2" />
                                 </div>
                             </div>
                         </div>
@@ -185,6 +200,7 @@
                 var id = $(this).data('id');
                 var title = $(this).data('title');
                 var description = $(this).data('description');
+                var editavatar = $(this).data('avatar');
 
                 // console.log(id);
                 // console.log(title);
@@ -194,6 +210,7 @@
                 $('#edit-id').val(id);
                 $('#edit-title').val(title);
                 $('#edit-description').val(description);
+                $('#prev-avatar').val(editavatar);
             });
 
         });
