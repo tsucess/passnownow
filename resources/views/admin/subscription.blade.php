@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="text-dark card-link">Subscribe</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="text-white card-link">Subscribe</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-white card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="text-dark card-link">Subscribe</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -148,7 +148,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="text-dark card-link">Subscribe</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -222,7 +222,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="text-dark card-link">Subscribe</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>

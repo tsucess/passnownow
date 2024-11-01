@@ -8,11 +8,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\PaystackController;
 use App\Models\Admin;
 use App\Models\Subjects;
+use App\Models\Classes;
 
 Route::get('/', function () {
-    return view('home');
+
+    $output = Classes::get();
+    return view('home', ['fetchClasses' => $output]);
     // return ['Laravel' => app()->version()];
 });
 
@@ -230,9 +234,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/enableExam', [ExamsController::class, 'enableStatus'])->name('enableExam');
 
 
-
-     // Questions Routes
-     Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
+    Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
+    
+    // Questions Routes
+    Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
      Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
      Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
      Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
@@ -291,6 +296,24 @@ Route::get('/pqexams', function()
 {
     return view('pqexams');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('callback', [PaystackController::class, 'callback'])->name('callback');
+Route::get('success', [PaystackController::class, 'success'])->name('success');
+Route::get('cancel', [PaystackController::class, 'cancel'])->name('cancel');
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');

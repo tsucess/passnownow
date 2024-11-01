@@ -30,7 +30,7 @@
                 </div>
             </div>
         </section>
-        
+
         <Section class="container-fluid container__hero">
             <div class="row">
                 <div class="col-12 col-md-6 hero__content">
@@ -88,7 +88,9 @@
                 <div class="col-12 col-md-6 heading">
                     <h3>How Passnownow Works</h3>
                     <p>
-                        Passnownow is Nigeria’s foremost online learning platform that provides students with access to high-quality educational materials tailored to their specific needs which are affordable and easily accessible.
+                        Passnownow is Nigeria’s foremost online learning platform that provides students with access to
+                        high-quality educational materials tailored to their specific needs which are affordable and easily
+                        accessible.
                     </p>
                 </div>
                 <div class="col-12 col-md-3 text-center">
@@ -138,7 +140,8 @@
                     <p class="hero-down__info">Make Passnownow your partner in lifelomg learning, providing you with the
                         resources and support you need to succeed at every stage of your journey.</p>
                     <div class="hero-btn">
-                        <a href="#" class="btn btn-outline-primary btn-style">Register &nbsp; <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#" class="btn btn-outline-primary btn-style">Register &nbsp; <i
+                                class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
                 <div class="col-12 col-md-6  hero-down-image">
@@ -273,15 +276,18 @@
                         </div>
                         <div class="lists">
                             <p class="list_sn">2</p>
-                            <p class="list">Whether it's building early foundations, helping with homework, getting better grades, mastering their subjects or passing pivotal exams.</p>
+                            <p class="list">Whether it's building early foundations, helping with homework, getting
+                                better grades, mastering their subjects or passing pivotal exams.</p>
                         </div>
                         <div class="lists">
                             <p class="list_sn">3</p>
-                            <p class="list">Whether it's building early foundations, helping with homework, getting better grades, mastering their subjects or passing pivotal exams.</p>
+                            <p class="list">Whether it's building early foundations, helping with homework, getting
+                                better grades, mastering their subjects or passing pivotal exams.</p>
                         </div>
                         <div class="lists">
                             <p class="list_sn">4</p>
-                            <p class="list">Whether it's building early foundations, helping with homework, getting better grades, mastering their subjects or passing pivotal exams.</p>
+                            <p class="list">Whether it's building early foundations, helping with homework, getting
+                                better grades, mastering their subjects or passing pivotal exams.</p>
                         </div>
                     </div>
                 </div>
@@ -396,18 +402,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-4 mb-3">
-                    <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                @foreach ($fetchClasses as $Class)
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="image-wrapper">
+                            <img src="{{ asset('storage/'. $Class->avatar) }}" alt="Class Image" style="height: 20rem">
+                        </div>
+                        <div class="note_info p-2">
+                            <h5>{{$Class->title}} Class Notes</h5>
+                            <p>{{$Class->description}}</p>
+                            <a href="{{url('#')}}" class="note_btn">VIEW ALL SUBJECTS</a>
+                        </div>
                     </div>
-                    <div class="note_info p-2">
-                        <h5>JSS 1 Class Notes</h5>
-                        <p>Start studying with our wide collection of all SSS 1 Class Notes all Terms on all Secondary
-                            School Subjects</p>
-                        <button class="note_btn">VIEW ALL SUBJECTS</button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3">
+                @endforeach
+                {{-- <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
                         <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
                     </div>
@@ -461,7 +468,7 @@
                             School Subjects</p>
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="row past__questions">
                 <div class="col-12 col-md-4 mb-3">

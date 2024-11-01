@@ -34,6 +34,7 @@ class QuestionsController extends Controller
         $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Questions::class],
             'title' => ['required', 'string', 'max:255'],
+            'description' => ['sometimes', 'string', 'max:255'],
             'year' => ['required', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
             'order' => ['sometimes', 'integer', 'max:255']
@@ -46,6 +47,7 @@ class QuestionsController extends Controller
             'unique_id' => $request->unique_id,
             'user_unique_id' => Auth::user()->unique_id,
             'title' => $request->title,
+            'description' => $request->description,
             'year' => $request->year,
             'url' => $request->url,
             'exam_unique_id' => $request->exam_id,
@@ -71,6 +73,20 @@ class QuestionsController extends Controller
 
         $output = Questions::where('exam_unique_id', $ex_id)->get();
         return view('admin.adpastquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'fetchQuestions' => $output]);
+    }
+    
+    /**
+     * Display the User specified resource.
+     */
+    public function usershow(Exams $data, Questions $questions)
+    {
+        // dd($data);
+
+        $exam_id = $data->id;
+        $ex_id = $data->id;
+
+        $output = Questions::where('exam_unique_id', $ex_id)->distinct()->get(['year']);
+        return view('admin.showpastquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'userFetchQuestions' => $output]);
     }
 
     /**
