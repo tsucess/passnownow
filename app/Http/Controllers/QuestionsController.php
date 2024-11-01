@@ -66,7 +66,6 @@ class QuestionsController extends Controller
      */
     public function show(Exams $data)
     {
-        // dd($data);
 
         $exam_id = $data->id;
         $ex_id = $data->id;
@@ -80,31 +79,37 @@ class QuestionsController extends Controller
      */
     public function usershow(Exams $data)
     {
-        // dd($data);
 
         $exam_id = $data->id;
         $ex_id = $data->id;
-
         $output = Questions::where('exam_unique_id', $ex_id)->distinct()->get(['year']);
-        return view('admin.showpastquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'userFetchQuestions' => $output]);
+        $result = [];
+        foreach ($output as $key ) {
+            $result[] = Questions::where('exam_unique_id', $ex_id)->where('year', $key->year)->get();
+        }
+        return view('admin.showpastquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'userFetchQuestions' => $result, 'result' => $result]);
     }
 
 
     /**
      * Display the User specified resource.
      */
-    public function showpastquest(Questions $data)
+    public function showpastquest(Exams $detail, Questions $data)
     {
-        // dd($data);
-
+        
         $exam_id = $data->id;
-        $ex_id = $data->id;
-        $yearNew = $data->year;
-        // $selectedYear = $year;
-
-        // $output = Questions::where('year', $selectedYear)->get();
-        $output = Questions::where('year', $yearNew)->get();
-        return view('admin.pqlearning', ['exam' => $exam_id, 'ex_id' => $ex_id, 'yearFetchQuestions' => $output]);
+        $exam_year = $data->year;
+        $exam_unique = $data->exam_unique_id;
+        // dd($exam_unique);
+        $results = Exams::get();
+        $output = [];
+        foreach ($results as $result) {
+            $output[] = Questions::where('exam_unique_id', $result->id)->where('year', $exam_year)->get();
+            // print_r($result->id);
+        }
+     
+        // return view('admin.pqlearning', ['yearFetchQuestions' => $result]);
+        return view('admin.pqlearning', ['yearFetchQuestions' => $output]);
     }
 
     /**
@@ -123,6 +128,7 @@ class QuestionsController extends Controller
         // dd($request);
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
+            'description' => ['sometimes', 'string', 'max:255'],
             'url' => ['required', 'string', 'max:255'],
             'edit_order' => ['sometimes', 'integer', 'max:255'],
         ]);
@@ -133,6 +139,7 @@ class QuestionsController extends Controller
         // dd($class);
         if ($class) {
             $class->title = $request->title;
+            $class->description = $request->description;
             $class->url = $request->url;
             $class->order = $request->edit_order;
 

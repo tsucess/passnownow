@@ -171,7 +171,7 @@
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="editInputLastname" class="form-label">Description</label>
-                                    <input type="text" name="description" class="form-control py-2" id="edit-description">
+                                    <textarea name="description" class="form-control py-2" rows="2" id="edit-description"></textarea>
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,7 @@
     </div>
 
     @if (Auth::user()->role !== 'user')
- 
+
         @if (count($errors) > 0)
             <div class="alert alert-danger pb-0">
                 <ul>
@@ -52,7 +52,7 @@
                     @foreach ($fetchQuestions as $Question)
                         <tr>
                             <th>{{ ++$sn }}</th>
-                            <td>{{ $Question->title . ' ' . $exam }}</td>
+                            <td>{{ $Question->title }}</td>
                             <td>{{ $Question->year }}</td>
                             <td>{{ $Question->url }}</td>
                             {{-- <td>{{ $exam }}</td> --}}
@@ -73,6 +73,7 @@
                                     <ul class="more-options">
                                         <li><button id="" class="btn btn-warning edit-btn p-1"
                                                 data-id="{{ $Question->id }}" data-title="{{ $Question->title }}"
+                                                data-description="{{ $Question->description }}"
                                                 data-url="{{ $Question->url }}" data-order="{{ $Question->order }}"
                                                 data-examu_id="{{ $exam }}" data-year="{{ $Question->year }}"
                                                 data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
@@ -108,7 +109,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <div class="mb-3">
-                                        <label for="title" class="form-label">Exam</label>
+                                        <label for="exam_id" class="form-label">Exam</label>
                                         <input type="text" name="exam_id" class="form-control py-2" id="exam_id"
                                             readonly />
                                     </div>
@@ -118,6 +119,13 @@
                                         <label for="title" class="form-label">Title</label>
                                         <input type="text" name="title" class="form-control py-2" id="title"
                                             required />
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="mb-3">
+                                        <x-input-label :value="__('Description')" class="form-label" />
+                                        <textarea name="description" class="form-control" rows="2">{{ old('description') }}</textarea>
+                                        <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -208,60 +216,60 @@
                                             id="edit-title" />
                                     </div>
                                 </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <x-input-label :value="__('Year')" class="form-label" />
-                                        <input type="hidden" name="prevyear" id="prev-year"
-                                            class="form-control py-2" />
-                                        <select class="form-control py-2" name = "year">
-                                            <option value ="">Select Exam Year</option>
-                                            <option value="1998">1998</option>
-                                            <option value="1999">1999</option>
-                                            <option value="2000">2000</option>
-                                            <option value="2001">2001</option>
-                                            <option value="2002">2002</option>
-                                            <option value="2003">2003</option>
-                                            <option value="2004">2004</option>
-                                            <option value="2005">2005</option>
-                                            <option value="2006">2006</option>
-                                            <option value="2007">2007</option>
-                                            <option value="2008">2008</option>
-                                            <option value="2009">2009</option>
-                                            <option value="2010">2010</option>
-                                            <option value="2011">2011</option>
-                                            <option value="2012">2012</option>
-                                            <option value="2013">2013</option>
-                                            <option value="2014">2014</option>
-                                            <option value="2015">2015</option>
-                                            <option value="2016">2016</option>
-                                            <option value="2017">2017</option>
-                                            <option value="2018">2018</option>
-                                            <option value="2019">2019</option>
-                                            <option value="2020">2020</option>
-                                            <option value="2021">2021</option>
-                                            <option value="2022">2022</option>
-                                            <option value="2023">2023</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2025">2025</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="edit-url" class="form-label">Url</label>
-                                        <input type="text" name="url" class="form-control py-2" id="edit-url">
-                                    </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-3">
-                                        <label for="edit-order" class="form-label">Order</label>
-                                        <input type="text" name="edit_order" class="form-control py-2"
-                                            id="edit-order">
-                                    </div>
+                                <div class="mb-3">
+                                    <label for="editInputLastname" class="form-label">Description</label>
+                                    <textarea name="description" class="form-control py-2" rows="2" id="edit-description"></textarea>
                                 </div>
                             </div>
-
-
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <x-input-label :value="__('Year')" class="form-label" />
+                                    <input type="hidden" name="prevyear" id="prev-year" class="form-control py-2" />
+                                    <select class="form-control py-2" name = "year">
+                                        <option value ="">Select Exam Year</option>
+                                        <option value="1998">1998</option>
+                                        <option value="1999">1999</option>
+                                        <option value="2000">2000</option>
+                                        <option value="2001">2001</option>
+                                        <option value="2002">2002</option>
+                                        <option value="2003">2003</option>
+                                        <option value="2004">2004</option>
+                                        <option value="2005">2005</option>
+                                        <option value="2006">2006</option>
+                                        <option value="2007">2007</option>
+                                        <option value="2008">2008</option>
+                                        <option value="2009">2009</option>
+                                        <option value="2010">2010</option>
+                                        <option value="2011">2011</option>
+                                        <option value="2012">2012</option>
+                                        <option value="2013">2013</option>
+                                        <option value="2014">2014</option>
+                                        <option value="2015">2015</option>
+                                        <option value="2016">2016</option>
+                                        <option value="2017">2017</option>
+                                        <option value="2018">2018</option>
+                                        <option value="2019">2019</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="edit-url" class="form-label">Url</label>
+                                    <input type="text" name="url" class="form-control py-2" id="edit-url">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label for="edit-order" class="form-label">Order</label>
+                                    <input type="text" name="edit_order" class="form-control py-2" id="edit-order">
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="submit" name="submit" id="updateUser" class="btn btn-success">Update
@@ -308,6 +316,7 @@
                 var examu_id = $(this).data('examu_id');
                 var id = $(this).data('id');
                 var title = $(this).data('title');
+                var description = $(this).data('description');
                 var url = $(this).data('url');
                 var editorder = $(this).data('order');
                 var edityear = $(this).data('year');
@@ -317,6 +326,7 @@
                 $('#examu_id').val(examu_id);
                 $('#edit-id').val(id);
                 $('#edit-title').val(title);
+                $('#edit-description').val(description);
                 $('#edit-url').val(url);
                 $('#edit-order').val(editorder);
                 $('#prev-year').val(edityear);

@@ -12,17 +12,18 @@
 
     @if (Auth::user()->role === 'user')
         <div class = "row mt-3 gap-2">
+            {{-- {{ $result }} --}}
             @foreach ($userFetchQuestions as $Question)
-                <div class = "col-12 col-md-4 border rounded p-4">
+                <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%">
                     {{-- <img src="{{ asset('/assets/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
-                    <h5 class = "text-center fw-bold jss px-4">{{ $Question->year }}</h5>
+                    <h5 class = "text-center fw-bold jss px-4">{{ $Question[0]->year }}</h5>
                     <p class = "text-md-center px-5 py-2">
-                        {{ $Question->description }}
-                        Start Studying with our wide collection of
-                        all Class Notes for all Terms and all Subjects
+                        {{ $Question[0]->description }}
+                        {{-- Start Studying with our wide collection of
+                        all Class Notes for all Terms and all Subjects --}}
                     </p>
                     <div class="d-flex justify-content-center mt-5 mb-3">
-                        <a href="{{ url('pqlearning', ['data' => $Question]) }}" class="btn btn-outline-primary mb-3 py-2 px-4">VIEW ALL QUESTIONS</a>
+                        <a href="{{ route('pqlearning', ['data' => $Question[0]])  }}" class="btn btn-outline-primary mb-3 py-2 px-4">VIEW ALL QUESTIONS</a>
                     </div>
                 </div>
             @endforeach
