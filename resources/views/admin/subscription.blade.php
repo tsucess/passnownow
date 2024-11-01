@@ -2,7 +2,7 @@
 
 @section('admincontent')
     <section class="container-fluid checkoutsummary__container">
-        <div class="row">
+
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 subscription_profiles">
                 <div class="col">
                     <div class="card plan">
@@ -16,33 +16,33 @@
                         <div class="card-body">
                             <h5>What’s Include?</h4>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Valid for 24hrs</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Valid for 24hrs</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all Class Notes</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all Class Notes</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all JSSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all JSSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all SSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all SSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all UMTE / JAMB Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all UMTE / JAMB Past Questions</p>
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card plan special">
+                    <div class="card plan special text-white" style="background: #1A69AF;">
                         <div class="card-body top">
                             <h5 class="card-title">Monthly Plan</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet.</p>
@@ -53,28 +53,28 @@
                         <div class="card-body">
                             <h5>What’s Include?</h4>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Valid for 24hrs</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Valid for 24hrs</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all Class Notes</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all Class Notes</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all JSSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all JSSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all SSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all SSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all UMTE / JAMB Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all UMTE / JAMB Past Questions</p>
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-white card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -90,28 +90,28 @@
                         <div class="card-body">
                             <h5>What’s Include?</h4>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Valid for 24hrs</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Valid for 24hrs</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all Class Notes</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all Class Notes</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all JSSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all JSSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all SSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all SSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all UMTE / JAMB Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all UMTE / JAMB Past Questions</p>
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -127,33 +127,33 @@
                         <div class="card-body">
                             <h5>What’s Include?</h4>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Valid for 24hrs</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Valid for 24hrs</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all Class Notes</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all Class Notes</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all JSSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all JSSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all SSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all SSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all UMTE / JAMB Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all UMTE / JAMB Past Questions</p>
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card plan special">
+                    <div class="card plan special text-white" style="background: #1A69AF;">
                         <div class="card-body top">
                             <h5 class="card-title">Half Year Plan</h5>
                             <p class="card-text">Lorem ipsum dolor sit amet.</p>
@@ -164,28 +164,28 @@
                         <div class="card-body">
                             <h5>What’s Include?</h4>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Valid for 24hrs</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Valid for 24hrs</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all Class Notes</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all Class Notes</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all JSSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all JSSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all SSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all SSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all UMTE / JAMB Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all UMTE / JAMB Past Questions</p>
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="#" class="text-white card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
@@ -201,32 +201,32 @@
                         <div class="card-body">
                             <h5>What’s Include?</h4>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Valid for 24hrs</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Valid for 24hrs</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all Class Notes</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all Class Notes</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all JSSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all JSSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all SSCE Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all SSCE Past Questions</p>
                             </div>
                             <div class="lists">
-                                <i class="fa-solid fa-circle-check"></i>
-                                <p class="list">Access to all UMTE / JAMB Past Questions</p>
+
+                                <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Access to all UMTE / JAMB Past Questions</p>
                             </div>
                         </div>
                         <div class="card-body text-center">
-                            <a href="#" class="card-link">Learn more</a>
+                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
     </section>
 @endsection

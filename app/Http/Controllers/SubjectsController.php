@@ -6,7 +6,6 @@ use App\Models\Classes;
 use App\Models\Subjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 
 class SubjectsController extends Controller
@@ -59,13 +58,35 @@ class SubjectsController extends Controller
         };
     }
 
+
+
+
+
+
+
+ /**
+     * Display the specified subject data resource.
+     */
+    public function display(Classes $data)
+    {
+        // dd($data);
+       
+        $subject_id = $data->id;
+        $class_id = $data->title;
+
+        $output = Subjects::where('class_unique_id', $class_id)->orderBy('title', 'asc')->get();
+        return view('admin.subject', ['fetchSubjects' => $output]);
+    }
+
+
     /**
      * Display the specified resource.
      */
     public function show()
     {
-        $output = Subjects::get();
-        return view('admin.adsubjects', ['fetchSubjects' => $output]);
+        $classdata = Classes::get();
+        $output = Subjects::orderBy('class_unique_id', 'asc')->get();
+        return view('admin.adsubjects', ['fetchSubjects' => $output, 'fetchClasses' => $classdata]);
     }
 
 
@@ -124,6 +145,7 @@ class SubjectsController extends Controller
      */
     public function destroy(Subjects $data)
     {
+        File::delete(storage_path('app/public/'.$data->avatar));
         $done = $data->delete();
         if ($done) {
             return redirect('/adsubjects')->with('success', 'Subject` deleted successfully');

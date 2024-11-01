@@ -45,7 +45,9 @@
                 </form>
             </div>
         </div>
-
-
     </section>
+
+
+
+    <script src="https://js.paystack.co/v2/inline.js">
 @endsection

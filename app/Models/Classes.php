@@ -14,6 +14,7 @@ class Classes extends Model
         'unique_id',
         'user_unique_id',
         'title',
-        'description'
+        'description',
+        'avatar'
     ];
 }

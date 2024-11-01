@@ -7,10 +7,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TopicsController;
+use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\PaystackController;
+use App\Models\Admin;
 use App\Models\Subjects;
+use App\Models\Classes;
 
 Route::get('/', function () {
-    return view('home');
+
+    $output = Classes::get();
+    return view('home', ['fetchClasses' => $output]);
     // return ['Laravel' => app()->version()];
 });
 
@@ -132,13 +138,29 @@ Route::get('/checkout', function () {
 
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
-    return view('admin.dashboard');
+    $subjects = Subjects::limit(3)->get();
+    $countAdmins = Admin::wherenot('role', 'user')->count();
+    $countUsers = Admin::where('role', 'user')->count();
+    $users = Admin::where('role', 'user')->get();
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+
+
+
+
+    Route::get('/detailedstat', function () {
+        return view('admin.detailedstat');
+    });
+
+    Route::get('/totalsales', function () {
+        return view('admin.totalsales');
+    });
 });
 
 require __DIR__ . '/auth.php';
@@ -182,6 +204,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/classes/{data}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
     Route::patch('/classes', [ClassesController::class, 'update'])->name('classes.update');
     Route::get('/classes/{data}/destroy', [ClassesController::class, 'destroy'])->name('classes.destroy');
+    Route::get('/subject/{data}/view', [SubjectsController::class, 'display'])->name('subject');
 
 
     // Subjects Routes
@@ -192,22 +215,34 @@ Route::middleware('auth')->group(function () {
     Route::get('/adsubjects/{data}/destroy', [SubjectsController::class, 'destroy'])->name('adsubjects.destroy');
 
 
-    // Topics Routes 
+    // Topics Routes
     Route::get('/viewtopics/{data}/view', [TopicsController::class, 'show'])->name('viewtopics');
     Route::post('/viewtopics', [TopicsController::class, 'store'])->name('viewtopics.store');
     Route::post('/viewtopics/{data}/edit', [TopicsController::class, 'edit'])->name('viewtopics.edit');
     Route::patch('/viewtopics', [TopicsController::class, 'update'])->name('viewtopics.update');
     Route::get('/viewtopics/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewtopics.destroy');
-});
-  
 
 
-Route::get('/adpastquestions', function () {
-    return view('admin.adpastquestions');
-});
 
-Route::get('/adexams', function () {
-    return view('admin.adexams');
+
+    // Exams Routes
+    Route::get('/adexams', [ExamsController::class, 'show'])->name('adexams');
+    Route::post('/adexams', [ExamsController::class, 'store'])->name('adexams.store');
+    Route::post('/adexams/{data}/edit', [ExamsController::class, 'edit'])->name('adexams.edit');
+    Route::patch('/adexams', [ExamsController::class, 'update'])->name('adexams.update');
+    Route::get('/adexams/{data}/destroy', [ExamsController::class, 'destroy'])->name('adexams.destroy');
+    Route::get('/enableExam', [ExamsController::class, 'enableStatus'])->name('enableExam');
+
+
+    Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
+    
+    // Questions Routes
+    Route::get('/pqlearning/{data}/view', [QuestionsController::class, 'showpastquest'])->name('pqlearning');
+    Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
+     Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
+     Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
+     Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
+     Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
 });
 
 
@@ -217,6 +252,69 @@ Route::get('/instructors', function () {
     return view('admin.instructors');
 });
 
+
+
+
+Route::get('/product', function () {
+    return view('admin.product');
+});
+
+Route::get('/order', function () {
+    return view('admin.order');
+});
+
+Route::get('/pastquestion', function()
+{
+    return view('admin.pastquestion');
+});
+
+
+Route::get('/learning', function()
+{
+    return view('admin.learning');
+});
+
+Route::get('/class', function()
+{
+    return view('admin.class');
+});
+
+
+Route::get('/subscription', function()
+{
+    return view('admin.subscription');
+});
+
+
+
+Route::get('/subject', function()
+{
+    return view('admin.subject');
+});
+
+
+Route::get('/pqexams', function()
+{
+    return view('pqexams');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('callback', [PaystackController::class, 'callback'])->name('callback');
+Route::get('success', [PaystackController::class, 'success'])->name('success');
+Route::get('cancel', [PaystackController::class, 'cancel'])->name('cancel');
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');
