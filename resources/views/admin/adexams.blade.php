@@ -3,13 +3,13 @@
 @section('admincontent')
 
     @if (Auth::user()->role === 'user')
-        <div class = "row mt-3">
+        <div class = "row mt-3 gap-2">
 
             @foreach ($fetchExams as $Exam)
-                <div class = "col-12 col-md-4 text-center shadow">
+                <div class = "col-12 col-md-4 text-center shadow" style="width: 32%">
                     <img src="{{ asset('storage/' . $Exam->avatar) }}" class = "img-fluid mb-3" style="height: 15rem" />
                     <div class="mb-3" style="height: 12rem">
-                        <h5 class = "text-center fw-bold jss px-4">{{ strtoupper($Exam->title) }}</h5>
+                        <h5 class = "text-center fw-bold px-3">{{ strtoupper($Exam->title) }}</h5>
                         <p class = "text-md-center px-4 py-2">
                             {{ $Exam->description }}
                         </p>

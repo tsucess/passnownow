@@ -64,7 +64,7 @@ class QuestionsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Exams $data, Questions $questions)
+    public function show(Exams $data)
     {
         // dd($data);
 
@@ -78,7 +78,7 @@ class QuestionsController extends Controller
     /**
      * Display the User specified resource.
      */
-    public function usershow(Exams $data, Questions $questions)
+    public function usershow(Exams $data)
     {
         // dd($data);
 
@@ -87,6 +87,24 @@ class QuestionsController extends Controller
 
         $output = Questions::where('exam_unique_id', $ex_id)->distinct()->get(['year']);
         return view('admin.showpastquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'userFetchQuestions' => $output]);
+    }
+
+
+    /**
+     * Display the User specified resource.
+     */
+    public function showpastquest(Questions $data)
+    {
+        // dd($data);
+
+        $exam_id = $data->id;
+        $ex_id = $data->id;
+        $yearNew = $data->year;
+        // $selectedYear = $year;
+
+        // $output = Questions::where('year', $selectedYear)->get();
+        $output = Questions::where('year', $yearNew)->get();
+        return view('admin.pqlearning', ['exam' => $exam_id, 'ex_id' => $ex_id, 'yearFetchQuestions' => $output]);
     }
 
     /**
