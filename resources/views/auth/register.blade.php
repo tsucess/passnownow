@@ -8,6 +8,7 @@
 
     <title>Register Here</title>
 
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -92,7 +93,7 @@
                                 <span class="pass_hidden">
                                     <x-text-input type="password" id="cPassword" class="form-control" :value="old('password_confirmation ')" name="password_confirmation" aria-describedby="passwordBlock" placeholder="Repeat Password" />
                                 </span>
-                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />         
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" name="terms" class="form-check-input" id="check_terms" />
