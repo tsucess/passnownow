@@ -1,4 +1,4 @@
-@extends('layouts.dasboard2')
+@extends('layouts.pqinterface')
 
 @section('admincontent')
     <div class="row align-items-start" >
