@@ -12,6 +12,9 @@ use App\Http\Controllers\PaystackController;
 use App\Models\Admin;
 use App\Models\Subjects;
 use App\Models\Classes;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+
 
 Route::get('/', function () {
 
@@ -235,7 +238,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
-    
+
     // Questions Routes
     Route::get('/pqlearning/{data}/view', [QuestionsController::class, 'showpastquest'])->name('pqlearning');
     Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
@@ -332,3 +335,5 @@ Route::get('cancel', [PaystackController::class, 'cancel'])->name('cancel');
 
 // How to get access view from controller
 // Route::get('home', [UserController::class, 'getHome']);
+
+
