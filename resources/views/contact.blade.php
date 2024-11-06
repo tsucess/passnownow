@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-12 col-md-8 col-lg-9 text-center contact">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/map-2.png') }}" alt=""/>
+                    <img src="{{ asset('images/map-2.png') }}" alt=""/>
                 </div>
             </div>
             <div class="col-12 col-md-4 col-lg-3 address">

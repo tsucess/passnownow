@@ -42,7 +42,7 @@
             </div>
             <div class="col-12  col-md-7 mb-3 p-0">
                 <div class="image-wrapped skills_hero">
-                    <img src="{{ asset('assets/images/childreading.png') }}" alt="" />
+                    <img src="{{ asset('images/childreading.png') }}" alt="" />
                 </div>
             </div>
         </div>

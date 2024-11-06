@@ -13,18 +13,18 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Fontawesome icons -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/fontawesome.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/solid.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/brands.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/regular.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/regular.css') }} ">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- Datatables  -->
-    <link rel="stylesheet" href="{{ asset('assets/css/table/dataTables.bootstrap5.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('css/table/dataTables.bootstrap5.min.css') }} ">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/responsiveness.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsiveness.css') }}">
 
     <!-- Chart.js -->
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -97,7 +97,7 @@
 
     <header class="navbar sticky-top bg-white flex-md-nowrap p-1 g-1 shadow pe-md-3">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url('/')}}">
-            <img src="{{ asset('assets/images/logo.png') }}" alt="">
+            <img src="{{ asset('images/logo.png') }}" alt="">
         </a>
         <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
@@ -120,7 +120,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="{{ asset('assets/images/profile.png') }}" alt="">
+                        <img src="{{ asset('images/profile.png') }}" alt="">
                     </a>
                     <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
                         <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a>

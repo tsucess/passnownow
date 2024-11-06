@@ -19,7 +19,7 @@
             <div class="col-12 col-md-6 header">
                 <h6 class="text-start">Useful Skills For Teachers</h6>
                 <div class="image-wrapped linechart">
-                    <img src="{{ asset('assets/images/linechart.png') }}" alt="" />
+                    <img src="{{ asset('images/linechart.png') }}" alt="" />
                 </div>
             </div>
             <div class="col-12 col-md-6 header mb-3">
@@ -27,13 +27,13 @@
                     While teaching can certainly be a challenge, it is also one of the most rewarding careers out there.
                     Check out some of the useful skills for teachers to see if there are any areas you need to work on:
                 </p>
-                <img src="{{ asset('assets/images/icon-slant-right.png') }}" class="icon-slant" alt="" />
+                <img src="{{ asset('images/icon-slant-right.png') }}" class="icon-slant" alt="" />
             </div>
         </div>
         <div class="row m-0 p-0 mb-3">
             <div class="col-12 mb-3 p-0">
                 <div class="image-wrapped skills_hero">
-                    <img src="{{ asset('assets/images/childreading.png') }}" alt="" />
+                    <img src="{{ asset('images/childreading.png') }}" alt="" />
                 </div>
             </div>
         </div>

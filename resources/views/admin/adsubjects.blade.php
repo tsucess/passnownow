@@ -32,7 +32,7 @@
   
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
-            <thead class="bg-info">
+            <thead class="bg-primary text-white">
                 <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Title</th>
@@ -76,10 +76,7 @@
         </table>
     </div>
 
-    {{-- <section>
-        <iframe src="https://app.Lumi.education/api/v1/run/gWQ6dY/embed" width="1088" height="720" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe>
-        <script src="https://app.Lumi.education/api/v1/h5p/core/js/h5p-resizer.js" charset="UTF-8"></script>
-    </section> --}}
+
 
 
 
@@ -217,9 +214,9 @@
 
 
 
-    <script src="{{ 'assets/js/table/jquery-3.3.1.min.js' }}"></script>
-    <script src="{{ 'assets/js/table/jquery.dataTables.min.js' }}"></script>
-    <script src="{{ 'assets/js/table/dataTables.bootstrap.min.js' }}"></script>
+    <script src="{{ 'js/table/jquery-3.3.1.min.js' }}"></script>
+    <script src="{{ 'js/table/jquery.dataTables.min.js' }}"></script>
+    <script src="{{ 'js/table/dataTables.bootstrap.min.js' }}"></script>
 
 
     <script>

@@ -20,7 +20,7 @@
             @endforeach
 
             {{-- 
-            <div class = "col-sm-4"><img src="{{ asset('/assets/images/js2.png') }}" class = "img-fluid mb-2" /><span
+            <div class = "col-sm-4"><img src="{{ asset('/images/js2.png') }}" class = "img-fluid mb-2" /><span
                     class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">JSS 2 Class Note</span>
                 <p class = "p text-md-center ms-4 me-4">Start Studying with our wide collection of
                     all Class Notes for all Terms and all Subjects
@@ -31,7 +31,7 @@
             </div>
 
 
-            <div class = "col-sm-4"><img src="{{ asset('/assets/images/js3.png') }}" class = "img-fluid mb-2" /><span
+            <div class = "col-sm-4"><img src="{{ asset('/images/js3.png') }}" class = "img-fluid mb-2" /><span
                     class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">JSS 3 Class Note</span>
                 <p class = "p text-md-center ms-4 me-4">Start Studying with our wide collection of
                     all Class Notes for all Terms and all Subjects
@@ -72,7 +72,7 @@
         {{-- <php if (isset($output)) {?> --}}
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
-                <thead class="bg-info">
+                <thead class="bg-primary text-white">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col">Title</th>
@@ -218,10 +218,10 @@
     @endif
 
 
-    <script src="{{ 'assets/js/table/jquery-3.3.1.min.js' }}"></script>
-    <script src="{{ 'assets/js/jquery.min.js' }}"></script>
-    <script src="{{ 'assets/js/table/jquery.dataTables.min.js' }}"></script>
-    <script src="{{ 'assets/js/table/dataTables.bootstrap.min.js' }}"></script>
+    <script src="{{ 'js/table/jquery-3.3.1.min.js' }}"></script>
+    <script src="{{ 'js/jquery.min.js' }}"></script>
+    <script src="{{ 'js/table/jquery.dataTables.min.js' }}"></script>
+    <script src="{{ 'js/table/dataTables.bootstrap.min.js' }}"></script>
 
 
 
