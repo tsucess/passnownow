@@ -119,6 +119,7 @@
                         <img src="{{ asset('images/profile.png') }}" alt="">
                     </a>
                     <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
+                        <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
                         <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
                             <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
