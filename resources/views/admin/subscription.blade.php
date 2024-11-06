@@ -16,7 +16,6 @@
                         <div class="card-body">
                             <h5>What’s Include?</h4>
                             <div class="lists">
-
                                 <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Valid for 24hrs</p>
                             </div>
                             <div class="lists">

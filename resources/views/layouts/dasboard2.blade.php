@@ -12,12 +12,15 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/regular.css') }} ">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+   
 
     <!-- Datatables  -->
     <link rel="stylesheet" href="{{ asset('css/table/dataTables.bootstrap5.min.css') }} ">
@@ -340,6 +343,7 @@
             </main>
         </div>
     </div>
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>
