@@ -96,6 +96,9 @@ ul {
 }
 
 
+.navbar .navbar-nav .nav-item a {
+    color: var(--color-primary);
+}
 .navbar .navbar-nav .nav-item:hover {
     border-bottom: 2px solid var(--color-primary);
 }
@@ -177,7 +180,7 @@ ul {
     border-radius: 50%;
   }
   
-  .dropdown-menu {
+  .profile .dropdown-menu {
     width: 5rem !important;
     position: absolute !important;
     left: -6rem !important;
