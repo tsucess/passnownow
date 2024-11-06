@@ -8,7 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\QuestionsController;
-use App\Http\Controllers\PaystackController;
+use App\Http\Controllers\PaymentController;
 use App\Models\Admin;
 use App\Models\Subjects;
 use App\Models\Classes;
@@ -16,6 +16,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
+
 
 
 
@@ -142,13 +143,22 @@ Route::get('/checkout', function () {
 });
 
 
+// DASHBOARD ROUTING
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        $subjects = Subjects::limit(3)->get();
+        $countAdmins = Admin::wherenot('role', 'user')->count();
+        $countUsers = Admin::where('role', 'user')->count();
+        $users = Admin::where('role', 'user')->get();
+        return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects]);
+    })->name('dashboard');
+
+
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-
 
 
 
@@ -168,9 +178,7 @@ Route::get('/subscriptiondetails', function () {
     return view('admin.subscriptiondetails');
 });
 
-Route::get('/checkoutdetails', function () {
-    return view('admin.checkoutdetails');
-});
+
 
 Route::get('/checkoutsummary', function () {
     return view('admin.checkoutsummary');
@@ -196,7 +204,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/users', [AdminController::class, 'usersonly'])->name('users');
 
 
-// Classes Routes
+    // Classes Routes
     Route::get('/classes', [ClassesController::class, 'show'])->name('classes');
     Route::post('/classes', [ClassesController::class, 'store'])->name('classes.store');
     Route::post('/classes/{data}/edit', [ClassesController::class, 'edit'])->name('classes.edit');
@@ -237,13 +245,28 @@ Route::middleware('auth')->group(function () {
 
     // Questions Routes
     Route::get('/adpastquestions/{data}/view', [QuestionsController::class, 'show'])->name('adpastquestions');
-     Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
-     Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
-     Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
-     Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
+    Route::post('/adpastquestions', [QuestionsController::class, 'store'])->name('adpastquestions.store');
+    Route::post('/adpastquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('adpastquestions.edit');
+    Route::patch('/adpastquestions', [QuestionsController::class, 'update'])->name('adpastquestions.update');
+    Route::get('/adpastquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('adpastquestions.destroy');
+
+
+
+
+    Route::get('/checkoutdetails', function () {
+        return view('admin.checkoutdetails');
+    });
+    // Laravel 8 & 9
+    //  Payment Gateway Routees
+    // Route::get('/paystackpopup', [PaymentController::class, 'callback'])->name('payment');
+    // Route::post('/init', [PaymentController::class, 'init'])->name('payment');
+    // Route::get('callback', [PaymentController::class, 'callback'])->name('callback');
+    // Route::get('success', [PaymentController::class, 'success'])->name('success');
+    // Route::get('cancel', [PaymentController::class, 'cancel'])->name('cancel');
+
+    Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+    Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 });
-
-
 
 
 Route::get('/instructors', function () {
@@ -261,45 +284,51 @@ Route::get('/order', function () {
     return view('admin.order');
 });
 
-Route::get('/pastquestion', function()
-{
+Route::get('/pastquestion', function () {
     return view('admin.pastquestion');
 });
 
 
-Route::get('/learning', function()
-{
+Route::get('/learning', function () {
     return view('admin.learning');
 });
 
-Route::get('/class', function()
-{
+Route::get('/class', function () {
     return view('admin.class');
 });
 
 
-Route::get('/subscription', function()
-{
+Route::get('/subscription', function () {
     return view('admin.subscription');
 });
 
 
 
-Route::get('/subject', function()
-{
+Route::get('/subject', function () {
     return view('admin.subject');
 });
 
 
-Route::get('/pqexams', function()
-{
+Route::get('/pqexams', function () {
     return view('pqexams');
 });
 
 
-Route::get('callback', [PaystackController::class, 'callback'])->name('callback');
-Route::get('success', [PaystackController::class, 'success'])->name('success');
-Route::get('cancel', [PaystackController::class, 'cancel'])->name('cancel');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');

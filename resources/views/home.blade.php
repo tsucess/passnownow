@@ -5,27 +5,27 @@
         <section class="container-fluid container__top pt-3">
             <div class="row">
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('assets/images/Chemistry.png') }}" alt="Chemistry">
+                    <img src="{{ asset('images/Chemistry.png') }}" alt="Chemistry">
                     <p class="title">Chemistry</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('assets/images/Cloud_Library.png') }}" alt="Computer">
+                    <img src="{{ asset('images/Cloud_Library.png') }}" alt="Computer">
                     <p class="title">Computer</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('assets/images/Geography.png') }}" alt="Geography">
+                    <img src="{{ asset('images/Geography.png') }}" alt="Geography">
                     <p class="title">Geography</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('assets/images/Biology.png') }}" alt="Biology">
+                    <img src="{{ asset('images/Biology.png') }}" alt="Biology">
                     <p class="title">Biology</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('assets/images/Maths.png') }}" alt="Mathematics">
+                    <img src="{{ asset('images/Maths.png') }}" alt="Mathematics">
                     <p class="title">Mathematics</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('assets/images/Sports.png') }}" alt="Physical Health">
+                    <img src="{{ asset('images/Sports.png') }}" alt="Physical Health">
                     <p class="title">Physical Health</p>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6  hero-image">
-                    <img src="{{ asset('assets/images/hero-image.png') }}" alt="Hero Image">
+                    <img src="{{ asset('images/hero-image.png') }}" alt="Hero Image">
                 </div>
             </div>
         </Section>
@@ -83,7 +83,7 @@
         <section class="container-fluid container__guide">
             <div class="row ">
                 <div class="col-12 col-md-3 text-center">
-                    <img src="{{ asset('assets/images/formular.png') }}" alt="" class="formular-image">
+                    <img src="{{ asset('images/formular.png') }}" alt="" class="formular-image">
                 </div>
                 <div class="col-12 col-md-6 heading">
                     <h3>How Passnownow Works</h3>
@@ -94,38 +94,38 @@
                     </p>
                 </div>
                 <div class="col-12 col-md-3 text-center">
-                    <img src="{{ asset('assets/images/trig.png') }}" alt="" class="formular-image">
+                    <img src="{{ asset('images/trig.png') }}" alt="" class="formular-image">
                 </div>
             </div>
             <div class="row guides">
                 <div class="col-12 col-md-4 mb-lg-3 guide">
-                    <img src="{{ asset('assets/images/icon-user.png') }}" alt="Icon" class="mb-3" />
+                    <img src="{{ asset('images/icon-user.png') }}" alt="Icon" class="mb-3" />
                     <h3>Create free account</h3>
                     <p>The first step is to create a free account with Passnownow by completing the user registration form.
                     </p>
                 </div>
                 <div class="col-12 col-md-4 mb-lg-3 guide">
-                    <img src="{{ asset('assets/images/icon-card.png') }}" alt="Icon" class="mb-3" />
+                    <img src="{{ asset('images/icon-card.png') }}" alt="Icon" class="mb-3" />
                     <h3>Subscribe to a plan</h3>
                     <p>Choose from any of our packages to gain access to unlimited Class Notes and Exam Past Questions.</p>
                 </div>
                 <div class="col-12 col-md-4 mb-lg-3 guide">
-                    <img src="{{ asset('assets/images/icon-book.png') }}" alt="Icon" class="mb-3" />
+                    <img src="{{ asset('images/icon-book.png') }}" alt="Icon" class="mb-3" />
                     <h3>Access all subjects</h3>
                     <p>That’s it, you now have access to unlimited Class Notes and Exam Past Questions.</p>
                 </div>
                 <div class="col-12 col-md-4 mb-lg-3 guide">
-                    <img src="{{ asset('assets/images/icon-message.png') }}" alt="Icon" class="mb-3" />
+                    <img src="{{ asset('images/icon-message.png') }}" alt="Icon" class="mb-3" />
                     <h3>Seek career advice</h3>
                     <p>Seek advice on your career path from our experienced career counselor</p>
                 </div>
                 <div class="col-12 col-md-4 mb-lg-3 guide">
-                    <img src="{{ asset('assets/images/icon-shield.png') }}" alt="Icon" class="mb-3" />
+                    <img src="{{ asset('images/icon-shield.png') }}" alt="Icon" class="mb-3" />
                     <h3>Access to past questions</h3>
                     <p>Passnownow gives you access to Thousands of exam past questions from JSCE, JSSCE TO JAMB</p>
                 </div>
                 <div class="col-12 col-md-4 mb-lg-3 guide">
-                    <img src="{{ asset('assets/images/icon-medal.png') }}" alt="Icon" class="mb-3" />
+                    <img src="{{ asset('images/icon-medal.png') }}" alt="Icon" class="mb-3" />
                     <h3>Improve academic performance</h3>
                     <p>Learn with Passnownow to improve academic performance</p>
                 </div>
@@ -145,7 +145,7 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6  hero-down-image">
-                    <img src="{{ asset('assets/images/hero_down.png') }}" alt="Hero Image">
+                    <img src="{{ asset('images/hero_down.png') }}" alt="Hero Image">
                 </div>
             </div>
         </Section>
@@ -153,7 +153,7 @@
         <section class="container-fluid container__std_review">
             <div class="row">
                 <div class="col-12 col-md-2 text-end">
-                    <img src="{{ asset('assets/images/quote_trans.png') }}" alt="" class="quote-down-image">
+                    <img src="{{ asset('images/quote_trans.png') }}" alt="" class="quote-down-image">
                 </div>
                 <div class="col-12 col-md-8 heading px-4 px-md-2">
                     <h6>Rave Reviews from our amazing students! 😍</h6>
@@ -243,13 +243,13 @@
             </div>
             <div class="row frames">
                 <div class="col-12 col-md-4 my-3 frame">
-                    <img src="{{ asset('assets/images/users_1.png') }}" alt="">
+                    <img src="{{ asset('images/users_1.png') }}" alt="">
                 </div>
                 <div class="col-12 col-md-4 my-3 frame mobile">
-                    <img src="{{ asset('assets/images/mobile-frame.png') }}" alt="">
+                    <img src="{{ asset('images/mobile-frame.png') }}" alt="">
                 </div>
                 <div class="col-12 col-md-4 my-3 frame">
-                    <img src="{{ asset('assets/images/users_2.png') }}" alt="">
+                    <img src="{{ asset('images/users_2.png') }}" alt="">
                 </div>
             </div>
         </section>
@@ -266,7 +266,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 col-md-6 barchart mt-4">
-                        <img src="{{ asset('assets/images/barchart.png') }}" alt="">
+                        <img src="{{ asset('images/barchart.png') }}" alt="">
                     </div>
                     <div class="col-12 col-md-6 performance__info">
                         <div class="lists">
@@ -293,7 +293,7 @@
                 </div>
                 <div class="row mt-5">
                     <div class="col-12 col-md-2 text-end">
-                        <img src="{{ asset('assets/images/quote_tr.png') }}" alt="" class="quote-down-image">
+                        <img src="{{ asset('images/quote_tr.png') }}" alt="" class="quote-down-image">
                     </div>
                     <div class="col-12 col-md-8 heading px-4 px-md-2">
                         <h6>Rave Reviews from our amazing Tutors!! 😍</h6>
@@ -402,21 +402,20 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($fetchClasses as $Class)
-                    <div class="col-12 col-md-4 mb-3">
-                        <div class="image-wrapper">
-                            <img src="{{ asset('storage/'. $Class->avatar) }}" alt="Class Image" style="height: 20rem">
-                        </div>
-                        <div class="note_info p-2">
-                            <h5>{{$Class->title}} Class Notes</h5>
-                            <p>{{$Class->description}}</p>
-                            <a href="{{url('#')}}" class="note_btn">VIEW ALL SUBJECTS</a>
-                        </div>
-                    </div>
-                @endforeach
-                {{-- <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
+                    </div>
+                    <div class="note_info p-2">
+                        <h5>JSS 1 Class Notes</h5>
+                        <p>Start studying with our wide collection of all SSS 1 Class Notes all Terms on all Secondary
+                            School Subjects</p>
+                        <button class="note_btn">VIEW ALL SUBJECTS</button>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <div class="image-wrapper">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
                     <div class="note_info p-2">
                         <h5>JSS 2 Class Notes</h5>
@@ -427,7 +426,7 @@
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
                     <div class="note_info p-2">
                         <h5>JSS 3 Class Notes</h5>
@@ -438,7 +437,7 @@
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
                     <div class="note_info p-2">
                         <h5>SSS 1 Class Notes</h5>
@@ -449,7 +448,7 @@
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
                     <div class="note_info p-2">
                         <h5>SSS 2 Class Notes</h5>
@@ -460,7 +459,7 @@
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
                     <div class="note_info p-2">
                         <h5>SSS 3 Class Notes</h5>
@@ -473,7 +472,7 @@
             <div class="row past__questions">
                 <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
                     <div class="note_info p-2">
                         <h5>JSSCE Past Questions</h5>
@@ -483,7 +482,7 @@
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
                     <div class="note_info p-2">
                         <h5>SSCE Past Questions</h5>
@@ -493,7 +492,7 @@
                 </div>
                 <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
-                        <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
                     <div class="note_info p-2">
                         <h5>UTME/JAMB Past Questions</h5>
@@ -507,7 +506,7 @@
         <section class="container-fluid container__parent_review">
             <div class="row my-4">
                 <div class="col-12 col-md-2 text-end">
-                    <img src="{{ asset('assets/images/quote_trans.png') }}" alt="" class="quote-down-image">
+                    <img src="{{ asset('images/quote_trans.png') }}" alt="" class="quote-down-image">
                 </div>
                 <div class="col-12 col-md-8 heading px-4 px-md-2">
                     <h6>Rave Reviews from our amazing parents! 😍</h6>
@@ -605,7 +604,7 @@
 
 
 
-    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="./js/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper(".swiper", {
             // Optional parameters

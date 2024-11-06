@@ -126,8 +126,7 @@ return [
 
 
 
-
-    // 'providers' => [
+     // 'providers' => [
 
     //     Unicodeveloper\Paystack\PaystackServiceProvider::class,
 

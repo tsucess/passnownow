@@ -10,7 +10,7 @@
                 <p class="greeting-text">Goodluck with your studies</p>
             </div>
             <div class="col-12 col-md-6  p-4 pb-0 greeting-img">
-                <img src="{{ asset('assets/images/admin/greeting-img.png') }}" alt="" class="">
+                <img src="{{ asset('images/admin/greeting-img.png') }}" alt="" class="">
             </div>
         </div>
     </section>
@@ -50,7 +50,7 @@
                 {{-- <div class="col-12 col-md-6 col-lg-4 mb-2">
                 <div class="card courses">
                     <div class="image_wrapper">
-                        <img src="{{ asset('assets/images/admin/course-img2.png') }}" class="course-img" alt="...">
+                        <img src="{{ asset('images/admin/course-img2.png') }}" class="course-img" alt="...">
                     </div>
                     <div class="card-body">
                         <div class="courses-tag">Passnownow</div>
@@ -62,7 +62,7 @@
             <div class="col-12 col-md-6 col-lg-4 mb-2">
                 <div class="card courses">
                     <div class="image_wrapper">
-                        <img src="{{ asset('assets/images/admin/course-img3.png') }}" class="course-img" alt="...">
+                        <img src="{{ asset('images/admin/course-img3.png') }}" class="course-img" alt="...">
                     </div>
                     <div class="card-body">
                         <div class="courses-tag">Passnownow</div>

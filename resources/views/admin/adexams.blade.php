@@ -18,7 +18,11 @@
                 </div>
             @endforeach
 
+<<<<<<< HEAD
             {{-- <div class = "col-sm-4"><img src="{{ asset('/assets/images/ssce.png') }}" class = "img-fluid mb-2" /><span
+=======
+            {{-- <div class = "col-sm-4"><img src="{{ asset('/images/ssce.png') }}" class = "img-fluid mb-2" /><span
+>>>>>>> master
                 class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">SSCE Past Questions</span>
             <p class = "p text-md-center">
                 Start Studying with our wide collection of
@@ -28,7 +32,11 @@
                 <button type="button" class="btn btn-outline-primary mb-3 p-2">VIEW ALL QUESTIONS</button>
             </div>
         </div>
+<<<<<<< HEAD
         <div class = "col-sm-4"><img src="{{ asset('/assets/images/jamb.png') }}" class = "img-fluid mb-2" /><span
+=======
+        <div class = "col-sm-4"><img src="{{ asset('/images/jamb.png') }}" class = "img-fluid mb-2" /><span
+>>>>>>> master
                 class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">JAMB Past Questions</span>
             <p class = "p text-md-center">
                 Start Studying with our wide collection of
@@ -73,7 +81,11 @@
 
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
+<<<<<<< HEAD
                 <thead class="bg-info">
+=======
+                <thead class="bg-primary text-white">
+>>>>>>> master
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col" class="col-3">Title</th>
@@ -236,9 +248,15 @@
         </div>
     @endif
 
+<<<<<<< HEAD
     <script src="{{ 'assets/js/table/jquery-3.3.1.min.js' }}"></script>
     <script src="{{ 'assets/js/table/jquery.dataTables.min.js' }}"></script>
     <script src="{{ 'assets/js/table/dataTables.bootstrap.min.js' }}"></script>
+=======
+    <script src="{{ 'js/table/jquery-3.3.1.min.js' }}"></script>
+    <script src="{{ 'js/table/jquery.dataTables.min.js' }}"></script>
+    <script src="{{ 'js/table/dataTables.bootstrap.min.js' }}"></script>
+>>>>>>> master
 
 
     <script>

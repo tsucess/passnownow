@@ -20,13 +20,13 @@
                 <h6 class="text-start">How To Easily Increase Students Motivation</h6>
             </div>
             <div class="col-12 col-md-6 header mb-3">
-                <img src="{{ asset('assets/images/icon-slant-right.png') }}" class="icon-slant" alt="" />
+                <img src="{{ asset('images/icon-slant-right.png') }}" class="icon-slant" alt="" />
             </div>
         </div>
         <div class="row m-0 p-0 mb-3">
             <div class="col-12 mb-3 p-0">
                 <div class="image-wrapped skills_hero">
-                    <img src="{{ asset('assets/images/childreading.png') }}" alt="" />
+                    <img src="{{ asset('images/childreading.png') }}" alt="" />
                 </div>
             </div>
         </div>

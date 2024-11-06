@@ -151,9 +151,9 @@ class QuestionsController extends Controller
                 $class->year = $request->prevyear;
             }
             $class->save();
-            return redirect('/adpastquestions/' . $data_id . '/view')->with('success', 'Question updated successfully');
+            return redirect('/adpastquestions/'.$data_id.'/view')->with('success', 'Question updated successfully');
         } else {
-            return redirect('/adpastquestions/' . $data_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/adpastquestions/'.$data_id.'/view')->with('error', 'Something went wrong');
         };
     }
 
@@ -165,9 +165,9 @@ class QuestionsController extends Controller
         // dd($data);
         $done = $data->delete();
         if ($done) {
-            return redirect('/adpastquestions/' . $data->exam_unique_id . '/view')->with('success', 'Question deleted successfully');
+            return redirect('/adpastquestions/'.$data->exam_unique_id.'/view')->with('success', 'Question deleted successfully');
         } else {
-            return redirect('/adpastquestions/' . $data->exam_unique_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/adpastquestions/'.$data->exam_unique_id.'/view')->with('error', 'Something went wrong');
         };
     }
 }

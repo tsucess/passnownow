@@ -24,7 +24,7 @@
         <div class="row only_subjects">
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>JSS 1 Class Notes</h5>
@@ -35,7 +35,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>JSS 2 Class Notes</h5>
@@ -46,7 +46,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>JSS 3 Class Notes</h5>
@@ -57,7 +57,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>SSS 1 Class Notes</h5>
@@ -68,7 +68,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>SSS 2 Class Notes</h5>
@@ -79,7 +79,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>SSS 3 Class Notes</h5>

@@ -34,7 +34,7 @@
         @endphp
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
-            <thead class="bg-info">
+            <thead class="bg-primary text-white">
                 <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Name</th>
@@ -162,9 +162,9 @@
     </div>
 
 
-    <script src="{{ 'assets/js/table/jquery-3.3.1.min.js' }}"></script>
-    <script src="{{ 'assets/js/table/jquery.dataTables.min.js' }}"></script>
-    <script src="{{ 'assets/js/table/dataTables.bootstrap.min.js' }}"></script>
+    <script src="{{ 'js/table/jquery-3.3.1.min.js' }}"></script>
+    <script src="{{ 'js/table/jquery.dataTables.min.js' }}"></script>
+    <script src="{{ 'js/table/dataTables.bootstrap.min.js' }}"></script>
 
 
 

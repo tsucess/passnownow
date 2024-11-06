@@ -25,7 +25,7 @@
         <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-4 team_profiles">
             <div class="col">
                 <div class="card">
-                    <img src="{{ asset('assets/images/team.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/team.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Winner Effiong</h5>
                         <p class="card-text">UI/UX</p>
@@ -34,7 +34,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <img src="{{ asset('assets/images/team.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/team.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Taofeeq Ogunsanya</h5>
                         <p class="card-text">Software Developer</p>
@@ -43,7 +43,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <img src="{{ asset('assets/images/team.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/team.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Joy Ijeoma</h5>
                         <p class="card-text">Receptionist</p>
@@ -52,7 +52,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <img src="{{ asset('assets/images/team.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/team.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Joy Ijeoma</h5>
                         <p class="card-text">Receptionist</p>
@@ -61,7 +61,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <img src="{{ asset('assets/images/team.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/team.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Joy Ijeoma</h5>
                         <p class="card-text">Receptionist</p>
@@ -70,7 +70,7 @@
             </div>
             <div class="col">
                 <div class="card">
-                    <img src="{{ asset('assets/images/team.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset('images/team.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Joy Ijeoma</h5>
                         <p class="card-text">Receptionist</p>
