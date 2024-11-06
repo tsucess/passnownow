@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-12 col-md-6 text-start">
                     <div class=" peoplelaugh_img mt-5">
-                        <img src="{{ asset('assets/images/peoplelaugh.png') }}" alt="" />
+                        <img src="{{ asset('images/peoplelaugh.png') }}" alt="" />
                     </div>
                 </div>
             </div>
@@ -49,7 +49,7 @@
             <div class="bg-image">
                 <div class="row p-3">
                     <div class="col-12 col-md-6 notepink mt-4 mb-3">
-                        <img src="{{ asset('assets/images/notepink.png') }}" alt="">
+                        <img src="{{ asset('images/notepink.png') }}" alt="">
                     </div>
                     <div class="col-12 col-md-6 performance__info">
                         <div class="lists">

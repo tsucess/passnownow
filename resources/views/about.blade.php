@@ -33,7 +33,7 @@
             </div>
             <div class="col-12 col-md-6 text-center header">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/peopleslant.png') }}" alt="" />
+                    <img src="{{ asset('images/peopleslant.png') }}" alt="" />
                 </div>
             </div>
         </div>
@@ -42,11 +42,11 @@
         <div class="row skill_list p-md-2 p-lg-3">
             <div class="col-12 col-md-6 p-4">
                 <div class="image-wrapper  mt-md-5">
-                    <img src="{{ asset('assets/images/bgpinkart.png') }}" alt="">
+                    <img src="{{ asset('images/bgpinkart.png') }}" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-6 p-4">
-                <img src="{{ asset('assets/images/icons-barchart-white.png') }}" alt="">
+                <img src="{{ asset('images/icons-barchart-white.png') }}" alt="">
                 <h5 class="my-2">Our Core Objectives</h5>
                 <ul class="">
                     <li>To foster and engender the pursuit of academic excellence amongst young Nigerians</li>
@@ -61,7 +61,7 @@
             </div>
             <hr class="text-white">
             <div class="col-12 col-md-6 p-4">
-                <img src="{{ asset('assets/images/icons-barchart-white.png') }}" alt="">
+                <img src="{{ asset('images/icons-barchart-white.png') }}" alt="">
                 <h5 class="my-2">Expected Outcomes</h5>
                 <ul class="">
                     <li>An increase in the success rate of students at university entrance examinations in Nigeria</li>
@@ -74,18 +74,18 @@
             </div>
             <div class="col-12 col-md-6 p-4">
                 <div class="image-wrapper  mt-md-5">
-                    <img src="{{ asset('assets/images/bgpinkart.png') }}" alt="">
+                    <img src="{{ asset('images/bgpinkart.png') }}" alt="">
                 </div>
             </div>
 
             <hr class="text-white">
             <div class="col-12 col-md-6 p-4">
                 <div class="image-wrapper  mt-md-5">
-                    <img src="{{ asset('assets/images/bgpinkart.png') }}" alt="">
+                    <img src="{{ asset('images/bgpinkart.png') }}" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-6 p-4">
-                <img src="{{ asset('assets/images/icons-barchart-white.png') }}" alt="">
+                <img src="{{ asset('images/icons-barchart-white.png') }}" alt="">
                 <h5 class="my-2">Our Core Objectives</h5>
                 <ul class="">
                     <li> Passnownow.com is easy to use. </li>
@@ -108,7 +108,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body p-md-5 text-center shadow">
-                            <img src="{{ url('assets/images/iconc-phone.png') }}" alt="" class="mb-3">
+                            <img src="{{ url('images/iconc-phone.png') }}" alt="" class="mb-3">
                             <h5 class="card-title">Mobile Learning</h5>
                             <p class="card-text">Get access to Class Notes and exam Questions on your mobile devices</p>
                         </div>
@@ -117,7 +117,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body p-md-5 text-center shadow">
-                            <img src="{{ url('assets/images/iconc-smiley.png') }}" alt="" class="mb-3">
+                            <img src="{{ url('images/iconc-smiley.png') }}" alt="" class="mb-3">
                             <h5 class="card-title">Fun-Filled Community</h5>
                             <p class="card-text">Find People of like minds
                             </p>

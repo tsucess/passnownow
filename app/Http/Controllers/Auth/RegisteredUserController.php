@@ -31,7 +31,7 @@ class RegisteredUserController extends Controller
     {
 
         // dd($request);
-        // Validate 
+        // Validate
     //    $data = $request->validate([
       $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:'.User::class],
@@ -57,12 +57,13 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-   
+
 
         event(new Registered($user));
 
-        // Auth::login($user);
+        Auth::login($user);
 
-        return redirect(route('login', absolute: false));
+        return redirect(route('verification.notice', absolute: false));
+
     }
 }

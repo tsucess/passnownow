@@ -107,7 +107,7 @@
             </div>
             <div class="col-12 col-lg-5 profile">
                 <div class="image_wrapper">
-                    <img src="{{asset('assets/images/avatar.png')}}" class="profile_image" alt="">
+                    <img src="{{asset('images/avatar.png')}}" class="profile_image" alt="">
                 </div>
                 <h5>Winner Effiong</h5>
                 <button class="btn">Change profile photo</button>

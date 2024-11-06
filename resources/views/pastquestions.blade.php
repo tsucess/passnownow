@@ -24,7 +24,7 @@
         <div class="row only_subjects">
             <div class="col-12 col-md-4 mb-4">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/educationbook.png') }}" alt="">
+                    <img src="{{ asset('images/educationbook.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>JSSCE Past Questions</h5>
@@ -34,7 +34,7 @@
             </div>
             <div class="col-12 col-md-4 mb-4">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>SSCE Past Questions</h5>
@@ -44,7 +44,7 @@
             </div>
             <div class="col-12 col-md-4 mb-4">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/education-stackbook.png') }}" alt="">
+                    <img src="{{ asset('images/education-stackbook.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>UTME/JAMB Past Questions</h5>
@@ -57,7 +57,7 @@
 
 
 
-    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="./js/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper(".swiper", {
             // Optional parameters

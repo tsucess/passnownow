@@ -40,7 +40,7 @@
         </div>
         <div class="row mb-5 guides">
             <div class="col-12 col-md-4 mb-lg-3 guide">
-                <img src="{{ asset('assets/images/icons-graph.png') }}" alt="Icon" class="mb-3" />
+                <img src="{{ asset('images/icons-graph.png') }}" alt="Icon" class="mb-3" />
                 <h3 class="text-dark fw-bold">Over 50,000 Syllabus</h3>
                 <p class="text-dark">The first step is to create a free account with Passnownow by completing the user
                     registration form.
@@ -49,7 +49,7 @@
                         class="fa-solid fa-arrow-right-long"></i></a>
             </div>
             <div class="col-12 col-md-4 mb-lg-3 guide">
-                <img src="{{ asset('assets/images/icons-pie.png') }}" alt="Icon" class="mb-3" />
+                <img src="{{ asset('images/icons-pie.png') }}" alt="Icon" class="mb-3" />
                 <h3 class="text-dark fw-bold">Subscribe to a plan</h3>
                 <p class="text-dark">Choose from any of our packages to gain access to unlimited Class Notes and Exam Past
                     Questions.</p>
@@ -57,21 +57,21 @@
                         class="fa-solid fa-arrow-right-long"></i></a>
             </div>
             <div class="col-12 col-md-4 mb-lg-3 guide">
-                <img src="{{ asset('assets/images/icons-filter.png') }}" alt="Icon" class="mb-3" />
+                <img src="{{ asset('images/icons-filter.png') }}" alt="Icon" class="mb-3" />
                 <h3 class="text-dark fw-bold">50,000 + JSS1 TO SS3 Class Notes</h3>
                 <p class="text-dark">That’s it, you now have access to unlimited Class Notes and Exam Past Questions.</p>
                 <a href="{{ url('#') }}" class="note_btn">Read More &nbsp; <i
                         class="fa-solid fa-arrow-right-long"></i></a>
             </div>
             <div class="col-12 col-md-4 mb-lg-3 guide">
-                <img src="{{ asset('assets/images/icons-briefcase.png') }}" alt="Icon" class="mb-3" />
+                <img src="{{ asset('images/icons-briefcase.png') }}" alt="Icon" class="mb-3" />
                 <h3 class="text-dark fw-bold">Exam Past Questions</h3>
                 <p class="text-dark">Seek advice on your career path from our experienced career counselor</p>
                 <a href="{{ url('#') }}" class="note_btn">Read More &nbsp; <i
                         class="fa-solid fa-arrow-right-long"></i></a>
             </div>
             <div class="col-12 col-md-4 mb-lg-3 guide">
-                <img src="{{ asset('assets/images/icons-love.png') }}" alt="Icon" class="mb-3" />
+                <img src="{{ asset('images/icons-love.png') }}" alt="Icon" class="mb-3" />
                 <h3 class="text-dark fw-bold">Student Discussion Forums</h3>
                 <p class="text-dark">Passnownow gives you access to Thousands of exam past questions from JSCE, JSSCE TO
                     JAMB</p>
@@ -87,7 +87,7 @@
         <div class="row program mb-5">
             <div class="col-12 col-md-6 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/education-removelaptop.png') }}" alt="">
+                    <img src="{{ asset('images/education-removelaptop.png') }}" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-6 mb-3">
@@ -129,14 +129,14 @@
             </div>
             <div class="col-12 col-md-6 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/dark_chart.png') }}" alt="">
+                    <img src="{{ asset('images/dark_chart.png') }}" alt="">
                 </div>
             </div>
         </div>
         <div class="row program mb-5">
             <div class="col-12 col-md-6 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/dark_chart.png') }}" alt="">
+                    <img src="{{ asset('images/dark_chart.png') }}" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-6 mb-3">

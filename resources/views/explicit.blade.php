@@ -19,7 +19,7 @@
             <div class="col-12 col-md-6 text-center header">
                 <h6>Explicit Teaching</h6>
                 <div class="image-wrapped linechart">
-                    <img src="{{ asset('assets/images/linechart.png') }}" alt=""/>
+                    <img src="{{ asset('images/linechart.png') }}" alt=""/>
                 </div>
             </div>
             <div class="col-12 col-md-6 text-center header">
@@ -39,12 +39,12 @@
         <div class="row m-0 p-0 mb-3">
             <div class="col-12 col-md-7 mb-3 p-0">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/smiling.png') }}" alt=""/>
+                    <img src="{{ asset('images/smiling.png') }}" alt=""/>
                 </div>
             </div>
             <div class="col-12 col-md-5 mb-3 p-0">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/tutor.png') }}"  alt="" />
+                    <img src="{{ asset('images/tutor.png') }}"  alt="" />
                 </div>
             </div>
         </div>
@@ -52,7 +52,7 @@
 
 
 
-    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="./js/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper(".swiper", {
             // Optional parameters

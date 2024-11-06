@@ -255,7 +255,7 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/imagewallet.png') }}" alt="" />
+                    <img src="{{ asset('images/imagewallet.png') }}" alt="" />
                 </div>
                 <h5 class="primary_header mt-5 mb-3">Payment Using ATM Card</h5>
                 <ul>
@@ -269,7 +269,7 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/imagephone.png') }}" alt="" />
+                    <img src="{{ asset('images/imagephone.png') }}" alt="" />
                 </div>
                 <h5 class="primary_header mt-5 mb-3">Payment Using Bank Transfer</h5>
                 <ul>

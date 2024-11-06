@@ -17,22 +17,22 @@
         <div class="row p-5">
             <div class="col-12 col-md-3">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/cc1.png') }}" alt="">
+                    <img src="{{ asset('images/cc1.png') }}" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-3">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/cc2.png') }}" alt="">
+                    <img src="{{ asset('images/cc2.png') }}" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-3">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/cc3.png') }}" alt="">
+                    <img src="{{ asset('images/cc3.png') }}" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-3">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/cc4.png') }}" alt="">
+                    <img src="{{ asset('images/cc4.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             </div>
             <div class="col-12 col-md-4 text-center">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/canflower.png') }}" alt="" />
+                    <img src="{{ asset('images/canflower.png') }}" alt="" />
                 </div>
             </div>
         </div>
@@ -74,7 +74,7 @@
             </div>
             <div class="col-12 col-md-6 p-4">
                 <div class="image-wrapped  mt-md-5">
-                    <img src="{{ asset('assets/images/peoplemeet2.png') }}" alt="">
+                    <img src="{{ asset('images/peoplemeet2.png') }}" alt="">
                 </div>
             </div>
             <div class="col-12 col-md-6 p-md-4 mb-3">
@@ -94,7 +94,7 @@
             </div>
             <div class="col-12 col-md-6 p-md-4">
                 <div class="image-wrapped  mt-md-5">
-                    <img src="{{ asset('assets/images/peoplemeet2.png') }}" alt="">
+                    <img src="{{ asset('images/peoplemeet2.png') }}" alt="">
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body p-md-5 text-center shadow">
-                            <img src="{{ url('assets/images/iconc-phone.png') }}" alt="" class="mb-3">
+                            <img src="{{ url('images/iconc-phone.png') }}" alt="" class="mb-3">
                             <p class="card-text">60 minutes telephone interactive discussion with our Expert</p>
                             <h5 class="card-title">N5,000</h5>
                             <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>
@@ -115,7 +115,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body p-md-5 text-center shadow">
-                            <img src="{{ url('assets/images/iconc-whatsapp.png') }}" alt="" class="mb-3">
+                            <img src="{{ url('images/iconc-whatsapp.png') }}" alt="" class="mb-3">
                             <p class="card-text">60 minutes Whatsapp conversation</p>
                             <h5 class="card-title">N5,000</h5>
                             <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>
@@ -125,7 +125,7 @@
                 <div class="col">
                     <div class="card h-100">
                         <div class="card-body p-md-5 text-center shadow">
-                            <img src="{{ url('assets/images/iconc-smiley.png') }}" alt="" class="mb-3">
+                            <img src="{{ url('images/iconc-smiley.png') }}" alt="" class="mb-3">
                             <p class="card-text">Face to Face counselling at The Rise Labs</p>
                             <h5 class="card-title">N5,000</h5>
                             <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>

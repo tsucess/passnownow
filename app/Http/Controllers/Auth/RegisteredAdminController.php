@@ -31,7 +31,7 @@ class RegisteredAdminController extends Controller
     {
 
         // dd($request);
-        // Validate 
+        // Validate
         $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'fname' => ['required', 'string', 'max:255'],
