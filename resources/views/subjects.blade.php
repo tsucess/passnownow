@@ -30,7 +30,7 @@
         <div class="row only_subjects">
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Computer Science</h5>
@@ -41,7 +41,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Mathematics</h5>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>English Language</h5>
@@ -63,7 +63,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>National Value</h5>
@@ -74,7 +74,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Basic Science</h5>
@@ -85,7 +85,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Religious Studies</h5>
@@ -106,7 +106,7 @@
         <div class="row only_subjects">
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Chemistry</h5>
@@ -117,7 +117,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Mathematics</h5>
@@ -128,7 +128,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>English Language</h5>
@@ -139,7 +139,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Physics</h5>
@@ -150,7 +150,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Biology</h5>
@@ -161,7 +161,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/student-writing.png') }}" alt="">
+                    <img src="{{ asset('images/student-writing.png') }}" alt="">
                 </div>
                 <div class="note_info p-2">
                     <h5>Economics</h5>

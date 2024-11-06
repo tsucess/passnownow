@@ -42,7 +42,7 @@
         <div class="row mb-3 ">
             <div class="col-12 col-md-4 mb-5">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/education-removelaptop.png') }}" alt="">
+                    <img src="{{ asset('images/education-removelaptop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson One</p>
@@ -53,7 +53,7 @@
             </div>
             <div class="col-12 col-md-4 mb-5">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/charts.png') }}" alt="">
+                    <img src="{{ asset('images/charts.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson Two</p>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-12 col-md-4 mb-5">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/dark_chart.png') }}" alt="">
+                    <img src="{{ asset('images/dark_chart.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson Three</p>
@@ -75,7 +75,7 @@
             </div>
             <div class="col-12 col-md-4 mb-5">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/half_laptop.png') }}" alt="">
+                    <img src="{{ asset('images/half_laptop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson Four</p>
@@ -86,7 +86,7 @@
             </div>
             <div class="col-12 col-md-4 mb-5">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/coffee_laptop.png') }}" alt="">
+                    <img src="{{ asset('images/coffee_laptop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson Five</p>
@@ -97,7 +97,7 @@
             </div>
             <div class="col-12 col-md-4 mb-5">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/palmtop.png') }}" alt="">
+                    <img src="{{ asset('images/palmtop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson Six</p>
@@ -124,7 +124,7 @@
         <div class="row">
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/education-removelaptop.png') }}" alt="">
+                    <img src="{{ asset('images/education-removelaptop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson One</p>
@@ -134,7 +134,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/dark_chart.png') }}" alt="">
+                    <img src="{{ asset('images/dark_chart.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson Two</p>
@@ -144,7 +144,7 @@
             </div>
             <div class="col-12 col-md-4 mb-3">
                 <div class="image-wrapper">
-                    <img src="{{ asset('assets/images/charts.png') }}" alt="">
+                    <img src="{{ asset('images/charts.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
                     <p class="m-0">Lesson Three</p>

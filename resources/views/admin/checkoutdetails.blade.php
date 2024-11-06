@@ -13,27 +13,27 @@
                     <div class="mb-3">
                         <label for="firstName" class="form-label">Enter Full Name</label>
                         <input type="text" name="fname" class="form-control" id="firstName"
-                            aria-describedby="emailHelp" placeholder="Winner Effiong" />
+                             placeholder="Winner Effiong" />
                     </div>
                     <div class="mb-3">
                         <label for="lastName" class="form-label">Enter Email</label>
                         <input type="email" name="lname" class="form-control" id="lastName"
-                            aria-describedby="emailHelp" placeholder="example@gmail.com" />
+                             placeholder="example@gmail.com" />
                     </div>
                     <div class="mb-3">
                         <label for="Address" class="form-label">Enter Address</label>
                         <input type="text" name="address" class="form-control" id="Address"
-                            aria-describedby="emailHelp" placeholder="Effiong" />
+                             placeholder="Effiong" />
                     </div>
                     <div class="mb-3">
                         <label for="country" class="form-label">Country</label>
                         <input type="text" name="country" class="form-control" id="country"
-                            aria-describedby="emailHelp" placeholder="Effiong" />
+                             placeholder="Effiong" />
                     </div>
                     <div class="mb-3">
                         <label for="state" class="form-label">State</label>
                         <input type="text" name="state" class="form-control" id="state"
-                            aria-describedby="emailHelp" placeholder="Enter your state" />
+                             placeholder="Enter your state" />
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Town/City</label>
@@ -81,21 +81,42 @@
 
 
                 <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
-                    <div class="row" style="margin-bottom:40px;">
-                        <div class="col-md-8 col-md-offset-2">
-                            <p>
-                                <div>
-                                    Lagos Eyo Print Tee Shirt
-                                    ₦ 2,950
-                                </div>
-                            </p>
-                            <input type="hidden" name="email" value="otemuyiwa@gmail.com"> 
-                            <input type="hidden" name="orderID" value="345">
-                            <input type="hidden" name="amount" value="800"> 
-                            <input type="hidden" name="quantity" value="3">
-                            <input type="hidden" name="currency" value="NGN">
-                            <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > 
-                            <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> 
+                            <div class="mb-3">
+                                <input type="text" name="orderID" class="form-control mb-3" value="Txn id: {{ rand(time(), 10000000);}}" readonly />
+                                <label for="firstName" class="form-label">Enter Full Name</label>
+                                <input type="text" name="fname" class="form-control" id="firstName" placeholder="Winner Effiong" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastName" class="form-label">Enter Email</label>
+                                <input type="email" name="email" class="form-control" value="{{Auth::user()->email}}" placeholder="example@gmail.com" readonly />
+                            </div>
+                            <div class="mb-3">
+                                <label for="country" class="form-label">Subscription Plan</label>
+                                <select name="amount" id="" class="form-control">
+                                    <option value="">Select plan</option>
+                                    <option value="300">Daily - 300 Naira only</option>
+                                    <option value="500">Weekly - 500 Naira only</option>
+                                    <option value="1100">Monthly - 1,100 Naira only</option>
+                                    <option value="2600">3 Months - 2,600 Naira only</option>
+                                    <option value="5100">6 Months - 5,100 Naira only</option>
+                                    <option value="10,100">Yearly - 10,100 Naira only</option>
+                                </select>
+                               
+                            </div>
+                            <div class="mb-3">
+                                {{-- <label for="state" class="form-label">Currency</label> --}}
+                                <input type="hidden" class="form-control" name="currency" value="NGN" placeholder="Naira" readonly />
+                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > 
+                            </div>
+                            {{-- <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" name="password" class="form-control" id="password" placeholder="" />
+                            </div> --}}
+
+
+                            
+                            
+                            {{-- <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">  --}}
                             
                              {{-- <input type="hidden" name="split_code" value="SPL_EgunGUnBeCareful"> to support transaction split. more details https://paystack.com/docs/payments/multi-split-payments/#using-transaction-splits-with-payments  --}}
                              {{-- <input type="hidden" name="split" value="{{ json_encode($split) }}"> to support dynamic transaction split. More details https://paystack.com/docs/payments/multi-split-payments/#dynamic-splits -- --}}
@@ -105,11 +126,11 @@
                 
                             <p>
                                 <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
-                                    <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
+                                    <i class="fa fa-plus-circle fa-md px-2"></i> Pay Now!
                                 </button>
                             </p>
-                        </div>
-                    </div>
+                        {{-- </div>
+                    </div> --}}
                 </form>
             </div>
         </div>

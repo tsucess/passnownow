@@ -31,7 +31,7 @@
         <div class="row m-0 p-0 mb-3">
             <div class="col-12 col-md-5 mb-3 p-0 bg-tertiary-accent">
                 <div class="image-wrapped">
-                    <img src="{{ asset('assets/images/tutor_second.png') }}" alt="" />
+                    <img src="{{ asset('images/tutor_second.png') }}" alt="" />
                 </div>
             </div>
             <div class="col-12 col-md-7 mb-3 bg-tertiary-accent">
@@ -69,7 +69,7 @@
             </div>
             <div class="col-12 col-md-5 mb-3 p-0 bg-tertiary-accent bg-white">
                 <div class="image-wrapped bg-white text-end">
-                    <img src="{{ asset('assets/images/tutor_second.png') }}" alt="" />
+                    <img src="{{ asset('images/tutor_second.png') }}" alt="" />
                 </div>
             </div>
         </div>

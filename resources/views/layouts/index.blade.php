@@ -14,17 +14,20 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+
     <!-- Fontawesome icons -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/fontawesome.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/solid.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/brands.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 
     {{-- SWIPER JS  --}}
-    <link rel="stylesheet" href="{{ 'assets/css/swiper-bundle.min.css' }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/responsiveness.css') }}">
+    <link rel="stylesheet" href="{{ 'css/swiper-bundle.min.css' }}" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsiveness.css') }}">
 
 </head>
 
@@ -37,7 +40,7 @@
         </section>
         <header class="container-fluid  container__header grid grid-cols-2 items-center  shadow py-10">
             <nav class="container navbar navbar-expand-lg">
-                <a class="navbar-brand" href="/"><img src="{{ asset('assets/images/logo.png') }}" alt=""></a>
+                <a class="navbar-brand" href="/"><img src="{{ asset('images/logo.png') }}" alt=""></a>
                     <button class="navbar-toggler"
                     type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
@@ -102,7 +105,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    <img src="{{ asset('assets/images/profile.png') }}" alt="">
+                                    <img src="{{ asset('images/profile.png') }}" alt="">
                                 </a>
                                 <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
                                     <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
@@ -157,7 +160,7 @@
                         <h5>West Africa’s most trusted EdTech Platform for Secondary School Students & Teachers</h5>
                         <p>Super simple self studying,
                             peer to peer collaborative learning both for teachers and students</p><img
-                            src="{{ asset('assets/images/NG.png') }}" alt="Nigeria-Icon" class="me-1"><span>144A
+                            src="{{ asset('images/NG.png') }}" alt="Nigeria-Icon" class="me-1"><span>144A
                             Gbagada Expressway,
                             Anthony,
                             Lagos</span>
@@ -210,6 +213,10 @@
             </footer>
         </div>
     </div>
+
+  
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+   
 </body>
 
 </html>

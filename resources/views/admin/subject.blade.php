@@ -15,7 +15,7 @@
         @endforeach
 
 
-        {{-- <div class = "col-sm-4"><img src="{{ asset('/assets/images/mathematics.png') }}" class = "img-fluid mb-2" /><span
+        {{-- <div class = "col-sm-4"><img src="{{ asset('/images/mathematics.png') }}" class = "img-fluid mb-2" /><span
                 class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">JSS 2 Class Note</span>
             <p class = "p text-md-start">Start Studying with our wide collection of
                 all Class Notes for all Terms and all Subjects
@@ -26,7 +26,7 @@
         </div>
 
 
-        <div class = "col-sm-4"><img src= "{{ asset('/assets/images/computerscience.png') }}"
+        <div class = "col-sm-4"><img src= "{{ asset('/images/computerscience.png') }}"
                 class = "img-fluid mb-2" /><span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">JSS 3
                 Class Note</span>
             <p class = "p text-md-start">Start Studying with our wide collection of
@@ -43,7 +43,7 @@
 
     {{-- <div class = "row ms-3">
         <div class = "col-sm-4">
-            <img src="{{ asset('/assets/images/businessstudies.png') }}" class = "img-fluid mb-2" />
+            <img src="{{ asset('/images/businessstudies.png') }}" class = "img-fluid mb-2" />
             <span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">SS 1 Class Note</span>
             <p class = "p text-md-start">Start Studying with our wide collection of
                 all Class Notes for all Terms and all Subjects
@@ -54,7 +54,7 @@
         </div>
 
 
-        <div class = "col-sm-4"><img src="{{ asset('/assets/images/homeeconomics.png') }}" class = "img-fluid mb-2" /><span
+        <div class = "col-sm-4"><img src="{{ asset('/images/homeeconomics.png') }}" class = "img-fluid mb-2" /><span
                 class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">SS 2 Class Note</span>
             <p class = "p text-md-start">Start Studying with our wide collection of
                 all Class Notes for all Terms and all Subjects
@@ -65,7 +65,7 @@
         </div>
 
 
-        <div class = "col-sm-4"><img src="{{ asset('/assets/images/computerscience.png') }}"
+        <div class = "col-sm-4"><img src="{{ asset('/images/computerscience.png') }}"
                 class = "img-fluid mb-2" /><span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">SS 3 Class
                 Note</span>
             <p class = "p text-md-start">Start Studying with our wide collection of

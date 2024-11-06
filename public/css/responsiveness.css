@@ -108,7 +108,7 @@
     }
 
 
-    .container__guide {}
+  
 
     .container__guide .guides {
         margin: 0 auto;
@@ -332,7 +332,7 @@
 ============================*/
 
     .container__register .side-bg {
-        background-image: url('/assets/images/form-bg.png');
+        background-image: url('/images/form-bg.png');
         background-size: contain;
         color: var(--color-text-white);
         padding: 1.5rem;
@@ -784,10 +784,6 @@
         width: 100%;
     }
 
-    .container__subjects .note_info h5 {
-        /* font-size: 1.75rem; */
-
-    }
 
     .container__subjects .note_info p {
         font-size: 1.125rem;

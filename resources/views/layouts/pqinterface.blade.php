@@ -12,23 +12,25 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
     <!-- Fontawesome icons -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/fontawesome.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/solid.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/brands.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/regular.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/regular.css') }} ">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- Datatables  -->
-    <link rel="stylesheet" href="{{ asset('assets/css/table/dataTables.bootstrap5.min.css') }} ">
+    <link rel="stylesheet" href="{{ asset('css/table/dataTables.bootstrap5.min.css') }} ">
 
-    <link rel="stylesheet" href="{{ asset('assets/css/dashboard.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
+
 
 
     <style>
@@ -98,7 +100,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="{{ asset('assets/images/profile.png') }}" alt="">
+                        <img src="{{ asset('images/profile.png') }}" alt="">
                     </a>
                     <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
                         <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
@@ -123,7 +125,7 @@
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white collapse shadow">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
-                    <img src="{{ asset('assets/images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
+                    <img src="{{ asset('images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
                 </a>
                 @php
                     $sn = 0;
@@ -272,6 +274,8 @@
             </main>
         </div>
     </div>
+
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 
 </html>

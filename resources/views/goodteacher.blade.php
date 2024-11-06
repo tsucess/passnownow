@@ -19,7 +19,7 @@
             <div class="col-12 col-md-6 header">
                 <h6 class="text-start">Qualities of A Good Teacher</h6>
                 <div class="image-wrapped linechart">
-                    <img src="{{ asset('assets/images/linechart.png') }}" alt="" />
+                    <img src="{{ asset('images/linechart.png') }}" alt="" />
                 </div>
             </div>
             <div class="col-12 col-md-6 header mb-3">
@@ -28,13 +28,13 @@
                     takes to be one. Although some of the qualities of good teachers are subtle, many of them are
                     identifiable. Here is a list of sixteen traits that excellent teachers have in common:
                 </p>
-                <img src="{{ asset('assets/images/icon-slant-right.png') }}" class="icon-slant" alt="" />
+                <img src="{{ asset('images/icon-slant-right.png') }}" class="icon-slant" alt="" />
             </div>
         </div>
         <div class="row m-0 p-0 mb-3">
             <div class="col-12 mb-3 p-0">
                 <div class="image-wrapped skills_hero">
-                    <img src="{{ asset('assets/images/childreading.png') }}" alt="" />
+                    <img src="{{ asset('images/childreading.png') }}" alt="" />
                 </div>
             </div>
         </div>

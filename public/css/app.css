@@ -270,7 +270,7 @@ button.submit-btn:hover {
 }
 
 .container__hero .row .hero-image {
-    background-image: url('/assets/images/maths-pattern.svg');
+    background-image: url('/images/maths-pattern.svg');
     background-size: cover;
     overflow: hidden;
     display: flex;
@@ -335,7 +335,7 @@ button.submit-btn:hover {
 
 .container__review .reviews .row {
     background-color: #130d5f;
-    background-image: url('/assets/images/BG.png');
+    background-image: url('/images/BG.png');
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 0.5rem;
@@ -445,7 +445,7 @@ button.submit-btn:hover {
 }
 
 .container__hero-down .row .hero-down-image {
-    background-image: url('/assets/images/maths-pattern.svg');
+    background-image: url('/images/maths-pattern.svg');
     background-size: cover;
     overflow: hidden;
     display: flex;
@@ -549,7 +549,7 @@ button.submit-btn:hover {
 }
 
 .container__performance .bg-image {
-    background-image: url('/assets/images/maths-pattern.svg');
+    background-image: url('/images/maths-pattern.svg');
     color: var(--color-text-white);
     margin: 0;
     width: inherit;
@@ -580,9 +580,6 @@ button.submit-btn:hover {
 }
 
 
-.container__performance .performance__info {
-    /* font-size: 1.125rem; */
-}
 
 .container__performance .performance__info .lists {
     display: flex;
@@ -610,8 +607,6 @@ button.submit-btn:hover {
 }
 
 
-
-.container__performance .swiper {}
 
 .container__performance .swiper .review {
     padding: 2rem 3rem;
@@ -742,7 +737,6 @@ button.submit-btn:hover {
     text-align: center;
 }
 
-.container__parent_review .swiper {}
 
 .container__parent_review .swiper .review {
     padding: 2rem 3rem;
@@ -794,7 +788,7 @@ button.submit-btn:hover {
 }
 
 .container__subscribe-form form {
-    background-image: url('/assets/images/bg-tetiary_accent.png');
+    background-image: url('/images/bg-tetiary_accent.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -924,25 +918,25 @@ button.submit-btn:hover {
 =================================*/
 
 .container__banner {
-    background-image: url('/assets/images/bgclass.png');
+    background-image: url('/images/bgclass.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .subject__banner {
-    background-image: url('/assets/images/bgclass.png');
+    background-image: url('/images/bgclass.png');
 }
 
 .class__banner {
-    background-image: url('/assets/images/bgbookpen.jpg');
+    background-image: url('/images/bgbookpen.jpg');
 }
 
 .pastquestion__banner {
-    background-image: url('/assets/images/bgbooks.png');
+    background-image: url('/images/bgbooks.png');
 }
 
 .teacher__banner {
-    background-image: url('/assets/images/bghand.png');
+    background-image: url('/images/bghand.png');
 }
 
 .container__banner .row {

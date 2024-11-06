@@ -265,9 +265,9 @@
 
 
 
-    <script src="{{ url('assets/js/table/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url('assets/js/table/jquery.dataTables.min.js')}}"></script>
-    <script src="{{ url('assets/js/table/dataTables.bootstrap.min.js')}}"></script>
+    <script src="{{ url('js/table/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url('js/table/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ url('js/table/dataTables.bootstrap.min.js')}}"></script>
 
 
     <script>

@@ -11,16 +11,19 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+
     <!-- Fontawesome icons -->
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/fontawesome.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/solid.css') }} ">
-    <link rel="stylesheet" href="{{ asset('assets/fonts/css/brands.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
+    <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     {{-- SWIPER JS  --}}
-    <link rel="stylesheet" href="{{ 'assets/css/swiper-bundle.min.css' }}" />
-    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/responsiveness.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/swiper-bundle.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responsiveness.css') }}">
 
 </head>
 
@@ -46,7 +49,7 @@
                         <a href="{{ url('/') }}"><i class="fa-solid fa-arrow-left-long"></i></a>
                     </div>
                     <div class="col-12 p-0 m-0 my-4 text-center">
-                        <img src="{{ asset('assets/images/logo-2.png') }}" alt="Passnownow Logo" class="logo-alt">
+                        <img src="{{ asset('images/logo-2.png') }}" alt="Passnownow Logo" class="logo-alt">
                     </div>
                     <div class="col-12 heading p-0">
                         <h6>Let’s login to your Passnownow account</h6>
@@ -129,7 +132,7 @@ showhide.onclick = () => {
         <div class="modal-dialog">
             <div class="modal-content p-2 p-md-5">
                 <div class="modal-header">
-                    <img src="{{ asset('assets/images/logo-2.png') }}" alt="Passnownow Logo" class="logo-alt">
+                    <img src="{{ asset('images/logo-2.png') }}" alt="Passnownow Logo" class="logo-alt">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -167,7 +170,7 @@ showhide.onclick = () => {
         <div class="modal-dialog">
             <div class="modal-content p-2 p-md-5">
                 <div class="modal-header">
-                    <img src="{{ asset('assets/images/logo-2.png') }}" alt="Passnownow Logo" class="logo-alt">
+                    <img src="{{ asset('images/logo-2.png') }}" alt="Passnownow Logo" class="logo-alt">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -205,7 +208,7 @@ showhide.onclick = () => {
         <div class="modal-dialog">
             <div class="modal-content p-2 p-md-5">
                 <div class="modal-header">
-                    <img src="{{ asset('assets/images/logo-2.png') }}" alt="Passnownow Logo" class="logo-alt">
+                    <img src="{{ asset('images/logo-2.png') }}" alt="Passnownow Logo" class="logo-alt">
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -265,7 +268,7 @@ showhide.onclick = () => {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body text-center">
-                    <img src="{{ asset('assets/images/success.png') }}" alt="Passnownow Logo"
+                    <img src="{{ asset('images/success.png') }}" alt="Passnownow Logo"
                         class="complete-image">
                     <div class="col-12 heading p-0">
                         <h6>You have successfully changed your password</h6>
