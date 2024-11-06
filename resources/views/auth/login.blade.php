@@ -76,8 +76,10 @@
                                 </div>
                                 <div class="col mb-3 form-check text-end fw-bold account-ask p-0">
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="" data-bs-toggle="modal"
-                                        data-bs-target="#staticBackdrop">Forget Password</button>
+                                    {{-- <button type="button" class="" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">Forget Password</button> --}}
+
+                                        <a href="{{ url('/forgot-password')}}">Forget Password</a>
                                     {{-- <p><a href="{{ url('/register')}}">Forget Password</a></p> --}}
                                 </div>
                             </div>
@@ -121,7 +123,7 @@ showhide.onclick = () => {
 }
 </script>
 
-    
+
 
     {{-- Enter Email for Reset password Modal  --}}
     <div class="modal fade" id="staticBackdro" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
