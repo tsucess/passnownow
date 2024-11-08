@@ -91,8 +91,7 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
             data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
-            {{-- <span class=""></span> --}}
-            <i class="fa fa-bars navbar-toggler-icon"></i>
+            <span class="navbar-toggler-icon"></span>
         </button>
         {{-- <div class="row p-0 ">
             <div class="col-12 p-0"> --}}
