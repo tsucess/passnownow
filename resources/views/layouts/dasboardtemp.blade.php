@@ -33,7 +33,7 @@
 
    <!-- <script type = "text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
   {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
- 
+
 
 
     <style>
@@ -86,19 +86,29 @@
         }
     }
 
+    @media only screen and (min-width: 330px)
+    {
+    .adexamsstyle
+    {
+        width:32%;
+    }
+}
+
+
+
     </style>
 </head>
 
 <body>
 
-    <header class="navbar sticky-top bg-white flex-md-nowrap p-1 g-1 shadow pe-md-3">
+    <header class="navbar sticky-top bg-white flex-md-nowrap p-1 g-1 shadow pe-md-3 ">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{url('/')}}">
             <img src="{{ asset('images/logo.png') }}" alt="">
         </a>
         <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button" data-bs-toggle="collapse"
             data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon fa fa-bars"></span>
         </button>
         {{-- <div class="row p-0 ">
             <div class="col-12 p-0"> --}}
@@ -141,7 +151,7 @@
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
                 <div class="position-sticky">
-                    <ul class="nav flex-column ">
+                    <ul class="nav flex-column">
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('dashboard') }}" href="/dashboard">
                                 <i class="fa-solid fa-table-list"></i>
@@ -215,7 +225,7 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
 
                 @yield('admincontent')
-                
+
                 <section class="container-fluid footer__container">
                     <div class="row">
                         <div class="col-12 col-md-5 col-lg-6 mb-2">&copy; Copyright Passnownow 2024, All Right Reserverd</div>

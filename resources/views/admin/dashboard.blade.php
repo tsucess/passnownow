@@ -36,8 +36,7 @@
                 @foreach ($subjects as $subject)
                     <div class="col-12 col-md-6 col-lg-4 mb-2">
                         <div class="card courses">
-                            <div class="image_wrapper">
-                                <img src="{{ asset('storage/' . $subject->avatar) }}" class="course-img" alt="Avatar">
+                            <div class="image_wrapper m-0 p-0" style="background-image: url('{{url('storage/'. $subject->avatar)}}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;" >
                             </div>
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
@@ -159,7 +158,7 @@
                 </div>
                 <div class="col-12 col-lg-5 shadow subjects_history">
                     <div class="top">
-                        <h5>Completed Subjects</h5>
+                        <h5>Past Questions</h5>
                         <a href="#">See All</a>
                     </div>
                     <div class="subject">
@@ -231,7 +230,7 @@
 
                 {{-- <span>Monthly goal</span>
                 <span class = "float-end">70%</span>
-    
+
                 <div class="progress mb-3 mt-1" role="progressbar" aria-label="Basic example" aria-valuenow="75"
                     aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
                     <div class="progress-bar bg-primary" style="width: 75%"></div>

@@ -43,8 +43,9 @@
                 <a class="navbar-brand" href="/"><img src="{{ asset('images/logo.png') }}" alt=""></a>
                     <button class="navbar-toggler"
                     type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span
+                        class="navbar-toggler-icon fa fa-bars"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item"><x-nav-link  href="/" active="{{ request()->is('/') }}">Home</x-nav-link></li>
@@ -93,7 +94,7 @@
                         <a href="{{ url('login') }}" class="btn btn-style btn-style-secondary">Login</a>
                         <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style">Register</a>
                         @endguest
-   
+
                         @auth
                         <span class="top_icon">
                             <i class="fa-regular fa-bell"></i>
@@ -113,7 +114,7 @@
                                         <!-- Authentication -->
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
-            
+
                                         <li>
                                             <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')" onclick="event.preventDefault();                                              this.closest('form').submit();">
                                                 {{ __('Signout') }}
@@ -122,7 +123,7 @@
                                     </form>
                                 </ul>
                             </li>
-                        </div>     
+                        </div>
                         @endauth
                     </div>
                 </div>
@@ -133,18 +134,27 @@
             @yield('content')
 
             <section class="container-fluid container__subscribe-form">
-                <div class="row form">
+                <div class="row form" id="subscribe">
                     <div class="col-12 col-md-2"></div>
                     <div class="col-12 col-md-8">
-                        <form action="">
+                        <form action = "{{ route('subscribe') }}" method = "POST">
+                            @csrf
                             <p>
                                 Sign up for our Newsletter to join our STEMGEES Club, enter into competitions and access
                                 opportunities.
                             </p>
                             <div class="sub-form">
-                                <input type="text" name="" id="" placeholder="Enter your email">
-                                <input type="button" class="btn-submit" value="Subscribe now">
+                                <input type="text" name="email" id="" placeholder="Enter your email">
+                                <input type="submit" class="btn-submit" value="Subscribe now">
                             </div>
+
+                            <!-- Display the success message below the form -->
+                            @if(session('success'))
+                                <div class="alert alert-success" style="margin-top: 10px;">
+                                  {{ session('success') }}
+                                </div>
+                            @endif
+
                         </form>
                     </div>
                     <div class="col-12 col-md-2"></div>
@@ -214,9 +224,9 @@
         </div>
     </div>
 
-  
+
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-   
+
 </body>
 
 </html>

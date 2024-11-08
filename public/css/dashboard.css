@@ -19,7 +19,7 @@
   --color-faint-ash: #ECF2FE;
   --color-text-dark: #000000;
   --color-text-red: #ff0000;
-  /* 
+  /*
     #AEBACA */
 
   --box-shadow: 0 2px 8px -4px #000000;
@@ -78,7 +78,7 @@ body {
   bottom: 0;
   left: 0;
   z-index: 100;
-  padding: 3rem 1rem;
+  padding: 12rem 1rem;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
 
@@ -632,8 +632,12 @@ body {
 }
 
 
-
-
+/* examcard */
+.examcard {
+    width: 17rem !important;
+    margin: auto;
+    height: 20rem;
+}
 
 
 
@@ -709,4 +713,17 @@ body {
     flex-direction: row;
   }
 
+}
+
+@media screen and (min-width: 1250px) {
+    .examcard {
+        width: 20rem !important;
+    }
+}
+
+
+@media screen and (min-width: 1440px) {
+    .examcard {
+        width: 24rem !important;
+    }
 }

@@ -16,6 +16,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\SubscriptionController;
 
 
 
@@ -407,5 +408,11 @@ Route::middleware('guest')->group(function () {
     Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
 });
 
+
+
+
+
+//Subscribe mails
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
 
 require __DIR__ . '/auth.php';
