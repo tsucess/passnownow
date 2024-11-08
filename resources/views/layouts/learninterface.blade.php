@@ -12,8 +12,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
 
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
@@ -47,7 +47,6 @@
         }
 
 
-
         .detailedstat:hover {
             background-color: #1A69AF;
             color: #fff;
@@ -75,8 +74,6 @@
                 background: red;
             }
         }
-
-
 
 
 
@@ -124,11 +121,12 @@
 
 
         .opennav {
-            width: 100%;   
+            width: 100%;
         }
+
         .closenav {
-           width: 0;
-           left: -25px;
+            width: 0;
+            left: -25px;
         }
 
 
@@ -150,6 +148,7 @@
                 font-size: 8px;
             } */
         }
+
         @media (min-width: 450px) {
             .sidenav {
                 width: 0;
@@ -180,56 +179,57 @@
 
 <body>
 
+
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="shadow p-2 sidenav">
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <br><br>
-                <span class=" bg">
-                    <a class="navbar-brand col-md-3 col-lg-2 me-5 me-md-0 px-3" href="{{ url('/') }}">
-                        <img src="{{ asset('images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
-                    </a>
-                    <a class="btn btn-light rounded-pill ms-5 ms-md-0 border mt-5 text-dark" href="{{ url('adexams') }}"><i
-                            class="fa-solid fa-arrow-left"></i> Back</a>
-                </span>
-                @php
-                    $sn = 0;
-                @endphp
-                <div class="position-sticky mt-4">
-                    <div class="ps-md-3">
-                        @foreach ($yearFetchQuestions[0] as $Question)
-                            @php
-                                $count = ++$sn;
-                            @endphp
-                            <div class="my-1">
-                                <h2 class="">
-                                    <button class="btn btn-light border w-100 tablinks" type="button"
-                                        onclick="selectL(event, '{{ (string)$Question->unique_id }}')">
-                                        {{ $Question->title }}
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white collapse shadow" style="height: 100vh">
+                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
+                    <img src="{{ asset('images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
+                </a>
+                <a class="btn btn-light rounded-pill ms-4 border" href="{{ url('classes') }}"><i
+                        class="fa-solid fa-arrow-left"></i> Back</a>
+                <div class="position-sticky">
+                    <div class="accordion" id="accordionExample">
+
+                        @foreach ($userFetchTopics as $topics)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#{{ (string) $topics[0]->id . 'collapse' }}"
+                                        aria-expanded="false" aria-controls="collapseOne">
+                                        {{ ucfirst($topics[0]->term) }} Term <span class = "ps-4 w-25">20</span>
                                     </button>
                                 </h2>
-                             
+                                <div id="{{ (string) $topics[0]->id . 'collapse' }}"
+                                    class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        {{-- <strong>Topic 1 - Part of Speech</strong> --}}
+                                        @foreach ($restopics as $restop)
+                                            @if ($topics[0]->term === $restop->term)
+                                            <p class="tablinks w-100" onclick="selectL(event, '{{ (string)$restop->unique_id }}')" style="cursor:pointer;">
+                                                <strong>{{ $restop->title }}</strong></p>
+                                            @endif
+                                        @endforeach
+                                    </div>
+                                </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
             </nav>
 
-            <main class="col-12">
-
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 @yield('admincontent')
-
-
             </main>
         </div>
     </div>
-
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
 
     <script>
         function openNav() {
             document.getElementById("sidebarMenu").classList.add('opennav');
-            document.getElementById("open").style.visibility="hidden";
+            document.getElementById("open").style.visibility = "hidden";
             document.getElementById("sidebarMenu").classList.remove('closenav');
             document.getElementById("main").classList.add('openmain');
             document.getElementById("main").classList.remove('closemain');
@@ -240,7 +240,7 @@
             document.getElementById("sidebarMenu").classList.remove('opennav');
             document.getElementById("main").classList.add('closemain');
             document.getElementById("main").classList.remove('openmain');
-            document.getElementById("open").style.visibility="visible";
+            document.getElementById("open").style.visibility = "visible";
         }
 
         tabcontent = document.getElementsByClassName("tabcontent");

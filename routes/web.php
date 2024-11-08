@@ -12,12 +12,6 @@ use App\Http\Controllers\PaymentController;
 use App\Models\Admin;
 use App\Models\Subjects;
 use App\Models\Classes;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\NewPasswordController;
-
-
 
 
 Route::get('/', function () {
@@ -171,7 +165,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-
+require __DIR__ . '/auth.php';
 
 
 Route::get('/subscriptiondetails', function () {
@@ -229,7 +223,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/viewtopics/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewtopics.destroy');
 
 
-
+    // Exams Routes
+    // Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
+    Route::get('/learning/{data}/view', [TopicsController::class, 'showtopics'])->name('learning');
 
     // Exams Routes
     Route::get('/adexams', [ExamsController::class, 'show'])->name('adexams');
@@ -257,7 +253,7 @@ Route::middleware('auth')->group(function () {
         return view('admin.checkoutdetails');
     });
     // Laravel 8 & 9
-    //  Payment Gateway Routees
+    //  Payment Gateway Routees 
     // Route::get('/paystackpopup', [PaymentController::class, 'callback'])->name('payment');
     // Route::post('/init', [PaymentController::class, 'init'])->name('payment');
     // Route::get('callback', [PaymentController::class, 'callback'])->name('callback');
@@ -289,9 +285,7 @@ Route::get('/pastquestion', function () {
 });
 
 
-Route::get('/learning', function () {
-    return view('admin.learning');
-});
+
 
 Route::get('/class', function () {
     return view('admin.class');
@@ -346,66 +340,3 @@ Route::get('/pqexams', function () {
 
 // How to get access view from controller
 // Route::get('home', [UserController::class, 'getHome']);
-
-
-// Route to prompt users to verify their email
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
-
-
-// Route to verify email upon clicking the email link
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect('/dashboard'); // Adjust this to wherever you want users redirected after verification
-})->middleware(['auth', 'signed'])->name('verification.verify');
-
-// Route to resend the verification email
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('status', 'verification-link-sent');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-// // Example of a route that requires email verification
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-
-
-
-
-// DASHBOARD ROUTING
-Route::get('/dashboard', function () {
-    $subjects = Subjects::limit(3)->get();
-    $countAdmins = Admin::wherenot('role', 'user')->count();
-    $countUsers = Admin::where('role', 'user')->count();
-    $users = Admin::where('role', 'user')->get();
-    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects]);
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-
-
-
-Route::middleware('guest')->group(function () {
-    // Password Reset Link Request Routes
-    Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
-    Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
-
-    // Password Reset Routes
-    Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
-    Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
-});
-
-
-require __DIR__ . '/auth.php';

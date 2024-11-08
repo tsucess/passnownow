@@ -40,9 +40,10 @@
                         <th scope="col">Title</th>
                         <th scope="col">Year</th>
                         <th scope="col">url</th>
+                        <th scope="col">ExamID</th>
                         <th scope="col">Order</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Status</th>
+                        {{-- <th scope="col">Status</th> --}}
                         <th scope="col">Actions</th>
 
                     </tr>
@@ -55,18 +56,18 @@
                             <td>{{ $Question->title }}</td>
                             <td>{{ $Question->year }}</td>
                             <td>{{ $Question->url }}</td>
-                            {{-- <td>{{ $exam }}</td> --}}
+                            <td>{{ $exam }}</td>
                             <th>{{ $Question->order }}</th>
                             <td>{{ $Question->created_at }}</td>
-                            <td>
+                            {{-- <td>
                                 <div class="form-check form-switch">
-                                    {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if ($video['status'] == 1) {
+                                    <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>" <?php if ($video['status'] == 1) {
                                         echo 'checked';
-                                    } ?> > --}}
+                                    } ?> >
                                     <input class="form-check-input enable-btn" value="" type="checkbox" data-value =""
                                         checked>
                                 </div>
-                            </td>
+                            </td> --}}
                             <td>
                                 <div class="action">
                                     <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
@@ -88,6 +89,8 @@
                 </tbody>
             </table>
         </div>
+
+
         <!-- Add Questions Modal -->
         <div class="modal fade" id="addModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
             aria-hidden="true">
@@ -292,15 +295,9 @@
 
 
 
-<<<<<<< HEAD
-    <script src="{{ url('assets/js/table/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url('assets/js/table/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('assets/js/table/dataTables.bootstrap.min.js') }}"></script>
-=======
     <script src="{{ url('js/table/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url('js/table/jquery.dataTables.min.js')}}"></script>
     <script src="{{ url('js/table/dataTables.bootstrap.min.js')}}"></script>
->>>>>>> master
 
 
     <script>

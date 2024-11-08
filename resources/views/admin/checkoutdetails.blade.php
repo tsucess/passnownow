@@ -82,9 +82,12 @@
 
                 <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
                             <div class="mb-3">
-                                <input type="text" name="orderID" class="form-control mb-3" value="Txn id: {{ rand(time(), 10000000);}}" readonly />
+                                <input type="hidden" name="orderID" class="form-control mb-3" value="{{ rand(time(), 10000000);}}" placeholder="Txn id: {{ rand(time(), 10000000);}}" readonly />
                                 <label for="firstName" class="form-label">Enter Full Name</label>
-                                <input type="text" name="fname" class="form-control" id="firstName" placeholder="Winner Effiong" />
+                                <input type="hidden" name="user_unique_id" class="form-control" id="user_unique_id" value="{{Auth::user()->unique_id}}" placeholder="Winner Effiong" readonly/>
+                                <input type="hidden" name="first_name" class="form-control" id="firstName" value="{{Auth::user()->first_name}}" placeholder="Winner Effiong" readonly/>
+                                <input type="hidden" name="last_name" class="form-control" id="lastName" value="{{Auth::user()->last_name}}" placeholder="Winner Effiong" readonly/>
+                                <input type="text" name="full_name" class="form-control" id="fullName" value="{{Auth::user()->first_name .' '. Auth::user()->last_name}}" placeholder="Winner Effiong" readonly/>
                             </div>
                             <div class="mb-3">
                                 <label for="lastName" class="form-label">Enter Email</label>
@@ -92,21 +95,22 @@
                             </div>
                             <div class="mb-3">
                                 <label for="country" class="form-label">Subscription Plan</label>
-                                <select name="amount" id="" class="form-control">
+                                <select name="plan" id="" class="form-control p-2">
                                     <option value="">Select plan</option>
-                                    <option value="300">Daily - 300 Naira only</option>
-                                    <option value="500">Weekly - 500 Naira only</option>
-                                    <option value="1100">Monthly - 1,100 Naira only</option>
-                                    <option value="2600">3 Months - 2,600 Naira only</option>
-                                    <option value="5100">6 Months - 5,100 Naira only</option>
-                                    <option value="10,100">Yearly - 10,100 Naira only</option>
+                                    <option value="daily">Daily - 300 Naira only</option>
+                                    <option value="weekly">Weekly - 500 Naira only</option>
+                                    <option value="monthly">Monthly - 1,100 Naira only</option>
+                                    <option value="quarterly">3 Months - 2,600 Naira only</option>
+                                    <option value="halfly">6 Months - 5,100 Naira only</option>
+                                    <option value="yearly">Yearly - 10,100 Naira only</option>
                                 </select>
-                               
+
+                                <x-input-error :messages="$errors->get('plan', 'Select a Subscribtion plan' )" style="list-style: none" class="mt-2 text-danger" />
                             </div>
                             <div class="mb-3">
                                 {{-- <label for="state" class="form-label">Currency</label> --}}
                                 <input type="hidden" class="form-control" name="currency" value="NGN" placeholder="Naira" readonly />
-                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['key_name' => 'value',]) }}" > 
+                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => Auth::user()->first_name, 'last_name' => Auth::user()->last_name,]) }}" > 
                             </div>
                             {{-- <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
@@ -135,15 +139,12 @@
             </div>
         </div>
     </section>
-<<<<<<< HEAD
 
 
 
-    <script src="https://js.paystack.co/v2/inline.js">
-=======
+    {{-- <script src="https://js.paystack.co/v2/inline.js"></script> --}}
     @php
         // $access_code = $output->data->access_code;
         // var_dump($access_code);
     @endphp
->>>>>>> master
 @endsection
