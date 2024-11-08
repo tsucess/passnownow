@@ -131,6 +131,12 @@
            left: -25px;
         }
 
+        .select {
+            background-color: #1a69af9f;
+            color: white;
+            padding: 0.5rem 1rem;
+        }
+
 
         /* .openmain {
             width: 225px;
@@ -257,10 +263,12 @@
             tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace("active", "");
+                tablinks[i].className = tablinks[i].className.replace("select", "");
             }
             // document.getElementById(subjectName).style.display = "block";
             document.getElementById(subjectName).style.visibility = "visible";
             evt.currentTarget.className += " active";
+            evt.currentTarget.className += " select";
         }
     </script>
 </body>

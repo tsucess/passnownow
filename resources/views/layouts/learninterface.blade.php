@@ -129,6 +129,11 @@
             left: -25px;
         }
 
+        .select {
+            background-color: #1a69af9f;
+            color: white;
+            padding: 0.5rem 1rem;
+        }
 
         /* .openmain {
             width: 225px;
@@ -206,8 +211,11 @@
                                         {{-- <strong>Topic 1 - Part of Speech</strong> --}}
                                         @foreach ($restopics as $restop)
                                             @if ($topics[0]->term === $restop->term)
-                                            <p class="tablinks w-100" onclick="selectL(event, '{{ (string)$restop->unique_id }}')" style="cursor:pointer;">
-                                                <strong>{{ $restop->title }}</strong></p>
+                                                <p class="tablinks w-100"
+                                                    onclick="selectL(event, '{{ (string) $restop->unique_id }}')"
+                                                    style="cursor:pointer;">
+                                                    <strong>{{ $restop->title }}</strong>
+                                                </p>
                                             @endif
                                         @endforeach
                                     </div>
@@ -257,10 +265,12 @@
             tablinks = document.getElementsByClassName("tablinks");
             for (i = 0; i < tablinks.length; i++) {
                 tablinks[i].className = tablinks[i].className.replace("active", "");
+                tablinks[i].className = tablinks[i].className.replace("select", "");
             }
             // document.getElementById(subjectName).style.display = "block";
             document.getElementById(subjectName).style.visibility = "visible";
             evt.currentTarget.className += " active";
+            evt.currentTarget.className += " select";
         }
     </script>
 </body>
