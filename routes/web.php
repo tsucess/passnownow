@@ -172,7 +172,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-
+require __DIR__ . '/auth.php';
 
 
 Route::get('/subscriptiondetails', function () {
@@ -230,7 +230,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/viewtopics/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewtopics.destroy');
 
 
-
+    // Exams Routes
+    // Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
+    Route::get('/learning/{data}/view', [TopicsController::class, 'showtopics'])->name('learning');
 
     // Exams Routes
     Route::get('/adexams', [ExamsController::class, 'show'])->name('adexams');
@@ -290,9 +292,7 @@ Route::get('/pastquestion', function () {
 });
 
 
-Route::get('/learning', function () {
-    return view('admin.learning');
-});
+
 
 Route::get('/class', function () {
     return view('admin.class');

@@ -1,26 +1,44 @@
-@extends('layouts.dasboard2')
+@extends('layouts.learninterface')
 
+<style>
+    .frame {
+        position: relative;
+    }
+
+    .content {
+        position: relative;
+        top: 850px;
+    }
+
+    .tabcontent {
+        /* display: none; */
+        visibility: hidden;
+        position: absolute;
+    }
+</style>
 @section('admincontent')
-    <div class="row align-items-start" >
+    <div class="row align-items-start">
 
-        <div class="col-xl-12 col-lg-12 col-md-8 col-sm-12 col-xs-12">
-            <h6 class = "h6 mb-3 mt-3">Topic 1: Part of Speech</h6>
-            <div class="w-100">
-                <iframe width="100%" height="690" src="https://app.Lumi.education/api/v1/run/gWQ6dY/embed" frameborder="1"
-                    title = "Subjects content" allowfullscreen></iframe>
+        <div class="col-12">
+            <div class="frame">
+                @foreach ($restopics as $restop)
+                <div class="w-100 tabcontent" id="{{ (string)$restop->unique_id }}">
+                        <h6 class = "h6 mb-3 mt-3">Topic: {{$restop->title}}</h6>
+                        <iframe width="100%" height="690" src="{{$restop->url}}"
+                            frameborder="1" title = "Subjects content" allowfullscreen></iframe>
+                    </div>
+                @endforeach
             </div>
-
-              {{-- <section>
-        <iframe src="https://app.Lumi.education/api/v1/run/gWQ6dY/embed" width="1088" height="720" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe>
-        <script src="https://app.Lumi.education/api/v1/h5p/core/js/h5p-resizer.js" charset="UTF-8"></script>
-    </section> --}}
+       
+        </div>
+        <div class="col-12 content">
+            <h2>Objectives</h2>
             <p class = "justify-content mt-2">
                 Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.
                 Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
                 Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
                 Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
             </p>
-
         </div>
 
 

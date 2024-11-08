@@ -13,13 +13,17 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->string('user_unique_id');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('payment_id');
             $table->string('plan_name');
-            $table->string('sub_plan');
             $table->string('amount');
             $table->string('currency');
             $table->string('payment_status');
             $table->string('payment_method');
+            $table->string('txn_id');
+            $table->string('expiry_date');
             $table->timestamps();
         });
     }

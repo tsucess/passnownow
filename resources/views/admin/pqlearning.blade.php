@@ -1,28 +1,57 @@
 @extends('layouts.pqinterface')
 
+
+<style>
+    .frame {
+        position: relative;
+    }
+
+    .content {
+        position: relative;
+        top: 850px;
+    }
+
+    .tabcontent {
+        /* display: none; */
+        visibility: hidden;
+        position: absolute;
+    }
+</style>
 @section('admincontent')
-    <div class="row align-items-start" >
-
-        <div class="col-xl-12 col-lg-12 col-md-8 col-sm-12 col-xs-12">
-            <h6 class = "h6 mb-3 mt-3">Topic 1: Part of Speech</h6>
-            <div class="w-100">
-                <iframe width="100%" height="690" src="https://app.Lumi.education/api/v1/run/gWQ6dY/embed" frameborder="1"
-                    title = "Subjects content" allowfullscreen></iframe>
+    <div class="row align-items-start" id="main">
+        <div class="col-12">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="open">&#9776;</span>
+            <div class="frame">
+                @foreach ($yearFetchQuestions[0] as $Question)
+                    <div class="w-100 tabcontent" id="{{ (string) $Question->unique_id }}">
+                        <h6 class = "h6 mb-3">Topic: {{ $Question->title }}</h6>
+                        <iframe width="100%" height="840" src="{{ $Question->url }}" frameborder="1"
+                            title = "Subjects content" allowfullscreen></iframe>
+                    </div>
+                @endforeach
             </div>
-
-              {{-- <section>
-        <iframe src="https://app.Lumi.education/api/v1/run/gWQ6dY/embed" width="1088" height="720" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe>
-        <script src="https://app.Lumi.education/api/v1/h5p/core/js/h5p-resizer.js" charset="UTF-8"></script>
-    </section> --}}
+        </div>
+        <div class="col-12 content">
+            <h2>Objectives</h2>
             <p class = "justify-content mt-2">
                 Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.
                 Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
                 Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
                 Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
             </p>
-
         </div>
 
-
+        {{-- <section class="container-fluid footer__container">
+            <div class="row">
+                <div class="col-12 col-md-5 col-lg-6 mb-2">&copy; Copyright Passnownow 2024, All Right
+                    Reserverd</div>
+                {{-- <div class="col-12 col-md-2 col-lg-4"></div> 
+                <div class="col-12 col-md-5 col-lg-6 text-lg-end">
+                    <a href="3">Terms and conditions</a> &nbsp;
+                    <a href="3">Privacy policy</a> &nbsp;
+                    <a href="#">Support</a>
+                </div>
+            </div>
+        </section> --}}
     </div>
 @endsection
