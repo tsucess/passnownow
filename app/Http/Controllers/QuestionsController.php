@@ -67,10 +67,11 @@ class QuestionsController extends Controller
     public function show(Exams $data)
     {
 
+        $examu_id = $data->unique_id;
         $exam_id = $data->id;
         $ex_id = $data->id;
 
-        $output = Questions::where('exam_unique_id', $ex_id)->get();
+        $output = Questions::where('exam_unique_id', $ex_id)->orderBy('year', 'asc')->orderBy('order', 'asc')->get();
         return view('admin.adpastquestions', ['exam' => $exam_id, 'ex_id' => $ex_id, 'fetchQuestions' => $output]);
     }
     
@@ -106,6 +107,28 @@ class QuestionsController extends Controller
         foreach ($results as $result) {
             $output[] = Questions::where('exam_unique_id', $result->id)->where('year', $exam_year)->get();
             // print_r($result->id);
+        }
+        return view('admin.pqlearning', ['yearFetchQuestions' => $output]);
+    }
+
+
+    /**
+     * Display the User specified resource.
+     */
+    public function sshowpastquest(Request $request, Exams $detail, Questions $data, Questions $view)
+    {
+        dd($request);
+        dd($view);
+        $exam_id = $data->id;
+        $exam_year = $data->year;
+        $exam_unique = $data->exam_unique_id;
+        // dd($exam_unique);
+        $results = Exams::get();
+        $output = [];
+        foreach ($results as $result) {
+            $output[] = Questions::where('exam_unique_id', $result->id)->where('year', $exam_year)->get();
+            // print_r($result->id);
+            
         }
      
         // return view('admin.pqlearning', ['yearFetchQuestions' => $result]);

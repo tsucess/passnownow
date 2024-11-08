@@ -20,7 +20,7 @@ class ClassesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-   
+
 
     /**
      * Store a newly created resource in storage.
@@ -29,7 +29,7 @@ class ClassesController extends Controller
     {
 
         $request->validate([
-            'unique_id' => ['required', 'string', 'max:255', 'unique:'.Classes::class],
+            'unique_id' => ['required', 'string', 'max:255', 'unique:' . Classes::class],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
             'avatar' => ['required', 'mimes:jpg,png,jpeg', 'max:2048']
@@ -53,8 +53,6 @@ class ClassesController extends Controller
         } else {
             return redirect('/classes')->with('error', 'Something went wrong');
         };
-
-
     }
 
     /**
@@ -72,7 +70,7 @@ class ClassesController extends Controller
      */
     public function update(Request $request)
     {
-    
+
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
@@ -87,22 +85,18 @@ class ClassesController extends Controller
 
             if ($request->avatar) {
                 // dd($request->prevavatar);
-                File::delete(storage_path('app/public/'.$request->prevavatar));
+                File::delete(storage_path('app/public/' . $request->prevavatar));
                 $avatar = $request->file('avatar')->store('upload');
                 $class->avatar = $avatar;
-            }
-            else
-            {
+            } else {
                 $class->avatar = $request->prevavatar;
             }
             $class->save();
-        // if ($done) {
-            return redirect('/classes')->with('success', 'Class updated Successfully');
-            } else {
-                return redirect('/classes')->with('error', 'Something went wrong');
-            };
 
-    
+            return redirect('/classes')->with('success', 'Class updated Successfully');
+        } else {
+            return redirect('/classes')->with('error', 'Something went wrong');
+        };
     }
 
 
@@ -116,13 +110,12 @@ class ClassesController extends Controller
      */
     public function destroy(Classes $data)
     {
-        File::delete(storage_path('app/public/'.$data->avatar));
+        File::delete(storage_path('app/public/' . $data->avatar));
         $done = $data->delete();
         if ($done) {
             return redirect('/classes')->with('success', 'Class deleted successfully');
         } else {
             return redirect('/classes')->with('error', 'Something went wrong');
         };
-
     }
 }

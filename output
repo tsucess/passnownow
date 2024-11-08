@@ -1,0 +1,79 @@
+array:3 [▼ // app/Http/Controllers/PaymentController.php:49
+  "status" => true
+  "message" => "Verification successful"
+  "data" => array:32 [▶]
+]
+
+
+
+array:3 [▼ // app/Http/Controllers/PaymentController.php:49
+  "status" => true
+  "message" => "Verification successful"
+  "data" => array:32 [▼
+    "id" => 4355371626
+    "domain" => "test"
+    "status" => "success"
+    "reference" => "TpEjJ4hoPo6746SeseLOoMlFC"
+    "receipt_number" => null
+    "amount" => 110000
+    "message" => null
+    "gateway_response" => "Successful"
+    "paid_at" => "2024-11-07T21:37:38.000Z"
+    "created_at" => "2024-11-07T21:37:24.000Z"
+    "channel" => "card"
+    "currency" => "NGN"
+    "ip_address" => "105.113.69.219"
+    "metadata" => ""
+    "log" => array:8 [▼
+      "start_time" => 1731015454
+      "time_spent" => 6
+      "attempts" => 1
+      "errors" => 0
+      "success" => true
+      "mobile" => false
+      "input" => []
+      "history" => array:2 [▶]
+    ]
+    "fees" => 1650
+    "fees_split" => null
+    "authorization" => array:13 [▼
+      "authorization_code" => "AUTH_yqug7at3as"
+      "bin" => "408408"
+      "last4" => "4081"
+      "exp_month" => "12"
+      "exp_year" => "2030"
+      "channel" => "card"
+      "card_type" => "visa "
+      "bank" => "TEST BANK"
+      "country_code" => "NG"
+      "brand" => "visa"
+      "reusable" => true
+      "signature" => "SIG_UDh9tCxuGhKC8Hycqcwi"
+      "account_name" => null
+    ]
+    "customer" => array:9 [▼
+      "id" => 204301807
+      "first_name" => null
+      "last_name" => null
+      "email" => "newuser@gmail.com"
+      "customer_code" => "CUS_se0phn0aa4xjx7l"
+      "phone" => null
+      "metadata" => null
+      "risk_action" => "default"
+      "international_format_phone" => null
+    ]
+    "plan" => null
+    "split" => []
+    "order_id" => null
+    "paidAt" => "2024-11-07T21:37:38.000Z"
+    "createdAt" => "2024-11-07T21:37:24.000Z"
+    "requested_amount" => 110000
+    "pos_transaction_data" => null
+    "source" => null
+    "fees_breakdown" => null
+    "connect" => null
+    "transaction_date" => "2024-11-07T21:37:24.000Z"
+    "plan_object" => []
+    "subaccount" => []
+  ]
+]

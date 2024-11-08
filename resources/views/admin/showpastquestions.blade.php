@@ -15,11 +15,7 @@
             {{-- {{ $result }} --}}
             @foreach ($userFetchQuestions as $Question)
                 <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%">
-<<<<<<< HEAD
-                    {{-- <img src="{{ asset('/assets/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
-=======
                     {{-- <img src="{{ asset('/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
->>>>>>> master
                     <h5 class = "text-center fw-bold jss px-4">{{ $Question[0]->year }}</h5>
                     <p class = "text-md-center px-5 py-2">
                         {{ $Question[0]->description }}
@@ -44,15 +40,9 @@
 
 
 
-<<<<<<< HEAD
-    <script src="{{ url('assets/js/table/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url('assets/js/table/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('assets/js/table/dataTables.bootstrap.min.js') }}"></script>
-=======
     <script src="{{ url('js/table/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url('js/table/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('js/table/dataTables.bootstrap.min.js') }}"></script>
->>>>>>> master
 
 
     <script>

@@ -76,9 +76,20 @@ class TopicsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Topics $topics)
+    public function showtopics(Topics $data)
     {
-        //
+        $subject_id = $data->id;
+        $sub_id = $data->id;
+        $output = Topics::where('subject_unique_id', $sub_id)->distinct()->get(['term']);
+        $result = [];
+        foreach ($output as $key ) {
+            $result[] = Topics::where('subject_unique_id', $sub_id)->where('term', $key->term)->get(); 
+        }
+ 
+            $resultoutput = Topics::where('subject_unique_id', $sub_id)->get();
+      
+
+        return view('admin.learning', ['userFetchTopics' => $result, 'restopics' => $resultoutput]);
     }
 
     /**

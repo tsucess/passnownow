@@ -16,7 +16,6 @@
                         <div class="card-body">
                             <h5>What’s Include?</h4>
                             <div class="lists">
-
                                 <p class="list"><i class="fa-solid fa-circle-check me-2"></i>Valid for 24hrs</p>
                             </div>
                             <div class="lists">
@@ -37,11 +36,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-<<<<<<< HEAD
-                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
-=======
                             <a href="{{url('checkoutdetails')}}" class="text-dark btn btn-light border">Subscribe</a>
->>>>>>> master
                         </div>
                     </div>
                 </div>
@@ -78,11 +73,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-<<<<<<< HEAD
-                            <a href="{{url('checkoutdetails')}}" class="text-white card-link">Subscribe</a>
-=======
                             <a href="{{url('checkoutdetails')}}" class="btn btn-light border ">Subscribe</a>
->>>>>>> master
                         </div>
                     </div>
                 </div>
@@ -119,11 +110,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-<<<<<<< HEAD
-                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
-=======
                             <a href="{{url('checkoutdetails')}}" class="text-dark btn btn-light border text-dark">Subscribe</a>
->>>>>>> master
                         </div>
                     </div>
                 </div>
@@ -160,11 +147,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-<<<<<<< HEAD
-                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
-=======
                             <a href="{{url('checkoutdetails')}}" class="text-dark btn btn-light border">Subscribe</a>
->>>>>>> master
                         </div>
                     </div>
                 </div>
@@ -238,11 +221,7 @@
                             </div>
                         </div>
                         <div class="card-body text-center">
-<<<<<<< HEAD
-                            <a href="{{url('checkoutdetails')}}" class="text-dark card-link">Subscribe</a>
-=======
                             <a href="{{url('checkoutdetails')}}" class="text-dark btn btn-light border">Subscribe</a>
->>>>>>> master
                         </div>
                     </div>
                 </div>
