@@ -33,14 +33,18 @@ class RegisteredAdminController extends Controller
         // dd($request);
         // Validate
         $request->validate([
-            'unique_id' => ['required', 'string', 'max:255', 'unique:'.User::class],
+            'unique_id' => ['required', 'string', 'max:255', 'unique:' . User::class],
             'fname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'username' => ['required', 'string', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'terms' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::min(8)->letters()->numbers()->mixedCase()->symbols()
+            ],
         ]);
 
         // Register

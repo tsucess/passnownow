@@ -1,6 +1,10 @@
 @extends('layouts.dasboardtemp')
 
 @section('admincontent')
+
+    @php
+        $now = date('Y-m-d');
+    @endphp
     <section class="container-fluid greeting__containter mt-3">
         <div class="row greet__user">
             <div class="col-12 col-md-6 greetings ">
@@ -17,14 +21,37 @@
     @if (Auth::user()->role === 'user')
         <section class="container-fluid notifiication__containter  shadow mt-4">
             <div class="row p-2">
-                <div class="col-12 col-md-8 subscription">
-                    <i class="fa-regular fa-credit-card"></i>
-                    <p>Your Subscription ends on 28 August 2024</p>
-                </div>
-                <div class="col-12 col-md-4  text-md-end">
-                    <button class="btn upgrade-btn">Upgrade</button>
-                </div>
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger">
+                        <p class="m-0">{{ \Session::get('error') }}</p>
+                    </div>
+                @elseif (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <p class="m-0">{{ \Session::get('success') }}</p>
+                    </div>
+                @endif
             </div>
+
+            @if ($subhistory === true)
+                <div class="row p-2">
+                    <div class="col-12 col-md-8 subscription">
+                        <i class="fa-regular fa-credit-card"></i>
+                        @php
+                            $exp = date_create($exp_date[0]->expiry_date);
+                            $exp_d = date_format($exp, 'Y-m-d');
+                            $now = date('Y-m-d');
+                        @endphp
+                        <p>Your Subscription ends on {{ date_format($exp, 'd F Y') }}</p>
+                    </div>
+                    <div class="col-12 col-md-4  text-md-end">
+                        @if ($now > $exp_d)
+                            <button class="btn upgrade-btn bg-danger">Expired</button>
+                        @else
+                            <button class="btn upgrade-btn">Active</button>
+                        @endif
+                    </div>
+                </div>
+            @endif
         </section>
         <section class="container-fluid top-courses__containter  shadow py-2 my-4">
             <div class="row">
@@ -36,7 +63,8 @@
                 @foreach ($subjects as $subject)
                     <div class="col-12 col-md-6 col-lg-4 mb-2">
                         <div class="card courses">
-                            <div class="image_wrapper m-0 p-0" style="background-image: url('{{url('storage/'. $subject->avatar)}}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;" >
+                            <div class="image_wrapper m-0 p-0"
+                                style="background-image: url('{{ url('storage/' . $subject->avatar) }}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;">
                             </div>
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
@@ -89,111 +117,72 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status"><i class="fa-solid fa-circle"></i> <span>Current</span></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status"><i class="fa-solid fa-circle"></i> <span>Current</span></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
+                            @foreach ($subhistory as $history)
+                                <tr>
+                                    <td>
+                                        <h6>{{ $history->plan_name }} Plan</h6>
+                                        <p>#{{ $history->orderID }} | {{ $history->updated_at }}</p>
+                                    </td>
+                                    <td>
+                                        <h6>N{{ number_format($history->amount) }}</h6>
+                                    </td>
+                                    <td>
+                                        @php
+                                            $exp_day = date_create($history->expiry_date);
+                                            $exp_day = date_format($exp_day, 'Y-m-d');
+                                        @endphp
+
+                                        @if ($now > $exp_day)
+                                            <span class="status exp"><i class="fa-solid fa-circle"></i>
+                                                <span>Expired</span></span>
+                                        @else
+                                            <span class="status"><i class="fa-solid fa-circle"></i>
+                                                <span>Current</span></span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="col-12 col-lg-5 shadow subjects_history">
                     <div class="top">
-                        <h5>Past Questions</h5>
+                        <h5>Available Past Questions</h5>
                         <a href="#">See All</a>
                     </div>
                     <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>English Language</h6>
-                            <p class="mb-0">Completed</p>
+                            <p class="mb-0">view</p>
                         </span>
                     </div>
                     <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Mathematics</h6>
-                            <p class="mb-0">In Progress</p>
+                            <p class="mb-0">view</p>
                         </span>
                     </div>
                     <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Computer Science</h6>
-                            <p class="mb-0">In Progress</p>
+                            <p class="mb-0">view</p>
                         </span>
                     </div>
                     <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Chemistry</h6>
-                            <p class="mb-0">In Progress</p>
+                            <p class="mb-0">view</p>
                         </span>
                     </div>
                     <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Physics</h6>
-                            <p class="mb-0">In Progress</p>
+                            <p class="mb-0">view</p>
                         </span>
                     </div>
                 </div>

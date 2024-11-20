@@ -41,17 +41,5 @@
             </p>
         </div>
 
-        {{-- <section class="container-fluid footer__container">
-            <div class="row">
-                <div class="col-12 col-md-5 col-lg-6 mb-2">&copy; Copyright Passnownow 2024, All Right
-                    Reserverd</div>
-                {{-- <div class="col-12 col-md-2 col-lg-4"></div> 
-                <div class="col-12 col-md-5 col-lg-6 text-lg-end">
-                    <a href="3">Terms and conditions</a> &nbsp;
-                    <a href="3">Privacy policy</a> &nbsp;
-                    <a href="#">Support</a>
-                </div>
-            </div>
-        </section> --}}
     </div>
 @endsection
