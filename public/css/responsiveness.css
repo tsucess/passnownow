@@ -8,10 +8,18 @@
         font-size: 1.2rem;
     }
 
-   
+
 }
 
-
+/* @media only screen and (max-width:320px)
+{
+#sidebarMenu
+{
+background-color: red;
+padding-top:180px;
+line-height:2px;
+}
+} */
 
 @media (min-width: 425px) {
 
@@ -49,7 +57,7 @@
         width: 100%;
     }
 
-   
+
 
 
 }
@@ -108,7 +116,7 @@
     }
 
 
-  
+
 
     .container__guide .guides {
         margin: 0 auto;
@@ -328,7 +336,7 @@
 
 
     /* =========================
-     FORM PAGE  
+     FORM PAGE
 ============================*/
 
     .container__register .side-bg {
@@ -387,7 +395,7 @@
     .bg-time div{
        font-size: 0.9rem;
     }
-  
+
     .career_bottom  h6{
         line-height: 2rem;
         font-size: 1.5rem !important;
@@ -408,7 +416,7 @@
     .subscription_history table .status {
         width: 75%;
       }
- 
+
  }
 
 
@@ -836,7 +844,7 @@
     .subscription .bg-plan .header{
         padding: 0 15rem;
      }
- 
+
 
     /* LEADERSHIP  */
     .leadership .bg-tertiary-accent p b,
@@ -868,7 +876,7 @@
 
 
     /* =====================
-     FORM PAGE  
+     FORM PAGE
 =========================*/
     .container__register .side-bg {
         padding: 1.5rem 3rem;
@@ -910,13 +918,13 @@
     .bg-time {
         padding: 2.5rem 1rem;
     }
- 
- 
+
+
     .payment-logos {
         width: 80%;
-    }  
+    }
 
- 
+
 }
 
 
@@ -1195,5 +1203,5 @@
         font-size: 1rem;
         line-height: 2rem;
     }
-  
+
  }

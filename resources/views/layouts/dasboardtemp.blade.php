@@ -31,8 +31,8 @@
     <!-- Chart.js -->
     <script src="{{ asset('js/chart/chart.min.js') }}"></script>
 
-    <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
+   <!-- <script type = "text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
+  {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 
 
 
@@ -91,7 +91,7 @@
         <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
             data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon fa fa-bars"></span>
         </button>
         {{-- <div class="row p-0 ">
             <div class="col-12 p-0"> --}}
@@ -135,7 +135,7 @@
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
                 <div class="position-sticky">
-                    <ul class="nav flex-column ">
+                    <ul class="nav flex-column">
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('dashboard') }}" href="/dashboard">
                                 <i class="fa-solid fa-table-list"></i>

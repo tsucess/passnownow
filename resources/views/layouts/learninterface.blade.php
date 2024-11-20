@@ -188,12 +188,16 @@
     <div class="container-fluid">
         <div class="row">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white collapse shadow" style="height: 100vh">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <br><br>
+                <span class=" bg">
                 <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
                     <img src="{{ asset('images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
                 </a>
                 <a class="btn btn-light rounded-pill ms-4 border" href="{{ url('classes') }}"><i
                         class="fa-solid fa-arrow-left"></i> Back</a>
-                <div class="position-sticky">
+                </span>
+                <div class="position-sticky mt-4">
                     <div class="accordion" id="accordionExample">
 
                         @foreach ($userFetchTopics as $topics)

@@ -1,29 +1,31 @@
 @extends('layouts.dasboardtemp')
 
+
+<style>
+.examcard {
+    width: 17rem !important;
+    margin: auto;
+    height: 20rem;
+}
+</style>
 @section('admincontent')
 
     @if (Auth::user()->role === 'user')
-        <div class = "row mt-3 gap-2">
-
-            @foreach ($fetchExams as $Exam)
-                <div class = "col-12 col-md-4 text-center shadow" style="width: 32%">
-                    <img src="{{ asset('storage/' . $Exam->avatar) }}" class = "img-fluid mb-3" style="height: 15rem" />
-                    <div class="mb-3" style="height: 12rem">
-                        <h5 class = "text-center fw-bold px-3">{{ strtoupper($Exam->title) }}</h5>
-                        <p class = "text-md-center px-4 py-2">
-                            {{ $Exam->description }}
-                        </p>
-                        <a href="{{ route('showpastquestions', ['data' => $Exam]) }}" class="btn btn-outline-primary mb-3 p-2">VIEW ALL QUESTIONS</a>
-                    </div>
+    <div class="row mt-3 gap-2 gap-lg-1">
+        @foreach ($fetchExams as $Exam)
+            <div class="col-12 col-md-6 col-lg-4 text-center rounded-3 p-1 border examcard">
+                <img src="{{ asset('storage/' . $Exam->avatar) }}" class="img-fluid mb-3" alt="{{ $Exam->title }}" style="height: 7rem; object-fit: cover;">
+                <div class="">
+                    <h5 class="text-center fw-bold">{{ strtoupper($Exam->title) }}</h5>
+                    <p class="text-md-center">{{ Str::limit($Exam->description, 150) }}</p>
                 </div>
-            @endforeach
+                <a href="{{ route('showpastquestions', ['data' => $Exam]) }}" class="btn btn-outline-primary mt-auto p-2">VIEW ALL QUESTIONS</a>
+            </div>
+        @endforeach
+    </div>
 
-       
-
-        </div>
     @else
-        <div
-            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Exams</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group me-2">

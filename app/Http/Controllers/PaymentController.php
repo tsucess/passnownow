@@ -12,6 +12,7 @@ use App\Models\Transaction;
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
 use Unicodeveloper\Paystack\Facades\Paystack;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -88,6 +89,7 @@ class PaymentController extends Controller
             'plan_name' => $plan,
             'expiry_date' => $expiry_date->format("Y-m-d H:i:s"),
             'payment_status' => "pending",
+            'payment_method' => "none"
         );
 
         // dd($data);
@@ -115,23 +117,26 @@ class PaymentController extends Controller
         // Now you have the payment details,
         $paymentDetails = Paystack::getPaymentData();
 
-        // dd($paymentDetails);
-        // $paymentDetails->data
-        // $paymentDetails->message
-        // $paymentDetails->status
-
+      
+            $reference = $paymentDetails['data']['reference'];
+            $method = $paymentDetails['data']['channel'];
+            $status = $paymentDetails['data']['status'];
+            $amount = $paymentDetails['data']['amount'];
 
         // you can store the authorization_code in your db to allow for recurrent subscriptions
-        $data = Transaction::find($paymentDetails->data->reference);
 
-        $data->payment_method = $paymentDetails->data->channel;
-        $data->payment_status = $paymentDetails->data->status;
-        $data->amount = $paymentDetails->data->amount/100;
-        $data->save();
-
+       Transaction::where('reference', $reference)->update([
+            'amount' => $amount/100,
+            'payment_method' => $method,
+            'payment_status' => $status
+            ]);
+            
+        
+        $userID = Auth::user()->unique_id;
+        Admin::where('unique_id', $userID)->where('role', 'user')->update(['status'=> 1]);
 
         // Update Card Details 
-        // $card = Carddetail::find($paymentDetails->data->reference);
+        // $card = Carddetail::find($paymentDetails['data']['reference']);
         
         // you can then redirect or do whatever you want
         return redirect('/dashboard')->with('success', 'Subcription successful, Happy Learning!');

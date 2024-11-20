@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExamsController;
 use App\Http\Controllers\ClassesController;
@@ -9,9 +10,17 @@ use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SubscriptionController;
 use App\Models\Admin;
 use App\Models\Subjects;
 use App\Models\Classes;
+use App\Models\Transaction;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Auth\NewPasswordController;
+
+
 
 
 Route::get('/', function () {
@@ -137,17 +146,25 @@ Route::get('/checkout', function () {
 });
 
 
-// DASHBOARD ROUTING
+
+
+
+
+
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        $subjects = Subjects::limit(3)->get();
-        $countAdmins = Admin::wherenot('role', 'user')->count();
-        $countUsers = Admin::where('role', 'user')->count();
-        $users = Admin::where('role', 'user')->get();
-        return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects]);
-    })->name('dashboard');
-
+    // Route::get('/dashboard', function () {
+        
+    //     $userID = Auth::user()->unique_id;
+    //     dd($userID);
+    //     $subHistory = Transaction::where('user_unique_id', $userID);
+    //     $subjects = Subjects::limit(3)->get();
+    //     $countAdmins = Admin::wherenot('role', 'user')->count();
+    //     $countUsers = Admin::where('role', 'user')->count();
+    //     $users = Admin::where('role', 'user')->get();
+    //     return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory]);
+    // })->name('dashboard');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -253,7 +270,7 @@ Route::middleware('auth')->group(function () {
         return view('admin.checkoutdetails');
     });
     // Laravel 8 & 9
-    //  Payment Gateway Routees 
+    //  Payment Gateway Routees
     // Route::get('/paystackpopup', [PaymentController::class, 'callback'])->name('payment');
     // Route::post('/init', [PaymentController::class, 'init'])->name('payment');
     // Route::get('callback', [PaymentController::class, 'callback'])->name('callback');
@@ -340,3 +357,78 @@ Route::get('/pqexams', function () {
 
 // How to get access view from controller
 // Route::get('home', [UserController::class, 'getHome']);
+
+
+// Route to prompt users to verify their email
+Route::get('/email/verify', function () {
+    return view('auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
+
+// Route to verify email upon clicking the email link
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect('/dashboard'); // Adjust this to wherever you want users redirected after verification
+})->middleware(['auth', 'signed'])->name('verification.verify');
+
+// Route to resend the verification email
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+// // Example of a route that requires email verification
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
+
+
+
+// DASHBOARD ROUTING
+Route::get('/dashboard', function () {
+    
+    $userID = Auth::user()->unique_id;
+    // dd($userID);
+    $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
+    $subExpiry = Transaction::where('user_unique_id', $userID)->latest('updated_at')->limit(1)->get();
+    
+    $subjects = Subjects::limit(3)->get();
+    $countAdmins = Admin::wherenot('role', 'user')->count();
+    $countUsers = Admin::where('role', 'user')->count();
+    $users = Admin::where('role', 'user')->get();
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry]);
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+
+
+
+Route::middleware('guest')->group(function () {
+    // Password Reset Link Request Routes
+    Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
+    Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])->name('password.email');
+
+    // Password Reset Routes
+    Route::get('/reset-password/{token}', [NewPasswordController::class, 'create'])->name('password.reset');
+    Route::post('/reset-password', [NewPasswordController::class, 'store'])->name('password.update');
+});
+
+
+
+
+
+//Subscribe mails
+Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+
+require __DIR__ . '/auth.php';
