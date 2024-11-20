@@ -32,16 +32,20 @@ class RegisteredUserController extends Controller
 
         // dd($request);
         // Validate
-    //    $data = $request->validate([
-      $request->validate([
-            'unique_id' => ['required', 'string', 'max:255', 'unique:'.User::class],
+        //    $data = $request->validate([
+        $request->validate([
+            'unique_id' => ['required', 'string', 'max:255', 'unique:' . User::class],
             'fname' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'username' => ['required', 'string', 'max:255', 'unique:' . User::class],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
             'terms' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::min(8)->letters()->numbers()->mixedCase()->symbols()
+            ],
         ]);
 
         // Register
@@ -64,6 +68,5 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(route('verification.notice', absolute: false));
-
     }
 }

@@ -192,7 +192,7 @@
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br><br>
                 <span class=" bg">
-                    <a class="navbar-brand col-md-3 col-lg-2 me-5 me-md-0 px-3" href="{{ url('/') }}">
+                    <a class="navbar-brand col-md-3 col-lg-2 me-0 me-md-0 px-3" href="{{ url('/') }}">
                         <img src="{{ asset('images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
                     </a>
                     <a class="btn btn-light rounded-pill ms-5 ms-md-0 border mt-5 text-dark" href="{{ url('adexams') }}"><i

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ExamsController;
 use App\Http\Controllers\ClassesController;
@@ -9,14 +10,15 @@ use App\Http\Controllers\SubjectsController;
 use App\Http\Controllers\TopicsController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SubscriptionController;
 use App\Models\Admin;
 use App\Models\Subjects;
 use App\Models\Classes;
+use App\Models\Transaction;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\SubscriptionController;
 
 
 
@@ -144,17 +146,25 @@ Route::get('/checkout', function () {
 });
 
 
-// DASHBOARD ROUTING
+
+
+
+
+
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/dashboard', function () {
-        $subjects = Subjects::limit(3)->get();
-        $countAdmins = Admin::wherenot('role', 'user')->count();
-        $countUsers = Admin::where('role', 'user')->count();
-        $users = Admin::where('role', 'user')->get();
-        return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects]);
-    })->name('dashboard');
-
+    // Route::get('/dashboard', function () {
+        
+    //     $userID = Auth::user()->unique_id;
+    //     dd($userID);
+    //     $subHistory = Transaction::where('user_unique_id', $userID);
+    //     $subjects = Subjects::limit(3)->get();
+    //     $countAdmins = Admin::wherenot('role', 'user')->count();
+    //     $countUsers = Admin::where('role', 'user')->count();
+    //     $users = Admin::where('role', 'user')->get();
+    //     return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory]);
+    // })->name('dashboard');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -385,15 +395,21 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 
-
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
+    
+    $userID = Auth::user()->unique_id;
+    // dd($userID);
+    $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
+    $subExpiry = Transaction::where('user_unique_id', $userID)->latest('updated_at')->limit(1)->get();
+    
     $subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
     $users = Admin::where('role', 'user')->get();
-    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects]);
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 
 

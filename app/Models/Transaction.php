@@ -22,6 +22,7 @@ class Transaction extends Model
         'orderID',
         'plan_name',
         'payment_status',
+        'payment_method',
         'expiry_date'
     ];
 }

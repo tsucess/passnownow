@@ -20,6 +20,7 @@
     <div class="row align-items-start">
 
         <div class="col-12">
+            <span style="font-size:30px;cursor:pointer" onclick="openNav()" id="open">&#9776;</span>
             <div class="frame">
                 @foreach ($restopics as $restop)
                 <div class="w-100 tabcontent" id="{{ (string)$restop->unique_id }}">
