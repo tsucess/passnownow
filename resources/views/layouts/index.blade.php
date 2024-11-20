@@ -199,8 +199,8 @@
                         <h5 class="title">CONTACT US</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2">Call Us:</li>
-                            <li class="nav-item mb-2">07060545017,
-                                07060545027</li>
+                            <li class="nav-item mb-2">0706.054.5017,
+                                0706.054.5027</li>
                             <li class="nav-item mb-2">Email: </li>
                             <li class="nav-item mb-2">Passnownow@gmail.com</li>
                         </ul>

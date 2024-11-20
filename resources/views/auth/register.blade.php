@@ -8,7 +8,7 @@
 
     <title>Register Here</title>
 
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
@@ -99,7 +99,7 @@
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" name="terms" class="form-check-input" id="check_terms" />
-                                <label class="form-check-label" for="check_terms">Agreed to out terms and conditions</label>
+                                <label class="form-check-label" for="check_terms">Agree to our terms and conditions</label>
                                 <x-input-error :messages="$errors->get('terms')" class="mt-2" />
                             </div>
                             <x-primary-button type="submit" class="btn btn-primary w-100 submit-btn"> {{ __('Register') }}</x-primary-button>

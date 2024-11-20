@@ -19,7 +19,7 @@
                     <h5 class="text-center fw-bold">{{ strtoupper($Exam->title) }}</h5>
                     <p class="text-md-center">{{ Str::limit($Exam->description, 150) }}</p>
                 </div>
-                <a href="{{ route('showpastquestions', ['data' => $Exam]) }}" class="btn btn-outline-primary mt-auto p-2">VIEW ALL QUESTIONS</a>
+                <a href="{{ route('showpastquestions', ['data' => $Exam]) }}" class="btn btn-outline-primary mt-auto p-2 sub">VIEW ALL QUESTIONS</a>
             </div>
         @endforeach
     </div>

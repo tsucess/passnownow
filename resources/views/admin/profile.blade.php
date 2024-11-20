@@ -37,20 +37,20 @@
                                 <div>
                                     <p class="text-sm mt-2 text-danger">
                                         {{ __('Your email address is unverified.') }}
-                
+
                                         <button form="send-verification" class="underline text-sm hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             {{ __('Click here to re-send the verification email.') }}
                                         </button>
                                     </p>
-                
+
                                     @if (session('status') === 'verification-link-sent')
                                         <p class="mt-2 font-medium text-sm text-success">
                                             {{ __('A new verification link has been sent to your email address.') }}
                                         </p>
                                     @endif
                                 </div>
-                            @endif 
-                        
+                            @endif
+
                         </div>
                         <div class="mb-3">
                             <input type="submit" class="btn btn-primary" value="Save changes" />
@@ -92,8 +92,8 @@
                     <div class="mb-3">
                         <h2>Delete Account</h2>
                         <p>
-                            Once your account is deleted, all of its resources and data will be permanently deleted. 
-                            Before deleting your account, please download any data or information that 
+                            Once your account is deleted, all of its resources and data will be permanently deleted.
+                            Before deleting your account, please download any data or information that
                             you wish to retain.
                         </p>
                     </div>
@@ -114,6 +114,8 @@
                 <br>
                 <a href="#">Delete profile photo</a href="#">
             </div>
+
+
         </div>
     </section>
     {{-- <x-modal name="confirm-user-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>

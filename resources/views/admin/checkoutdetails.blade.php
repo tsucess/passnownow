@@ -60,12 +60,12 @@
                     <input type="hidden" name="metadata" value="{{ json_encode($array = ['invoiceId' => $fee->id]) }}">
 
 
-                    <input type="hidden" name="email" value="{{ Auth::user()->email }}"> 
+                    <input type="hidden" name="email" value="{{ Auth::user()->email }}">
 
                     <input type="hidden" name="orderID" value="345">
 
 
-                    <input type="hidden" name="amount" value="{{ $fee->total }}"> 
+                    <input type="hidden" name="amount" value="{{ $fee->total }}">
 
                     <input type="hidden" name="currency" value="NGN">
 
@@ -95,7 +95,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="country" class="form-label">Subscription Plan</label>
-                                <select name="plan" id="" class="form-control p-2">
+                                <select name="plan" id="" class="form-select form-select-sm">
                                     <option value="">Select plan</option>
                                     <option value="daily">Daily - 300 Naira only</option>
                                     <option value="weekly">Weekly - 500 Naira only</option>
@@ -110,7 +110,7 @@
                             <div class="mb-3">
                                 {{-- <label for="state" class="form-label">Currency</label> --}}
                                 <input type="hidden" class="form-control" name="currency" value="NGN" placeholder="Naira" readonly />
-                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => Auth::user()->first_name, 'last_name' => Auth::user()->last_name,]) }}" > 
+                                <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => Auth::user()->first_name, 'last_name' => Auth::user()->last_name,]) }}" >
                             </div>
                             {{-- <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
@@ -118,16 +118,16 @@
                             </div> --}}
 
 
-                            
-                            
+
+
                             {{-- <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">  --}}
-                            
+
                              {{-- <input type="hidden" name="split_code" value="SPL_EgunGUnBeCareful"> to support transaction split. more details https://paystack.com/docs/payments/multi-split-payments/#using-transaction-splits-with-payments  --}}
                              {{-- <input type="hidden" name="split" value="{{ json_encode($split) }}"> to support dynamic transaction split. More details https://paystack.com/docs/payments/multi-split-payments/#dynamic-splits -- --}}
                             {{ csrf_field() }}
-                
+
                             {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}">   --}}
-                
+
                             <p>
                                 <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
                                     <i class="fa fa-plus-circle fa-md px-2"></i> Pay Now!
