@@ -32,7 +32,7 @@
                 @endif
             </div>
 
-            @if ($subhistory === true)
+            @if ($subhistory[0] == true)
                 <div class="row p-2">
                     <div class="col-12 col-md-8 subscription">
                         <i class="fa-regular fa-credit-card"></i>
