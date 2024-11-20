@@ -184,9 +184,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/subscriptiondetails', function () {
-    return view('admin.subscriptiondetails');
-});
+
 
 
 
@@ -264,18 +262,19 @@ Route::middleware('auth')->group(function () {
 
 
 
+    Route::get('/subscriptiondetails', function () {
+        $userID = Auth::user()->unique_id;
+        $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
+        $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
+        
+        return view('admin.subscriptiondetails', ['subhistory' => $subHistory, 'exp_date' => $subExpiry]);
+    });
+
 
     Route::get('/checkoutdetails', function () {
         return view('admin.checkoutdetails');
     });
-    // Laravel 8 & 9
-    //  Payment Gateway Routees
-    // Route::get('/paystackpopup', [PaymentController::class, 'callback'])->name('payment');
-    // Route::post('/init', [PaymentController::class, 'init'])->name('payment');
-    // Route::get('callback', [PaymentController::class, 'callback'])->name('callback');
-    // Route::get('success', [PaymentController::class, 'success'])->name('success');
-    // Route::get('cancel', [PaymentController::class, 'cancel'])->name('cancel');
-
+ 
     Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
     Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 });
@@ -385,20 +384,12 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('status', 'verification-link-sent');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-// // Example of a route that requires email verification
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-
 
 
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
     
     $userID = Auth::user()->unique_id;
-    // dd($userID);
     $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
     $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
     
