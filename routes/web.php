@@ -172,7 +172,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-
     Route::get('/detailedstat', function () {
         return view('admin.detailedstat');
     });
@@ -241,7 +240,7 @@ Route::middleware('auth')->group(function () {
 
 
     // Exams Routes
-    // Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
+    //Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
     Route::get('/learning/{data}/view', [TopicsController::class, 'showtopics'])->name('learning');
 
     // Exams Routes

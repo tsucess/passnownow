@@ -79,6 +79,11 @@
                 background: red;
             }
         }
+
+        .sub:hover
+        {
+            background-color: #1A69AF;
+        }
     </style>
 </head>
 
@@ -165,7 +170,8 @@
                             </li>
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('checkoutdetails') }}" href="/checkoutdetails">
-                                    <i class="fa-solid fa-dollar"></i>
+                                    {{-- <i class="fa-solid fa-dollar"></i> --}}
+                                    <span class = "me-2" style = "font-size: 20px;">&#x20A6;</span>
                                     Subscribe
                                 </x-sidebar-link>
                             </li>

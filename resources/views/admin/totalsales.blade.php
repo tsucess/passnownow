@@ -1,19 +1,22 @@
 @extends('layouts.dasboardtemp')
 
     @section('admincontent')
+
     <span class = "float-start mt-2">Date range:</span><br><br>
 
 
     <div class="dropdown">
-        <a class="btn btn-light dropdown-toggle justify-content-between" style = "width: 300px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class = "float-start"><strong>Month to date(Sep 1 - 30, 2024)</span></strong><br>
-            <span class = "float-start">vs Previous year(Sep 1 - 30, 2023)</span>
-        </a>
+        {{-- <a class="btn btn-light dropdown-toggle justify-content-between" style = "width: 300px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> --}}
+            {{-- <span class = "float-start"><strong>Month to date(Sep 1 - 30, 2024)</span></strong><br> --}}
+            <span class = "float-start me-3">Month to Date:</span> <input type = "date"><br><br>
+            <span class = "float-start ms-2 me-3">Previous year:</span> <input type = "date">
+
+        <br><br>
 
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
-
     </ul>
+
     </div>
 
 
@@ -93,10 +96,15 @@
 
 
 
-                        <span class = "float-end  mb-2 ">
-                            <button class="btn btn-light dropdown-toggle mt-1 mb-2 me-1 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class = "float-end  mb-2 me-2">
+                            {{-- <button class="btn btn-light dropdown-toggle mt-1 mb-2 me-1 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 By day
-                              </button>
+                              </button> --}}
+                              <select>
+                                <option>By Day</option>
+                                <option>By Month</option>
+                                <option>By Year</option>
+                              </select>
                             <i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
                     </div>
                     </div>
@@ -119,14 +127,14 @@
         const parabolaAreaChart = new Chart(ctx, {
           type: 'line',
           data: {
-            labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], // X-axis labels
+            labels: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 6, 0], // X-axis labels
             datasets: [{
               label: '',
-              data: [0, 3, 2, 5, 3, 4, 5, 2, 2, 5, 5, 4, 0], // Y-axis values forming parabolas
+              data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25, 80], // Y-axis values forming parabolas
               borderColor: '#1699dd',
               backgroundColor: '#1699dd',
               fill: true,
-              tension: 0.8 // Smooth curve
+            tension: 0 // Smooth curve
             }]
           },
           options: {
@@ -143,7 +151,9 @@
               y: {
                   ticks: {display: false},
                 beginAtZero: true,
-                suggestedMax: 10 // Adjusted Y-axis range for better visibility of parabola shapes
+                suggestedMin: 0,
+                suggestedMax: 10, // Adjusted Y-axis range for better visibility of parabola shapes
+                stepSize: 10
               }
             }
           }
@@ -158,14 +168,14 @@
         const parabolaAreaCharts = new Chart(ctxs, {
           type: 'line',
           data: {
-            labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], // X-axis labels
+            labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 6, 0], // X-axis labels
             datasets: [{
               label: '',
               data: [0, 3, 2, 5, 3, 4, 5, 2, 2, 5, 5, 4, 0], // Y-axis values forming parabolas
               borderColor: '#1699dd',
               backgroundColor: '#1699dd',
               fill: true,
-              tension: 0.8 // Smooth curve
+              tension: 0 // Smooth curve
             }]
           },
           options: {
@@ -180,9 +190,12 @@
                   grid: {display: false},
               },
               y: {
-                  ticks: {display: false},
+                  ticks: {display: true, stepSize: 20, padding: 15},
                 beginAtZero: true,
-                suggestedMax: 10 // Adjusted Y-axis range for better visibility of parabola shapes
+                // Adjusted Y-axis range for better visibility of parabola shapes
+                suggestedMin: 0,
+                suggestedMax: 100
+
               }
             }
           }

@@ -14,12 +14,12 @@
                     <p class = "p text-md-center ms-4 me-4">{{$Class->description}}
                     </p>
                     <div class="d-flex justify-content-center mb-3">
-                        <a class="btn btn-outline-primary mb-3" href = "{{ route('subject', ['data' => $Class]) }}">VIEW ALL SUBJECTS</a>
+                        <a class="btn btn-outline-primary mb-3 sub" href = "{{ route('subject', ['data' => $Class]) }}">VIEW ALL SUBJECTS</a>
                     </div>
                 </div>
             @endforeach
 
-            {{-- 
+            {{--
             <div class = "col-sm-4"><img src="{{ asset('/images/js2.png') }}" class = "img-fluid mb-2" /><span
                     class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">JSS 2 Class Note</span>
                 <p class = "p text-md-center ms-4 me-4">Start Studying with our wide collection of
