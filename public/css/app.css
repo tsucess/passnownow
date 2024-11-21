@@ -1128,7 +1128,8 @@ button.submit-btn:hover {
 }
 
 .container__subjects .only_subjects .note_btn:hover {
-    background-color: var(--color-primary);
+    /* background-color: var(--color-primary); */
+    background-color: #1A69AF;
     color: var(--color-text-white);
 }
 

@@ -340,6 +340,12 @@ body {
   overflow-y: scroll;
 }
 
+
+.subscription_history.update {
+  height: auto;
+  overflow: auto;
+}
+
 .subjects_history .top,
 .subscription_history .top {
   display: flex;
@@ -523,7 +529,7 @@ body {
 }
 
 .sub_detail__container .row {
-  margin-bottom: 10rem;
+  margin-bottom: 2rem;
   background-color: var(--color-primary-blue);
   padding: 1rem;
   padding-top: 2rem;

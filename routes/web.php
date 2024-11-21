@@ -13,15 +13,14 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SubscriptionController;
 use App\Models\Admin;
 use App\Models\Subjects;
+use App\Models\Questions;
 use App\Models\Classes;
 use App\Models\Transaction;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
-
-
-
+use App\Models\Exams;
 
 Route::get('/', function () {
 
@@ -154,23 +153,10 @@ Route::get('/checkout', function () {
 
 
 Route::middleware('auth')->group(function () {
-    // Route::get('/dashboard', function () {
-
-    //     $userID = Auth::user()->unique_id;
-    //     dd($userID);
-    //     $subHistory = Transaction::where('user_unique_id', $userID);
-    //     $subjects = Subjects::limit(3)->get();
-    //     $countAdmins = Admin::wherenot('role', 'user')->count();
-    //     $countUsers = Admin::where('role', 'user')->count();
-    //     $users = Admin::where('role', 'user')->get();
-    //     return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory]);
-    // })->name('dashboard');
-
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
 
 
     Route::get('/detailedstat', function () {
@@ -185,9 +171,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/subscriptiondetails', function () {
-    return view('admin.subscriptiondetails');
-});
+
 
 
 
@@ -241,7 +225,7 @@ Route::middleware('auth')->group(function () {
 
 
     // Exams Routes
-    // Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
+    //Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
     Route::get('/learning/{data}/view', [TopicsController::class, 'showtopics'])->name('learning');
 
     // Exams Routes
@@ -265,17 +249,18 @@ Route::middleware('auth')->group(function () {
 
 
 
+    Route::get('/subscriptiondetails', function () {
+        $userID = Auth::user()->unique_id;
+        $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
+        $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
+
+        return view('admin.subscriptiondetails', ['subhistory' => $subHistory, 'exp_date' => $subExpiry]);
+    });
+
 
     Route::get('/checkoutdetails', function () {
         return view('admin.checkoutdetails');
     });
-    // Laravel 8 & 9
-    //  Payment Gateway Routees
-    // Route::get('/paystackpopup', [PaymentController::class, 'callback'])->name('payment');
-    // Route::post('/init', [PaymentController::class, 'init'])->name('payment');
-    // Route::get('callback', [PaymentController::class, 'callback'])->name('callback');
-    // Route::get('success', [PaymentController::class, 'success'])->name('success');
-    // Route::get('cancel', [PaymentController::class, 'cancel'])->name('cancel');
 
     Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
     Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
@@ -365,11 +350,11 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
 
 
 // Route to verify email upon clicking the email link
@@ -386,28 +371,21 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('status', 'verification-link-sent');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-// // Example of a route that requires email verification
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
-
 
 
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
 
     $userID = Auth::user()->unique_id;
-    // dd($userID);
     $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
-    $subExpiry = Transaction::where('user_unique_id', $userID)->latest('updated_at')->limit(1)->get();
+    $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
 
+    $questions= Questions::limit(6)->get();
     $subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
     $users = Admin::where('role', 'user')->get();
-    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry]);
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions,]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
