@@ -155,7 +155,7 @@ Route::get('/checkout', function () {
 
 Route::middleware('auth')->group(function () {
     // Route::get('/dashboard', function () {
-        
+
     //     $userID = Auth::user()->unique_id;
     //     dd($userID);
     //     $subHistory = Transaction::where('user_unique_id', $userID);
@@ -365,11 +365,11 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard');
+//     })->name('dashboard');
+// });
 
 
 // Route to verify email upon clicking the email link
@@ -397,12 +397,12 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
-    
+
     $userID = Auth::user()->unique_id;
     // dd($userID);
     $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
     $subExpiry = Transaction::where('user_unique_id', $userID)->latest('updated_at')->limit(1)->get();
-    
+
     $subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
