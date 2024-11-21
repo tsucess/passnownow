@@ -19,27 +19,6 @@
                 </div>
             @endforeach
 
-            {{--
-            <div class = "col-sm-4"><img src="{{ asset('/images/js2.png') }}" class = "img-fluid mb-2" /><span
-                    class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">JSS 2 Class Note</span>
-                <p class = "p text-md-center ms-4 me-4">Start Studying with our wide collection of
-                    all Class Notes for all Terms and all Subjects
-                </p>
-                <div class="d-flex justify-content-center mb-3">
-                    <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
-                </div>
-            </div>
-
-
-            <div class = "col-sm-4"><img src="{{ asset('/images/js3.png') }}" class = "img-fluid mb-2" /><span
-                    class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">JSS 3 Class Note</span>
-                <p class = "p text-md-center ms-4 me-4">Start Studying with our wide collection of
-                    all Class Notes for all Terms and all Subjects
-                </p>
-                <div class="d-flex justify-content-center mb-3">
-                    <a class="btn btn-outline-primary mb-3" href = "{{ url('subject') }}">VIEW ALL SUBJECTS</a>
-                </div>
-            </div> --}}
         </div>
     @else
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">

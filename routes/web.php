@@ -13,15 +13,14 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\SubscriptionController;
 use App\Models\Admin;
 use App\Models\Subjects;
+use App\Models\Questions;
 use App\Models\Classes;
 use App\Models\Transaction;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
-
-
-
+use App\Models\Exams;
 
 Route::get('/', function () {
 
@@ -154,19 +153,7 @@ Route::get('/checkout', function () {
 
 
 Route::middleware('auth')->group(function () {
-    // Route::get('/dashboard', function () {
-        
-    //     $userID = Auth::user()->unique_id;
-    //     dd($userID);
-    //     $subHistory = Transaction::where('user_unique_id', $userID);
-    //     $subjects = Subjects::limit(3)->get();
-    //     $countAdmins = Admin::wherenot('role', 'user')->count();
-    //     $countUsers = Admin::where('role', 'user')->count();
-    //     $users = Admin::where('role', 'user')->get();
-    //     return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory]);
-    // })->name('dashboard');
-
-
+   
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -393,11 +380,12 @@ Route::get('/dashboard', function () {
     $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
     $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
     
+    $questions= Questions::limit(6)->get();
     $subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
     $users = Admin::where('role', 'user')->get();
-    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry]);
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions,]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
