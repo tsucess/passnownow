@@ -82,7 +82,7 @@
                                     {{-- <button type="button" class="" data-bs-toggle="modal"
                                         data-bs-target="#staticBackdrop">Forget Password</button> --}}
 
-                                        <a href="{{ url('/forgot-password')}}">Forget Password</a>
+                                        <a href="{{ url('/forgot-password')}}">Forgot Password</a>
                                     {{-- <p><a href="{{ url('/register')}}">Forget Password</a></p> --}}
                                 </div>
                             </div>

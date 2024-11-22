@@ -31,7 +31,7 @@
                 @endforeach
             </div>
         </div>
-        <div class="col-12 content">
+        {{-- <div class="col-12 content">
             <h2>Objectives</h2>
             <p class = "justify-content mt-2">
                 Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet consectetur.
@@ -39,7 +39,7 @@
                 Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
                 Lorem ipsum dolor sit amet consectetur.Lorem ipsum dolor sit amet consectetur.
             </p>
-        </div>
+        </div> --}}
 
     </div>
 @endsection

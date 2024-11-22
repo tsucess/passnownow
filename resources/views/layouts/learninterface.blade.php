@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
 
 
@@ -163,7 +163,7 @@
             }
 
             .opennav {
-                width: 225px;
+                width: 235px;
             }
 
             .closenav {
@@ -187,50 +187,53 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white collapse shadow" style="height: 100vh">
+            <nav id="sidebarMenu" class="shadow p-2 sidenav" style="height: 100vh">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br><br>
                 <span class=" bg">
-                <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
-                </a>
-                <a class="btn btn-light rounded-pill ms-4 border" href="{{ url('classes') }}"><i
-                        class="fa-solid fa-arrow-left"></i> Back</a>
+                    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
+                        <img src="{{ asset('images/logo.png') }}" style="width:5rem; margin: 1rem 0" alt="">
+                    </a>
+                    <a class="btn btn-light rounded-pill ms-4 border" href="{{ url('classes') }}"><i
+                            class="fa-solid fa-arrow-left"></i> Back</a>
                 </span>
                 <div class="position-sticky mt-4">
-                    <div class="accordion" id="accordionExample">
+                    <div class="ps-md-3">
+                        <div class="accordion" id="accordionExample">
 
-                        @foreach ($userFetchTopics as $topics)
-                            <div class="accordion-item">
-                                <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#{{ (string) $topics[0]->id . 'collapse' }}"
-                                        aria-expanded="false" aria-controls="collapseOne">
-                                        {{ ucfirst($topics[0]->term) }} Term <span class = "ps-4 w-25">20</span>
-                                    </button>
-                                </h2>
-                                <div id="{{ (string) $topics[0]->id . 'collapse' }}"
-                                    class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        {{-- <strong>Topic 1 - Part of Speech</strong> --}}
-                                        @foreach ($restopics as $restop)
-                                            @if ($topics[0]->term === $restop->term)
-                                                <p class="tablinks w-100"
-                                                    onclick="selectL(event, '{{ (string) $restop->unique_id }}')"
-                                                    style="cursor:pointer;">
-                                                    <strong>{{ $restop->title }}</strong>
-                                                </p>
-                                            @endif
-                                        @endforeach
+                            @foreach ($userFetchTopics as $topics)
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#{{ (string) $topics[0]->id . 'collapse' }}"
+                                            aria-expanded="false" aria-controls="collapseOne">
+                                            {{ ucfirst($topics[0]->term) }} Term <span class = "ps-4 w-25"></span>
+                                        </button>
+                                    </h2>
+                                    <div id="{{ (string) $topics[0]->id . 'collapse' }}"
+                                        class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            {{-- <strong>Topic 1 - Part of Speech</strong> --}}
+                                            @foreach ($restopics as $restop)
+                                                @if ($topics[0]->term === $restop->term)
+                                                    <p class="tablinks w-100"
+                                                        onclick="selectL(event, '{{ (string) $restop->unique_id }}')"
+                                                        style="cursor:pointer;">
+                                                        <strong>{{ $restop->title }}</strong>
+                                                    </p>
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-12">
                 @yield('admincontent')
             </main>
         </div>

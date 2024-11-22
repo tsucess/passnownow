@@ -19,7 +19,7 @@ class ProfileController extends Controller
         // dd($request->user());
         return view('admin.profile', ['user' => $request->user()]);
     }
-    
+
     /**
      * Update the user's profile information.
      */
@@ -58,4 +58,9 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    
 }
+
+
+

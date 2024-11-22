@@ -79,6 +79,11 @@
                 background: red;
             }
         }
+
+        .sub:hover
+        {
+            background-color: #1A69AF;
+        }
     </style>
 </head>
 
@@ -93,18 +98,14 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon fa fa-bars"></span>
         </button>
-        {{-- <div class="row p-0 ">
-            <div class="col-12 p-0"> --}}
-        <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
-        {{-- </div>
-        </div> --}}
+        {{-- <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"> --}}
         <div class="navbar-nav">
-            <span class="top_icon">
+            {{-- <span class="top_icon">
                 <i class="fa-regular fa-bell"></i>
             </span>
             <span class="top_icon">
                 <i class="fa-solid fa-globe"></i>
-            </span>
+            </span> --}}
             <div class="nav-item text-nowrap py-1">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
@@ -165,7 +166,8 @@
                             </li>
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('checkoutdetails') }}" href="/checkoutdetails">
-                                    <i class="fa-solid fa-dollar"></i>
+                                    {{-- <i class="fa-solid fa-dollar"></i> --}}
+                                    <span class = "me-2" style = "font-size: 20px;">&#x20A6;</span>
                                     Subscribe
                                 </x-sidebar-link>
                             </li>
