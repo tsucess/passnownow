@@ -15,11 +15,11 @@
         @foreach ($fetchExams as $Exam)
             <div class="col-12 col-md-6 col-lg-4 text-center rounded-3 p-1 border examcard">
                 <img src="{{ asset('storage/' . $Exam->avatar) }}" class="img-fluid mb-3" alt="{{ $Exam->title }}" style="height: 7rem; object-fit: cover;">
-                <div class="">
-                    <h5 class="text-center fw-bold">{{ strtoupper($Exam->title) }}</h5>
+                <div class="" style="height: 6rem">
+                    <h5 class="text-center fw-bold px-2">{{ strtoupper($Exam->title) }}</h5>
                     <p class="text-md-center">{{ Str::limit($Exam->description, 150) }}</p>
                 </div>
-                <a href="{{ route('showpastquestions', ['data' => $Exam]) }}" class="btn btn-outline-primary mt-auto p-2 sub">VIEW ALL QUESTIONS</a>
+                <a href="{{ route('showpastquestions', ['data' => $Exam]) }}" class="btn btn-outline-primary mt-auto p-2 sub">VIEW PAST QUESTIONS</a>
             </div>
         @endforeach
     </div>
