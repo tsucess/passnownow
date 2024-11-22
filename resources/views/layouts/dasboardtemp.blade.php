@@ -100,16 +100,16 @@
         </button>
         {{-- <div class="row p-0 ">
             <div class="col-12 p-0"> --}}
-        <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search">
+        {{-- <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"> --}}
         {{-- </div>
         </div> --}}
         <div class="navbar-nav">
-            <span class="top_icon">
+            {{-- <span class="top_icon">
                 <i class="fa-regular fa-bell"></i>
             </span>
             <span class="top_icon">
                 <i class="fa-solid fa-globe"></i>
-            </span>
+            </span> --}}
             <div class="nav-item text-nowrap py-1">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
