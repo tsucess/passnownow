@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
     <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> --}}
 
 
 
@@ -188,7 +188,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="shadow p-2 sidenav">
+            <nav id="sidebarMenu" class="shadow p-2 sidenav" style="height: 100vh">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <br><br>
                 <span class=" bg">
@@ -222,10 +222,7 @@
             </nav>
 
             <main class="col-12">
-
                 @yield('admincontent')
-
-
             </main>
         </div>
     </div>
