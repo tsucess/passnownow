@@ -15,7 +15,7 @@
             {{-- {{ $result }} --}}
             @foreach ($userFetchQuestions as $Question)
                 {{-- <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%"> --}}
-                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 border rounded p-4 mx-auto my-3">
+                    <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%">
                     {{-- <img src="{{ asset('/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
                     <h5 class = "text-center fw-bold jss px-4">{{ $Question[0]->year }}</h5>
                     <p class = "text-center px-5 py-2">
