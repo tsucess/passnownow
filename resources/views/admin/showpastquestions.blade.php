@@ -14,10 +14,11 @@
         <div class = "row mt-3 gap-2">
             {{-- {{ $result }} --}}
             @foreach ($userFetchQuestions as $Question)
-                <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%">
+                {{-- <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%"> --}}
+                    <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 border rounded p-4 mx-auto my-3">
                     {{-- <img src="{{ asset('/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
                     <h5 class = "text-center fw-bold jss px-4">{{ $Question[0]->year }}</h5>
-                    <p class = "text-md-center px-5 py-2">
+                    <p class = "text-center px-5 py-2">
                         {{ $Question[0]->description }}
                         {{-- Start Studying with our wide collection of
                         all Class Notes for all Terms and all Subjects --}}

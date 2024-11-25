@@ -32,8 +32,8 @@
                 @endif
             </div>
 
-            @if ($subhistory === true)
-                <div class="row p-2">
+            <div class="row p-2">
+                @if ($subhistory[0] == true)
                     <div class="col-12 col-md-8 subscription">
                         <i class="fa-regular fa-credit-card"></i>
                         @php
@@ -50,14 +50,24 @@
                             <button class="btn upgrade-btn">Active</button>
                         @endif
                     </div>
-                </div>
-            @endif
+                @else
+                    <div class="col-12 col-md-8 subscription">
+                        <i class="fa-regular fa-credit-card"></i>
+                        <p>You don't have an subscription yet!</p>
+
+                    </div>
+                    <div class="col-12 col-md-4  text-md-end">
+                        <a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a>
+                    </div>
+                @endif
+            </div>
+
         </section>
         <section class="container-fluid top-courses__containter  shadow py-2 my-4">
             <div class="row">
                 <div class="col-12 top">
                     <h5>Top Subjects Pick for You</h5>
-                    <a href="#">See All</a>
+                    <a href="/classes">See All</a>
                 </div>
                 {{-- subjects --}}
                 @foreach ($subjects as $subject)
@@ -68,36 +78,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
-                                <h5 class="card-title">{{ $subject->title }}</h5>
-                                <button type="button" class="buton">View Details</button>
+                                <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5>
+                                <a href="{{ route('learning', ['data' => $subject])  }}" class="btn buton">View Details</a>
                             </div>
                         </div>
                     </div>
                 @endforeach
-                {{-- <div class="col-12 col-md-6 col-lg-4 mb-2">
-                <div class="card courses">
-                    <div class="image_wrapper">
-                        <img src="{{ asset('images/admin/course-img2.png') }}" class="course-img" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class="courses-tag">Passnownow</div>
-                        <h5 class="card-title">Mathematics</h5>
-                        <button type="button" class="buton">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                <div class="card courses">
-                    <div class="image_wrapper">
-                        <img src="{{ asset('images/admin/course-img3.png') }}" class="course-img" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class="courses-tag">Passnownow</div>
-                        <h5 class="card-title">Home Economics</h5>
-                        <button type="button" class="buton">View Details</button>
-                    </div>
-                </div>
-            </div> --}}
             </div>
         </section>
         <section class="container-fluid history__container">
@@ -105,7 +91,7 @@
                 <div class="col-12 col-lg-7 mb-3 mb-md-0 shadow subscription_history">
                     <div class="top">
                         <h5>Subscription History</h5>
-                        <a href="#">See All</a>
+                        <a href="/subscriptiondetails">See All</a>
                     </div>
 
                     <table>
@@ -117,47 +103,57 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($subhistory as $history)
-                                <tr>
-                                    <td>
-                                        <h6>{{ $history->plan_name }} Plan</h6>
-                                        <p>#{{ $history->orderID }} | {{ $history->updated_at }}</p>
-                                    </td>
-                                    <td>
-                                        <h6>N{{ number_format($history->amount) }}</h6>
-                                    </td>
-                                    <td>
-                                        @php
-                                            $exp_day = date_create($history->expiry_date);
-                                            $exp_day = date_format($exp_day, 'Y-m-d');
-                                        @endphp
+                            @if ($subhistory[0] == true)
+                                @foreach ($subhistory as $history)
+                                    <tr>
+                                        <td>
+                                            <h6>{{ $history->plan_name }} Plan</h6>
+                                            <p>#{{ $history->orderID }} | {{ $history->updated_at }}</p>
+                                        </td>
+                                        <td>
+                                            <h6>N{{ number_format($history->amount) }}</h6>
+                                        </td>
+                                        <td>
+                                            @php
+                                                $exp_day = date_create($history->expiry_date);
+                                                $exp_day = date_format($exp_day, 'Y-m-d');
+                                            @endphp
 
-                                        @if ($now > $exp_day)
-                                            <span class="status exp"><i class="fa-solid fa-circle"></i>
-                                                <span>Expired</span></span>
-                                        @else
-                                            <span class="status"><i class="fa-solid fa-circle"></i>
-                                                <span>Current</span></span>
-                                        @endif
+                                            @if ($now > $exp_day)
+                                                <span class="status exp"><i class="fa-solid fa-circle"></i>
+                                                    <span>Expired</span></span>
+                                            @else
+                                                <span class="status"><i class="fa-solid fa-circle"></i>
+                                                    <span>Current</span></span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="3" class="text-center p-3">
+                                        <p>You have no subscription history</p>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
                 <div class="col-12 col-lg-5 shadow subjects_history">
                     <div class="top">
                         <h5>Available Past Questions</h5>
-                        <a href="#">See All</a>
+                        <a href="/adexams">See All</a>
                     </div>
-                    <div class="subject">
-                        <span><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>
-                            <h6>English Language</h6>
-                            <p class="mb-0">view</p>
-                        </span>
-                    </div>
-                    <div class="subject">
+                    @foreach ( $questions as  $question)
+                        <div class="subject">
+                            <span><i class="fa-solid fa-graduation-cap"></i></span>
+                            <span>
+                                <h6>{{$question->year}}</h6>
+                                <a href="#" class="mb-0">view</a>
+                            </span>
+                        </div>
+                    @endforeach
+                    {{-- <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Mathematics</h6>
@@ -184,7 +180,7 @@
                             <h6>Physics</h6>
                             <p class="mb-0">view</p>
                         </span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>

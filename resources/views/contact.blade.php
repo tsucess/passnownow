@@ -27,25 +27,25 @@
                     Our friendly team is here to help.
                 </p>
                 <p class="text-dark mb-3 mb-lg-5">
-                   <b>8 Adebayo Muokolu Street, Antony Village, Lagos, Nigeria.</b> 
+                   <b>8 Adebayo Muokolu Street, Antony Village, Lagos, Nigeria.</b>
                 </p>
                 <h6>Email</h6>
                 <p class="">
                     Questions or queries? Get in touch!
                 </p>
                 <p class="text-dark mb-3 mb-lg-5">
-                  <b>info@passnownow.com</b>  
+                  <b>info@passnownow.com</b>
                 </p>
                 <h6>Phone</h6>
                 <p class="">
                     Mon-Fri from 8am to 5pm.
                 </p>
                 <p class="text-dark mb-3 mb-lg-5">
-                   <b>07060545017, <br /> 07060545027</b> 
+                   <b>0706.054.5017, <br /> 0706.054.5027</b>
                 </p>
             </div>
         </div>
-      
+
     </section>
 
 @endsection
