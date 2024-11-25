@@ -1,5 +1,58 @@
 @extends('layouts.dasboardtemp')
 
+<style>
+/* Fade-in animation for the cards */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Applying animation to the cards */
+.col-12 {
+    animation: fadeIn 0.8s ease-in-out;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect on the card */
+.col-12:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Smooth animation for buttons */
+.sub {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover effect for buttons */
+.sub:hover {
+    background-color: #0056b3;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* Adding subtle animation to the text span */
+.jss {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Responsive padding for paragraphs */
+.p {
+    transition: color 0.3s;
+}
+
+.p:hover {
+    color: #0056b3;
+}
+
+</style>
+
 @section('admincontent')
 
 

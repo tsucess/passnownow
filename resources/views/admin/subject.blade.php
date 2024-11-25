@@ -9,7 +9,7 @@
                 <p class = "p text-md-start">{{$subject->description}}
                 </p>
                 <div class="d-flex justify-content-start mb-3">
-                    <a class="btn btn-outline-primary mb-3" href = "{{ route('learning', ['data' => $subject])  }}">VIEW NOTE</a>
+                    <a class="btn btn-outline-primary mb-3 sub" href = "{{ route('learning', ['data' => $subject])  }}">VIEW NOTE</a>
                 </div>
             </div>
         @endforeach

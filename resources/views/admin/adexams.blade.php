@@ -7,6 +7,44 @@
     margin: auto;
     height: 20rem;
 }
+
+
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation applied to each card */
+.examcard {
+    animation: fadeIn 0.6s ease-in-out;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+.examcard:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Smoothly animate the button's appearance */
+.sub {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Button hover effect */
+.sub:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
 </style>
 @section('admincontent')
 
@@ -15,7 +53,7 @@
         @foreach ($fetchExams as $Exam)
             <div class="col-12 col-md-6 col-lg-4 text-center rounded-3 p-1 border examcard">
                 <img src="{{ asset('storage/' . $Exam->avatar) }}" class="img-fluid mb-3" alt="{{ $Exam->title }}" style="height: 7rem; object-fit: cover;">
-                <div class="" style="height: 6rem">
+                <div class="" style="height: 8rem">
                     <h5 class="text-center fw-bold px-2">{{ strtoupper($Exam->title) }}</h5>
                     <p class="text-md-center">{{ Str::limit($Exam->description, 150) }}</p>
                 </div>

@@ -24,7 +24,7 @@
                         all Class Notes for all Terms and all Subjects --}}
                     </p>
                     <div class="d-flex justify-content-center mt-5 mb-3">
-                        <a href="{{ route('pqlearning', ['data' => $Question[0]])  }}" class="btn btn-outline-primary mb-3 py-2 px-4">VIEW ALL QUESTIONS</a>
+                        <a href="{{ route('pqlearning', ['data' => $Question[0]])  }}" class="btn btn-outline-primary mb-3 py-2 px-4 sub">VIEW ALL QUESTIONS</a>
                     </div>
                 </div>
             @endforeach

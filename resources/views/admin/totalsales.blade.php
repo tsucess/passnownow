@@ -2,7 +2,7 @@
 
     @section('admincontent')
 
-    <span class = "float-start mt-2">Date range:</span><br><br>
+    <span class = "float-start mt-2"><strong>Date range:</strong></span><br><br>
 
 
     <div class="dropdown">
@@ -31,7 +31,7 @@
         <table class="table table-bordered">
 
               <tr>
-                <td>
+                <td class = "profit">
                     <p class = "m-0 p-0 mt-2">Gross Sales</p>
                     <span class = "float-start"><strong>$23, 523</strong></span>
                     <span class = "float-end mb-2">
@@ -40,7 +40,7 @@
                 </td>
 
 
-                <td>
+                <td class = "profit">
                     <p class = "m-0 p-0 mt-2">Net Sales</p>
                     <span class = "float-start"><strong>$23, 523</strong></span>
                     <span class = "float-end mb-2">
@@ -56,7 +56,7 @@
               <table class="table table-bordered">
 
                 <tr>
-                  <td>
+                  <td class = "profit">
 
                       <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">Total Sales</a></p>
                       <span class = "float-start"><strong><a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">$23, 523</a></strong></span>
@@ -114,7 +114,7 @@
 
                               <div class = "row">
                                 <div class="col mb-5">
-                                    <canvas id="parabolaAreaChart" width="1300" height="200"></canvas>
+                                    <canvas id="parabolaAreaChart" width="1300" height="400"></canvas>
                                   </div>
 
                             </div>

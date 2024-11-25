@@ -3,15 +3,17 @@
 @section('admincontent')
 
 
-    <span class = "float-start mt-2">Date range:</span><br><br>
+    <span class = "float-start mt-2"><strong>Date range:</strong></span><br><br>
 
 
     <div class="dropdown">
-        <a class="btn btn-light dropdown-toggle justify-content-between" style = "width: 350px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        {{-- <a class="btn btn-light dropdown-toggle justify-content-between" style = "width: 350px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <span class = "float-start"><strong>Month to date(Sep 1 - 30, 2024)</span></strong><br>
             <span class = "float-start">vs Previous year(Sep 1 - 30, 2023)</span>
-        </a>
+        </a> --}}
 
+        <span class = "float-start me-3">Month to Date:</span> <input type = "date"><br><br>
+        <span class = "float-start ms-2 me-3">Previous year:</span> <input type = "date">
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" href="#">Action</a></li>
 
@@ -30,7 +32,7 @@
         <table class="table table-bordered">
 
               <tr>
-                <td>
+                <td class = "profit">
                     <a class = "text-decoration-none text-dark profit" href = "{{ url('adtotalsales') }}">
                     <p class = "m-0 p-0 mt-2">Total Sales</p>
                     <span class = "float-start profit"><strong>$23,523</strong></span>
@@ -41,7 +43,7 @@
                 </td>
 
 
-                <td>
+                <td class = "profit">
                     <p class = "m-0 p-0 mt-2" >Net Sales</p>
                     <span class = "float-start"><strong>$23,523</strong></span>
                     <span class = "float-end mb-2">
@@ -57,7 +59,7 @@
               <table class="table table-bordered">
 
                 <tr>
-                  <td>
+                  <td class = "profit">
                       <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">Order</a></p>
                       <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">18</a></strong></span>
                       <span class = "float-end mb-2">
@@ -68,7 +70,7 @@
                   </td>
 
 
-                  <td>
+                  <td class = "profit">
                       <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark product" href = "{{ url('product') }}">Product Sold</a></p>
                       <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">18</a></strong></span>
                       <span class = "float-end mb-2">
@@ -85,9 +87,14 @@
                     <div>
                         <span style = "font-size: 16px;">Charts</span>
                         <span class = "float-end  mb-2">
-                            <button class="btn btn-light dropdown-toggle mb-2 me-1 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{-- <button class="btn btn-light dropdown-toggle mb-2 me-1 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 By day
-                              </button>
+                              </button> --}}
+                              <select>
+                                <option>By Day</option>
+                                <option>By Month</option>
+                                <option>By Year</option>
+                              </select>
                             <i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
                     </div>
                     </div>
@@ -132,11 +139,11 @@
                               <div class = "row">
 
                                 <div class="col-4  w-50">
-                                    <canvas id="parabolaAreaChart" width="1300" height="200"></canvas>
+                                    <canvas id="parabolaAreaChart" width="1300" height="800"></canvas>
                                   </div>
 
                                   <div class="col-4  w-50">
-                                    <canvas id="parabolaAreaCharts" width="1300" height="200"></canvas>
+                                    <canvas id="parabolaAreaCharts" width="1300" height="800"></canvas>
                                   </div>
                             </div>
 
@@ -314,41 +321,43 @@
 
 
     <script>
-        const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
+            const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
 
-        const parabolaAreaChart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], // X-axis labels
-            datasets: [{
-              label: '',
-              data: [0, 3, 2, 5, 3, 4, 5, 2, 2, 5, 5, 4, 0], // Y-axis values forming parabolas
-              borderColor: '#1699dd',
-              backgroundColor: '#1699dd',
-              fill: true,
-              tension: 0.8 // Smooth curve
-            }]
-          },
-          options: {
-            responsive: true,
-            plugins: {
-              legend: {
-                  display:false
-              }
-            },
-            scales: {
-              x: {
-                  grid: {display: false},
-              },
-              y: {
-                  ticks: {display: false},
-                beginAtZero: true,
-                suggestedMax: 10 // Adjusted Y-axis range for better visibility of parabola shapes
-              }
-            }
-          }
-        });
-      </script>
+const parabolaAreaChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 6, 0], // X-axis labels
+    datasets: [{
+      label: '',
+      data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25, 80], // Y-axis values forming parabolas
+      borderColor: '#1699dd',
+      backgroundColor: '#1699dd',
+      fill: true,
+    tension: 0 // Smooth curve
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: {
+          display:false
+      }
+    },
+    scales: {
+      x: {
+          grid: {display: false},
+      },
+      y: {
+          ticks: {display: false},
+        beginAtZero: true,
+        suggestedMin: 0,
+        suggestedMax: 10, // Adjusted Y-axis range for better visibility of parabola shapes
+        stepSize: 10
+      }
+    }
+  }
+});
+</script>
 
       <!-- Another chart -->
       <script>
@@ -357,14 +366,14 @@
         const parabolaAreaCharts = new Chart(ctxs, {
           type: 'line',
           data: {
-            labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], // X-axis labels
+            labels: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 6, 0], // X-axis labels
             datasets: [{
               label: '',
-              data: [0, 3, 2, 5, 3, 4, 5, 2, 2, 5, 5, 4, 0], // Y-axis values forming parabolas
+              data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25, 80], // Y-axis values forming parabolas
               borderColor: '#1699dd',
               backgroundColor: '#1699dd',
               fill: true,
-              tension: 0.8 // Smooth curve
+              tension: 0 // Smooth curve
             }]
           },
           options: {
@@ -381,8 +390,10 @@
               y: {
                   ticks: {display: false},
                 beginAtZero: true,
-                suggestedMax: 10 // Adjusted Y-axis range for better visibility of parabola shapes
-              }
+                suggestedMax: 10,// Adjusted Y-axis range for better visibility of parabola shapes
+                suggestedMin: 0,
+                stepSize: 10
+            }
             }
           }
         });
