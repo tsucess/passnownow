@@ -31,7 +31,7 @@
         <table class="table table-bordered">
 
               <tr>
-                <td class = "profit">
+                <td>
                     <p class = "m-0 p-0 mt-2">Gross Sales</p>
                     <span class = "float-start"><strong>$23, 523</strong></span>
                     <span class = "float-end mb-2">
@@ -40,7 +40,7 @@
                 </td>
 
 
-                <td class = "profit">
+                <td>
                     <p class = "m-0 p-0 mt-2">Net Sales</p>
                     <span class = "float-start"><strong>$23, 523</strong></span>
                     <span class = "float-end mb-2">

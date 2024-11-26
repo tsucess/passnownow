@@ -39,9 +39,9 @@
                     <p class="hero__info">Super simple self studying, peer to peer collaborative learning both for teachers
                         and students</p>
                     <div class="hero-btn">
-                        <a href="#" class="btn btn-outline-primary btn-style">Register &nbsp; <i
+                        <a href="{{url('register')}}" class="btn btn-outline-primary btn-style">Register &nbsp; <i
                                 class="fa-solid fa-arrow-right"></i></a>
-                        <a href="#" class="btn btn-style btn-style-secondary">Learn More</a>
+                        <a href="#learnMore" class="btn btn-style btn-style-secondary">Learn More</a>
                     </div>
                 </div>
                 <div class="col-12 col-md-6  hero-image">
@@ -97,7 +97,7 @@
                     <img src="{{ asset('images/trig.png') }}" alt="" class="formular-image">
                 </div>
             </div>
-            <div class="row guides">
+            <div class="row guides animate__animated animate__bounce" id = "learnMore" >
                 <div class="col-12 col-md-4 mb-lg-3 guide">
                     <img src="{{ asset('images/icon-user.png') }}" alt="Icon" class="mb-3" />
                     <h3>Create free account</h3>
@@ -140,7 +140,7 @@
                     <p class="hero-down__info">Make Passnownow your partner in lifelomg learning, providing you with the
                         resources and support you need to succeed at every stage of your journey.</p>
                     <div class="hero-btn">
-                        <a href="#" class="btn btn-outline-primary btn-style">Register &nbsp; <i
+                        <a href="{{url('register')}}" class="btn btn-outline-primary btn-style">Register &nbsp; <i
                                 class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -467,7 +467,7 @@
                             School Subjects</p>
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
-                </div> --}}
+                </div>
             </div>
             <div class="row past__questions">
                 <div class="col-12 col-md-4 mb-3">

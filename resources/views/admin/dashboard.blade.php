@@ -1,8 +1,76 @@
 @extends('layouts.dasboardtemp')
 
+<style>
+/* Keyframes for fade-in and slide-in from the bottom */
+@keyframes fadeInSlideUp {
+    0% {
+        transform: translateY(30px); /* Start slightly below */
+        opacity: 0; /* Start invisible */
+    }
+    100% {
+        transform: translateY(0); /* End at the original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Apply animation to the cards */
+.animated-card {
+    opacity: 0; /* Start invisible */
+    animation: fadeInSlideUp 0.8s ease-out forwards; /* Forward to keep the final state */
+}
+
+/* Staggered animation using nth-child */
+.animated-card:nth-child(1) {
+    animation-delay: 0s;
+}
+.animated-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.animated-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+.animated-card:nth-child(4) {
+    animation-delay: 0.6s;
+}
+
+
+.subHere {
+    width: 17rem !important;
+    margin: auto;
+    height: 20rem;
+}
+
+
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation applied to each card */
+.subHere {
+    animation: fadeIn 0.6s ease-in-out;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect */
+.subHere:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+</style>
+
 @section('admincontent')
     <section class="container-fluid greeting__containter mt-3">
-        <div class="row greet__user">
+        <div class="row greet__user animated-card">
             <div class="col-12 col-md-6 greetings ">
                 <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2>
                 <p>Let's learn something today</p>
@@ -34,7 +102,7 @@
                 </div>
                 {{-- subjects --}}
                 @foreach ($subjects as $subject)
-                    <div class="col-12 col-md-6 col-lg-4 mb-2">
+                    <div class="col-12 col-md-6 col-lg-4 mb-2 subHere">
                         <div class="card courses">
                             <div class="image_wrapper">
                                 <img src="{{ asset('storage/' . $subject->avatar) }}" class="course-img" alt="Avatar">
@@ -269,9 +337,9 @@
             <div class="d-flex justify-content-between border-bottom border-black border-1">
                 <a class = "col-12 col-md-6 me-3 mt-2 mb-3 text-decoration-none text-dark"
                     href = "{{ url('totalsales') }}">
-                    <div class="">
-                        <span class = "profit">Total Sales</span> <br>
-                        <span class  = "fw-3 profit">$23, 523</span>
+                    <div class="profit">
+                        <span>Total Sales</span> <br>
+                        <span class  = "fw-3">$23, 523</span>
                         <span
                             class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3 profit"
                             style="font-size: 8px;">
@@ -281,16 +349,16 @@
                 </a>
                 <a class = "col-12 col-md-6 me-3 mt-2 mb-3 col-12 col-md-6 border-start border-black border-1 text-decoration-none text-dark"
                     href = "{{ url('order') }}">
-                    <div class="">
-                        <span class = "ms-2 profit">Orders</span> <br>
-                        <span class  = "fw-3 ms-2 profit">10</span><span
+                    <div class="profit">
+                        <span class = "ms-2">Orders</span> <br>
+                        <span class  = "fw-3 ms-2">10</span><span
                             class = "float-end rounded-5 mb-2  me-3 text-bg-success text-success p-2  bg-opacity-25 opacity-10 pe-3 profit"
                             style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                                 aria-hidden="true"></i>6.7%</span>
                     </div>
                 </a>
             </div>
-            <div class = "float-start  mt-2">
+            <div class = "float-start mt-2 profit">
                 <a href = "{{ url('detailedstat') }}" class = "float-start mb-1 text-decoration-none detailedstat">View
                     detailed stats</a>
             </div>

@@ -160,7 +160,7 @@
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('subscriptiondetails') }}"
                                     href="/subscriptiondetails">
-                                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                                    <i class="fa-solid fa-credit-card"></i>
                                     Subscription
                                 </x-sidebar-link>
                             </li>

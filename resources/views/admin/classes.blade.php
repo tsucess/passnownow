@@ -51,6 +51,33 @@
     color: #0056b3;
 }
 
+
+
+
+
+
+
+
+
+
+
+/* Define the animation */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%); /* Start outside the viewport on the right */
+    opacity: 0; /* Invisible at the start */
+  }
+  100% {
+    transform: translateX(0); /* End at the original position */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+/* Apply the animation to the div */
+.col-12 {
+  animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
+}
+
 </style>
 
 @section('admincontent')
