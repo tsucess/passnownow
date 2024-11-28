@@ -74,6 +74,11 @@
     color: #fff;
 }
 
+.m1:hover
+{
+background: #1A69AF;
+}
+
 .m:hover
 {
 color:#fff;
@@ -354,53 +359,58 @@ color:#fff;
                 <div class="p-2 text-black">Week to Date</div>
                 <div class="p-2 text-black pe-5 float-start">Month to Date</div>
             </div>
-            <div class="d-flex justify-content-between border-bottom border-black border-1">
-                <a class = "col-12 col-md-6 text-decoration-none text-dark link"
-                    href = "{{ url('totalsales') }}">
-                    <div class="">
-                        <span>Total Sales</span> <br>
-                        <span class  = "fw-3">$23, 523</span>
-                        <span
-                            class = "float-end rounded-5 mb-2 p-2 bg-opacity-25 opacity-10 pe-3 m"
+
+
+
+            <div class = "container-fluid mb-3 border border-bottom">
+              <div class="row">
+    <a class = "col-12 col-md-6  text-decoration-none text-dark" href = "{{ url('totalsales') }}">
+    <div class="col-6 d-flex w-100 m1">
+      <div class = "me-auto">
+          <span>Total Sales</span> <br>
+          <span class  = "fw-3">$23, 523</span>
+      </div>
+
+
+      <div>
+            <br>
+         <span
+                            class = "rounded-5 mb-2 p-2 bg-opacity-25 opacity-10 pe-3 "
                             style="font-size: 12px;">
                             <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>
                             6.7%
                         </span>
+      </div>
 
-                    </div>
-                </a>
+    </div>
+</a>
 
-                {{-- <table>
-                    <tr>
-                        <td>
-                            <p>Total Sales</p>
-                            <p class  = "fw-3">$23,523</p>
-                        </td>
+ <a class = "col-12 col-md-6  text-decoration-none text-dark" href = "{{ url('totalsales') }}">
+    <div class="col-6 d-flex w-100 m1">
+<div class = "me-auto">
+          <span>Order</span> <br>
+          <span class  = "fw-3">10</span>
+      </div>
 
-                        <td class = "float-end">
-                            <span
-                            class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3 profit"
-                            style="font-size: 8px;">
-                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%
+<div>
+            <br>
+         <span
+                            class = "rounded-5 mb-2 p-2 bg-opacity-25 opacity-10 pe-3"
+                            style="font-size: 12px;">
+                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>
+                            6.7%
                         </span>
-                        </td>
-                    </tr>
+      </div>
 
-                </table> --}}
-
-                <a class = "col-12 col-md-6 me-3 mt-2 mb-3 col-12 col-md-6 border-start border-black border-1 text-decoration-none text-dark link"
-                    href = "{{ url('order') }}">
-                    <div class="">
-                        <span class = "ms-2">Orders</span> <br>
-                        <span class  = "fw-3 ms-2">10</span>
-                        <span class = "float-end rounded-5 mb-2  me-3  p-2  bg-opacity-25 opacity-10 pe-3 m"
-                            style="font-size: 12px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                                aria-hidden="true"></i>
-                                6.7%
-                            </span>
-                    </div>
-                </a>
             </div>
+        </a>
+              </div>
+
+
+            </div>
+
+
+
             {{-- <div class = "float-start mt-2 profit"> --}}
                 <table class = "link">
                     <tr><td>
