@@ -320,19 +320,6 @@ Route::get('/pqexams', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');
