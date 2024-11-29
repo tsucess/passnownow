@@ -1,101 +1,12 @@
 @extends('layouts.dasboardtemp')
 
-<style>
-/* Keyframes for fade-in and slide-in from the bottom */
-@keyframes fadeInSlideUp {
-    0% {
-        transform: translateY(30px); /* Start slightly below */
-        opacity: 0; /* Start invisible */
-    }
-    100% {
-        transform: translateY(0); /* End at the original position */
-        opacity: 1; /* Fully visible */
-    }
-}
-
-/* Apply animation to the cards */
-.animated-card {
-    opacity: 0; /* Start invisible */
-    animation: fadeInSlideUp 0.8s ease-out forwards; /* Forward to keep the final state */
-}
-
-/* Staggered animation using nth-child */
-.animated-card:nth-child(1) {
-    animation-delay: 0s;
-}
-.animated-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-.animated-card:nth-child(3) {
-    animation-delay: 0.4s;
-}
-.animated-card:nth-child(4) {
-    animation-delay: 0.6s;
-}
-
-
-.subHere {
-    width: 17rem !important;
-    margin: auto;
-    height: 20rem;
-}
-
-
-
-/* Keyframes for fade-in animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Animation applied to each card */
-.subHere {
-    animation: fadeIn 0.6s ease-in-out;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Hover effect */
-.subHere:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.link:hover{
-    background-color: #1A69AF;
-}
-
-.link:hover a{
-    color: #fff;
-}
-
-.m1:hover
-{
-background: #1A69AF;
-}
-
-.m:hover
-{
-color:#fff;
-}
-
-.link:hover span{
-    color: #fff;
-}
-
-.link:hover i{
-    color: #fff;
-}
-</style>
-
 @section('admincontent')
+
+    @php
+        $now = date('Y-m-d');
+    @endphp
     <section class="container-fluid greeting__containter mt-3">
-        <div class="row greet__user animated-card">
+        <div class="row greet__user">
             <div class="col-12 col-md-6 greetings ">
                 <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2>
                 <p>Let's learn something today</p>
@@ -110,60 +21,69 @@ color:#fff;
     @if (Auth::user()->role === 'user')
         <section class="container-fluid notifiication__containter  shadow mt-4">
             <div class="row p-2">
-                <div class="col-12 col-md-8 subscription">
-                    <i class="fa-regular fa-credit-card"></i>
-                    <p>Your Subscription ends on 28 August 2024</p>
-                </div>
-                <div class="col-12 col-md-4  text-md-end">
-                    <button class="btn upgrade-btn">Upgrade</button>
-                </div>
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger">
+                        <p class="m-0">{{ \Session::get('error') }}</p>
+                    </div>
+                @elseif (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <p class="m-0">{{ \Session::get('success') }}</p>
+                    </div>
+                @endif
             </div>
+
+            <div class="row p-2">
+                @if ($subhistory[0] == true)
+                    <div class="col-12 col-md-8 subscription">
+                        <i class="fa-regular fa-credit-card"></i>
+                        @php
+                            $exp = date_create($exp_date[0]->expiry_date);
+                            $exp_d = date_format($exp, 'Y-m-d');
+                            $now = date('Y-m-d');
+                        @endphp
+                        <p>Your Subscription ends on {{ date_format($exp, 'd F Y') }}</p>
+                    </div>
+                    <div class="col-12 col-md-4  text-md-end">
+                        @if ($now > $exp_d)
+                            <button class="btn upgrade-btn bg-danger">Expired</button>
+                        @else
+                            <button class="btn upgrade-btn">Active</button>
+                        @endif
+                    </div>
+                @else
+                    <div class="col-12 col-md-8 subscription">
+                        <i class="fa-regular fa-credit-card"></i>
+                        <p>You don't have an subscription yet!</p>
+
+                    </div>
+                    <div class="col-12 col-md-4  text-md-end">
+                        <a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a>
+                    </div>
+                @endif
+            </div>
+
         </section>
         <section class="container-fluid top-courses__containter  shadow py-2 my-4">
             <div class="row">
                 <div class="col-12 top">
                     <h5>Top Subjects Pick for You</h5>
-                    <a href="#">See All</a>
+                    <a href="/classes">See All</a>
                 </div>
                 {{-- subjects --}}
                 @foreach ($subjects as $subject)
-                    <div class="col-12 col-md-6 col-lg-4 mb-2 subHere">
+                    <div class="col-12 col-md-6 col-lg-4 mb-2">
                         <div class="card courses">
-                            <div class="image_wrapper">
-                                <img src="{{ asset('storage/' . $subject->avatar) }}" class="course-img" alt="Avatar">
+                            <div class="image_wrapper m-0 p-0"
+                                style="background-image: url('{{ url('storage/' . $subject->avatar) }}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;">
                             </div>
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
-                                <h5 class="card-title">{{ $subject->title }}</h5>
-                                <button type="button" class="buton sub">View Details</button>
+                                <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5>
+                                <a href="{{ route('learning', ['data' => $subject])  }}" class="btn buton">View Details</a>
                             </div>
                         </div>
                     </div>
                 @endforeach
-                {{-- <div class="col-12 col-md-6 col-lg-4 mb-2">
-                <div class="card courses">
-                    <div class="image_wrapper">
-                        <img src="{{ asset('images/admin/course-img2.png') }}" class="course-img" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class="courses-tag">Passnownow</div>
-                        <h5 class="card-title">Mathematics</h5>
-                        <button type="button" class="buton">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                <div class="card courses">
-                    <div class="image_wrapper">
-                        <img src="{{ asset('images/admin/course-img3.png') }}" class="course-img" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class="courses-tag">Passnownow</div>
-                        <h5 class="card-title">Home Economics</h5>
-                        <button type="button" class="buton">View Details</button>
-                    </div>
-                </div>
-            </div> --}}
             </div>
         </section>
         <section class="container-fluid history__container">
@@ -171,7 +91,7 @@ color:#fff;
                 <div class="col-12 col-lg-7 mb-3 mb-md-0 shadow subscription_history">
                     <div class="top">
                         <h5>Subscription History</h5>
-                        <a href="#">See All</a>
+                        <a href="/subscriptiondetails">See All</a>
                     </div>
 
                     <table>
@@ -183,113 +103,84 @@ color:#fff;
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status"><i class="fa-solid fa-circle"></i> <span>Current</span></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status"><i class="fa-solid fa-circle"></i> <span>Current</span></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
+                            @if ($subhistory[0] == true)
+                                @foreach ($subhistory as $history)
+                                    <tr>
+                                        <td>
+                                            <h6>{{ $history->plan_name }} Plan</h6>
+                                            <p>#{{ $history->orderID }} | {{ $history->updated_at }}</p>
+                                        </td>
+                                        <td>
+                                            <h6>N{{ number_format($history->amount) }}</h6>
+                                        </td>
+                                        <td>
+                                            @php
+                                                $exp_day = date_create($history->expiry_date);
+                                                $exp_day = date_format($exp_day, 'Y-m-d');
+                                            @endphp
+
+                                            @if ($now > $exp_day)
+                                                <span class="status exp"><i class="fa-solid fa-circle"></i>
+                                                    <span>Expired</span></span>
+                                            @else
+                                                <span class="status"><i class="fa-solid fa-circle"></i>
+                                                    <span>Current</span></span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="3" class="text-center p-3">
+                                        <p>You have no subscription history</p>
+                                    </td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
                 <div class="col-12 col-lg-5 shadow subjects_history">
                     <div class="top">
-                        <h5>Completed Subjects</h5>
-                        <a href="#">See All</a>
+                        <h5>Available Past Questions</h5>
+                        <a href="/adexams">See All</a>
                     </div>
-                    <div class="subject sub">
-                        <span><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>
-                            <h6>English Language</h6>
-                            <p class="mb-0">Completed</p>
-                        </span>
-                    </div>
-                    <div class="subject sub">
+                    @foreach ( $questions as  $question)
+                        <div class="subject">
+                            <span><i class="fa-solid fa-graduation-cap"></i></span>
+                            <span>
+                                <h6>{{$question->year}}</h6>
+                                <a href="#" class="mb-0">view</a>
+                            </span>
+                        </div>
+                    @endforeach
+                    {{-- <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Mathematics</h6>
-                            <p class="mb-0">In Progress</p>
+                            <p class="mb-0">view</p>
                         </span>
                     </div>
-                    <div class="subject sub">
+                    <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Computer Science</h6>
-                            <p class="mb-0">In Progress</p>
+                            <p class="mb-0">view</p>
                         </span>
                     </div>
-                    <div class="subject sub">
+                    <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Chemistry</h6>
-                            <p class="mb-0">In Progress</p>
+                            <p class="mb-0">view</p>
                         </span>
                     </div>
-                    <div class="subject sub">
+                    <div class="subject">
                         <span><i class="fa-solid fa-graduation-cap"></i></span>
                         <span>
                             <h6>Physics</h6>
-                            <p class="mb-0">In Progress</p>
+                            <p class="mb-0">view</p>
                         </span>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
@@ -297,8 +188,8 @@ color:#fff;
         <div class ="row mb-3">
             <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
-                    <span class = "ms-2 mt-3">Total Profit</span><br>
-                    <span class  = "ms-2 mb-4 fw-bold fs-5">$23, 523</span><span
+                    <span class = "ms-2 mt-3 profit">Total Profit</span><br>
+                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">$23, 523</span><span
                         class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
                         style = "font-size: 8px; profit"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                             aria-hidden="true"></i>6.7%</span>
@@ -359,64 +250,34 @@ color:#fff;
                 <div class="p-2 text-black">Week to Date</div>
                 <div class="p-2 text-black pe-5 float-start">Month to Date</div>
             </div>
-
-
-
-            <div class = "container-fluid mb-3 border border-bottom">
-              <div class="row">
-    <a class = "col-12 col-md-6  text-decoration-none text-dark" href = "{{ url('totalsales') }}">
-    <div class="col-6 d-flex w-100 m1">
-      <div class = "me-auto">
-          <span>Total Sales</span> <br>
-          <span class  = "fw-3">$23, 523</span>
-      </div>
-
-
-      <div>
-            <br>
-         <span
-                            class = "rounded-5 mb-2 p-2 bg-opacity-25 opacity-10 pe-3 "
-                            style="font-size: 12px;">
-                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>
-                            6.7%
+            <div class="d-flex justify-content-between border-bottom border-black border-1">
+                <a class = "col-12 col-md-6 me-3 mt-2 mb-3 text-decoration-none text-dark"
+                    href = "{{ url('totalsales') }}">
+                    <div class="">
+                        <span class = "profit">Total Sales</span> <br>
+                        <span class  = "fw-3 profit">$23, 523</span>
+                        <span
+                            class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3 profit"
+                            style="font-size: 8px;">
+                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%
                         </span>
-      </div>
-
-    </div>
-</a>
-
- <a class = "col-12 col-md-6  text-decoration-none text-dark" href = "{{ url('totalsales') }}">
-    <div class="col-6 d-flex w-100 m1">
-<div class = "me-auto">
-          <span>Order</span> <br>
-          <span class  = "fw-3">10</span>
-      </div>
-
-<div>
-            <br>
-         <span
-                            class = "rounded-5 mb-2 p-2 bg-opacity-25 opacity-10 pe-3"
-                            style="font-size: 12px;">
-                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>
-                            6.7%
-                        </span>
-      </div>
-
+                    </div>
+                </a>
+                <a class = "col-12 col-md-6 me-3 mt-2 mb-3 col-12 col-md-6 border-start border-black border-1 text-decoration-none text-dark"
+                    href = "{{ url('order') }}">
+                    <div class="">
+                        <span class = "ms-2 profit">Orders</span> <br>
+                        <span class  = "fw-3 ms-2 profit">10</span><span
+                            class = "float-end rounded-5 mb-2  me-3 text-bg-success text-success p-2  bg-opacity-25 opacity-10 pe-3 profit"
+                            style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                                aria-hidden="true"></i>6.7%</span>
+                    </div>
+                </a>
             </div>
-        </a>
-              </div>
-
-
+            <div class = "float-start  mt-2">
+                <a href = "{{ url('detailedstat') }}" class = "float-start mb-1 text-decoration-none detailedstat">View
+                    detailed stats</a>
             </div>
-
-
-
-            {{-- <div class = "float-start mt-2 profit"> --}}
-                <table class = "link">
-                    <tr><td>
-                <a href = "{{ url('detailedstat') }}" class = "float-start mb-1 text-decoration-none">View
-                    detailed stats</a></td></tr>
-                </table>
         </div>
 
         <div class =" row border border-1 border-black mt-3 ms-2 mb-3 p-2">

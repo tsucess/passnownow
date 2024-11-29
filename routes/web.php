@@ -24,8 +24,9 @@ use App\Models\Exams;
 
 Route::get('/', function () {
 
-    $output = Classes::get();
-    return view('home', ['fetchClasses' => $output]);
+    $eoutput = Exams::get();
+    $coutput = Classes::get();
+    return view('home', ['fetchClasses' => $coutput, 'fetchExams' => $eoutput]);
     // return ['Laravel' => app()->version()];
 });
 
@@ -35,8 +36,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/subject', function () {
-    return view('subject');
+Route::get('/subjec', function () {
+    return view('subjec');
 });
 
 Route::get('/subjects', function () {
@@ -256,6 +257,13 @@ Route::middleware('auth')->group(function () {
 
         return view('admin.subscriptiondetails', ['subhistory' => $subHistory, 'exp_date' => $subExpiry]);
     });
+    Route::get('/subscriptionhistory', function () {
+        // $userID = Auth::user()->unique_id;
+        $subHistory = Transaction::get();
+        $subExpiry = Transaction::where('payment_status', 'success')->get();
+
+        return view('admin.subscriptionhistory', ['subhistory' => $subHistory, 'exp_date' => $subExpiry]);
+    });
 
 
     Route::get('/checkoutdetails', function () {
@@ -312,19 +320,6 @@ Route::get('/pqexams', function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 //  To reduce longer url
 // Route::get('/educational-resources', function(){
 //     return view('about');
@@ -350,11 +345,6 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
 
 
 // Route to verify email upon clicking the email link
