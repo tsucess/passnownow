@@ -31,6 +31,15 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+    <style>
+.bounce-on-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.bounce-on-hover:hover {
+  animation: bounce 0.7s infinite;
+}
+        </style>
 </head>
 
 <body class="">

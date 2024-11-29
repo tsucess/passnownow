@@ -44,6 +44,35 @@
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
     border-color: #007bff; /* Optional: Change border color */
 }
+
+.hover-grow {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-grow:hover {
+  transform: scale(1.1);
+}
+
+
+
+.bounce-on-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.bounce-on-hover:hover {
+  animation: bounce 0.7s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
 </style>
 
 @section('content')
@@ -288,13 +317,13 @@
                 </div>
             </div>
             <div class="row frames">
-                <div class="col-12 col-md-4 my-3 frame">
+                <div class="col-12 col-md-4 my-3 hover-grow">
                     <img src="{{ asset('images/users_1.png') }}" alt="">
                 </div>
                 <div class="col-12 col-md-4 my-3 frame mobile middle">
                     <img src="{{ asset('images/mobile-frame.png') }}" alt="">
                 </div>
-                <div class="col-12 col-md-4 my-3 frame">
+                <div class="col-12 col-md-4 my-3 frame hover-grow">
                     <img src="{{ asset('images/users_2.png') }}" alt="">
                 </div>
             </div>
@@ -311,7 +340,7 @@
                     <div class="col-12 col-md-2 col-lg-3"></div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-6 barchart mt-4">
+                    <div class="col-12 col-md-6 barchart mt-4 bounce-on-hover">
                         <img src="{{ asset('images/barchart.png') }}" alt="">
                     </div>
                     <div class="col-12 col-md-6 performance__info">

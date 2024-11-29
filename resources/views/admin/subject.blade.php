@@ -33,6 +33,8 @@
     animation-delay: 0.6s;
 }
 
+
+
 </style>
 
 @section('admincontent')
