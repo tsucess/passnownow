@@ -39,7 +39,7 @@
                     <p class="hero__info">Super simple self studying, peer to peer collaborative learning both for teachers
                         and students</p>
                     <div class="hero-btn">
-                        <a href="{{url('register')}}" class="btn btn-outline-primary btn-style">Register &nbsp; <i
+                        <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style">Register &nbsp; <i
                                 class="fa-solid fa-arrow-right"></i></a>
                         <a href="#learnMore" class="btn btn-style btn-style-secondary">Learn More</a>
                     </div>
@@ -97,7 +97,7 @@
                     <img src="{{ asset('images/trig.png') }}" alt="" class="formular-image">
                 </div>
             </div>
-            <div class="row guides animate__animated animate__bounce" id = "learnMore" >
+            <div class="row guides animate__animated animate__bounce" id = "learnMore">
                 <div class="col-12 col-md-4 mb-lg-3 guide">
                     <img src="{{ asset('images/icon-user.png') }}" alt="Icon" class="mb-3" />
                     <h3>Create free account</h3>
@@ -140,7 +140,7 @@
                     <p class="hero-down__info">Make Passnownow your partner in lifelomg learning, providing you with the
                         resources and support you need to succeed at every stage of your journey.</p>
                     <div class="hero-btn">
-                        <a href="{{url('register')}}" class="btn btn-outline-primary btn-style">Register &nbsp; <i
+                        <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style">Register &nbsp; <i
                                 class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
@@ -402,7 +402,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12 col-md-4 mb-3">
+                @foreach ($fetchClasses as $class)
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="image-wrapper h-50">
+                            <img src="{{ asset('storage/' . $class->avatar) }}" alt="">
+                        </div>
+                        <div class="note_info p-2">
+                            <h5>{{ $class->title }} Class Notes</h5>
+                            <p> {{ $class->description }}</p>
+                            <a href="{{ url('/subjects') }}" class="note_btn">VIEW ALL SUBJECTS</a>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -467,10 +479,27 @@
                             School Subjects</p>
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
+                </div> --}}
+            </div>
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h6>Past Questions</h6>
                 </div>
             </div>
             <div class="row past__questions">
-                <div class="col-12 col-md-4 mb-3">
+                @foreach ($fetchExams as $exam)
+                    <div class="col-12 col-md-4 mb-3">
+                        <div class="image-wrapper h-50">
+                            <img src="{{ asset('storage/'.$exam->avatar) }}" alt="">
+                        </div>
+                        <div class="note_info p-2">
+                            <h5>{{$exam->title}} Past Questions</h5>
+                            <p>{{$exam->description}}</p>
+                            <a href="{{ url('/pastquestions') }}" class="note_btn">VIEW ALL QUESTIONS</a>
+                        </div>
+                    </div>
+                @endforeach
+                {{-- <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -479,8 +508,8 @@
                         <p>Test yourself on any JSSCE Exam Past Questions</p>
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3">
+                </div> --}}
+                {{-- <div class="col-12 col-md-4 mb-3">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -499,7 +528,7 @@
                         <p>Test yourself on any JSSCE Exam Past Questions</p>
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </section>
 

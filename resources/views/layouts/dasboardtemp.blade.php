@@ -172,12 +172,14 @@
                                 </x-sidebar-link>
                             </li>
                         @else
+                        @if (Auth::user()->role === 'sadmin')
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('admins') }}" href="/admins">
                                     <i class="fa-solid fa-user-tie"></i>
                                     Admin
                                 </x-sidebar-link>
                             </li>
+                        @endif
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
                                     <i class="fa-regular fa-user"></i>
@@ -210,18 +212,18 @@
                             </a>
                         </li> --}}
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('subscriptiondetails') }}"
-                                    href="/subscriptiondetails">
+                                <x-sidebar-link active="{{ request()->is('subscriptionhistory') }}"
+                                    href="/subscriptionhistory">
                                     <i class="fa-solid fa-hand-holding-dollar"></i>
-                                    Subscription
+                                    Subscription History
                                 </x-sidebar-link>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('subscription') }}" href="/subscription">
                                     <i class="fa-solid fa-dollar"></i>
                                     Pricing
                                 </x-sidebar-link>
-                            </li>
+                            </li> --}}
                             {{-- <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('#') }}" href="#">
                                 <i class="fa-solid fa-clock-rotate-left"></i>

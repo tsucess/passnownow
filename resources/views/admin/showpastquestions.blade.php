@@ -14,7 +14,6 @@
         <div class = "row mt-3 gap-2">
             {{-- {{ $result }} --}}
             @foreach ($userFetchQuestions as $Question)
-                {{-- <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%"> --}}
                     <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%">
                     {{-- <img src="{{ asset('/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
                     <h5 class = "text-center fw-bold jss px-4">{{ $Question[0]->year }}</h5>
