@@ -66,6 +66,31 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.link:hover{
+    background-color: #1A69AF;
+}
+
+.link:hover a{
+    color: #fff;
+}
+
+.m1:hover
+{
+background: #1A69AF;
+}
+
+.m:hover
+{
+color:#fff;
+}
+
+.link:hover span{
+    color: #fff;
+}
+
+.link:hover i{
+    color: #fff;
+}
 </style>
 
 @section('admincontent')
@@ -272,8 +297,8 @@
         <div class ="row mb-3">
             <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
-                    <span class = "ms-2 mt-3 profit">Total Profit</span><br>
-                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">$23, 523</span><span
+                    <span class = "ms-2 mt-3">Total Profit</span><br>
+                    <span class  = "ms-2 mb-4 fw-bold fs-5">$23, 523</span><span
                         class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
                         style = "font-size: 8px; profit"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                             aria-hidden="true"></i>6.7%</span>
@@ -334,34 +359,64 @@
                 <div class="p-2 text-black">Week to Date</div>
                 <div class="p-2 text-black pe-5 float-start">Month to Date</div>
             </div>
-            <div class="d-flex justify-content-between border-bottom border-black border-1">
-                <a class = "col-12 col-md-6 me-3 mt-2 mb-3 text-decoration-none text-dark"
-                    href = "{{ url('totalsales') }}">
-                    <div class="profit">
-                        <span>Total Sales</span> <br>
-                        <span class  = "fw-3">$23, 523</span>
-                        <span
-                            class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3 profit"
-                            style="font-size: 8px;">
-                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%
+
+
+
+            <div class = "container-fluid mb-3 border border-bottom">
+              <div class="row">
+    <a class = "col-12 col-md-6  text-decoration-none text-dark" href = "{{ url('totalsales') }}">
+    <div class="col-6 d-flex w-100 m1">
+      <div class = "me-auto">
+          <span>Total Sales</span> <br>
+          <span class  = "fw-3">$23, 523</span>
+      </div>
+
+
+      <div>
+            <br>
+         <span
+                            class = "rounded-5 mb-2 p-2 bg-opacity-25 opacity-10 pe-3 "
+                            style="font-size: 12px;">
+                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>
+                            6.7%
                         </span>
-                    </div>
-                </a>
-                <a class = "col-12 col-md-6 me-3 mt-2 mb-3 col-12 col-md-6 border-start border-black border-1 text-decoration-none text-dark"
-                    href = "{{ url('order') }}">
-                    <div class="profit">
-                        <span class = "ms-2">Orders</span> <br>
-                        <span class  = "fw-3 ms-2">10</span><span
-                            class = "float-end rounded-5 mb-2  me-3 text-bg-success text-success p-2  bg-opacity-25 opacity-10 pe-3 profit"
-                            style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                                aria-hidden="true"></i>6.7%</span>
-                    </div>
-                </a>
+      </div>
+
+    </div>
+</a>
+
+ <a class = "col-12 col-md-6  text-decoration-none text-dark" href = "{{ url('totalsales') }}">
+    <div class="col-6 d-flex w-100 m1">
+<div class = "me-auto">
+          <span>Order</span> <br>
+          <span class  = "fw-3">10</span>
+      </div>
+
+<div>
+            <br>
+         <span
+                            class = "rounded-5 mb-2 p-2 bg-opacity-25 opacity-10 pe-3"
+                            style="font-size: 12px;">
+                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>
+                            6.7%
+                        </span>
+      </div>
+
             </div>
-            <div class = "float-start mt-2 profit">
-                <a href = "{{ url('detailedstat') }}" class = "float-start mb-1 text-decoration-none detailedstat">View
-                    detailed stats</a>
+        </a>
+              </div>
+
+
             </div>
+
+
+
+            {{-- <div class = "float-start mt-2 profit"> --}}
+                <table class = "link">
+                    <tr><td>
+                <a href = "{{ url('detailedstat') }}" class = "float-start mb-1 text-decoration-none">View
+                    detailed stats</a></td></tr>
+                </table>
         </div>
 
         <div class =" row border border-1 border-black mt-3 ms-2 mb-3 p-2">

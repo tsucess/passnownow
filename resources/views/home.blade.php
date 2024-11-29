@@ -1,5 +1,51 @@
 @extends('layouts.index')
 
+<style>
+.guides .guide{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #ddd; /* Optional: Add a subtle border */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    padding: 15px; /* Optional: Add some padding */
+    text-align: center; /* Ensure content is centered */
+}
+
+.guides .guide:hover{
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+    border-color: #007bff; /* Optional: Change border color */
+}
+
+
+
+
+.middle{
+    animation: growShrink 2s infinite ease-in-out;
+}
+
+@keyframes growShrink {
+    0%, 100% {
+        transform: scale(1); /* Normal size */
+    }
+    50% {
+        transform: scale(1.1); /* Slightly larger */
+    }
+}
+
+
+
+.myWrapper{
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 15px; /* Optional: Add some padding */
+    text-align: center; /* Ensure content is centered */
+}
+
+.myWrapper:hover{
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
+    border-color: #007bff; /* Optional: Change border color */
+}
+</style>
+
 @section('content')
     <main class="container-fluid">
         <section class="container-fluid container__top pt-3">
@@ -245,7 +291,7 @@
                 <div class="col-12 col-md-4 my-3 frame">
                     <img src="{{ asset('images/users_1.png') }}" alt="">
                 </div>
-                <div class="col-12 col-md-4 my-3 frame mobile">
+                <div class="col-12 col-md-4 my-3 frame mobile middle">
                     <img src="{{ asset('images/mobile-frame.png') }}" alt="">
                 </div>
                 <div class="col-12 col-md-4 my-3 frame">
@@ -415,6 +461,7 @@
                     </div>
                 @endforeach
                 {{-- <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -425,7 +472,7 @@
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -436,7 +483,7 @@
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -447,7 +494,7 @@
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -458,7 +505,7 @@
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -469,7 +516,7 @@
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -500,6 +547,7 @@
                     </div>
                 @endforeach
                 {{-- <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -510,6 +558,8 @@
                     </div>
                 </div> --}}
                 {{-- <div class="col-12 col-md-4 mb-3">
+                </div>
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
@@ -519,7 +569,7 @@
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
                 </div>
-                <div class="col-12 col-md-4 mb-3">
+                <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
                         <img src="{{ asset('images/student-writing.png') }}" alt="">
                     </div>
