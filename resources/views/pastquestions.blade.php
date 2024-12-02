@@ -1,18 +1,16 @@
 @extends('layouts.index')
 
 <style>
-.myWrapper{
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    padding: 15px; /* Optional: Add some padding */
-    text-align: center; /* Ensure content is centered */
-}
+    .myWrapper {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.myWrapper:hover{
-    transform: scale(1.05); /* Slightly increase size */
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a shadow on hover */
-    border-color: #007bff; /* Optional: Change border color */
-}
- </style>
+    .myWrapper:hover {
+        transform: scale(1.05);/* Slightly increase size */
+        /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); */
+     
+    }
+</style>
 
 @section('content')
     <Section class="container-fluid container__banner pastquestion__banner">
@@ -36,34 +34,41 @@
 
     <section class="container-fluid container__subjects mt-5">
         <div class="row only_subjects">
-            <div class="col-12 col-md-4 mb-4 myWrapper">
-                <div class="image-wrapper">
-                    <img src="{{ asset('images/educationbook.png') }}" alt="">
-                </div>
-                <div class="note_info p-2">
-                    <h5>JSSCE Past Questions</h5>
-                    <p>Test yourself on any JSSCE Exam Past Questions</p>
-                    <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 mb-4 myWrapper">
-                <div class="image-wrapper">
-                    <img src="{{ asset('images/student-writing.png') }}" alt="">
-                </div>
-                <div class="note_info p-2">
-                    <h5>SSCE Past Questions</h5>
-                    <p>Test yourself on any JSSCE Exam Past Questions</p>
-                    <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
+            <div class="col-12 col-md-4 mb-4">
+                <div class="myWrapper">
+                    <div class="image-wrapper">
+                        <img src="{{ asset('images/educationbook.png') }}" alt="">
+                    </div>
+                    <div class="note_info p-2">
+                        <h5>JSSCE Past Questions</h5>
+                        <p>Test yourself on any JSSCE Exam Past Questions</p>
+                        <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-md-4 mb-4 myWrapper">
-                <div class="image-wrapper">
-                    <img src="{{ asset('images/education-stackbook.png') }}" alt="">
+            <div class="col-12 col-md-4 mb-4">
+                <div class="myWrapper">
+                    <div class="image-wrapper">
+                        <img src="{{ asset('images/student-writing.png') }}" alt="">
+                    </div>
+                    <div class="note_info p-2">
+                        <h5>SSCE Past Questions</h5>
+                        <p>Test yourself on any JSSCE Exam Past Questions</p>
+                        <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
+                    </div>
                 </div>
-                <div class="note_info p-2">
-                    <h5>UTME/JAMB Past Questions</h5>
-                    <p>Test yourself on any JSSCE Exam Past Questions</p>
-                    <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
+            </div>
+            <div class="col-12 col-md-4 mb-4">
+                <div class="myWrapper">
+                    <div class="image-wrapper">
+                        <img src="{{ asset('images/education-stackbook.png') }}" alt="">
+                    </div>
+                    <div class="note_info p-2">
+                        <h5>UTME/JAMB Past Questions</h5>
+                        <p>Test yourself on any JSSCE Exam Past Questions</p>
+                        <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
+                    </div>
+
                 </div>
             </div>
         </div>
