@@ -1,71 +1,82 @@
 @extends('layouts.dasboardtemp')
 
 <style>
-/* Keyframes for fade-in and slide-in from the bottom */
-@keyframes fadeInSlideUp {
-    0% {
-        transform: translateY(30px); /* Start slightly below */
-        opacity: 0; /* Start invisible */
+    /* Keyframes for fade-in and slide-in from the bottom */
+    @keyframes fadeInSlideUp {
+        0% {
+            transform: translateY(30px);
+            /* Start slightly below */
+            opacity: 0;
+            /* Start invisible */
+        }
+
+        100% {
+            transform: translateY(0);
+            /* End at the original position */
+            opacity: 1;
+            /* Fully visible */
+        }
     }
-    100% {
-        transform: translateY(0); /* End at the original position */
-        opacity: 1; /* Fully visible */
-    }
-}
 
-/* Apply animation to the cards */
-.animated-card {
-    opacity: 0; /* Start invisible */
-    animation: fadeInSlideUp 0.8s ease-out forwards; /* Forward to keep the final state */
-}
-
-/* Staggered animation using nth-child */
-.animated-card:nth-child(1) {
-    animation-delay: 0s;
-}
-.animated-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-.animated-card:nth-child(3) {
-    animation-delay: 0.4s;
-}
-.animated-card:nth-child(4) {
-    animation-delay: 0.6s;
-}
-
-
-.subHere {
-    width: 17rem !important;
-    margin: auto;
-    height: 20rem;
-}
-
-
-
-/* Keyframes for fade-in animation */
-@keyframes fadeIn {
-    from {
+    /* Apply animation to the cards */
+    .animated-card {
         opacity: 0;
-        transform: translateY(20px);
+        /* Start invisible */
+        animation: fadeInSlideUp 0.8s ease-out forwards;
+        /* Forward to keep the final state */
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+    /* Staggered animation using nth-child */
+    .animated-card:nth-child(1) {
+        animation-delay: 0s;
     }
-}
 
-/* Animation applied to each card */
-.subHere {
-    animation: fadeIn 0.6s ease-in-out;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+    .animated-card:nth-child(2) {
+        animation-delay: 0.2s;
+    }
 
-/* Hover effect */
-.subHere:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
+    .animated-card:nth-child(3) {
+        animation-delay: 0.4s;
+    }
 
+    .animated-card:nth-child(4) {
+        animation-delay: 0.6s;
+    }
+
+    .subHere {
+        margin: auto;
+        height: 20rem;
+    }
+
+    /* Keyframes for fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Animation applied to each card */
+    .subHere {
+        animation: fadeIn 0.6s ease-in-out;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Hover effect */
+    .subHere:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sub:hover,
+    .sub:hover a {
+        color: white
+    }
 </style>
 
 @section('admincontent')
@@ -85,13 +96,49 @@
     @if (Auth::user()->role === 'user')
         <section class="container-fluid notifiication__containter  shadow mt-4">
             <div class="row p-2">
-                <div class="col-12 col-md-8 subscription">
-                    <i class="fa-regular fa-credit-card"></i>
-                    <p>Your Subscription ends on 28 August 2024</p>
-                </div>
-                <div class="col-12 col-md-4  text-md-end">
-                    <button class="btn upgrade-btn">Upgrade</button>
-                </div>
+                @if (\Session::has('error'))
+                    <div class="alert alert-danger">
+                        <p class="m-0">{{ \Session::get('error') }}</p>
+                    </div>
+                @elseif (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <p class="m-0">{{ \Session::get('success') }}</p>
+                    </div>
+                @endif
+            </div>
+
+            <div class="row p-2">
+                @if ($subhistory[0] == true)
+                    <div class="col-12 col-md-8 subscription">
+                        <i class="fa-regular fa-credit-card"></i>
+                        @php
+                            $exp = date_create($exp_date[0]->expiry_date);
+                            $exp_d = date_format($exp, 'Y-m-d');
+                            $now = date('Y-m-d');
+                        @endphp
+                        @if ($now > $exp_d)
+                            <p>Your Subscription ended on {{ date_format($exp, 'd F Y') }}</p>
+                        @else
+                            <p>Your Subscription ends on {{ date_format($exp, 'd F Y') }}</p>
+                        @endif
+                    </div>
+                    <div class="col-12 col-md-4  text-md-end">
+                        @if ($now > $exp_d)
+                            <button class="btn upgrade-btn bg-danger">Expired</button>
+                        @else
+                            <button class="btn upgrade-btn">Active</button>
+                        @endif
+                    </div>
+                @else
+                    <div class="col-12 col-md-8 subscription">
+                        <i class="fa-regular fa-credit-card"></i>
+                        <p>You don't have an subscription yet!</p>
+
+                    </div>
+                    <div class="col-12 col-md-4  text-md-end">
+                        <a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a>
+                    </div>
+                @endif
             </div>
         </section>
         <section class="container-fluid top-courses__containter  shadow py-2 my-4">
@@ -100,45 +147,21 @@
                     <h5>Top Subjects Pick for You</h5>
                     <a href="#">See All</a>
                 </div>
-                {{-- subjects --}}
                 @foreach ($subjects as $subject)
-                    <div class="col-12 col-md-6 col-lg-4 mb-2 subHere">
-                        <div class="card courses">
-                            <div class="image_wrapper">
-                                <img src="{{ asset('storage/' . $subject->avatar) }}" class="course-img" alt="Avatar">
+                    <div class="col-12 col-md-6 col-lg-4 mb-2 ">
+                        <div class="card courses subHere">
+                            <div class="image_wrapper m-0 p-0"
+                                style="background-image: url('{{ url('storage/' . $subject->avatar) }}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;">
                             </div>
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
-                                <h5 class="card-title">{{ $subject->title }}</h5>
-                                <button type="button" class="buton sub">View Details</button>
+                                <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5>
+                                <a href="{{ route('learning', ['data' => $subject]) }}" class="btn buton">View Details</a>
                             </div>
                         </div>
                     </div>
                 @endforeach
-                {{-- <div class="col-12 col-md-6 col-lg-4 mb-2">
-                <div class="card courses">
-                    <div class="image_wrapper">
-                        <img src="{{ asset('images/admin/course-img2.png') }}" class="course-img" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class="courses-tag">Passnownow</div>
-                        <h5 class="card-title">Mathematics</h5>
-                        <button type="button" class="buton">View Details</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-4 mb-2">
-                <div class="card courses">
-                    <div class="image_wrapper">
-                        <img src="{{ asset('images/admin/course-img3.png') }}" class="course-img" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <div class="courses-tag">Passnownow</div>
-                        <h5 class="card-title">Home Economics</h5>
-                        <button type="button" class="buton">View Details</button>
-                    </div>
-                </div>
-            </div> --}}
+
             </div>
         </section>
         <section class="container-fluid history__container">
@@ -146,7 +169,7 @@
                 <div class="col-12 col-lg-7 mb-3 mb-md-0 shadow subscription_history">
                     <div class="top">
                         <h5>Subscription History</h5>
-                        <a href="#">See All</a>
+                        <a href="/subscriptiondetails">See All</a>
                     </div>
 
                     <table>
@@ -158,113 +181,57 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status"><i class="fa-solid fa-circle"></i> <span>Current</span></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status"><i class="fa-solid fa-circle"></i> <span>Current</span></span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <h6>Yearly Plan</h6>
-                                    <p>#00001 | 12-08-24</p>
-                                </td>
-                                <td>
-                                    <h6>N10,000.00</h6>
-                                </td>
-                                <td><span class="status exp"><i class="fa-solid fa-circle"></i> <span>Expired</span></span>
-                                </td>
-                            </tr>
+                            @if ($subhistory[0] == true)
+                                @foreach ($subhistory as $history)
+                                    <tr>
+                                        <td>
+                                            <h6>{{ $history->plan_name }} Plan</h6>
+                                            <p>#{{ $history->orderID }} | {{ $history->updated_at }}</p>
+                                        </td>
+                                        <td>
+                                            <h6>N{{ number_format($history->amount) }}</h6>
+                                        </td>
+                                        <td>
+                                            @php
+                                                $exp_day = date_create($history->expiry_date);
+                                                $exp_day = date_format($exp_day, 'Y-m-d');
+                                            @endphp
+
+                                            @if ($now > $exp_day)
+                                                <span class="status exp"><i class="fa-solid fa-circle"></i>
+                                                    <span>Expired</span></span>
+                                            @else
+                                                <span class="status"><i class="fa-solid fa-circle"></i>
+                                                    <span>Current</span></span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="3" class="text-center p-3">
+                                        <p>You have no subscription history</p>
+                                    </td>
+                                </tr>
+                            @endif
                         </tbody>
                     </table>
                 </div>
+
                 <div class="col-12 col-lg-5 shadow subjects_history">
                     <div class="top">
-                        <h5>Completed Subjects</h5>
-                        <a href="#">See All</a>
+                        <h5>Available Past Questions</h5>
+                        <a href="/adexams">See All</a>
                     </div>
-                    <div class="subject sub">
-                        <span><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>
-                            <h6>English Language</h6>
-                            <p class="mb-0">Completed</p>
-                        </span>
-                    </div>
-                    <div class="subject sub">
-                        <span><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>
-                            <h6>Mathematics</h6>
-                            <p class="mb-0">In Progress</p>
-                        </span>
-                    </div>
-                    <div class="subject sub">
-                        <span><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>
-                            <h6>Computer Science</h6>
-                            <p class="mb-0">In Progress</p>
-                        </span>
-                    </div>
-                    <div class="subject sub">
-                        <span><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>
-                            <h6>Chemistry</h6>
-                            <p class="mb-0">In Progress</p>
-                        </span>
-                    </div>
-                    <div class="subject sub">
-                        <span><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span>
-                            <h6>Physics</h6>
-                            <p class="mb-0">In Progress</p>
-                        </span>
-                    </div>
+                    @foreach ($questions as $question)
+                        <div class="subject sub">
+                            <span><i class="fa-solid fa-graduation-cap"></i></span>
+                            <span>
+                                <h6>{{ $question->year }}</h6>
+                                <a href="#" class="mb-0">view</a>
+                            </span>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </section>
