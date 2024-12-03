@@ -175,7 +175,6 @@ require __DIR__ . '/auth.php';
 
 
 
-
 Route::get('/checkoutsummary', function () {
     return view('admin.checkoutsummary');
 });

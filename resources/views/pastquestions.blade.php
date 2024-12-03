@@ -21,7 +21,7 @@
         </div>
     </Section>
     {{-- <section class="container-fluid container__search">
-        <div class="row p-0 m-0">
+        <div class="row p-0 m-0">`1
             <div class="col-12 col-md-6 search__form">
                 <form action="">
                     <i class="fa-solid fa-magnifying-glass"></i>
