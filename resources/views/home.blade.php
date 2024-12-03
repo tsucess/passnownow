@@ -73,7 +73,286 @@
 }
 
 
+
+.a1{
+	animation: fade-card linear both;
+	animation-timeline: view();
+
+}
+
+.a2 {
+	animation: fade linear both;
+	animation-timeline: view();
+}
+
+.a3 {
+	animation: fade-card linear both;
+	animation-timeline: view();
+
+}
+
+
+.a4{
+	animation: fade-card linear both;
+	animation-timeline: view();
+
+}
+
+.a5 {
+	animation: fade linear both;
+	animation-timeline: view();
+}
+
+.a6 {
+	animation: fade-card linear both;
+	animation-timeline: view();
+
+}
+
+@keyframes fade-card {
+	0% {
+		opacity: 0;
+		top:200px;
+	}
+	40% {
+		opacity: 1;
+		top:0px;
+	}
+}
+
+
+@keyframes fade {
+	0% {
+		opacity: 0;
+	}
+	40% {
+		opacity: 1;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+#count-number {
+    transition: transform 0.003s ease; /* Add optional effects */
+}
+
 </style>
+
+
+
+<script>
+   document.addEventListener("DOMContentLoaded", () => {
+    const countElement = document.getElementById("count-number");
+    let countingInterval; // Variable to hold the interval
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Start counting when the div is in view
+                    startCounting(countElement, 1, 5, 200);
+                } else {
+                    // Stop counting when the div is out of view
+                    resetCounting(countElement, 1); // Reset the number to 1M+
+                }
+            });
+        },
+        {
+            threshold: 0.5, // Trigger when 50% of the element is visible
+        }
+    );
+
+    observer.observe(countElement);
+
+    // Function to perform the counting animation
+    function startCounting(element, start, end, duration) {
+        let current = start;
+        const step = (end - start) / (duration / 50); // Calculate step size based on duration
+
+        // Clear any previous intervals to avoid overlapping
+        clearInterval(countingInterval);
+
+        countingInterval = setInterval(() => {
+            current += step;
+            if (current >= end) {
+                current = end;
+                clearInterval(countingInterval); // Stop the animation when the target is reached
+            }
+            element.textContent = `${Math.floor(current)}M+`; // Update the number in the element
+        }, 50); // Update every 50ms
+    }
+
+    // Function to reset the number when out of view
+    function resetCounting(element, resetTo) {
+        clearInterval(countingInterval); // Stop any ongoing interval
+        element.textContent = `${resetTo}M+`; // Reset the number
+    }
+});
+
+
+
+
+
+<!-- The other number -->
+document.addEventListener("DOMContentLoaded", () => {
+    const countElement = document.getElementById("counting");
+    let countingInterval; // Variable to hold the interval
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Start counting when the div is in view
+                    startCounting(countElement, 1, 5, 200);
+                } else {
+                    // Stop counting when the div is out of view
+                    resetCounting(countElement, 1); // Reset the number to 1M+
+                }
+            });
+        },
+        {
+            threshold: 0.5, // Trigger when 50% of the element is visible
+        }
+    );
+
+    observer.observe(countElement);
+
+    // Function to perform the counting animation
+    function startCounting(element, start, end, duration) {
+        let current = start;
+        const step = (end - start) / (duration / 50); // Calculate step size based on duration
+
+        // Clear any previous intervals to avoid overlapping
+        clearInterval(countingInterval);
+
+        countingInterval = setInterval(() => {
+            current += step;
+            if (current >= end) {
+                current = end;
+                clearInterval(countingInterval); // Stop the animation when the target is reached
+            }
+            element.textContent = `${Math.floor(current)}M+`; // Update the number in the element
+        }, 50); // Update every 50ms
+    }
+
+    // Function to reset the number when out of view
+    function resetCounting(element, resetTo) {
+        clearInterval(countingInterval); // Stop any ongoing interval
+        element.textContent = `${resetTo}M+`; // Reset the number
+    }
+});
+
+
+
+<!-- Moving  -->
+
+<!-- The other number -->
+document.addEventListener("DOMContentLoaded", () => {
+    const countElement = document.getElementById("counting");
+    let countingInterval; // Variable to hold the interval
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Start counting when the div is in view
+                    startCounting(countElement, 1, 5, 200);
+                } else {
+                    // Stop counting when the div is out of view
+                    resetCounting(countElement, 1); // Reset the number to 1M+
+                }
+            });
+        },
+        {
+            threshold: 0.5, // Trigger when 50% of the element is visible
+        }
+    );
+
+    observer.observe(countElement);
+
+    // Function to perform the counting animation
+    function startCounting(element, start, end, duration) {
+        let current = start;
+        const step = (end - start) / (duration / 50); // Calculate step size based on duration
+
+        // Clear any previous intervals to avoid overlapping
+        clearInterval(countingInterval);
+
+        countingInterval = setInterval(() => {
+            current += step;
+            if (current >= end) {
+                current = end;
+                clearInterval(countingInterval); // Stop the animation when the target is reached
+            }
+            element.textContent = `${Math.floor(current)}M+`; // Update the number in the element
+        }, 50); // Update every 50ms
+    }
+
+    // Function to reset the number when out of view
+    function resetCounting(element, resetTo) {
+        clearInterval(countingInterval); // Stop any ongoing interval
+        element.textContent = `${resetTo}M+`; // Reset the number
+    }
+});
+
+<!-- move now -->
+document.addEventListener("DOMContentLoaded", () => {
+    const progressElement = document.getElementById("progress-number");
+    const targetValue = 70; // Final value (70%)
+    let countingInterval; // Interval for counting
+
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    // Start counting when the div is in view
+                    startCounting(progressElement, 0, targetValue, 1000); // 1000ms duration
+                } else {
+                    // Reset the number to 0% when the div is out of view
+                    resetCounting(progressElement);
+                }
+            });
+        },
+        {
+            threshold: 0.5, // Trigger when 50% of the div is visible
+        }
+    );
+
+    observer.observe(progressElement);
+
+    // Function to count up to the target value
+    function startCounting(element, start, end, duration) {
+        let current = start;
+        const step = (end - start) / (duration / 50); // Calculate step size based on interval
+
+        // Clear any previous intervals to avoid overlapping
+        clearInterval(countingInterval);
+
+        countingInterval = setInterval(() => {
+            current += step;
+            if (current >= end) {
+                current = end; // Cap at the target value
+                clearInterval(countingInterval); // Stop the interval
+            }
+            element.textContent = `${Math.floor(current)}%`; // Update the text content
+        }, 50); // Update every 50ms
+    }
+
+    // Function to reset the number to 0%
+    function resetCounting(element) {
+        clearInterval(countingInterval); // Clear any ongoing intervals
+        element.textContent = "0%"; // Reset the text to 0%
+    }
+});
+
+</script>
+
+
+
+
+
 
 @section('content')
     <main class="container-fluid">
@@ -135,7 +414,7 @@
                 <div class="col-12 col-md-9 px-lg-4  mx-auto reviews">
                     <div class="row">
                         <div class="col-12 col-md-6 review">
-                            <h3>5M+</h3>
+                            <h3 id = "count-number">5M+</h3>
                             <p>Lifetime <br /> Learners</p>
                         </div>
                         <div class="col-12 col-md-6 review">
@@ -143,11 +422,11 @@
                             <p>Career <br /> Advices</p>
                         </div>
                         <div class="col-12 col-md-6 review">
-                            <h3>70%</h3>
+                            <h3 id = "progress-number">70%</h3>
                             <p>High Academic <br /> Performance</p>
                         </div>
                         <div class="col-12 col-md-6 review">
-                            <h3>5M+</h3>
+                            <h3 id = "counting">5M+</h3>
                             <p>Daily <br /> Messages</p>
                         </div>
                     </div>
@@ -172,19 +451,20 @@
                     <img src="{{ asset('images/trig.png') }}" alt="" class="formular-image">
                 </div>
             </div>
-            <div class="row guides animate__animated animate__bounce" id = "learnMore">
-                <div class="col-12 col-md-4 mb-lg-3 guide">
+            <div class="row guides animate__animated animate__slideInDown" id = "learnMore">
+                <div class="col-12 col-md-4 mb-lg-3 guide a1">
                     <img src="{{ asset('images/icon-user.png') }}" alt="Icon" class="mb-3" />
                     <h3>Create free account</h3>
                     <p>The first step is to create a free account with Passnownow by completing the user registration form.
                     </p>
+
                 </div>
-                <div class="col-12 col-md-4 mb-lg-3 guide">
-                    <img src="{{ asset('images/icon-card.png') }}" alt="Icon" class="mb-3" />
+                <div class="col-12 col-md-4 mb-lg-3 guide a2">
+                    <img src="{{ asset('images/icon-card.png') }}" alt="Icon" class="mb-3 fade-effect" />
                     <h3>Subscribe to a plan</h3>
                     <p>Choose from any of our packages to gain access to unlimited Class Notes and Exam Past Questions.</p>
                 </div>
-                <div class="col-12 col-md-4 mb-lg-3 guide">
+                <div class="col-12 col-md-4 mb-lg-3 guide a3">
                     <img src="{{ asset('images/icon-book.png') }}" alt="Icon" class="mb-3" />
                     <h3>Access all subjects</h3>
                     <p>That’s it, you now have access to unlimited Class Notes and Exam Past Questions.</p>
@@ -340,7 +620,7 @@
                     <div class="col-12 col-md-2 col-lg-3"></div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-md-6 barchart mt-4 bounce-on-hover">
+                    <div class="col-12 col-md-6 barchart mt-4 middle">
                         <img src="{{ asset('images/barchart.png') }}" alt="">
                     </div>
                     <div class="col-12 col-md-6 performance__info">
@@ -478,7 +758,7 @@
             </div>
             <div class="row">
                 @foreach ($fetchClasses as $class)
-                    <div class="col-12 col-md-4 mb-3">
+                    <div class="col-12 col-md-4 mb-3 hover-grow">
                         <div class="image-wrapper h-50">
                             <img src="{{ asset('storage/' . $class->avatar) }}" alt="">
                         </div>
@@ -562,9 +842,9 @@
                     <h6>Past Questions</h6>
                 </div>
             </div>
-            <div class="row past__questions">
+            <div class="row past__questions ">
                 @foreach ($fetchExams as $exam)
-                    <div class="col-12 col-md-4 mb-3">
+                    <div class="col-12 col-md-4 mb-3 hover-grow">
                         <div class="image-wrapper h-50">
                             <img src="{{ asset('storage/'.$exam->avatar) }}" alt="">
                         </div>
