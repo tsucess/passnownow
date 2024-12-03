@@ -5,7 +5,7 @@
     @php
         $now = date('Y-m-d');
     @endphp
-    <section class="container-fluid greeting__containter mt-3">
+    <section class="container-fluid greeting__containter mt-3 animate__animated animate__bounce">
         <div class="row greet__user">
             <div class="col-12 col-md-6 greetings ">
                 <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2>
@@ -74,7 +74,7 @@
                 {{-- subjects --}}
                 @foreach ($subjects as $subject)
                     <div class="col-12 col-md-6 col-lg-4 mb-2">
-                        <div class="card courses">
+                        <div class="card courses sty">
                             <div class="image_wrapper m-0 p-0"
                                 style="background-image: url('{{ url('storage/' . $subject->avatar) }}');  background-position:center; background-size:cover; background-repeat:none; height: 10rem;">
                             </div>
@@ -83,7 +83,7 @@
                                 {{-- <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5> --}}
                                 <h5 class="card-title">{{ $subject->title }}</h5>
                                 {{-- <a href="{{ route('learning', ['data' => $subject])  }}" class="btn buton">View Details</a> --}}
-                                <button type="button" class="button">View Details</button>
+                                <button type="button" class="button sub">View Details</button>
                             </div>
                         </div>
                     </div>

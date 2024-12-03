@@ -13,29 +13,9 @@
     }
 }
 
-/* Applying animation to the cards */
-.sty {
-    animation: fadeIn 0.8s ease-in-out;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
 
-/* Hover effect on the card */
-.sty:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
 
-/* Smooth animation for buttons */
-.sub {
-    transition: background-color 0.3s, transform 0.3s;
-}
 
-/* Hover effect for buttons */
-.sub:hover {
-    background-color: #0056b3;
-    color: #fff;
-    transform: scale(1.1);
-}
 
 /* Adding subtle animation to the text span */
 .jss {
@@ -50,12 +30,6 @@
 .p:hover {
     color: #0056b3;
 }
-
-
-
-
-
-
 
 
 
@@ -81,8 +55,6 @@
 </style>
 
 @section('admincontent')
-
-
 
 
     @if (Auth::user()->role === 'user')
