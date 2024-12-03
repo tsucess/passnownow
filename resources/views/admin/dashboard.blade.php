@@ -32,7 +32,7 @@
                 @endif
             </div>
 
-            <div class="row p-2">
+          {{--  <div class="row p-2">
                 @if ($subhistory[0] == true)
                     <div class="col-12 col-md-8 subscription">
                         <i class="fa-regular fa-credit-card"></i>
@@ -60,7 +60,7 @@
                         <a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a>
                     </div>
                 @endif
-            </div>
+            </div> --}}
 
         </section>
         <section class="container-fluid top-courses__containter  shadow py-2 my-4">
@@ -74,12 +74,13 @@
                     <div class="col-12 col-md-6 col-lg-4 mb-2">
                         <div class="card courses">
                             <div class="image_wrapper m-0 p-0"
-                                style="background-image: url('{{ url('storage/' . $subject->avatar) }}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;">
+                                style="background-image: url('{{ url('storage/' . $subject->avatar) }}');  background-position:center; background-size:cover; background-repeat:none; height: 10rem;">
                             </div>
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
                                 <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5>
-                                <a href="{{ route('learning', ['data' => $subject])  }}" class="btn buton">View Details</a>
+                                {{-- <a href="{{ route('learning', ['data' => $subject])  }}" class="btn buton">View Details</a> --}}
+                                <button type="button" class="buton">View Details</button>
                             </div>
                         </div>
                     </div>
