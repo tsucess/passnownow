@@ -384,8 +384,10 @@ Route::get('/dashboard', function () {
     $subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
+    $totalSum = Transaction::get()->sum('amount');
+    $totalOrders = Transaction::get()->count();
     $users = Admin::where('role', 'user')->get();
-    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions,]);
+    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
