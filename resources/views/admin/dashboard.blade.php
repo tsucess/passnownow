@@ -158,7 +158,13 @@
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
                                 <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5>
-                                <a href="{{ route('learning', ['data' => $subject]) }}" class="btn buton">View Details</a>
+                                @if (Auth::user()->status === 1)
+                                    <a href="{{ route('learning', ['data' => $subject]) }}" class="btn buton">View
+                                        Details</a>
+                                @else
+                                    <button type="button" class="btn buton" data-bs-toggle="modal"
+                                        data-bs-target="#subscribeModal">Subscribe Now</button>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -239,62 +245,35 @@
         </section>
 
 
- <!-- Add Class Modal -->
- <div class="modal fade" id="addModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
- aria-hidden="true">
- <div class="modal-dialog">
-     <div class="modal-content" id="form_add">
-         <div class="modal-header">
-             <h1 class="modal-title fs-5" id="addModalLabel">Add Class</h1>
-             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <form method="POST" action="{{ route('classes.store') }}" enctype="multipart/form-data">
-             @csrf
-             <div class="modal-body">
-                 <x-text-input type="hidden" class="form-control" name="unique_id"
-                     value="{{ rand(time(), 10000000) }}" />
-                 <div class="row">
-                     <div class="col-12">
-                         <div class="mb-3">
-                             <x-input-label :value="__('Title')" />
-                             <x-text-input type="text" class="form-control" name="title" :value="old('title')"
-                                 aria-describedby="textBlock" placeholder="Enter class title" />
-                             <x-input-error :messages="$errors->get('title')" class="mt-2 text-danger" />
-                         </div>
-                     </div>
-                     <div class="col-12">
-                         <div class="mb-3">
-                             <x-input-label :value="__('Description')" class="form-label" />
-                             <textarea name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
-                             <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
-                         </div>
-                     </div>
-                     <div class="col-12">
-                         <div class="mb-3">
-                             <label class="form-label">Subject Image</label>
-                             <input type="file" name="avatar" class="form-control py-2" />
-                         </div>
-                     </div>
-                 </div>
-             </div>
-             <div class="modal-footer">
-                 <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
-                 <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
-             </div>
-         </form>
-     </div>
- </div>
-</div>
+        <!-- Subscribe Modal -->
+        <div class="modal fade" id="subscribeModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" id="">
+                    <div class="modal-body">
 
-
-
-
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="mb-3 mx-auto text-center">
+                                    <a href="/"><img src="{{ asset('images/logo.png') }}" alt=""
+                                            class="mb-3 w-50"></a>
+                                    <h5>You do not have an active subscription</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="/checkoutdetails" class="btn upgrade-btn mx-auto">Subscribe Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     @else
         <div class ="row mb-3">
             <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
-                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">N{{$totalSum}}</span><span
+                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">N{{ $totalSum }}</span><span
                         class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
                         style = "font-size: 8px; profit"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                             aria-hidden="true"></i>6.7%</span>
@@ -374,9 +353,10 @@
                     href = "{{ url('order') }}">
                     <div class="profit">
                         <span class = "ms-2">Orders</span> <br>
-                        <span class  = "fw-3 ms-2">{{$totalOrders}}</span><span
+                        <span class  = "fw-3 ms-2">{{ $totalOrders }}</span><span
                             class = "float-end rounded-5 mb-2  me-3 text-bg-success text-success p-2  bg-opacity-25 opacity-10 pe-3 profit"
-                            style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i> 6.7%</span>
+                            style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                                aria-hidden="true"></i> 6.7%</span>
                     </div>
                 </a>
             </div>
