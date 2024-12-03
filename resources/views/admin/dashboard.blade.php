@@ -11,7 +11,7 @@
                 <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2>
                 <p>Let's learn something today</p>
                 <br>
-                <p class="greeting-text">Goodluck with your studies</p>
+                {{-- <p class="greeting-text">Goodluck with your studies</p> --}}
             </div>
             <div class="col-12 col-md-6  p-4 pb-0 greeting-img">
                 <img src="{{ asset('images/admin/greeting-img.png') }}" alt="" class="">
@@ -189,7 +189,7 @@
             <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
-                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">$23, 523</span><span
+                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">#23, 523</span><span
                         class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
                         style = "font-size: 8px; profit"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                             aria-hidden="true"></i>6.7%</span>
@@ -255,7 +255,7 @@
                     href = "{{ url('totalsales') }}">
                     <div class="">
                         <span class = "profit">Total Sales</span> <br>
-                        <span class  = "fw-3 profit">$23, 523</span>
+                        <span class  = "fw-3 profit">#23, 523</span>
                         <span
                             class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3 profit"
                             style="font-size: 8px;">
