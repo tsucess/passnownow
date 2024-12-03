@@ -11,7 +11,9 @@
                 <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2>
                 <p>Let's learn something today</p>
                 <br>
-                {{-- <p class="greeting-text">Goodluck with your studies</p> --}}
+                @if (Auth::user()->role === 'user')
+                <p class="greeting-text">Goodluck with your studies</p>
+                @endif
             </div>
             <div class="col-12 col-md-6  p-4 pb-0 greeting-img">
                 <img src="{{ asset('images/admin/greeting-img.png') }}" alt="" class="">
@@ -78,9 +80,10 @@
                             </div>
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
-                                <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5>
+                                {{-- <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5> --}}
+                                <h5 class="card-title">{{ $subject->title }}</h5>
                                 {{-- <a href="{{ route('learning', ['data' => $subject])  }}" class="btn buton">View Details</a> --}}
-                                <button type="button" class="buton">View Details</button>
+                                <button type="button" class="button">View Details</button>
                             </div>
                         </div>
                     </div>
@@ -103,7 +106,7 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
+                       {{-- <tbody>
                             @if ($subhistory[0] == true)
                                 @foreach ($subhistory as $history)
                                     <tr>
@@ -137,7 +140,7 @@
                                     </td>
                                 </tr>
                             @endif
-                        </tbody>
+                        </tbody> --}}
                     </table>
                 </div>
                 <div class="col-12 col-lg-5 shadow subjects_history">
