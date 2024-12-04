@@ -110,7 +110,7 @@
             </div>
 
             <div class="row p-2">
-                @if ($subhistory[0] == true)
+                @if (!empty($subhistory[0]))
                     <div class="col-12 col-md-8 subscription">
                         <i class="fa-regular fa-credit-card"></i>
                         @php
@@ -134,7 +134,7 @@
                 @else
                     <div class="col-12 col-md-8 subscription">
                         <i class="fa-regular fa-credit-card"></i>
-                        <p>You don't have an subscription yet!</p>
+                        <p>You don't have any subscription yet!</p>
 
                     </div>
                     <div class="col-12 col-md-4  text-md-end">
@@ -189,7 +189,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if ($subhistory[0] == true)
+                            @if (!empty($subhistory[0]))
                                 @foreach ($subhistory as $history)
                                     <tr>
                                         <td>
