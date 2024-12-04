@@ -39,6 +39,30 @@
 .bounce-on-hover:hover {
   animation: bounce 0.7s infinite;
 }
+
+  /* Applying animation to the cards */
+  .sty {
+    animation: fadeIn 0.8s ease-in-out;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect on the card */
+.sty:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.aboutImage {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+.aboutImage:hover {
+  animation-play-state: running;
+}
+
         </style>
 </head>
 

@@ -47,11 +47,6 @@
   }
 }
 
-/* Apply the animation to the div */
-.sty {
-  animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
-}
-
 </style>
 
 @section('admincontent')

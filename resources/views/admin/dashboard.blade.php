@@ -34,8 +34,8 @@
                 @endif
             </div>
 
-          {{--  <div class="row p-2">
-                @if ($subhistory[0] == true)
+           <div class="row p-2">
+                @if (!empty($subhistory[0]))
                     <div class="col-12 col-md-8 subscription">
                         <i class="fa-regular fa-credit-card"></i>
                         @php
@@ -62,7 +62,7 @@
                         <a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a>
                     </div>
                 @endif
-            </div> --}}
+            </div>
 
         </section>
         <section class="container-fluid top-courses__containter  shadow py-2 my-4">
@@ -106,8 +106,8 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                       {{-- <tbody>
-                            @if ($subhistory[0] == true)
+                       <tbody>
+                            @if (!empty($subhistory[0]))
                                 @foreach ($subhistory as $history)
                                     <tr>
                                         <td>
@@ -140,7 +140,7 @@
                                     </td>
                                 </tr>
                             @endif
-                        </tbody> --}}
+                        </tbody>
                     </table>
                 </div>
                 <div class="col-12 col-lg-5 shadow subjects_history">
@@ -149,7 +149,7 @@
                         <a href="/adexams">See All</a>
                     </div>
                     @foreach ( $questions as  $question)
-                        <div class="subject">
+                        <div class="subject sub">
                             <span><i class="fa-solid fa-graduation-cap"></i></span>
                             <span>
                                 <h6>{{$question->year}}</h6>
@@ -190,7 +190,7 @@
         </section>
     @else
         <div class ="row mb-3">
-            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden">
+            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden profit">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
                     <span class  = "ms-2 mb-4 fw-bold fs-5  profit">#23, 523</span><span

@@ -7,7 +7,7 @@
     $exp_d = date_format($exp, 'Y-m-d');
     $now = date('Y-m-d');
 @endphp
-    
+
     <section class="container-fluid mt-5">
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Subscription History</h1>

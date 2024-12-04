@@ -1,10 +1,32 @@
 @extends('layouts.index')
 
+<style>
+.image-wrapper {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+}
+
+.image-wrapper:hover {
+  animation-play-state: running;
+}
+
+.card-link:hover
+{
+    border: 1px solid #1A69AF;
+    background: #1A69AF;
+    color:white;
+    padding: 8px;
+    border-radius:5px;
+}
+
+    </style>
 @section('content')
     <Section class="container-fluid container__banner">
         <div class="row">
             <div class="col-12 banner">
-                <h1>Subscripton Page</h1>
+                <h1>Subscription Page</h1>
             </div>
         </div>
     </Section>
@@ -24,7 +46,7 @@
     <section class="container-fluid container__subjects mt-lg-5 subscription">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 subscription_profiles">
             <div class="col">
-                <div class="card plan">
+                <div class="card plan sty">
                     <div class="card-body top">
                         <h5 class="card-title">Daily Plan</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet.</p>
@@ -61,7 +83,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card plan special">
+                <div class="card plan special sty">
                     <div class="card-body top">
                         <h5 class="card-title">Monthly Plan</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet.</p>
@@ -98,7 +120,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card plan">
+                <div class="card plan sty">
                     <div class="card-body top">
                         <h5 class="card-title">Weekly Plan</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet.</p>
@@ -135,7 +157,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card plan">
+                <div class="card plan sty">
                     <div class="card-body top">
                         <h5 class="card-title">Quaterly Plan</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet.</p>
@@ -172,7 +194,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card plan special">
+                <div class="card plan special sty">
                     <div class="card-body top">
                         <h5 class="card-title">Half Year Plan</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet.</p>
@@ -209,7 +231,7 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card plan">
+                <div class="card plan sty">
                     <div class="card-body top">
                         <h5 class="card-title">Year Plan</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet.</p>
@@ -250,11 +272,11 @@
             <div class="col-12 text-center mb-5 header">
                 <h6>Buy a plan</h6>
                 <p class="text-dark">
-                    Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum. 
+                    Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.
                 </p>
             </div>
             <div class="col-12 col-md-6">
-                <div class="image-wrapper">
+                <div class="image-wrapper animate__animated animate__headShake">
                     <img src="{{ asset('images/imagewallet.png') }}" alt="" />
                 </div>
                 <h5 class="primary_header mt-5 mb-3">Payment Using ATM Card</h5>
@@ -268,7 +290,7 @@
                 </ul>
             </div>
             <div class="col-12 col-md-6">
-                <div class="image-wrapper">
+                <div class="image-wrapper animate__animated animate__headShake">
                     <img src="{{ asset('images/imagephone.png') }}" alt="" />
                 </div>
                 <h5 class="primary_header mt-5 mb-3">Payment Using Bank Transfer</h5>
@@ -288,7 +310,7 @@
 
     <section class="container-fluid container__subjects mt-5">
         <div class="row">
-          
+
         </div>
     </section>
 @endsection

@@ -54,7 +54,7 @@
         </div>
         <div class="row mt-3 gap-2 gap-lg-1">
             @foreach ($fetchExams as $Exam)
-                <div class = "col-12 col-md-4 border text-center rounded p-4" style="width: 32%">
+                <div class = "col-12 col-md-4 border text-center rounded p-4 sub" style="width: 32%">
                     {{-- <div class="col-12 col-md-6 col-lg-4 text-center rounded-3 p-1 border examcard"> --}}
                     <img src="{{ asset('storage/' . $Exam->avatar) }}" class="img-fluid mb-3" alt="{{ $Exam->title }}"
                         style="height: 7rem; object-fit: cover;">

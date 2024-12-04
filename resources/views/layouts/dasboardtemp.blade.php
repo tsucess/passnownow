@@ -110,6 +110,11 @@
     transform: scale(1.03);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* Apply the animation to the div */
+/* .sty {
+  animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
+} */
     </style>
 </head>
 
