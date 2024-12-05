@@ -112,9 +112,10 @@
 }
 
 /* Apply the animation to the div */
-/* .sty {
+/* .sty {}
   animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
-} */
+*/
+
     </style>
 </head>
 
@@ -195,10 +196,10 @@
                                     Subscription
                                 </x-sidebar-link>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item effect">
                                 <x-sidebar-link active="{{ request()->is('checkoutdetails') }}" href="/checkoutdetails">
                                     {{-- <i class="fa-solid fa-dollar"></i> --}}
-                                    <span class = "me-2" style = "font-size: 20px;">&#x20A6;</span>
+                                    <span class = "me-2" style = "font-size: 20px; color:rgba(35, 33, 33, 0.774);">&#x20A6;</span>
                                     Subscribe
                                 </x-sidebar-link>
                             </li>
@@ -245,7 +246,8 @@
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('subscriptionhistory') }}"
                                     href="/subscriptionhistory">
-                                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                                    {{-- <i class="fa-solid fa-hand-holding-dollar"></i> --}}
+                                    <i class="fa-solid fa-credit-card"></i>
                                     Subscription History
                                 </x-sidebar-link>
                             </li>

@@ -30,7 +30,9 @@ Route::get('/', function () {
     // return ['Laravel' => app()->version()];
 });
 
-
+Route::get('/subscribeform', function () {
+    return view('subscribeform');
+});
 
 Route::get('/about', function () {
     return view('about');
@@ -84,7 +86,7 @@ Route::get('/students-motivation', function () {
     return view('studentsmotivation');
 });
 
-Route::get('/career-councelling', function () {
+Route::get('/career-counselling', function () {
     return view('careercouncelling');
 });
 
@@ -269,6 +271,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkoutdetails', function () {
         return view('admin.checkoutdetails');
     });
+
+
+
 
     Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
     Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);

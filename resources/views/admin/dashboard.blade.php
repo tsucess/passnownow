@@ -55,7 +55,7 @@
                 @else
                     <div class="col-12 col-md-8 subscription">
                         <i class="fa-regular fa-credit-card"></i>
-                        <p>You don't have an subscription yet!</p>
+                        <p>You don't have a subscription yet!</p>
 
                     </div>
                     <div class="col-12 col-md-4  text-md-end">
@@ -190,32 +190,37 @@
         </section>
     @else
         <div class ="row mb-3">
-            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden profit">
+            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden  h-50">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
-                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">#23, 523</span><span
-                        class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
-                        style = "font-size: 8px; profit"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                            aria-hidden="true"></i>6.7%</span>
-                    <br><br>
+                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">#23,523</span>
+                    <span
+                        class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">&#x20A6;
+                        {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                            aria-hidden="true"></i>6.7% --}}
+                        </span>
+                    {{-- <br><br>
                     <span>Monthly goal</span>
                     <span class = "float-end">70%</span>
 
                     <div class="progress mb-3 mt-1" role="progressbar" aria-label="Basic example" aria-valuenow="75"
                         aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
                         <div class="progress-bar bg-primary" style="width: 75%"></div>
-                    </div>
+                    </div> --}}
                 </a>
             </div>
 
-            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden">
+            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary h-50  overflow-hidden">
                 <span class = "ms-2 mt-3">Total Administrators</span><br>
-                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span><span
-                    class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
-                    style = "font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                        aria-hidden="true"></i>6.7%</span>
-
-                <br><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
+                <span
+                        class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
+                    {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                        aria-hidden="true"></i>6.7% --}}
+                        <i class="fa-solid fa-user-tie"></i>
+                    </span>
 
                 {{-- <span>Monthly goal</span>
                 <span class = "float-end">70%</span>
@@ -227,12 +232,16 @@
             </div>
             <div class = "col-sm ms-3 mt-3 p-3 mb-2 border border-primary overflow-hidden">
                 <span class = "ms-2 mt-3">Total Users</span><br>
-                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span><span
-                    class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3"
-                    style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                        aria-hidden="true"></i>6.7%</span>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span>
+                <span
+                        class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
+                    {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                        aria-hidden="true"></i>6.7% --}}
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                    </span>
 
-                <br><br>
+                {{-- <br><br>
 
                 <span>Monthly goal</span>
                 <span class = "float-end">70%</span>
@@ -240,45 +249,56 @@
                 <div class="progress mb-3 mt-1" role="progressbar" aria-label="Basic example" aria-valuenow="75"
                     aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
                     <div class="progress-bar bg-primary" style="width: 75%"></div>
-                </div>
+                </div> --}}
             </div>
         </div>
 
         <div class = "row ms-2 border border-1 border-black p-2 mb-4">
-            <div class = "border-bottom border-black border-1 ">
+            <div class = "border-bottom border-black border-1">
                 <span>Stats Overview</span>
                 <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
             </div>
             <div class="d-flex justify-content-between border-bottom border-black border-1">
-                <div class="m-0 pt-2" style = "width: 100px;">Today</div>
+                <div class="pt-2" style = "width: 100px;">Today</div>
                 <div class="p-2 text-black">Week to Date</div>
                 <div class="p-2 text-black pe-5 float-start">Month to Date</div>
             </div>
+
             <div class="d-flex justify-content-between border-bottom border-black border-1">
+                <div class = "profit w-100 ms-1 mt-2">
                 <a class = "col-12 col-md-6 me-3 mt-2 mb-3 text-decoration-none text-dark"
                     href = "{{ url('totalsales') }}">
-                    <div class="">
+                    <div>
                         <span class = "profit">Total Sales</span> <br>
-                        <span class  = "fw-3 profit">#23, 523</span>
+                        <span class  = "fw-3 profit">#23,523</span>
                         <span
-                            class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3 profit"
-                            style="font-size: 8px;">
-                            <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%
+                        class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                            {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
                         </span>
                     </div>
                 </a>
+            </div>
+
+            <div class = "profit w-100 ms-2">
                 <a class = "col-12 col-md-6 me-3 mt-2 mb-3 col-12 col-md-6 border-start border-black border-1 text-decoration-none text-dark"
                     href = "{{ url('order') }}">
                     <div class="">
                         <span class = "ms-2 profit">Orders</span> <br>
-                        <span class  = "fw-3 ms-2 profit">10</span><span
-                            class = "float-end rounded-5 mb-2  me-3 text-bg-success text-success p-2  bg-opacity-25 opacity-10 pe-3 profit"
-                            style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                                aria-hidden="true"></i>6.7%</span>
+                        <span class  = "fw-3 ms-2 profit">10</span>
+                        <span
+                        class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                            {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                                aria-hidden="true"></i>6.7% --}}
+                            </span>
                     </div>
                 </a>
             </div>
-            <div class = "float-start  mt-2">
+
+            </div>
+
+            <div class = "float-start  mt-2 profit ">
                 <a href = "{{ url('detailedstat') }}" class = "float-start mb-1 text-decoration-none detailedstat">View
                     detailed stats</a>
             </div>
