@@ -33,19 +33,19 @@ class AuthenticatedSessionController extends Controller
         
         $request->authenticate();
         $request->session()->regenerate();
-
-        $userID = Auth::user()->unique_id;
        
-        $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
-        $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
-
-        $exp = date_create($subExpiry[0]->expiry_date);
-        $exp_d = date_format($exp, 'Y-m-d');
-        $now = date('Y-m-d');
-        if ($now > $exp_d) {
-            Admin::where('unique_id', $userID)->where('role', 'user')->update(['status'=> 0]);
+        $userID = Auth::user()->unique_id;
+        if (Auth::user()->role === 'user'){
+            $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
+            $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
+    
+            $exp = date_create($subExpiry[0]->expiry_date);
+            $exp_d = date_format($exp, 'Y-m-d');
+            $now = date('Y-m-d');
+            if ($now > $exp_d) {
+                Admin::where('unique_id', $userID)->where('role', 'user')->update(['status'=> 0]);
+            }
         }
-
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
@@ -55,11 +55,8 @@ class AuthenticatedSessionController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }
