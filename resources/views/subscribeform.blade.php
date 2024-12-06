@@ -103,7 +103,7 @@
                                 {{-- <li><a class="dropdown-item" href="{{ url('pastquestions') }}">Past Questions</a></li> --}}
                                 <li><x-nav-link  type="drop" href="/pastquestions" active="{{ request()->is('pastquestions') }}">Past Questions</x-nav-link></li>
                                 <li><x-nav-link  type="drop" href="/teacherresources" active="{{ request()->is('teacherresources') }}">Teacher's Resources</x-nav-link></li>
-                                <li><x-nav-link  type="drop" href="/career-councelling" active="{{ request()->is('career-councelling') }}">Guidance and Counselling</x-nav-link></li>
+                                <li><x-nav-link  type="drop" href="/parentresources" active="{{ request()->is('parentresources') }}">Guidance and Counselling</x-nav-link></li>
                                 <li><x-nav-link  type="drop" href="/blog" active="{{ request()->is('blog') }}">Blog</x-nav-link></li>
                             </ul>
                         </li>
@@ -167,6 +167,69 @@
         <main class="container-fluid">
 
             @yield('content')
+
+
+
+
+<div class = "container mx-auto mt-5 mb-5">
+<div class = "row">
+            <form method="POST" action=" " accept-charset="UTF-8" class="form-horizontal" role="form">
+                <div class="mb-3">
+                    <input type="hidden" name="orderID" class="form-control mb-3" value="{{ rand(time(), 10000000);}}" placeholder="Txn id: {{ rand(time(), 10000000);}}" readonly />
+                    <label for="firstName" class="form-label">Enter First Name</label>
+                    <input type="text" name="first_name" class="form-control" id="first_Name" placeholder="Winner Effiong" readonly/>
+                 </div>
+
+                <div class ="mb-3">
+                    <label for="firstName" class="form-label">Enter Last Name</label>
+                    <input type="text" name="last_name" class="form-control" id="last_Name" placeholder="Winner Effiong" readonly/>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Enter Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com" readonly />
+                </div>
+
+                <div class="mb-3">
+                    <label for="country" class="form-label">Subscription Plan</label>
+                    <select name="plan" id="" class="form-select form-select-sm" style = "padding: 12px; background-color:#e9ecef;">
+                        <option value="">Select plan</option>
+                        <option value="daily">Daily - 300 Naira only</option>
+                        <option value="weekly">Weekly - 500 Naira only</option>
+                        <option value="monthly">Monthly - 1,100 Naira only</option>
+                        <option value="quarterly">3 Months - 2,600 Naira only</option>
+                        <option value="halfly">6 Months - 5,100 Naira only</option>
+                        <option value="yearly">Yearly - 10,100 Naira only</option>
+                    </select>
+
+                    <x-input-error :messages="$errors->get('plan', 'Select a Subscribtion plan' )" style="list-style: none" class="mt-2 text-danger" />
+                </div>
+                <div class="mb-3">
+                    {{-- <label for="state" class="form-label">Currency</label> --}}
+                    <input type="hidden" class="form-control" name="currency" value="NGN" placeholder="Naira" readonly />
+                    {{-- <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => Auth::user()->first_name, 'last_name' => Auth::user()->last_name,]) }}" > --}}
+                </div>
+
+
+                {{ csrf_field() }}
+
+                <p>
+                    <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
+                        <i class="fa fa-plus-circle fa-md px-2"></i> Pay Now!
+                    </button>
+                </p>
+
+    </form>
+</div>
+</div>
+
+
+
+
+
+
+
+
 
             <section class="container-fluid container__subscribe-form">
                 <div class="row form" id="subscribe">

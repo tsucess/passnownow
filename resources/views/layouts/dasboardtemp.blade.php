@@ -28,6 +28,8 @@
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsiveness.css') }}">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <!-- Chart.js -->
     <script src="{{ asset('js/chart/chart.min.js') }}"></script>
 
@@ -84,6 +86,36 @@
         {
             background-color: #1A69AF;
         }
+
+        /* Smooth animation for buttons */
+.sub {
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Hover effect for buttons */
+.sub:hover {
+    background-color: #0056b3;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+        /* Applying animation to the cards */
+.sty {
+    animation: fadeIn 0.8s ease-in-out;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Hover effect on the card */
+.sty:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Apply the animation to the div */
+/* .sty {}
+  animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
+*/
+
     </style>
 </head>
 
@@ -164,10 +196,10 @@
                                     Subscription
                                 </x-sidebar-link>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item effect">
                                 <x-sidebar-link active="{{ request()->is('checkoutdetails') }}" href="/checkoutdetails">
                                     {{-- <i class="fa-solid fa-dollar"></i> --}}
-                                    <span class = "me-2" style = "font-size: 20px;">&#x20A6;</span>
+                                    <span class = "me-2" style = "font-size: 20px; color:rgba(35, 33, 33, 0.774);">&#x20A6;</span>
                                     Subscribe
                                 </x-sidebar-link>
                             </li>
@@ -214,7 +246,8 @@
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('subscriptionhistory') }}"
                                     href="/subscriptionhistory">
-                                    <i class="fa-solid fa-hand-holding-dollar"></i>
+                                    {{-- <i class="fa-solid fa-hand-holding-dollar"></i> --}}
+                                    <i class="fa-solid fa-credit-card"></i>
                                     Subscription History
                                 </x-sidebar-link>
                             </li>

@@ -49,7 +49,7 @@
             <div class="bg-image">
                 <div class="row p-3">
                     <div class="col-12 col-md-6 notepink mt-4 mb-3">
-                        <img src="{{ asset('images/notepink.png') }}" alt="">
+                        <img src="{{ asset('images/notepink.png') }}" class="aboutImage" alt="">
                     </div>
                     <div class="col-12 col-md-6 performance__info">
                         <div class="lists">
