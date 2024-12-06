@@ -108,7 +108,7 @@
                             <img src="{{ url('images/iconc-phone.png') }}" alt="" class="mb-3">
                             <p class="card-text text-dark">60 minutes telephone interactive discussion with our Expert</p>
                             <h5 class="card-title">N5,000</h5>
-                            <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>
+                            <a href="{{ url('subscribeform') }}" class="btn btn-style">REGISTER</a>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                             <img src="{{ url('images/iconc-whatsapp.png') }}" alt="" class="mb-3">
                             <p class="card-text text-dark">60 minutes Whatsapp conversation</p>
                             <h5 class="card-title">N5,000</h5>
-                            <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>
+                            <a href="{{ url('subscribeform') }}" class="btn btn-style mt-3">REGISTER</a>
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@
                             <img src="{{ url('images/iconc-smiley.png') }}" alt="" class="mb-3">
                             <p class="card-text text-dark">Face to Face counselling at The Rise Labs</p>
                             <h5 class="card-title">N5,000</h5>
-                            <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>
+                            <a href="{{ url('subscribeform') }}" class="btn btn-style">REGISTER</a>
                         </div>
                     </div>
                 </div>

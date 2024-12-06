@@ -45,21 +45,38 @@
           } */
         }
 
-        .profit:hover {
-            background-color: #1A69AF;
-            color: #fff;
-            border-radius: 10px;
-            padding: 6px;
-        }
+        .profit {
+  padding: 6px;
+}
 
+.profit:hover {
+  background-color: #1A69AF;
+  color:#fff;
+  border-radius: 10px;
+}
+
+
+.profit:hover a {
+color: #fff;
+}
+
+
+.profit:hover span
+{
+    color:#fff;
+}
 
 
         .detailedstat:hover {
             background-color: #1A69AF;
             color: #fff;
             border-radius: 10px;
-            padding: 6px;
         }
+
+
+        .detailedstat {
+  padding: 6px;
+}
 
         .product:hover {
             background-color: #1A69AF;

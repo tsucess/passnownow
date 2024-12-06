@@ -238,7 +238,7 @@
                         style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
                     {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                         aria-hidden="true"></i>6.7% --}}
-                        <i class="fa fa-user" aria-hidden="true"></i>
+                        <i class="fas fa-users" aria-hidden="true"></i>
                     </span>
 
                 {{-- <br><br>
@@ -265,27 +265,27 @@
             </div>
 
             <div class="d-flex justify-content-between border-bottom border-black border-1">
-                <div class = "profit w-100 ms-1 mt-2">
+                <div class = "w-100  ms-1  profit">
                 <a class = "col-12 col-md-6 me-3 mt-2 mb-3 text-decoration-none text-dark"
                     href = "{{ url('totalsales') }}">
-                    <div>
-                        <span class = "profit">Total Sales</span> <br>
-                        <span class  = "fw-3 profit">#23,523</span>
+
+                        <span>Total Sales</span> <br>
+                        <span>#23,523</span>
                         <span
                         class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                         style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
                             {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
                         </span>
-                    </div>
+
                 </a>
             </div>
 
-            <div class = "profit w-100 ms-2">
-                <a class = "col-12 col-md-6 me-3 mt-2 mb-3 col-12 col-md-6 border-start border-black border-1 text-decoration-none text-dark"
+            <div class = "profit w-100 border-start border-black border-1">
+                <a class = "col-12 col-md-6  mt-2 mb-3 col-12 col-md-6  text-decoration-none text-dark"
                     href = "{{ url('order') }}">
                     <div class="">
-                        <span class = "ms-2 profit">Orders</span> <br>
-                        <span class  = "fw-3 ms-2 profit">10</span>
+                        <span class = "ms-2 ">Orders</span> <br>
+                        <span class  = "ms-2">10</span>
                         <span
                         class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                         style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
@@ -298,8 +298,8 @@
 
             </div>
 
-            <div class = "float-start  mt-2 profit ">
-                <a href = "{{ url('detailedstat') }}" class = "float-start mb-1 text-decoration-none detailedstat">View
+            <div class = "float-start profit ">
+                <a href = "{{ url('detailedstat') }}" class = "float-start  text-decoration-none detailedstat">View
                     detailed stats</a>
             </div>
         </div>
