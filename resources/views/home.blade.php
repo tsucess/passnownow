@@ -764,7 +764,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="note_info p-2">
                             <h5>{{ $class->title }} Class Notes</h5>
-                            <p> {{ $class->description }}</p>
+                            <p> {{ $class->description }}</p><br>
                             <a href="{{ url('/subjects') }}" class="note_btn">VIEW ALL SUBJECTS</a>
                         </div>
                     </div>
@@ -850,8 +850,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="note_info p-2">
                             <h5>{{$exam->title}} Past Questions</h5>
-                            <p>{{$exam->description}}</p>
-                            <a href="{{ url('/pastquestions') }}" class="note_btn">VIEW ALL QUESTIONS</a>
+                            <p>{{$exam->description}}</p><br>
+                            <a href="{{ url('/pastquestions') }}" class="note_btn mt-5">VIEW ALL QUESTIONS</a>
                         </div>
                     </div>
                 @endforeach

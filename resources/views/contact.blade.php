@@ -23,21 +23,21 @@
             </div>
             <div class="col-12 col-md-4 col-lg-3 address">
                 <h6>Location</h6>
-                <p class="">
+                <p class="text-dark mb-1 mb-lg-2">
                     Our friendly team is here to help.
                 </p>
                 <p class="text-dark mb-3 mb-lg-5">
                    <b>8 Adebayo Muokolu Street, Antony Village, Lagos, Nigeria.</b>
                 </p>
                 <h6>Email</h6>
-                <p class="">
+                <p class="text-dark mb-lg-1">
                     Questions or queries? Get in touch!
                 </p>
-                <p class="text-dark mb-3 mb-lg-5">
+                <p class="text-dark mb-2 mb-lg-5">
                   <b>info@passnownow.com</b>
                 </p>
                 <h6>Phone</h6>
-                <p class="">
+                <p class="text-dark mb-2 mb-lg-2">
                     Mon-Fri from 8am to 5pm.
                 </p>
                 <p class="text-dark mb-3 mb-lg-5">

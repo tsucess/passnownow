@@ -18,7 +18,14 @@
   transform: translateY(-10px);
 }
 
-
+@media screen  and (max-width: 320px)
+{
+    .funFilled
+    {
+        height: 300px;
+        background: blue;
+    }
+}
 
 </style>
 
@@ -124,12 +131,12 @@
     <section class="container-fluid container__subjects mt-lg-5 about_bottom">
         <div class="row mt-5">
             <div class="col-12 text-center">
-                <h6>Passnownow gives you access to:</h6>
+                <h6 style = "line-height: 25px;">Passnownow gives you access to:</h6>
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 subscription_profiles">
                 <div class="col">
-                    <div class="card h-100 zoom-on-hover">
-                        <div class="card-body p-md-5 text-center shadow ">
+                    <div class="card zoom-on-hover">
+                        <div class="card-body p-md-5 text-center shadow">
                             <img src="{{ url('images/iconc-phone.png') }}" alt="" class="mb-3">
                             <h5 class="card-title text-dark">Mobile Learning</h5>
                             <p class="card-text text-dark">Get access to Class Notes and exam Questions on your mobile devices</p>
@@ -137,7 +144,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card h-100 zoom-on-hover">
+                    <div class="card zoom-on-hover funFilled" style = "height: 290px;" >
                         <div class="card-body p-md-5 text-center shadow">
                             <img src="{{ url('images/iconc-smiley.png') }}" alt="" class="mb-3">
                             <h5 class="card-title text-dark">Fun-Filled Community</h5>

@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Models\Exams;
+use App\Http\Controllers\PayController;
 
 Route::get('/', function () {
 
@@ -33,6 +34,10 @@ Route::get('/', function () {
 Route::get('/subscribeform', function () {
     return view('subscribeform');
 });
+
+
+Route::post('/subscribeform', [PayController::class, 'store'])->name('pay.store');
+
 
 Route::get('/about', function () {
     return view('about');

@@ -63,6 +63,20 @@
   animation-play-state: running;
 }
 
+.subscribe {
+  background-color: #1A69AF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.subscribe:hover {
+  background-color: #1565c0df;
+}
+
+
         </style>
 </head>
 
@@ -173,26 +187,27 @@
 
 <div class = "container mx-auto mt-5 mb-5">
 <div class = "row">
-            <form method="POST" action=" " accept-charset="UTF-8" class="form-horizontal" role="form">
+            <form method="POST" action="{{ route('pay.store') }} " accept-charset="UTF-8" id = "#success" class="form-horizontal" role="form">
+                @csrf
                 <div class="mb-3">
                     <input type="hidden" name="orderID" class="form-control mb-3" value="{{ rand(time(), 10000000);}}" placeholder="Txn id: {{ rand(time(), 10000000);}}" readonly />
                     <label for="firstName" class="form-label">Enter First Name</label>
-                    <input type="text" name="first_name" class="form-control" id="first_Name" placeholder="Winner Effiong" readonly/>
+                    <input type="text" name="first_name" class="form-control" id="first_Name" placeholder="Winner" />
                  </div>
 
                 <div class ="mb-3">
                     <label for="firstName" class="form-label">Enter Last Name</label>
-                    <input type="text" name="last_name" class="form-control" id="last_Name" placeholder="Winner Effiong" readonly/>
+                    <input type="text" name="last_name" class="form-control" id="last_Name" placeholder="Effiong" />
                 </div>
 
                 <div class="mb-3">
                     <label for="email" class="form-label">Enter Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com" readonly />
+                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com"  />
                 </div>
 
                 <div class="mb-3">
                     <label for="country" class="form-label">Subscription Plan</label>
-                    <select name="plan" id="" class="form-select form-select-sm" style = "padding: 12px; background-color:#e9ecef;">
+                    <select name="plan" id="" class="form-select form-select-sm" style = "padding: 8px;">
                         <option value="">Select plan</option>
                         <option value="daily">Daily - 300 Naira only</option>
                         <option value="weekly">Weekly - 500 Naira only</option>
@@ -214,11 +229,17 @@
                 {{ csrf_field() }}
 
                 <p>
-                    <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
-                        <i class="fa fa-plus-circle fa-md px-2"></i> Pay Now!
+                    <button class="btn btn-lg btn-block text-white subscribe" type="submit" value="Pay Now!">
+                        <i class="fa fa-plus-circle fa-md px-2"></i> Subscribe Now!
                     </button>
                 </p>
 
+                                            <!-- Display the success message below the form -->
+                                            @if(session('success'))
+                                            <div class="alert alert-success" id = "success" style="margin-top: 10px;">
+                                              {{ session('success') }}
+                                            </div>
+                                        @endif
     </form>
 </div>
 </div>
@@ -246,12 +267,7 @@
                                 <input type="submit" class="btn-submit" value="Subscribe now">
                             </div>
 
-                            <!-- Display the success message below the form -->
-                            @if(session('success'))
-                                <div class="alert alert-success" style="margin-top: 10px;">
-                                  {{ session('success') }}
-                                </div>
-                            @endif
+
 
                         </form>
                     </div>
