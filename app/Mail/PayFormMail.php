@@ -1,11 +1,12 @@
-<?
+<?php
+
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class FormSubmissionMail extends Mailable
+class PayFormMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -15,7 +16,6 @@ class FormSubmissionMail extends Mailable
      * Create a new message instance.
      *
      * @param array $formData
-     * @return void
      */
     public function __construct($formData)
     {
@@ -27,15 +27,10 @@ class FormSubmissionMail extends Mailable
      *
      * @return $this
      */
-
     public function build()
-{
-    return $this->subject('New Subscription')
-                ->view('emails.paysubscribeform');
-}
-
-// public function build()
-// {
-//     return $this->view('emails.paysubscribeform')->with('formdata', $this->formdata);
-// }
+    {
+        return $this->subject('Passnownow')
+                    ->view('paysubscribeform')
+                    ->with('formData', $this->formData);
+    }
 }
