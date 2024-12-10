@@ -53,7 +53,7 @@
 
 
     @if (Auth::user()->role === 'user')
-        <div class = "row mt-3 ml-5">
+        <div class = "row mt-3 ml-5 bg-danger">
             @foreach ($fetchClasses as $Class)
                 <div class = "col-12 col-md-4 sty">
                     <img src= "{{ asset('storage/'.$Class->avatar) }}" class = "img-fluid mb-2" style="height:15rem; width: 100%" alt="Avatar" />
