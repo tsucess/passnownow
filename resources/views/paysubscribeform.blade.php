@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form Submission</title>
+    <title>New Subscription</title>
 </head>
 <body>
-    <h1>New Subscription Form Submission</h1>
+        <img src="{{ asset('images/logo.png') }}" class="mx-auto">
+
+    <h1>Subscription Details</h1>
+    <p><strong>Order ID:</strong> {{ $formData['orderID'] }}</p>
     <p><strong>First Name:</strong> {{ $formData['first_name'] }}</p>
     <p><strong>Last Name:</strong> {{ $formData['last_name'] }}</p>
     <p><strong>Email:</strong> {{ $formData['email'] }}</p>
