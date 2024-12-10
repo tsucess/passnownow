@@ -40,7 +40,6 @@ Route::get('/subscribeform', function () {
 });
 
 
-Route::post('/subscribeform', [PayController::class, 'store'])->name('pay.store');
 
 
 Route::get('/about', function () {
@@ -420,9 +419,6 @@ Route::middleware('guest')->group(function () {
 //Subscribe mails
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
 
-
-
-Route::post('/subscribe-form', [PayController::class, 'sendFormEmail'])->name('subscribe.form.email');
 
 
 
