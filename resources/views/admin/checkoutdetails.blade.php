@@ -95,7 +95,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="country" class="form-label">Subscription Plan</label>
-                                <select name="plan" id="" class="form-select form-select-sm">
+                                <select name="plan" id="" class="form-select form-select-sm" style = "padding: 12px; background-color:#e9ecef;">
                                     <option value="">Select plan</option>
                                     <option value="daily">Daily - 300 Naira only</option>
                                     <option value="weekly">Weekly - 500 Naira only</option>

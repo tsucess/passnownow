@@ -1,5 +1,34 @@
 @extends('layouts.index')
 
+<style>
+.zoom-on-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.zoom-on-hover:hover {
+  transform: scale(1.1);
+}
+
+
+.image-wrapper {
+  transition: transform 0.3s ease-in-out;
+}
+
+.image-wrapper:hover {
+  transform: translateY(-10px);
+}
+
+@media screen  and (max-width: 320px)
+{
+    .funFilled
+    {
+        height: 300px;
+        background: blue;
+    }
+}
+
+</style>
+
 @section('content')
     <Section class="container-fluid container__banner teacher__banner">
         <div class="row">
@@ -80,7 +109,7 @@
 
             <hr class="text-white">
             <div class="col-12 col-md-6 p-4">
-                <div class="image-wrapper  mt-md-5">
+                <div class="image-wrapper  mt-md-5 ">
                     <img src="{{ asset('images/bgpinkart.png') }}" alt="">
                 </div>
             </div>
@@ -102,24 +131,24 @@
     <section class="container-fluid container__subjects mt-lg-5 about_bottom">
         <div class="row mt-5">
             <div class="col-12 text-center">
-                <h6>Passnownow gives you access to:</h6>
+                <h6 style = "line-height: 25px;">Passnownow gives you access to:</h6>
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 subscription_profiles">
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card zoom-on-hover">
                         <div class="card-body p-md-5 text-center shadow">
                             <img src="{{ url('images/iconc-phone.png') }}" alt="" class="mb-3">
-                            <h5 class="card-title">Mobile Learning</h5>
-                            <p class="card-text">Get access to Class Notes and exam Questions on your mobile devices</p>
+                            <h5 class="card-title text-dark">Mobile Learning</h5>
+                            <p class="card-text text-dark">Get access to Class Notes and exam Questions on your mobile devices</p>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card zoom-on-hover funFilled" style = "height: 290px;" >
                         <div class="card-body p-md-5 text-center shadow">
                             <img src="{{ url('images/iconc-smiley.png') }}" alt="" class="mb-3">
-                            <h5 class="card-title">Fun-Filled Community</h5>
-                            <p class="card-text">Find People of like minds
+                            <h5 class="card-title text-dark">Fun-Filled Community</h5>
+                            <p class="card-text text-dark">Find People of like minds
                             </p>
                         </div>
                     </div>

@@ -15,19 +15,30 @@ use App\Models\Admin;
 use App\Models\Subjects;
 use App\Models\Questions;
 use App\Models\Classes;
+use App\Models\Pay;
 use App\Models\Transaction;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Models\Exams;
+use App\Http\Controllers\PayController;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
 
-    $output = Classes::get();
-    return view('home', ['fetchClasses' => $output]);
+    $eoutput = Exams::get();
+    $coutput = Classes::get();
+    // $poutput = Pays::get();
+    return view('home', ['fetchClasses' => $coutput, 'fetchExams' => $eoutput]);
     // return ['Laravel' => app()->version()];
 });
+
+
+Route::get('/subscribeform', function () {
+    return view('subscribeform');
+});
+
 
 
 
@@ -35,8 +46,8 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/subject', function () {
-    return view('subject');
+Route::get('/subjec', function () {
+    return view('subjec');
 });
 
 Route::get('/subjects', function () {
@@ -83,7 +94,7 @@ Route::get('/students-motivation', function () {
     return view('studentsmotivation');
 });
 
-Route::get('/career-councelling', function () {
+Route::get('/career-counselling', function () {
     return view('careercouncelling');
 });
 
@@ -174,7 +185,6 @@ require __DIR__ . '/auth.php';
 
 
 
-
 Route::get('/checkoutsummary', function () {
     return view('admin.checkoutsummary');
 });
@@ -256,11 +266,21 @@ Route::middleware('auth')->group(function () {
 
         return view('admin.subscriptiondetails', ['subhistory' => $subHistory, 'exp_date' => $subExpiry]);
     });
+    Route::get('/subscriptionhistory', function () {
+        // $userID = Auth::user()->unique_id;
+        $subHistory = Transaction::get();
+        $subExpiry = Transaction::where('payment_status', 'success')->get();
+
+        return view('admin.subscriptionhistory', ['subhistory' => $subHistory, 'exp_date' => $subExpiry]);
+    });
 
 
     Route::get('/checkoutdetails', function () {
         return view('admin.checkoutdetails');
     });
+
+
+
 
     Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
     Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
@@ -298,6 +318,14 @@ Route::get('/subscription', function () {
     return view('admin.subscription');
 });
 
+Route::get('/servicesubscription', function () {
+
+    $eoutput = Exams::get();
+    // $coutput = Classes::get();
+    $poutput = Pay::get();
+    return view('admin.servicesubscription', ['fetchClasses' => $poutput, 'fetchExams' => $eoutput]);
+});
+
 
 
 Route::get('/subject', function () {
@@ -308,19 +336,6 @@ Route::get('/subject', function () {
 Route::get('/pqexams', function () {
     return view('pqexams');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -350,11 +365,6 @@ Route::get('/email/verify', function () {
 })->middleware('auth')->name('verification.notice');
 
 
-// Route::middleware(['auth', 'verified'])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return view('dashboard');
-//     })->name('dashboard');
-// });
 
 
 // Route to verify email upon clicking the email link
@@ -410,5 +420,9 @@ Route::middleware('guest')->group(function () {
 
 //Subscribe mails
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+
+
+
+
 
 require __DIR__ . '/auth.php';

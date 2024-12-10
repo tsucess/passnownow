@@ -41,7 +41,7 @@
         </div>
         <div class="row mb-3 ">
             <div class="col-12 col-md-4 mb-5">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/education-removelaptop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-4 mb-5">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/charts.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-4 mb-5">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/dark_chart.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-4 mb-5">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/half_laptop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
@@ -85,7 +85,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-4 mb-5">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/coffee_laptop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
@@ -96,7 +96,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-4 mb-5">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/palmtop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
@@ -123,7 +123,7 @@
         </div>
         <div class="row">
             <div class="col-12 col-md-4 mb-3">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/education-removelaptop.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
@@ -133,7 +133,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-4 mb-3">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/dark_chart.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">
@@ -143,7 +143,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-4 mb-3">
-                <div class="image-wrapper">
+                <div class="image-wrapper bounce-on-hover">
                     <img src="{{ asset('images/charts.png') }}" alt="">
                 </div>
                 <div class="note_info p-2 text-center">

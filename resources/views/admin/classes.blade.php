@@ -13,29 +13,9 @@
     }
 }
 
-/* Applying animation to the cards */
-.col-12 {
-    animation: fadeIn 0.8s ease-in-out;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
 
-/* Hover effect on the card */
-.col-12:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
 
-/* Smooth animation for buttons */
-.sub {
-    transition: background-color 0.3s, transform 0.3s;
-}
 
-/* Hover effect for buttons */
-.sub:hover {
-    background-color: #0056b3;
-    color: #fff;
-    transform: scale(1.1);
-}
 
 /* Adding subtle animation to the text span */
 .jss {
@@ -55,12 +35,6 @@
 
 
 
-
-
-
-
-
-
 /* Define the animation */
 @keyframes slideInFromRight {
   0% {
@@ -73,22 +47,15 @@
   }
 }
 
-/* Apply the animation to the div */
-.col-12 {
-  animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
-}
-
 </style>
 
 @section('admincontent')
 
 
-
-
     @if (Auth::user()->role === 'user')
-        <div class = "row mt-3 ml-5">
+        <div class = "row mt-3 ml-5 bg-danger">
             @foreach ($fetchClasses as $Class)
-                <div class = "col-12 col-md-4">
+                <div class = "col-12 col-md-4 sty">
                     <img src= "{{ asset('storage/'.$Class->avatar) }}" class = "img-fluid mb-2" style="height:15rem; width: 100%" alt="Avatar" />
                     <span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">{{$Class->title}} Class Note</span>
                     <p class = "p text-md-center ms-4 me-4">{{$Class->description}}
@@ -188,7 +155,7 @@
                             <x-text-input type="hidden" class="form-control" name="unique_id"
                                 value="{{ rand(time(), 10000000) }}" />
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 sty">
                                     <div class="mb-3">
                                         <x-input-label :value="__('Title')" />
                                         <x-text-input type="text" class="form-control" name="title" :value="old('title')"
@@ -196,14 +163,14 @@
                                         <x-input-error :messages="$errors->get('title')" class="mt-2 text-danger" />
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 sty">
                                     <div class="mb-3">
                                         <x-input-label :value="__('Description')" class="form-label" />
                                         <textarea name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
                                         <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 sty">
                                     <div class="mb-3">
                                         <label class="form-label">Subject Image</label>
                                         <input type="file" name="avatar" class="form-control py-2" />
@@ -240,7 +207,7 @@
                         <div class="modal-body">
                             <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                             <div class="row">
-                                <div class="col-12">
+                                <div class="col-12 sty">
                                     <div class="mb-3">
                                         <input type="hidden" name="user_id" class="form-control py-2" id="editInputId">
                                         <label for="editInputFirstname" class="form-label">Title</label>
@@ -248,14 +215,14 @@
                                             class="form-control py-2" />
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 sty">
                                     <div class="mb-3">
                                         <label for="editInputLastname" class="form-label">Description</label>
                                         <input type="text" name="description" id="edit-description"
                                             class="form-control py-2" />
                                     </div>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 sty">
                                     <div class="mb-3">
                                         <label for="edit-avatar" class="form-label">Subject Image</label>
                                         <input type="hidden" name="prevavatar" id="prev-avatar"

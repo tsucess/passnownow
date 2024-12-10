@@ -8,7 +8,7 @@
                     {{-- <span class="red_header">Passnownow</span> --}}
                 </h1>
                 <p class="text-center header_content">
-                    Passnownow offers Career Counseling for your Teenage/Secondary School Child or Ward. 
+                    Passnownow offers Career Counseling for your Teenage/Secondary School Child or Ward.
                 </p>
             </div>
         </div>
@@ -51,7 +51,7 @@
                         </p>
                     </div>
                     <div class="col-12 col-md-6">
-                        <h6 class="text-start">Book a Phone Conversation</h6>  
+                        <h6 class="text-start">Book a Phone Conversation</h6>
                     </div>
                     <div class="col-12 col-md-6">
                         <p class="text-dark">
@@ -103,32 +103,32 @@
         <div class="row mt-5 ">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 subscription_profiles">
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 sty">
                         <div class="card-body p-md-5 text-center shadow">
                             <img src="{{ url('images/iconc-phone.png') }}" alt="" class="mb-3">
-                            <p class="card-text">60 minutes telephone interactive discussion with our Expert</p>
+                            <p class="card-text text-dark">60 minutes telephone interactive discussion with our Expert</p>
                             <h5 class="card-title">N5,000</h5>
-                            <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>
+                            <a href="{{ url('subscribeform') }}" class="btn btn-style">REGISTER</a>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 sty">
                         <div class="card-body p-md-5 text-center shadow">
                             <img src="{{ url('images/iconc-whatsapp.png') }}" alt="" class="mb-3">
-                            <p class="card-text">60 minutes Whatsapp conversation</p>
+                            <p class="card-text text-dark">60 minutes Whatsapp conversation</p>
                             <h5 class="card-title">N5,000</h5>
-                            <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>
+                            <a href="{{ url('subscribeform') }}" class="btn btn-style mt-3">REGISTER</a>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card h-100">
+                    <div class="card h-100 sty">
                         <div class="card-body p-md-5 text-center shadow">
                             <img src="{{ url('images/iconc-smiley.png') }}" alt="" class="mb-3">
-                            <p class="card-text">Face to Face counselling at The Rise Labs</p>
+                            <p class="card-text text-dark">Face to Face counselling at The Rise Labs</p>
                             <h5 class="card-title">N5,000</h5>
-                            <a href="{{ url('subject') }}" class="btn btn-style">REGISTER</a>
+                            <a href="{{ url('subscribeform') }}" class="btn btn-style">REGISTER</a>
                         </div>
                     </div>
                 </div>

@@ -63,6 +63,20 @@
   animation-play-state: running;
 }
 
+.subscribe {
+  background-color: #1A69AF;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.subscribe:hover {
+  background-color: #1565c0df;
+}
+
+
         </style>
 </head>
 
@@ -103,7 +117,7 @@
                                 {{-- <li><a class="dropdown-item" href="{{ url('pastquestions') }}">Past Questions</a></li> --}}
                                 <li><x-nav-link  type="drop" href="/pastquestions" active="{{ request()->is('pastquestions') }}">Past Questions</x-nav-link></li>
                                 <li><x-nav-link  type="drop" href="/teacherresources" active="{{ request()->is('teacherresources') }}">Teacher's Resources</x-nav-link></li>
-                                <li><x-nav-link  type="drop" href="/career-counselling" active="{{ request()->is('career-counselling') }}">Guidance and Counselling</x-nav-link></li>
+                                <li><x-nav-link  type="drop" href="/parentresources" active="{{ request()->is('parentresources') }}">Guidance and Counselling</x-nav-link></li>
                                 <li><x-nav-link  type="drop" href="/blog" active="{{ request()->is('blog') }}">Blog</x-nav-link></li>
                             </ul>
                         </li>
@@ -168,6 +182,81 @@
 
             @yield('content')
 
+
+
+
+<div class = "container mx-auto mt-5 mb-5">
+<div class = "row">
+            <form method="POST" action="{{ route('pay.store') }} " accept-charset="UTF-8" id = "#success" class="form-horizontal" role="form">
+                @csrf
+                <div class="mb-3">
+                    <input type="hidden" name="orderID" class="form-control mb-3" value="{{ rand(time(), 10000000);}}" placeholder="Txn id: {{ rand(time(), 10000000);}}" readonly />
+                    <label for="firstName" class="form-label">Enter First Name</label>
+                    <input type="text" name="first_name" class="form-control" id="first_Name" placeholder="Winner" />
+                 </div>
+
+                <div class ="mb-3">
+                    <label for="firstName" class="form-label">Enter Last Name</label>
+                    <input type="text" name="last_name" class="form-control" id="last_Name" placeholder="Effiong" />
+                </div>
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">Enter Email</label>
+                    <input type="email" name="email" class="form-control" placeholder="example@gmail.com"  />
+                </div>
+
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="+12345678910"  />
+                </div>
+
+                <div class="mb-3">
+                    <label for="country" class="form-label">Subscription Plan</label>
+                    <select name="plan" id="" class="form-select form-select-sm" style = "padding: 8px;">
+                        <option value="">Select plan</option>
+                        <option value="daily">Daily - 300 Naira only</option>
+                        <option value="weekly">Weekly - 500 Naira only</option>
+                        <option value="monthly">Monthly - 1,100 Naira only</option>
+                        <option value="quarterly">3 Months - 2,600 Naira only</option>
+                        <option value="halfly">6 Months - 5,100 Naira only</option>
+                        <option value="yearly">Yearly - 10,100 Naira only</option>
+                    </select>
+
+                    <x-input-error :messages="$errors->get('plan', 'Select a Subscribtion plan' )" style="list-style: none" class="mt-2 text-danger" />
+                </div>
+                <div class="mb-3">
+                    {{-- <label for="state" class="form-label">Currency</label> --}}
+                    <input type="hidden" class="form-control" name="currency" value="NGN" placeholder="Naira" readonly />
+                    {{-- <input type="hidden" name="metadata" value="{{ json_encode($array = ['first_name' => Auth::user()->first_name, 'last_name' => Auth::user()->last_name,]) }}" > --}}
+                </div>
+
+
+                {{ csrf_field() }}
+
+                <p>
+                    <button class="btn btn-lg btn-block text-white subscribe" type="submit" value="Pay Now!">
+                        <i class="fa fa-plus-circle fa-md px-2"></i> Subscribe Now!
+                    </button>
+                </p>
+
+                                            <!-- Display the success message below the form -->
+                                            @if(session('success'))
+                                            <div class="alert alert-success" id = "success" style="margin-top: 10px;">
+                                              {{ session('success') }}
+                                            </div>
+                                        @endif
+    </form>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
             <section class="container-fluid container__subscribe-form">
                 <div class="row form" id="subscribe">
                     <div class="col-12 col-md-2"></div>
@@ -183,12 +272,7 @@
                                 <input type="submit" class="btn-submit" value="Subscribe now">
                             </div>
 
-                            <!-- Display the success message below the form -->
-                            @if(session('success'))
-                                <div class="alert alert-success" style="margin-top: 10px;">
-                                  {{ session('success') }}
-                                </div>
-                            @endif
+
 
                         </form>
                     </div>
