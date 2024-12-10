@@ -10,6 +10,6 @@ class Pay extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_id', 'first_name', 'last_name', 'email', 'plan',
+        'order_id', 'first_name', 'last_name', 'email', 'phone', 'plan',
     ];
 }

@@ -15,6 +15,7 @@ use App\Models\Admin;
 use App\Models\Subjects;
 use App\Models\Questions;
 use App\Models\Classes;
+use App\Models\Pay;
 use App\Models\Transaction;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
@@ -22,14 +23,17 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Models\Exams;
 use App\Http\Controllers\PayController;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
 
     $eoutput = Exams::get();
     $coutput = Classes::get();
+    // $poutput = Pays::get();
     return view('home', ['fetchClasses' => $coutput, 'fetchExams' => $eoutput]);
     // return ['Laravel' => app()->version()];
 });
+
 
 Route::get('/subscribeform', function () {
     return view('subscribeform');
@@ -316,6 +320,14 @@ Route::get('/subscription', function () {
     return view('admin.subscription');
 });
 
+Route::get('/servicesubscription', function () {
+
+    $eoutput = Exams::get();
+    // $coutput = Classes::get();
+    $poutput = Pay::get();
+    return view('admin.servicesubscription', ['fetchClasses' => $poutput, 'fetchExams' => $eoutput]);
+});
+
 
 
 Route::get('/subject', function () {
@@ -408,5 +420,12 @@ Route::middleware('guest')->group(function () {
 
 //Subscribe mails
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
+
+
+
+Route::post('/subscribe-form', [PayController::class, 'sendFormEmail'])->name('subscribe.form.email');
+
+
+
 
 require __DIR__ . '/auth.php';

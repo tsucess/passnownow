@@ -183,7 +183,7 @@ color: #fff;
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse" style = "width:220px;">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
@@ -286,6 +286,14 @@ color: #fff;
                                 Signout
                             </a>
                         </li> --}}
+                        <li class="nav-item">
+                            <x-sidebar-link active="{{ request()->is('servicesubscription') }}"
+                                href="/servicesubscription">
+                                {{-- <i class="fa-solid fa-hand-holding-dollar"></i> --}}
+                                <i class="fas fa-camera"></i>
+                                Service Subscription
+                            </x-sidebar-link>
+                        </li>
                         @endif
                     </ul>
                 </div>

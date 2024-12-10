@@ -206,6 +206,11 @@
                 </div>
 
                 <div class="mb-3">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="+12345678910"  />
+                </div>
+
+                <div class="mb-3">
                     <label for="country" class="form-label">Subscription Plan</label>
                     <select name="plan" id="" class="form-select form-select-sm" style = "padding: 8px;">
                         <option value="">Select plan</option>
