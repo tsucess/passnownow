@@ -280,7 +280,7 @@
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
 
-                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">N{{ $totalSum }}</span>
+                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">{{ $totalSum }}</span>
                     <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                         style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">&#x20A6;
                         {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
@@ -305,6 +305,7 @@
                     {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                         aria-hidden="true"></i>6.7% --}}
                     <i class="fa-solid fa-user-tie"></i>
+                    
                 </span>
 
                 {{--
@@ -371,7 +372,8 @@
                             <span class = "ms-2 ">Orders</span> <br>
                             <span class  = "ms-2">{{ $totalOrders }}</span>
                             <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
+                                <i class="fa-solid fa-receipt"></i>
                                 {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
                                 aria-hidden="true"></i>6.7% --}}
                             </span>

@@ -397,6 +397,8 @@ Route::get('/dashboard', function () {
     $totalSum = Transaction::get()->sum('amount');
     $totalOrders = Transaction::get()->count();
     $users = Admin::where('role', 'user')->get();
+    $totalSum = number_format($totalSum);
+
     return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
