@@ -313,13 +313,13 @@
           </tr>
 
           <tr>
-            <td class = "text-primary">webpay</td>
+            <td class = "text-primary">Resources</td>
             <td>100</td>
             <td>#100,000.00</td>
           </tr>
 
           <tr>
-            <td class="text-primary">Bank deposit</td>
+            <td class="text-primary">Services</td>
             <td>200</td>
             <td>#100,000.00</td>
           </tr>
@@ -386,10 +386,10 @@
 const parabolaAreaChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 6, 0], // X-axis labels
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // X-axis labels
     datasets: [{
       label: '',
-      data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25, 80], // Y-axis values forming parabolas
+      data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25], // Y-axis values forming parabolas
       borderColor: '#1699dd',
       backgroundColor: '#1699dd',
       fill: true,
@@ -426,10 +426,10 @@ const parabolaAreaChart = new Chart(ctx, {
         const parabolaAreaCharts = new Chart(ctxs, {
           type: 'line',
           data: {
-            labels: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 6, 0], // X-axis labels
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // X-axis labels
             datasets: [{
               label: '',
-              data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25, 80], // Y-axis values forming parabolas
+              data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25], // Y-axis values forming parabolas
               borderColor: '#1699dd',
               backgroundColor: '#1699dd',
               fill: true,

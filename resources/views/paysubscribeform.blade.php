@@ -4,7 +4,9 @@
     <title>New Subscription</title>
 </head>
 <body>
-        <img src="{{ asset('images/logo.png') }}" class="mx-auto">
+        {{-- <img src="{{ asset('images/logo.png') }}" class="mx-auto"> --}}
+        <img src="https://testapp.makemation.com/images/logo.png" class="mx-auto">
+
 
     <h1>Subscription Details</h1>
     <p><strong>Order ID:</strong> {{ $formData['orderID'] }}</p>
