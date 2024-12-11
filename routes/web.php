@@ -38,6 +38,7 @@ Route::get('/', function () {
 Route::get('/subscribeform', function () {
     return view('subscribeform');
 });
+Route::post('/subscribeform', [PayController::class, 'store'])->name('subscribe.pay');
 
 
 
