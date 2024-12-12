@@ -179,11 +179,13 @@
             type: 'line',
             data: {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov',
-                'Dec'], // X-axis labels
+                    'Dec'
+                ], // X-axis labels
                 datasets: [{
                     label: '',
                     data: [0, 30, 35, 50, 35, 31, 45, 22, 50, 40, 60, 25,
-                    70], // Y-axis values forming parabolas
+                        70
+                    ], // Y-axis values forming parabolas
                     borderColor: '#1699dd',
                     backgroundColor: '#1699dd',
                     fill: true,
@@ -218,7 +220,7 @@
     </script>
 
     <!-- Another chart -->
-
+{{-- 
     <script>
         const ctxs = document.getElementById('parabolaAreaCharts').getContext('2d');
 
@@ -263,8 +265,9 @@
                 }
             }
         });
-    </script>
-    <!-- jQuery (necessary for Bootstrap's - 5JavaScript plugins) -->
-    <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </script> --}}
+
+  
+    {{-- <script type="text/javascript" src="{{'./js/bootstrap.bundle.min.js'}}"></script>  --}}
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 @endsection

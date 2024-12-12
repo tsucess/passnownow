@@ -94,13 +94,13 @@
 
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
-                <thead class="bg-primary text-white">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col" class="col-3">Title</th>
                         <th scope="col" class="col-3">Description</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Status</th>
+                        {{-- <th scope="col">Status</th> --}}
                         <th scope="col">Actions</th>
 
                     </tr>
@@ -114,14 +114,14 @@
                             <td>{{ $Exam->title }}</td>
                             <td>{{ $Exam->description }}</td>
                             <td>{{ $Exam->created_at }}</td>
-                            <td>
+                            {{-- <td>
                                 <div class="form-check form-switch">
-                                    {{-- <input class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" value=""  {{ $Exam->status?'checked': ''}}    /> --}}
+                                    <input class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" value=""  {{ $Exam->status?'checked': ''}}    />
                                     <input class="form-check-input enable-btn" data-id="{{ $Exam->id }}"
                                         value="{{ $Exam->status }}" type="checkbox"
                                         @if ($Exam->status === 1) {{ 'checked' }} @endif />
                                 </div>
-                            </td>
+                            </td> --}}
                             <td>
                                 <div class="action">
                                     <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>

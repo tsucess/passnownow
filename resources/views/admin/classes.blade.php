@@ -55,6 +55,12 @@
 </style>
 
 @section('admincontent')
+<style>
+    .controlbtn{
+        background-color: #0056b3;
+        color: #ffffff;
+    }
+</style>
 
     @if (Auth::user()->role === 'user')
         <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
@@ -110,7 +116,7 @@
         {{-- <php if (isset($output)) {?> --}}
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
-                <thead class="bg-primary text-white">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col">Title</th>

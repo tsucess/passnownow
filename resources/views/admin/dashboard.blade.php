@@ -85,7 +85,7 @@
     @php
         $now = date('Y-m-d');
     @endphp
-    <section class="container-fluid greeting__containter mt-3 animate__animated animate__shakeX">
+    <section class="container-fluid greeting__containter mt-3 animate__animated animate__slideInLeft">
         <div class="row greet__user">
             <div class="col-12 col-md-6 greetings ">
                 <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2>
