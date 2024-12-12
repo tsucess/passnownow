@@ -327,7 +327,6 @@
                         aria-hidden="true"></i>6.7% --}}
                     <i class="fas fa-users" aria-hidden="true"></i>
                 </span>
-
                 {{-- <br><br>
 
                 <span>Monthly goal</span>
@@ -399,7 +398,7 @@
         @php $sn= 0;  @endphp
         <div class="table-responsive w-100 small float-start mt-2 ms-2 mb-5 pb-5">
             <table class="table custom-table mb-5 pb-5" id="userss">
-                <thead class="bg-info">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col">Name</th>

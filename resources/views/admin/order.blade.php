@@ -27,7 +27,7 @@
 
     <!-- <div class = "container-fluid mt-2 mb-2">
 
-        </div> -->
+            </div> -->
 
     <table class="table table-bordered">
 
@@ -50,10 +50,10 @@
                 <p class = "m-0 p-0 mt-2">Net Sales</p>
                 <span class = "float-start"><strong>$23, 523</strong></span>
                 <span class = "float-end mb-2">
-                  <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                  style="font-size: 30px; font-weight:bold; margin-top: -15px;">
-                  <i class="fa-solid fa-receipt"></i>
-              </span>
+                    <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style="font-size: 30px; font-weight:bold; margin-top: -15px;">
+                        <i class="fa-solid fa-receipt"></i>
+                    </span>
                 </span>
             </td>
         </tr>
@@ -98,18 +98,10 @@
                 Today(October 8, 2024)
 
             </label>
-
-
-
             <label class="form-check-label mt-2 ms-5" for="flexCheckChecked">
                 <input class="form-check-input  show" type="checkbox" value="" id="flexCheckChecked" checked>
                 Today(October 8, 2024)
-
-
             </label>
-
-
-
             <span class = "float-end  mb-2 me-2">
                 {{-- <button class="btn btn-light dropdown-toggle mt-1 mb-2 me-1 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     By day
@@ -123,17 +115,11 @@
         </div>
     </div>
 
-
-
-
-
     <div class = "row">
         <div class="col mb-3">
             <canvas id="parabolaAreaChart" width="1300" height="400"></canvas>
         </div>
-
     </div>
-
 
     <div class = "row ms-1 mt-2 mb-3 border">
         <div>
@@ -141,8 +127,6 @@
             <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
         </div>
     </div>
-
-
 
     <div class = "container-fluid table-responsive">
         <div class = "row">
