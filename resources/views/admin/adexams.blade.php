@@ -2,13 +2,7 @@
 
 
 <style>
-    .examcard {
-        width: 17rem !important;
-        margin: auto;
-        height: 20rem;
-    }
-
-
+  
 
     /* Keyframes for fade-in animation */
     @keyframes fadeIn {
@@ -24,25 +18,25 @@
     }
 
     /* Animation applied to each card */
-    .examcard {
+    .cardhover {
         animation: fadeIn 0.6s ease-in-out;
         transition: transform 0.3s, box-shadow 0.3s;
     }
 
     /* Hover effect */
-    .examcard:hover {
+    .cardhover:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     /* Smoothly animate the button's appearance */
     .sub {
-        transition: background-color 0.3s, transform 0.3s;
+        transition: transform 0.3s;
     }
 
     /* Button hover effect */
     .sub:hover {
-        background-color: #0056b3;
+        /* background-color: #0056b3; */
         transform: scale(1.1);
     }
 </style>
@@ -54,7 +48,7 @@
         </div>
         <div class="row mt-3 gap-2 gap-lg-1">
             @foreach ($fetchExams as $Exam)
-                <div class = "col-12 col-md-4 border text-center rounded p-4 sub" style="width: 32%">
+                <div class = "col-12 col-md-4 border text-center rounded p-2 p-lg-2 cardhover" style="width: 32%">
                     {{-- <div class="col-12 col-md-6 col-lg-4 text-center rounded-3 p-1 border examcard"> --}}
                     <img src="{{ asset('storage/' . $Exam->avatar) }}" class="img-fluid mb-3" alt="{{ $Exam->title }}"
                         style="height: 7rem; object-fit: cover;">
@@ -100,13 +94,13 @@
 
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
-                <thead class="bg-primary text-white">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col" class="col-3">Title</th>
                         <th scope="col" class="col-3">Description</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Status</th>
+                        {{-- <th scope="col">Status</th> --}}
                         <th scope="col">Actions</th>
 
                     </tr>
@@ -120,14 +114,14 @@
                             <td>{{ $Exam->title }}</td>
                             <td>{{ $Exam->description }}</td>
                             <td>{{ $Exam->created_at }}</td>
-                            <td>
+                            {{-- <td>
                                 <div class="form-check form-switch">
-                                    {{-- <input class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" value=""  {{ $Exam->status?'checked': ''}}    /> --}}
+                                    <input class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="Inactive" value=""  {{ $Exam->status?'checked': ''}}    />
                                     <input class="form-check-input enable-btn" data-id="{{ $Exam->id }}"
                                         value="{{ $Exam->status }}" type="checkbox"
                                         @if ($Exam->status === 1) {{ 'checked' }} @endif />
                                 </div>
-                            </td>
+                            </td> --}}
                             <td>
                                 <div class="action">
                                     <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>

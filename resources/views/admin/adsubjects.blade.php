@@ -32,14 +32,14 @@
   
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
-            <thead class="bg-primary text-white">
+            <thead class="table-secondary">
                 <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Class</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Status</th>
+                    {{-- <th scope="col">Status</th> --}}
                     <th scope="col">Actions</th>
 
                 </tr>
@@ -53,12 +53,12 @@
                     <td>{{ $Subject->description }}</td>
                     <td>{{ $Subject->class_unique_id }}</td>
                     <td>{{ $Subject->created_at }}</td>
-                    <td>
+                    {{-- <td>
                         <div class="form-check form-switch">
-                            {{-- <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>"  {{if($video['status'] == 1){ 'checked';}} /> --}}
+                            <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>"  {{if($video['status'] == 1){ 'checked';}} />
                             <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked />
                         </div>
-                    </td>
+                    </td> --}}
                     <td>
                         <div class="action">
                             <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>

@@ -85,7 +85,7 @@
     @php
         $now = date('Y-m-d');
     @endphp
-    <section class="container-fluid greeting__containter mt-3 animate__animated animate__shakeX">
+    <section class="container-fluid greeting__containter mt-3 animate__animated animate__slideInLeft">
         <div class="row greet__user">
             <div class="col-12 col-md-6 greetings ">
                 <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2>
@@ -297,7 +297,7 @@
                 </a>
             </div>
 
-            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary h-50  overflow-hidden">
+            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary h-75  overflow-hidden">
                 <span class = "ms-2 mt-3">Total Administrators</span><br>
                 <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -327,7 +327,6 @@
                         aria-hidden="true"></i>6.7% --}}
                     <i class="fas fa-users" aria-hidden="true"></i>
                 </span>
-
                 {{-- <br><br>
 
                 <span>Monthly goal</span>
@@ -399,7 +398,7 @@
         @php $sn= 0;  @endphp
         <div class="table-responsive w-100 small float-start mt-2 ms-2 mb-5 pb-5">
             <table class="table custom-table mb-5 pb-5" id="userss">
-                <thead class="bg-info">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col">Name</th>

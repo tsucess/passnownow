@@ -1,74 +1,92 @@
 @extends('layouts.dasboardtemp')
 
 <style>
-/* Fade-in animation for the cards */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+    /* Fade-in animation for the cards */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+
+
+
+
+
+    /* Adding subtle animation to the text span */
+    .jss {
+        animation: fadeIn 1s ease-in-out;
     }
-}
+
+    /* Responsive padding for paragraphs */
+    .p {
+        transition: color 0.3s;
+    }
+
+    .p:hover {
+        color: #0056b3;
+    }
 
 
 
 
 
-/* Adding subtle animation to the text span */
-.jss {
-    animation: fadeIn 1s ease-in-out;
-}
+    /* Define the animation */
+    @keyframes slideInFromRight {
+        0% {
+            transform: translateX(100%);
+            /* Start outside the viewport on the right */
+            opacity: 0;
+            /* Invisible at the start */
+        }
 
-/* Responsive padding for paragraphs */
-.p {
-    transition: color 0.3s;
-}
-
-.p:hover {
-    color: #0056b3;
-}
-
-
-
-
-
-/* Define the animation */
-@keyframes slideInFromRight {
-  0% {
-    transform: translateX(100%); /* Start outside the viewport on the right */
-    opacity: 0; /* Invisible at the start */
-  }
-  100% {
-    transform: translateX(0); /* End at the original position */
-    opacity: 1; /* Fully visible */
-  }
-}
-
+        100% {
+            transform: translateX(0);
+            /* End at the original position */
+            opacity: 1;
+            /* Fully visible */
+        }
+    }
 </style>
 
 @section('admincontent')
-
+<style>
+    .controlbtn{
+        background-color: #0056b3;
+        color: #ffffff;
+    }
+</style>
 
     @if (Auth::user()->role === 'user')
-        <div class = "row mt-3 ml-5 bg-danger">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Classes</h1>
+            
+        </div>
+        <div class = "row mt-3 ml-5">
             @foreach ($fetchClasses as $Class)
                 <div class = "col-12 col-md-4 sty">
-                    <img src= "{{ asset('storage/'.$Class->avatar) }}" class = "img-fluid mb-2" style="height:15rem; width: 100%" alt="Avatar" />
-                    <span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">{{$Class->title}} Class Note</span>
-                    <p class = "p text-md-center ms-4 me-4">{{$Class->description}}
+                    <img src= "{{ asset('storage/' . $Class->avatar) }}" class = "img-fluid mb-2"
+                        style="height:15rem; width: 100%" alt="Avatar" />
+                    <span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-center jss">{{ $Class->title }} Class
+                        Note</span>
+                    <p class = "p text-md-center ms-4 me-4">{{ $Class->description }}
                     </p>
                     <div class="d-flex justify-content-center mb-3">
-                        <a class="btn btn-outline-primary mb-3 sub" href = "{{ route('subject', ['data' => $Class]) }}">VIEW ALL SUBJECTS</a>
+                        <a class="btn btn-outline-primary mb-3 sub" href = "{{ route('subject', ['data' => $Class]) }}">VIEW
+                            ALL SUBJECTS</a>
                     </div>
                 </div>
             @endforeach
 
         </div>
     @else
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Classes</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group me-2">
@@ -98,7 +116,7 @@
         {{-- <php if (isset($output)) {?> --}}
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
-                <thead class="bg-primary text-white">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col">Title</th>
@@ -189,8 +207,8 @@
 
 
         <!-- Edit Class Modal -->
-        <div class="modal fade" id="editModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="editModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="editModal" tabindex="-1" data-bs-backdrop="static"
+            aria-labelledby="editModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" id="form">
                     <div class="form-response text-center mb-3">

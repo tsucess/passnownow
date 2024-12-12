@@ -1,6 +1,12 @@
 @extends('layouts.dasboardtemp')
 
 @section('admincontent')
+<style>
+    .controlbtn{
+        background-color: #0056b3;
+        color: #ffffff;
+    }
+</style>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Users</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -13,7 +19,7 @@
     @php $sn= 0;  @endphp
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
-                <thead class="bg-primary text-white">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col">Name</th>
@@ -42,7 +48,7 @@
                               </td>
                             <td>{{ $User['created_at'] }}</td>
                             <td> 
-                                <a href="{{ route('admin.edit', ['data' => $User])}}" class="btn btn-primary p-1 px-3">view</a>
+                                <a href="{{ route('admin.edit', ['data' => $User])}}" class="btn btn-primary controlbtn sub p-1 px-3">view</a>
                                 <a href="{{ route('admin.destroy', ['data' => $User->id])}}" class="btn btn-danger p-1 px-3">Delete</a>
                                 
                             </td>

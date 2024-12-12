@@ -2,6 +2,50 @@
 
 @section('admincontent')
 
+<div class = "row border border-1 border-black p-2 mt-3 mb-2">
+    <div class = "border-bottom border-black border-1">
+        <span>Stats Overview</span>
+        <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
+    </div>
+    <div class="d-flex justify-content-between border-bottom border-black border-1">
+        <div class="pt-2" style = "width: 100px;">Today</div>
+        <div class="p-2 text-black">Week to Date</div>
+        <div class="p-2 text-black pe-5 float-start">Month to Date</div>
+    </div>
+
+    <div class="d-flex justify-content-between border-bottom border-black border-1 px-0">
+        <div class = "profit w-100 border-start border-black border-1 m-0">
+            <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark"
+                href = "{{ url('totalsales') }}">
+                <div class="profit">
+                    <span>Total Sales</span> <br>
+                    <span>N 0 </span>
+                    <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                        {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
+                    </span>
+                </div>
+            </a>
+        </div>
+        <div class = "profit w-100 border-start border-black border-1 m-0">
+            <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark" href = "{{ url('order') }}">
+                <div class="profit">
+                    {{-- class  = "fw-3" --}}
+                    <span class = "ms-2 ">Orders</span> <br>
+                    <span class  = "ms-2">N 0 </span>
+                    <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
+                        <i class="fa-solid fa-receipt"></i>
+                        {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                        aria-hidden="true"></i>6.7% --}}
+                    </span>
+
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
 
     <span class = "float-start mt-2"><strong>Date range:</strong></span><br><br>
 
@@ -32,23 +76,32 @@
         <table class="table table-bordered">
 
               <tr>
-                <td class = "profit">
-                    <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
-                    <p class = "m-0 p-0 mt-2">Total Sales</p>
-                    <span class = "float-start"><strong>$23,523</strong></span>
-                    <span class = "float-end mb-2">
-                      <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                    </span>
-                </a>
+                <td class = "profit w-50">
+                    <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">Total Sales</a></p>
+                    <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">#23,523</a></strong></span>
+                    {{-- <span class = "float-end mb-2">
+                      <a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">
+                      <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
+                      </a></span> --}}
+                      <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                              style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                              {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
+                          </span>
                 </td>
 
 
-                <td>
-                    <p class = "m-0 p-0 mt-2" >Net Sales</p>
-                    <span class = "float-start"><strong>$23,523</strong></span>
-                    <span class = "float-end mb-2">
-                      <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                    </span>
+                <td class = "profit w-50">
+                    <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark product" href = "{{ url('product') }}">Net Sales</a></p>
+                    <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">23,523</a></strong></span>
+                    {{-- <span class = "float-end mb-2">
+                      <a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">
+                      <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
+                      </a></span> --}}
+                      <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                              style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                              {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
+                          </span>
+
                 </td>
               </tr>
               </table>
@@ -59,25 +112,32 @@
               <table class="table table-bordered">
 
                 <tr>
-                  <td class = "profit">
+                  <td class = "profit w-50">
                       <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">Order</a></p>
                       <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">18</a></strong></span>
-                      <span class = "float-end mb-2">
+                      {{-- <span class = "float-end mb-2">
                         <a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                        </a>
-                    </span>
+                        </a></span> --}}
+                        <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                                {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
+                            </span>
                   </td>
 
 
-                  <td class = "profit">
+                  <td class = "profit w-50">
                       <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark product" href = "{{ url('product') }}">Product Sold</a></p>
                       <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">18</a></strong></span>
-                      <span class = "float-end mb-2">
+                      {{-- <span class = "float-end mb-2">
                         <a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                        </a>
-                    </span>
+                        </a></span> --}}
+                        <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                                {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
+                            </span>
+
                   </td>
                 </tr>
                 </table>
@@ -253,13 +313,13 @@
           </tr>
 
           <tr>
-            <td class = "text-primary">webpay</td>
+            <td class = "text-primary">Resources</td>
             <td>100</td>
             <td>#100,000.00</td>
           </tr>
 
           <tr>
-            <td class="text-primary">Bank deposit</td>
+            <td class="text-primary">Services</td>
             <td>200</td>
             <td>#100,000.00</td>
           </tr>
@@ -326,10 +386,10 @@
 const parabolaAreaChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 6, 0], // X-axis labels
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // X-axis labels
     datasets: [{
       label: '',
-      data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25, 80], // Y-axis values forming parabolas
+      data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25], // Y-axis values forming parabolas
       borderColor: '#1699dd',
       backgroundColor: '#1699dd',
       fill: true,
@@ -366,10 +426,10 @@ const parabolaAreaChart = new Chart(ctx, {
         const parabolaAreaCharts = new Chart(ctxs, {
           type: 'line',
           data: {
-            labels: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 6, 0], // X-axis labels
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // X-axis labels
             datasets: [{
               label: '',
-              data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25, 80], // Y-axis values forming parabolas
+              data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25], // Y-axis values forming parabolas
               borderColor: '#1699dd',
               backgroundColor: '#1699dd',
               fill: true,
