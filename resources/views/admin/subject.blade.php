@@ -45,24 +45,38 @@
 </style>
 
 @section('admincontent')
-    <div class = "row mt-3 ms-3">
-        @foreach ($fetchSubjects as $subject)
-            <div class = "col-12 col-md-4 animated-card">
-                <img src="{{ asset('storage/' . $subject->avatar) }}" class = "img-fluid mb-2" style="height:15rem" />
-                <span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">{{ $subject->title }}</span>
-                <p class = "p text-md-start">{{ $subject->description }}
-                </p>
-                <div class="d-flex justify-content-start mb-3">
-                    @if (Auth::user()->status === 1)
-                        <a class="btn btn-outline-primary mb-3 sub"
-                            href = "{{ route('learning', ['data' => $subject]) }}">VIEW NOTE</a>
-                    @else
-                        <button type="button" class="btn btn-outline-primary sub" data-bs-toggle="modal"
-                            data-bs-target="#subscribeModal">Subscribe Now</button>
-                    @endif
-                </div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Subjects</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group me-2" id="topButton">
+                <a href="/classes" class="btn btn-secondary p-1 px-5 shadow">Back</a>
             </div>
-        @endforeach
+        </div>
+    </div>
+    <div class = "row mt-3 ms-3">
+        @if (!empty($fetchSubjects[0]))
+            @foreach ($fetchSubjects as $subject)
+                <div class = "col-12 col-md-4 animated-card">
+                    <img src="{{ asset('storage/' . $subject->avatar) }}" class = "img-fluid mb-2" style="height:15rem" />
+                    <span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">{{ $subject->title }}</span>
+                    <p class = "p text-md-start">{{ $subject->description }}
+                    </p>
+                    <div class="d-flex justify-content-start mb-3">
+                        @if (Auth::user()->status === 1)
+                            <a class="btn btn-outline-primary mb-3 sub"
+                                href = "{{ route('learning', ['data' => $subject]) }}">VIEW NOTE</a>
+                        @else
+                            <button type="button" class="btn btn-outline-primary sub" data-bs-toggle="modal"
+                                data-bs-target="#subscribeModal">Subscribe Now</button>
+                        @endif
+                    </div>
+                </div>
+            @endforeach
+        @else
+            <div class = "col-12 animated-card text-center">
+                <p>No Subjects uploaded yet, come back later</p>
+            </div>
+        @endif
 
     </div>
 
