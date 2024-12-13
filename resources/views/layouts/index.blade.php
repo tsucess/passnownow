@@ -204,40 +204,39 @@
                     <div class="col-12 col-md-5 col-lg-5 p-4 mb-3 address">
                         <h5>West Africa’s most trusted EdTech Platform for Secondary School Students & Teachers</h5>
                         <p>Super simple self studying,
-                            peer to peer collaborative learning both for teachers and students</p><img
-                            src="{{ asset('images/NG.png') }}" alt="Nigeria-Icon" class="me-1"><span>144A
-                            Gbagada Expressway,
-                            Anthony,
-                            Lagos</span>
+                            peer to peer collaborative learning both for teachers and students</p>
+                            <img
+                            src="{{ asset('images/NG.png') }}" alt="Nigeria-Icon" class="me-1">
+                            <a href="https://www.google.com/maps/search/8+Adebayo+Muokolu+Street,+Anthony+Village,+Lagos,+Nigeria./@6.558127,3.3687749,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTIxMC4wIKXMDSoASAFQAw%3D%3D" class="text-decoration-none" target="_blank"><span>8 Adebayo Muokolu Street, Anthony Village, Lagos, Nigeria.</span></a>
                     </div>
                     <div class="col-12 col-md-3 col-lg-2 mb-3 p-0">
                         <h5 class="title">RELATED LINKS</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">About</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Our Blog</a></li>
-                            <li class="nav-item mb-2"><a href="{{ url('parentresources') }}"
+                            <li class="nav-item mb-2"><a href="/about" class="nav-link p-0">About</a></li>
+                            {{-- <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Our Blog</a></li> --}}
+                            <li class="nav-item mb-2"><a href="/parentresources"
                                     class="nav-link p-0">For Parent</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">For Teachers</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">FAQs</a></li>
+                            <li class="nav-item mb-2"><a href="/teacherresources" class="nav-link p-0">For Teachers</a></li>
+                            <li class="nav-item mb-2"><a href="/faq" class="nav-link p-0">FAQs</a></li>
                         </ul>
                     </div>
                     <div class="col-12 col-md-2 col-lg-2 mb-3 p-0">
                         <h5 class="title">RESOURCE</h5>
                         <ul class="nav flex-column">
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Class</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Plans</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Exam</a></li>
-                            <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Questions</a></li>
+                            <li class="nav-item mb-2"><a href="/classnotes" class="nav-link p-0">Class</a></li>
+                            <li class="nav-item mb-2"><a href="/subscriptions" class="nav-link p-0">Plans</a></li>
+                            <li class="nav-item mb-2"><a href="/#exam__questions" class="nav-link p-0">Exam</a></li>
+                            <li class="nav-item mb-2"><a href="/#classnotes" class="nav-link p-0">Questions</a></li>
                         </ul>
                     </div>
                     <div class="col-12 col-md-2  col-lg-2 mb-3 p-0">
                         <h5 class="title">CONTACT US</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2">Call Us:</li>
-                            <li class="nav-item mb-2">0706.054.5017,
-                                0706.054.5027</li>
+                            <li class="nav-item mb-2"><a href="tel:07060545017" target="_blank" class="text-decoration-none">0706.054.5017</a>,
+                                <a href="tel:07060545027" target="_blank" class="text-decoration-none">0706.054.5027</a></li>
                             <li class="nav-item mb-2">Email: </li>
-                            <li class="nav-item mb-2">Passnownow@gmail.com</li>
+                            <li class="nav-item mb-2"> <a href="mailto:info@passnownow.com" target="_blank" class="text-decoration-none">info@passnownow.com</a></li>
                         </ul>
                     </div>
                 </div>

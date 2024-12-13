@@ -250,7 +250,7 @@
                         {{ csrf_field() }}
 
                         <p>
-                            <button class="btn btn-lg btn-block text-white subscribe" type="submit"
+                            <button class="btn btn-primary  text-white subscribe" type="submit"
                                 value="Pay Now!">
                                 <i class="fa fa-plus-circle fa-md px-2"></i> Subscribe Now!
                             </button>
