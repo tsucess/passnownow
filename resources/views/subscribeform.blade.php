@@ -197,10 +197,11 @@
 
             <div class = "container mx-auto mt-5 mb-5">
                 <div class = "row">
-                    <form method="POST" action="{{route('subscribe.pay') }} " accept-charset="UTF-8" id = "#success"
+                    <form method="POST" action="{{ route('pay') }} " accept-charset="UTF-8" id = "#success"
                         class="form-horizontal" role="form">
-                        @csrf
+            
                         <div class="mb-3">
+                            <input type="hidden" name="page" value="services"/>
                             <input type="hidden" name="orderID" class="form-control mb-3"
                                 value="{{ rand(time(), 10000000) }}"
                                 placeholder="Txn id: {{ rand(time(), 10000000) }}" readonly />

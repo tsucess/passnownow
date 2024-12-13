@@ -28,7 +28,7 @@
 
 </head>
 
-<body class="">
+<body>
     <main class="container-fluid wrapper container__register">
         <div class="row  m-0 p-0">
             <div class="col-12 col-md-6 side-bg">
@@ -95,11 +95,11 @@
                                 <span class="pass_hidden">
                                     <x-text-input type="password" id="cPassword" class="form-control" :value="old('password_confirmation ')" name="password_confirmation" aria-describedby="passwordBlock" placeholder="Repeat Password" />
                                 </span>
-                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-danger" />
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" name="terms" class="form-check-input" id="check_terms" />
-                                <label class="form-check-label" for="check_terms">Agree to our terms and conditions</label>
+                                <label class="form-check-label" for="check_terms">Agree to our term and condition</label>
                                 <x-input-error :messages="$errors->get('terms')" class="mt-2" />
                             </div>
                             <x-primary-button type="submit" class="btn btn-primary w-100 submit-btn"> {{ __('Register') }}</x-primary-button>

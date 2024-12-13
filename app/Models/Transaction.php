@@ -18,9 +18,12 @@ class Transaction extends Model
         'amount',
         'reference',
         'email',
+        'phone',
         'currency',
         'orderID',
+        'services',
         'plan_name',
+        'active_status',
         'payment_status',
         'payment_method',
         'expiry_date'

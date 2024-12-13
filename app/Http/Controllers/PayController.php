@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Mail;
 class PayController extends Controller
 {
     
-    public function store(Request $request)
+    public function redirectToGateway(Request $request)
     {
         // Validate the incoming data
         $validated = $request->validate([
@@ -26,27 +27,34 @@ class PayController extends Controller
             'plan'       => 'required|string',
         ]);
 
+    //  dd($validated['plan']);
         if ($validated['plan'] === 'call') {
             $plan = '60 minutes telephone interactive discussion with our Expert';
             $amount = 5000;
-        } else if ($validated['plan'] === 'whatsappp') {
+        } else if ($validated['plan'] === 'whatsapp') {
             $plan = '60 minutes Whatsapp conversation';
             $amount = 5000;
-        } else if ($validated['plan'] === 'face2face') {
+        } else if ($validated['plan'] == 'face2face') {
             $plan = 'Face to Face counselling at The Rise Labs';
             $amount = 5000;
+        }
+        else
+        {
+            $amount = 0;
+            $plan = NULL;
         }
 
         $data = array(
             'order_id'   => $validated['orderID'],
             'first_name' => $validated['first_name'],
             'last_name'  => $validated['last_name'],
-            "amount" => $amount * 100,
-            "reference" => Paystack::genTranxRef(),
+            'amount' => $amount * 100,
+            'reference' => Paystack::genTranxRef(),
             'email'      => $validated['email'],
             'phone'      => $validated['phone'],
-            "currency" => 'NGN',
+            'currency' => 'NGN',
             'plan'       => $plan,
+            'active_status' => "ongoing",
             'payment_status' => "pending",
             'payment_method' => "none"
         );
@@ -54,20 +62,12 @@ class PayController extends Controller
 
         // Save the data to the database
         Pay::create($data);
-        // Pay::create([
-        //     'order_id'   => $validated['orderID'],
-        //     'first_name' => $validated['first_name'],
-        //     'last_name'  => $validated['last_name'],
-        //     'email'      => $validated['email'],
-        //     'phone'      => $validated['phone'],
-        //     'plan'       => $validated['plan'],
-        // ]);
-
-
+        
+        
         try {
             return Paystack::getAuthorizationUrl($data)->redirectNow();
               // Send the email
-        Mail::to('akinrinolasamuel1@gmail.com')->send(new PayFormMail($validated));
+            // Mail::to('akinrinolasamuel1@gmail.com')->send(new PayFormMail($validated));
 
         } catch (\Exception $e) {
             return Redirect::back()->withMessage(['msg' => 'The paystack token has expired. Please refresh the page and try again.', 'type' => 'error']);
