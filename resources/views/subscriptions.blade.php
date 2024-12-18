@@ -282,8 +282,8 @@
                 <h5 class="primary_header mt-5 mb-3">Payment Using ATM Card</h5>
                 <ul>
                     <li>Click on “Pay Using ATM Card”</li>
-                    <li>Fill in the required fields to place order</li>
-                    <li>Click on “Place Order” at the button right of the page</li>
+                    <li>Fill in the required fields to make payment</li>
+                    <li>Click on “Pay Now” at the button right of the page</li>
                     <li>You will get an automatic confirmation</li>
                     <li>This will take effect and your account would be activated</li>
                     <li>You can now gain access to a passnownow.com Class Notes and Past Questions</li>

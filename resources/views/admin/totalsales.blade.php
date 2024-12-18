@@ -178,9 +178,27 @@
             const salesData = @json($salesData); // Data passed from the controller
 
             // Prepare data for Chart.js
-            const months = ['0','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            const labels = salesData.map(data => months[data.month]); // Extract month names
-            const dataValues = salesData.map(data => data.total_sales); // Extract sales totals
+            // const months = ['0',  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            // var a = [0];
+            // var b = [0];
+            //var data = a.concat(salesData.map(data => months[data.month]));
+            // const labels = data; // Extract month names
+
+
+        // const labels = a.concat(salesData.map(data => months[data.month])); // Extract month names
+
+
+        //     const dataValues = salesData.map(data => data.total_sales); // Extract sales totals
+
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// Ensure labels and dataValues align
+const labels = salesData.map(data => months[data.month - 1]); // Map month index to names
+const dataValues = salesData.map(data => data.total_sales); // Monthly sales totals
+
+
+            // console.log(dataValues);
+
         </script>
 
     <script>
@@ -219,7 +237,7 @@
                         beginAtZero: true,
                         suggestedMin: 0,
                         suggestedMax: 10, // Adjusted Y-axis range for better visibility of parabola shapes
-                        stepSize: 10
+            
                     }
                 }
             }
