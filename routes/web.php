@@ -36,11 +36,6 @@ Route::get('/', function () {
 });
 
 
-Route::get('/subscribeform', function () {
-    return view('subscribeform');
-});
-
-
 
 
 Route::get('/about', function () {
@@ -155,6 +150,20 @@ Route::get('/faq', function () {
 Route::get('/checkout', function () {
     return view('checkout');
 });
+
+
+
+Route::get('/subscribeform', function () {
+    return view('subscribeform');
+});
+
+// Route::post('/pay', [PayController::class, 'redirectToGateway'])->name('pay');
+// Route::get('/payment/callback', [PayController::class, 'handleGatewayCallback']);
+
+
+
+
+
 
 Route::middleware('auth')->group(function () {
 
@@ -271,6 +280,9 @@ Route::middleware('auth')->group(function () {
         return view('admin.checkoutdetails');
     });
 
+
+
+
     Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
     Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 });
@@ -281,6 +293,8 @@ Route::get('/instructors', function () {
 });
 
 
+Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
+Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
 
 
 Route::get('/product', function () {

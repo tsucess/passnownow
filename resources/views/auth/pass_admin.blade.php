@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> 
+    
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
@@ -20,8 +22,8 @@
 
     {{-- SWIPER JS  --}}
     <link rel="stylesheet" href="{{ 'css/swiper-bundle.min.css' }}" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/responsiveness.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/responsiveness.css') }}" />
 
 </head>
 
@@ -88,11 +90,11 @@
                             <div class="mb-3">
                                 <x-input-label for="cPassword" :value="__('Confirm Password')" />
                                 <x-text-input type="password" id="cPassword" class="form-control" :value="old('password_confirmation ')" name="password_confirmation" aria-describedby="passwordBlock" placeholder="Repeat Password" />
-                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />         
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-danger" />         
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" name="terms" class="form-check-input" id="check_terms" />
-                                <label class="form-check-label" for="check_terms">Agreed to out terms and conditions</label>
+                                <label class="form-check-label" for="check_terms">Agree to our term and condition</label>
                                 <x-input-error :messages="$errors->get('terms')" class="mt-2" />
                             </div>
                             <x-primary-button type="submit" class="btn btn-primary w-100 submit-btn"> {{ __('Register') }}</x-primary-button>

@@ -750,8 +750,8 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </Section>
 
-        <section class="container-fluid container__notes">
-            <div class="row">
+        <section class="container-fluid container__notes" >
+            <div class="row" id="class__notes">
                 <div class="col-12 text-center mb-5">
                     <h6>Class Notes</h6>
                 </div>
@@ -769,75 +769,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 @endforeach
-                {{-- <div class="col-12 col-md-4 mb-3">
-                <div class="col-12 col-md-4 mb-3 myWrapper">
-                    <div class="image-wrapper">
-                        <img src="{{ asset('images/student-writing.png') }}" alt="">
-                    </div>
-                    <div class="note_info p-2">
-                        <h5>JSS 1 Class Notes</h5>
-                        <p>Start studying with our wide collection of all SSS 1 Class Notes all Terms on all Secondary
-                            School Subjects</p>
-                        <button class="note_btn">VIEW ALL SUBJECTS</button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3 myWrapper">
-                    <div class="image-wrapper">
-                        <img src="{{ asset('images/student-writing.png') }}" alt="">
-                    </div>
-                    <div class="note_info p-2">
-                        <h5>JSS 2 Class Notes</h5>
-                        <p>Start studying with our wide collection of all SSS 1 Class Notes all Terms on all Secondary
-                            School Subjects</p>
-                        <button class="note_btn">VIEW ALL SUBJECTS</button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3 myWrapper">
-                    <div class="image-wrapper">
-                        <img src="{{ asset('images/student-writing.png') }}" alt="">
-                    </div>
-                    <div class="note_info p-2">
-                        <h5>JSS 3 Class Notes</h5>
-                        <p>Start studying with our wide collection of all SSS 1 Class Notes all Terms on all Secondary
-                            School Subjects</p>
-                        <button class="note_btn">VIEW ALL SUBJECTS</button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3 myWrapper">
-                    <div class="image-wrapper">
-                        <img src="{{ asset('images/student-writing.png') }}" alt="">
-                    </div>
-                    <div class="note_info p-2">
-                        <h5>SSS 1 Class Notes</h5>
-                        <p>Start studying with our wide collection of all SSS 1 Class Notes all Terms on all Secondary
-                            School Subjects</p>
-                        <button class="note_btn">VIEW ALL SUBJECTS</button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3 myWrapper">
-                    <div class="image-wrapper">
-                        <img src="{{ asset('images/student-writing.png') }}" alt="">
-                    </div>
-                    <div class="note_info p-2">
-                        <h5>SSS 2 Class Notes</h5>
-                        <p>Start studying with our wide collection of all SSS 1 Class Notes all Terms on all Secondary
-                            School Subjects</p>
-                        <button class="note_btn">VIEW ALL SUBJECTS</button>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-3 myWrapper">
-                    <div class="image-wrapper">
-                        <img src="{{ asset('images/student-writing.png') }}" alt="">
-                    </div>
-                    <div class="note_info p-2">
-                        <h5>SSS 3 Class Notes</h5>
-                        <p>Start studying with our wide collection of all SSS 1 Class Notes all Terms on all Secondary
-                            School Subjects</p>
-                        <button class="note_btn">VIEW ALL SUBJECTS</button>
-                    </div>
-                </div> --}}
             </div>
-            <div class="row">
+            <div class="row" id="exam__questions">
                 <div class="col-12 text-center mb-5">
                     <h6>Past Questions</h6>
                 </div>

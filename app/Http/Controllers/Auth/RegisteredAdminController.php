@@ -63,6 +63,9 @@ class RegisteredAdminController extends Controller
 
         // Auth::login($user);
 
-        return redirect(route('login', absolute: false));
+        // return redirect(route('login', absolute: false));
+        Auth::login($user);
+
+        return redirect(route('verification.notice', absolute: false));
     }
 }

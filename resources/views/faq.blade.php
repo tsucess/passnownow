@@ -10,7 +10,7 @@
                 </div>
             </div>
         </Section>
-        <section class="container-fluid container__search">
+        {{-- <section class="container-fluid container__search">
             <div class="row p-0 m-0">
                 <div class="col-12 col-md-6 search__form ">
                     <form action="">
@@ -21,7 +21,7 @@
                     <p class="text-center my-2">You can use the search box or choose from the topics below</p>
                 </div>
             </div>
-        </section>
+        </section> --}}
         <Section class="container-fluid container__performance mb-5">
             <div class="row p-md-4 px-md-5 accordion_temp container mx-auto">
                 <div class="col-12 notepink mt-4 mb-3 p-0 p-md-5">
