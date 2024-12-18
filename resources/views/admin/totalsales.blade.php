@@ -172,20 +172,27 @@
 
 
 
+          <!-- Pass sales data to JavaScript -->
+
+          <script>
+            const salesData = @json($salesData); // Data passed from the controller
+
+            // Prepare data for Chart.js
+            const months = ['0','Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const labels = salesData.map(data => months[data.month]); // Extract month names
+            const dataValues = salesData.map(data => data.total_sales); // Extract sales totals
+        </script>
+
     <script>
         const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
 
         const parabolaAreaChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov',
-                    'Dec'
-                ], // X-axis labels
+                labels: labels, // X-axis labels
                 datasets: [{
                     label: '',
-                    data: [0, 30, 35, 50, 35, 31, 45, 22, 50, 40, 60, 25,
-                        70
-                    ], // Y-axis values forming parabolas
+                    data: dataValues, // Y-axis values forming parabolas
                     borderColor: '#1699dd',
                     backgroundColor: '#1699dd',
                     fill: true,
@@ -220,7 +227,7 @@
     </script>
 
     <!-- Another chart -->
-{{-- 
+{{--
     <script>
         const ctxs = document.getElementById('parabolaAreaCharts').getContext('2d');
 
@@ -267,7 +274,7 @@
         });
     </script> --}}
 
-  
+
     {{-- <script type="text/javascript" src="{{'./js/bootstrap.bundle.min.js'}}"></script>  --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 @endsection

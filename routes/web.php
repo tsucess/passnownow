@@ -23,6 +23,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Models\Exams;
 use App\Http\Controllers\PayController;
+use App\Http\Controllers\ChartDataController;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
@@ -155,14 +156,6 @@ Route::get('/checkout', function () {
     return view('checkout');
 });
 
-
-
-
-
-
-
-
-
 Route::middleware('auth')->group(function () {
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -174,12 +167,11 @@ Route::middleware('auth')->group(function () {
         return view('admin.detailedstat');
     });
 
-    Route::get('/totalsales', function () {
-        return view('admin.totalsales');
-    });
+
+    Route::get('/totalsales', [ChartDataController::class, 'salesAnalysis']);
 });
 
-require __DIR__ . '/auth.php';
+// require __DIR__ . '/auth.php';
 
 
 
@@ -278,9 +270,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkoutdetails', function () {
         return view('admin.checkoutdetails');
     });
-
-
-
 
     Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
     Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);

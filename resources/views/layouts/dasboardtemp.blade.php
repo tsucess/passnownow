@@ -92,12 +92,12 @@
             padding: 6px;
         }
 
-        @media only screen and (max-width: 320px) {
-            .show {
+        /* @media only screen and (max-width: 320px) { */
+            /* .show {
                 margin-left: 0;
                 background: red;
-            }
-        }
+            } */
+        } */
 
         .sub:hover {
             background-color: #1A69AF;

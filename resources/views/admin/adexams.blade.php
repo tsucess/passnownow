@@ -2,7 +2,7 @@
 
 
 <style>
-  
+
 
     /* Keyframes for fade-in animation */
     @keyframes fadeIn {
@@ -39,6 +39,15 @@
         /* background-color: #0056b3; */
         transform: scale(1.1);
     }
+
+    @media screen and (min-width: 995px)
+    {
+        .mobileCard
+        {
+            width: 100%;
+            background-color:red;
+        }
+    }
 </style>
 @section('admincontent')
 
@@ -48,10 +57,10 @@
         </div>
         <div class="row mt-3 gap-2 gap-lg-1">
             @foreach ($fetchExams as $Exam)
-                <div class = "col-12 col-md-4 border text-center rounded p-2 p-lg-2 cardhover" style="width: 32%">
-                    {{-- <div class="col-12 col-md-6 col-lg-4 text-center rounded-3 p-1 border examcard"> --}}
-                    <img src="{{ asset('storage/' . $Exam->avatar) }}" class="img-fluid mb-3" alt="{{ $Exam->title }}"
-                        style="height: 7rem; object-fit: cover;">
+                <div class = "col-12 col-sm-6 col-md-4 col-lg-3 border text-center rounded p-2 p-lg-2 cardhover" style = "width:32%;">
+
+                    <img src="{{ asset('storage/' . $Exam->avatar) }}" class=" mb-3 img-responsive" alt="{{ $Exam->title }}"
+                        style="height: 7rem;">
                     <div class="" style="height: 8rem">
                         <h5 class="text-center fw-bold px-2">{{ strtoupper($Exam->title) }}</h5>
                         <p class="text-md-center">{{ Str::limit($Exam->description, 150) }}</p>
@@ -59,6 +68,8 @@
                     <a href="{{ route('showpastquestions', ['data' => $Exam]) }}"
                         class="btn btn-outline-primary mt-auto p-2 sub">VIEW PAST QUESTIONS</a>
                 </div>
+
+
             @endforeach
         </div>
     @else
