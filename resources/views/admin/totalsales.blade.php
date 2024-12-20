@@ -237,7 +237,7 @@ const dataValues = salesData.map(data => data.total_sales); // Monthly sales tot
                         beginAtZero: true,
                         suggestedMin: 0,
                         suggestedMax: 10, // Adjusted Y-axis range for better visibility of parabola shapes
-            
+
                     }
                 }
             }

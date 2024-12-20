@@ -197,18 +197,28 @@
         </div>
     </div>
 
-    <script>
+
+<script>
+const transactionData = @json($transactionData);
+
+const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+const labels = transactionData.map(data => months[data.month - 1]); // Extract month numbers
+const dataValues = transactionData.map(data => data.transaction_count); // Extract transaction counts
+ // Monthly sales totals
+    </script>
+
+
+   <script>
         const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
 
         const parabolaAreaChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: [0, 1, 2, 3, 4, 5, 6, 8, 9, 10, 6, 0], // X-axis labels
+                labels: labels, // X-axis labels
                 datasets: [{
                     label: '',
-                    data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25,
-                        80
-                    ], // Y-axis values forming parabolas
+                    data: dataValues, // Y-axis values forming parabolas
                     borderColor: '#1699dd',
                     backgroundColor: '#1699dd',
                     fill: true,

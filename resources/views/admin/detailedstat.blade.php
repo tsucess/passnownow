@@ -379,6 +379,24 @@
 
 </div>
 
+<script>
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+// Ensure labels and dataValues align
+const labels = detailedData.map(data => months[data.month - 1]); // Map month index to names
+const dataValues = detailedData.map(data => data.total_sales); // Monthly sales totals
+</script>
+
+
+<script>
+    const detailedData = @json($detailedData);
+
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    const labelss = detailednData.map(data => months[data.month - 1]); // Extract month numbers
+    const dataValuess = detailedData.map(data => data.transaction_count); // Extract transaction counts
+     // Monthly sales totals
+        </script>
 
     <script>
             const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
@@ -386,10 +404,10 @@
 const parabolaAreaChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // X-axis labels
+    labels: labels, // X-axis labels
     datasets: [{
       label: '',
-      data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25], // Y-axis values forming parabolas
+      data: dataValues, // Y-axis values forming parabolas
       borderColor: '#1699dd',
       backgroundColor: '#1699dd',
       fill: true,
@@ -426,10 +444,10 @@ const parabolaAreaChart = new Chart(ctx, {
         const parabolaAreaCharts = new Chart(ctxs, {
           type: 'line',
           data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // X-axis labels
+            labels: labelss, // X-axis labels
             datasets: [{
               label: '',
-              data: [30, 35, 50, 35, 40, 31, 45, 22, 50, 40, 60, 25], // Y-axis values forming parabolas
+              data: dataValuess, // Y-axis values forming parabolas
               borderColor: '#1699dd',
               backgroundColor: '#1699dd',
               fill: true,

@@ -34,7 +34,7 @@
                         <label for="country" class="form-label">Subscription Plan</label>
                         <select name="plan" id="" class="form-select form-select-sm"
                             style = "padding: 12px; background-color:#e9ecef;">
-                            <option value="">Select plan</option>
+                            <option value="select" name = 'select'>Select plan</option>
                             <option value="daily">Daily - 300 Naira only</option>
                             <option value="weekly">Weekly - 500 Naira only</option>
                             <option value="monthly">Monthly - 1,100 Naira only</option>
@@ -42,9 +42,10 @@
                             <option value="halfly">6 Months - 5,100 Naira only</option>
                             <option value="yearly">Yearly - 10,100 Naira only</option>
                         </select>
-
+                        @if('plan' == 'select' )
                         <x-input-error :messages="$errors->get('plan', 'Select a Subscribtion plan')" style="list-style: none" class="mt-2 text-danger" />
-                    </div>
+                        @endif
+                        </div>
                     <div class="mb-3">
                         {{-- <label for="state" class="form-label">Currency</label> --}}
                         <input type="hidden" class="form-control" name="currency" value="NGN" placeholder="Naira"

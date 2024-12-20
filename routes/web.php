@@ -172,9 +172,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/detailedstat', function () {
-        return view('admin.detailedstat');
-    });
+    // Route::get('/detailedstat', function () {
+    //     return view('admin.detailedstat');
+    // });
+
+    Route::get('/detailedstat', [ChartDataController::class, 'detailedAnalysis']);
 
 
     Route::get('/totalsales', [ChartDataController::class, 'salesAnalysis']);
@@ -301,9 +303,8 @@ Route::get('/product', function () {
     return view('admin.product');
 });
 
-Route::get('/order', function () {
-    return view('admin.order');
-});
+Route::get('/order', [ChartDataController::class, 'orderAnalysis']);
+
 
 Route::get('/pastquestion', function () {
     return view('admin.pastquestion');

@@ -38,7 +38,7 @@ $data = [
     ['month' => 0, 'total_sales' => 0]
 ];
 
-        $salesData = Transaction::selectRaw('MONTH(created_at) as month, SUM(amount) as total_sales')
+        $salesData = Transaction::selectRaw('MONTH(updated_at) as month, SUM(amount) as total_sales')
         ->groupBy('month')
         ->orderBy('month')
         ->get()
@@ -67,5 +67,100 @@ $data = [
         return view('admin.totalsales', compact('salesData'));
     }
 
+
+
+
+    //Order function
+    public function orderAnalysis()
+{
+    // Count transactions per month
+    $monthlyTransactionCounts = Transaction::selectRaw('MONTH(updated_at) as month, COUNT(*) as transaction_count')
+        ->where('payment_status', 'success') // Only successful transactions
+        ->groupBy('month')
+        ->orderBy('month')
+        ->get();
+
+    // Ensure all months are represented
+    $completeTransactionData = collect(range(1, 12))->mapWithKeys(function ($month) use ($monthlyTransactionCounts) {
+        $monthlyCount = $monthlyTransactionCounts->firstWhere('month', $month);
+        return [$month => $monthlyCount ? $monthlyCount->transaction_count : 0];
+    });
+
+    // Convert to a format suitable for Chart.js
+    $transactionData = $completeTransactionData->map(function ($count, $month) {
+        return [
+            'month' => $month,
+            'transaction_count' => $count,
+        ];
+    })->values();
+
+    return view('admin.order', compact('transactionData'));
+}
+
+
+
+
+
+
+
+
+
+public function detailedAnalysis()
+    {
+
+        $salesData = Transaction::where('payment_status', 'success')->get();
+        // dd($salesData);
+
+        // $salesData = [
+        //     ['month' => 0, 'total_sales' => 0],
+        //     ['month' => 1, 'total_sales' => 5000],
+        //     ['month' => 2, 'total_sales' => 8000],
+        //     ['month' => 3, 'total_sales' => 12000],
+        //     ['month' => 4, 'total_sales' => 5000],
+        //     ['month' => 5, 'total_sales' => 8000],
+        //     ['month' => 6, 'total_sales' => 12000],
+        //     ['month' => 7, 'total_sales' => 5000],
+        //     ['month' => 8, 'total_sales' => 8000],
+        //     ['month' => 9, 'total_sales' => 12000],
+        //     ['month' => 10, 'total_sales' => 5000],
+        //     ['month' => 11, 'total_sales' => 8000],
+        //     ['month' => 12, 'total_sales' => 12000],
+        // ];
+
+
+$data = array();
+
+$data = [
+    ['month' => 0, 'total_sales' => 0]
+];
+
+        $salesData = Transaction::selectRaw('MONTH(updated_at) as month, SUM(amount) as total_sales')
+        ->groupBy('month')
+        ->orderBy('month')
+        ->get()
+        ->pluck('total_sales', 'month'); // Key: month, Value: total_sales
+
+        // Create a complete list of months (1 to 12) with 0 sales
+        $completeSalesData = collect(range(1, 12))->mapWithKeys(function ($month) use ($salesData) {
+            return [$month => $salesData[$month] ?? 0]; // Use database data if exists, else 0
+        });
+
+        // Convert to a format suitable for Chart.js
+        $salesData = $completeSalesData->map(function ($sales, $month) {
+            return [
+                'month' => $month,
+                'total_sales' => $sales,
+            ];
+        })->values();
+
+
+        // dd($salesData );
+// foreach ($salesData as $sData) {
+//    dd($sData);
+// }
+// dd($data);
+// dd($salesData);
+        return view('admin.detailedstat', compact('detailedData'));
+    }
 
 }
