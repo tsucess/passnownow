@@ -42,13 +42,13 @@ class PaymentController extends Controller
             //  dd($validated['plan']);
             if ($validated['plan'] === 'call') {
                 $plan = '60 minutes telephone interactive discussion with our Expert';
-                $amount = 500;
+                $amount = 15000;
             } else if ($validated['plan'] === 'whatsapp') {
                 $plan = '60 minutes Whatsapp conversation';
-                $amount = 500;
+                $amount = 5000;
             } else if ($validated['plan'] == 'face2face') {
                 $plan = 'Face to Face counselling at The Rise Labs';
-                $amount = 500;
+                $amount = 10000;
             } else {
                 $amount = 0;
                 $plan = NULL;
