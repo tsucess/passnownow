@@ -76,9 +76,9 @@
         <table class="table table-bordered">
 
               <tr>
-                <td class = "profit w-50">
-                    <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">Total Sales</a></p>
-                    <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">#23,523</a></strong></span>
+                <td class = "profit w-50" >
+                    <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark" href = "{{ url('order') }}"><b>Total Sales</b></a></p>
+                    <span class = "float-start"><a class = "text-decoration-none text-dark" href = "{{ url('order') }}" ><strong>N {{ number_format($totalAmount) }}</strong></a></span>
                     {{-- <span class = "float-end mb-2">
                       <a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">
                       <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
@@ -90,18 +90,24 @@
                 </td>
 
 
-                <td class = "profit w-50">
-                    <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark product" href = "{{ url('product') }}">Net Sales</a></p>
-                    <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">23,523</a></strong></span>
+                <td class = "w-50 profit">
+                    <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark profit" href = "{{ url('order') }}">Order</a></p>
+                    <span class = "float-start ps-1"><a class = "text-decoration-none text-dark" href = "{{ url('product') }}"><b>{{ $successfulOrders }}</b></a></span>
                     {{-- <span class = "float-end mb-2">
                       <a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">
                       <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                       </a></span> --}}
-                      <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                      {{-- <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                               style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
-                              {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
-                          </span>
+                         <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%
+                          </span> --}}
 
+                          <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                        style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
+                        <i class="fa-solid fa-receipt"></i>
+                        {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
+                        aria-hidden="true"></i>6.7% --}}
+                    </span>
                 </td>
               </tr>
               </table>
@@ -112,33 +118,33 @@
               <table class="table table-bordered">
 
                 <tr>
-                  <td class = "profit w-50">
+                  {{-- <td class = "profit w-50">
                       <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">Order</a></p>
-                      <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">18</a></strong></span>
+                      <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">18</a></strong></span> --}}
                       {{-- <span class = "float-end mb-2">
                         <a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                         </a></span> --}}
-                        <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                        {{-- <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6; --}}
                                 {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
-                            </span>
-                  </td>
+                            {{-- </span>
+                  </td> --}}
 
 
-                  <td class = "profit w-50">
+                  {{-- <td class = "profit w-50">
                       <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark product" href = "{{ url('product') }}">Product Sold</a></p>
-                      <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">18</a></strong></span>
+                      <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">18</a></strong></span> --}}
                       {{-- <span class = "float-end mb-2">
                         <a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">
                         <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
                         </a></span> --}}
-                        <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
+                        {{-- <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6; --}}
                                 {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
-                            </span>
+                            {{-- </span>
 
-                  </td>
+                  </td> --}}
                 </tr>
                 </table>
 
@@ -160,7 +166,7 @@
                     </div>
 
 
-                              <div class="d-flex">
+                              {{-- <div class="d-flex">
                                 <table class="table table-bordered w-50">
                                   <tr>
                                     <th><span class = "float-start ms-2"><a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">Net Sales</a></span></th>
@@ -191,7 +197,7 @@
                                     <td>9</td>
                                   </tr>
                                 </table>
-                              </div>
+                              </div> --}}
                               {{-- <span>$20</span>
                               <span style = "padding-left: 450px;">9</span> --}}
 
@@ -380,34 +386,24 @@
 </div>
 
 <script>
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-// Ensure labels and dataValues align
-const labels = detailedData.map(data => months[data.month - 1]); // Map month index to names
-const dataValues = detailedData.map(data => data.total_sales); // Monthly sales totals
-</script>
+// Data for the first graph
+const dataForFirstGraph = @json($dataForFirstGraph);
 
+const monthss = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-<script>
-    const detailedData = @json($detailedData);
+        const labels1 = dataForFirstGraph.map(item => monthss[item.month - 1]);
+        const data1 = dataForFirstGraph.map(item => item.total_sales);
 
-    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-    const labelss = detailednData.map(data => months[data.month - 1]); // Extract month numbers
-    const dataValuess = detailedData.map(data => data.transaction_count); // Extract transaction counts
-     // Monthly sales totals
-        </script>
-
-    <script>
             const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
 
 const parabolaAreaChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: labels, // X-axis labels
+    labels: labels1, // X-axis labels
     datasets: [{
       label: '',
-      data: dataValues, // Y-axis values forming parabolas
+      data: data1, // Y-axis values forming parabolas
       borderColor: '#1699dd',
       backgroundColor: '#1699dd',
       fill: true,
@@ -426,7 +422,7 @@ const parabolaAreaChart = new Chart(ctx, {
           grid: {display: false},
       },
       y: {
-          ticks: {display: false},
+        ticks: {display: false},
         beginAtZero: true,
         suggestedMin: 0,
         suggestedMax: 10, // Adjusted Y-axis range for better visibility of parabola shapes
@@ -437,17 +433,27 @@ const parabolaAreaChart = new Chart(ctx, {
 });
 </script>
 
-      <!-- Another chart -->
-      <script>
+
+
+
+<script>
+
+    const dataForSecondGraph = @json($dataForSecondGraph);
+
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        const labels2 = dataForSecondGraph.map(item => months[item.month - 1]);
+        const data2 = dataForSecondGraph.map(item => item.count);
+
         const ctxs = document.getElementById('parabolaAreaCharts').getContext('2d');
 
         const parabolaAreaCharts = new Chart(ctxs, {
           type: 'line',
           data: {
-            labels: labelss, // X-axis labels
+            labels: labels2, // X-axis labels
             datasets: [{
               label: '',
-              data: dataValuess, // Y-axis values forming parabolas
+              data: data2, // Y-axis values forming parabolas
               borderColor: '#1699dd',
               backgroundColor: '#1699dd',
               fill: true,

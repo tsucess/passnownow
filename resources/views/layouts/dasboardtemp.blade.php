@@ -65,6 +65,7 @@
         }
 
 
+
         .detailedstat:hover {
             background-color: #1A69AF;
             color: #fff;

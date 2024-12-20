@@ -50,7 +50,7 @@
                             href = "{{ url('totalsales') }}">
                             <div class="profit">
                                 <span>Gross Sales</span> <br>
-                                <span>N23,523 </span>
+                                <span>&#x20A6; {{ number_format($totalAmount) }}</span>
                                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                                     style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
                                     {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
@@ -64,7 +64,7 @@
                             <div class="profit">
                                 {{-- class  = "fw-3" --}}
                                 <span class = "ms-2 ">Net Sales</span> <br>
-                                <span class  = "ms-2">N23,523</span>
+                                <span class  = "ms-2">&#x20A6; {{ number_format($totalAmount) }}</span>
                                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                                     style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
                                     {{-- <i class="fa-solid fa-receipt"></i> --}}
@@ -109,7 +109,7 @@
                 <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark" href = "{{ url('totalsales') }}">
                     <div class="profit">
                         <span>Total Sales</span> <br>
-                        <span>&#x20A6; 23, 523</span>
+                        <span>&#x20A6;{{ number_format($totalAmount) }}</span>
                         <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                             style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
                             {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}

@@ -176,7 +176,7 @@ Route::middleware('auth')->group(function () {
     //     return view('admin.detailedstat');
     // });
 
-    Route::get('/detailedstat', [ChartDataController::class, 'detailedAnalysis']);
+    Route::get('/detailedstat', [ChartDataController::class, 'showStats']);
 
 
     Route::get('/totalsales', [ChartDataController::class, 'salesAnalysis']);
