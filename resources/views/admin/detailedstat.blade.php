@@ -2,6 +2,14 @@
 
 
 @section('admincontent')
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Order Analysis</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2" id="topButton">
+            <a href="/dashboard" class="btn btn-secondary p-1 px-5 shadow">Back</a>
+        </div>
+    </div>
+</div>
 
 <div class = "row border border-1 border-black p-2 mt-3 mb-2">
     <div class = "border-bottom border-black border-1">
