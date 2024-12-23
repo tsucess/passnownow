@@ -282,11 +282,17 @@ Route::middleware('auth')->group(function () {
         return view('admin.checkoutdetails');
     });
 
+    Route::get('/order', [ChartDataController::class, 'orderAnalysis']);
 
 
+});
 
-    Route::post('/pay', [PaymentController::class, 'redirectToGateway'])->name('pay');
-    Route::get('/payment/callback', [PaymentController::class, 'handleGatewayCallback']);
+Route::get('/servicesubscription', function () {
+
+    $eoutput = Exams::get();
+    // $coutput = Classes::get();
+    $poutput = Transaction::where('services','services')->where('payment_status','success')->get();
+    return view('admin.servicesubscription', ['fetchClasses' => $poutput, 'fetchExams' => $eoutput]);
 });
 
 
@@ -303,14 +309,11 @@ Route::get('/product', function () {
     return view('admin.product');
 });
 
-Route::get('/order', [ChartDataController::class, 'orderAnalysis']);
 
 
 Route::get('/pastquestion', function () {
     return view('admin.pastquestion');
 });
-
-
 
 
 Route::get('/class', function () {
@@ -322,13 +325,7 @@ Route::get('/subscription', function () {
     return view('admin.subscription');
 });
 
-Route::get('/servicesubscription', function () {
 
-    $eoutput = Exams::get();
-    // $coutput = Classes::get();
-    $poutput = Pay::get();
-    return view('admin.servicesubscription', ['fetchClasses' => $poutput, 'fetchExams' => $eoutput]);
-});
 
 
 
@@ -398,8 +395,8 @@ Route::get('/dashboard', function () {
     $subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
-    $totalSum = Transaction::get()->sum('amount');
-    $totalOrders = Transaction::get()->count();
+    $totalSum = Transaction::get()->where('payment_status', 'success')->sum('amount');
+    $totalOrders = Transaction::get()->where('payment_status', 'success')->count();
     $users = Admin::where('role', 'user')->get();
     $totalSum = number_format($totalSum);
 

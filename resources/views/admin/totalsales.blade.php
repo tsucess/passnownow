@@ -15,8 +15,6 @@
 
 
     <div class="dropdown">
-        {{-- <a class="btn btn-light dropdown-toggle justify-content-between" style = "width: 300px;" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> --}}
-        {{-- <span class = "float-start"><strong>Month to date(Sep 1 - 30, 2024)</span></strong><br> --}}
         <span class = "float-start me-3">Month to Date:</span> <input type = "date"><br><br>
         <span class = "float-start ms-2 me-3">Previous year:</span> <input type = "date">
         <br><br>
@@ -35,13 +33,6 @@
     <table class="table table-bordered">
 
         <tr>
-            {{-- <td>
-                    <p class = "m-0 p-0 mt-2">Gross Sales</p>
-                    <span class = "float-start"><strong>$23, 523</strong></span>
-                    <span class = "float-end mb-2">
-                      <span class = "float-end rounded-5 mb-2 text-bg-success text-success p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                    </span>
-                </td> --}}
 
             <td>
                 <div class="d-flex justify-content-between border-bottom border-black border-1 px-0">
@@ -172,17 +163,17 @@
 
 
 
-          <!-- Pass sales data to JavaScript -->
+    <!-- Pass sales data to JavaScript -->
 
-          <script>
-            const salesData = @json($salesData); // Data passed from the controller
+    <script>
+        const salesData = @json($salesData); // Data passed from the controller
 
-            // Prepare data for Chart.js
-            // const months = ['0',  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-            // var a = [0];
-            // var b = [0];
-            //var data = a.concat(salesData.map(data => months[data.month]));
-            // const labels = data; // Extract month names
+        // Prepare data for Chart.js
+        // const months = ['0',  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        // var a = [0];
+        // var b = [0];
+        //var data = a.concat(salesData.map(data => months[data.month]));
+        // const labels = data; // Extract month names
 
 
         // const labels = a.concat(salesData.map(data => months[data.month])); // Extract month names
@@ -192,14 +183,13 @@
 
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-// Ensure labels and dataValues align
-const labels = salesData.map(data => months[data.month - 1]); // Map month index to names
-const dataValues = salesData.map(data => data.total_sales); // Monthly sales totals
+        // Ensure labels and dataValues align
+        const labels = salesData.map(data => months[data.month - 1]); // Map month index to names
+        const dataValues = salesData.map(data => data.total_sales); // Monthly sales totals
 
 
-            // console.log(dataValues);
-
-        </script>
+        // console.log(dataValues);
+    </script>
 
     <script>
         const ctx = document.getElementById('parabolaAreaChart').getContext('2d');
@@ -245,7 +235,7 @@ const dataValues = salesData.map(data => data.total_sales); // Monthly sales tot
     </script>
 
     <!-- Another chart -->
-{{--
+    {{--
     <script>
         const ctxs = document.getElementById('parabolaAreaCharts').getContext('2d');
 
