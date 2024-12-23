@@ -77,8 +77,8 @@
         <table class="table table-bordered">
 
               <tr>
-                <td class = "profit w-50 " >
-                    <p class = "m-0 p-0 mt-2 "><a class = "text-decoration-none text-dark" href = "{{ url('order') }}"><b>Total Sales</b></a></p>
+                <td class = "profit w-50" >
+                    <p class = "m-0 p-0 mt-2 "><a class = "text-decoration-none text-dark" href = "{{ url('order') }}">Total Sales</a></p>
                     <span class = "float-start"><a class = "text-decoration-none text-dark" href = "{{ url('order') }}" ><strong>N {{ number_format($totalAmount) }}</strong></a></span>
                     {{-- <span class = "float-end mb-2">
                       <a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">
