@@ -124,6 +124,21 @@ public function showStats()
       $services = Transaction::where('services', 'services')->count();
       $resources = Transaction::where('services', 'resources')->count();
 
+    // Sum the 'amount' column for the plans'
+    $netDaily = Transaction::where('plan_name', 'daily')->sum('amount');
+    $netWeekly = Transaction::where('plan_name', 'weekly')->sum('amount');
+    $netMonthly = Transaction::where('plan_name', 'monthly')->sum('amount');
+    $netQuarterly = Transaction::where('plan_name', '3 months')->sum('amount');
+    $netYearly = Transaction::where('plan_name', 'yearly')->sum('amount');
+
+
+      // Sum the 'amount' column where 'services' is 'resources'
+      $netResources = Transaction::where('services', 'resources')->sum('amount');
+
+     // Sum the 'amount' column where 'services' is 'services'
+            $netServices = Transaction::where('services', 'services')->sum('amount');
+
+
          // Sum the 'amount' column where 'status' is 'successful'
          $totalAmount = Transaction::where('payment_status', 'success')->sum('amount');
 
@@ -186,7 +201,7 @@ return [
 })->values();
 
 
-    return view('admin.detailedstat', compact('successfulOrders', 'services', 'resources', 'planDaily', 'planWeekly', 'planMonthly',  'planQuarterly', 'planAnnually',  'totalAmount', 'dataForFirstGraph', 'dataForSecondGraph'));
+    return view('admin.detailedstat', compact('successfulOrders', 'services', 'resources', 'netResources', 'netServices', 'netDaily',  'netWeekly', 'netMonthly', 'netQuarterly', 'netYearly', 'planDaily', 'planWeekly', 'planMonthly',  'planQuarterly', 'planAnnually',  'totalAmount', 'dataForFirstGraph', 'dataForSecondGraph'));
 }
 
 
