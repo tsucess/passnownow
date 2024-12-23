@@ -56,7 +56,7 @@
 
 
         .profit:hover a {
-            color: #fff;
+            color: #fff !important;
         }
 
 
