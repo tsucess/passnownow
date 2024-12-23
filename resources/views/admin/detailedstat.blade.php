@@ -286,13 +286,13 @@
           <tr>
             <td class = "text-primary">Resources</td>
             <td>{{$resources}}</td>
-            <td>N {{$netResources}}</td>
+            <td>N {{number_format($netResources)}}</td>
           </tr>
 
           <tr>
             <td class="text-primary">Services</td>
             <td>{{$services}}</td>
-            <td>N {{$netServices}}</td>
+            <td>N {{number_format($netServices)}}</td>
           </tr>
 
         </tbody>
@@ -318,33 +318,33 @@
           <tr>
             <td class = "text-primary">Daily Plan</td>
             <td>{{$planDaily}}</td>
-            <td>N {{$netDaily}}</td>
+            <td>N {{number_format($netDaily)}}</td>
           </tr>
 
 
           <tr></tr>
             <td class="text-primary">Weekly plan</td>
             <td>{{$planWeekly}}</td>
-            <td>N {{$netWeekly}}</td>
+            <td>N {{number_format($netWeekly)}}</td>
           </tr>
 
 
           <tr>
             <td class="text-primary">Monthly plan</td>
             <td>{{$planMonthly}}</td>
-            <td>N {{$netMonthly}} </td>
+            <td>N {{number_format($netMonthly)}} </td>
           </tr>
 
           <tr></tr>
             <td class="text-primary">3 Months plan</td>
             <td>{{$planQuarterly}}</td>
-            <td>N {{$netQuarterly}} </td>
+            <td>N {{number_format($netQuarterly)}} </td>
           </tr>
 
           <tr></tr>
             <td class="text-primary">Annually plan</td>
             <td>{{$planAnnually}}</td>
-            <td>N {{$netYearly}} </td>
+            <td>N {{number_format($netYearly)}} </td>
           </tr>
         </tbody>
       </table>
