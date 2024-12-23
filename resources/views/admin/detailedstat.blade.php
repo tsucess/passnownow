@@ -1,5 +1,6 @@
 @extends('layouts.dasboardtemp')
 
+
 @section('admincontent')
 
 <div class = "row border border-1 border-black p-2 mt-3 mb-2">
@@ -76,8 +77,8 @@
         <table class="table table-bordered">
 
               <tr>
-                <td class = "profit w-50" >
-                    <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark" href = "{{ url('order') }}"><b>Total Sales</b></a></p>
+                <td class = "profit w-50 " >
+                    <p class = "m-0 p-0 mt-2 "><a class = "text-decoration-none text-dark" href = "{{ url('order') }}"><b>Total Sales</b></a></p>
                     <span class = "float-start"><a class = "text-decoration-none text-dark" href = "{{ url('order') }}" ><strong>N {{ number_format($totalAmount) }}</strong></a></span>
                     {{-- <span class = "float-end mb-2">
                       <a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">
@@ -307,26 +308,26 @@
     <table class="table">
         <thead>
           <tr>
-            <th colspan="3">Top categories - Item sold</th>
+            <th colspan="3">Categories</th>
           </tr>
         </thead>
 
         <tbody>
           <tr class = "table-secondary" >
             <td>Category</td>
-            <td>Item sold</td>
+            <td>Services Rendered</td>
             <td>Net Sides</td>
           </tr>
 
           <tr>
             <td class = "text-primary">Resources</td>
-            <td>100</td>
+            <td>{{$resources}}</td>
             <td>#100,000.00</td>
           </tr>
 
           <tr>
             <td class="text-primary">Services</td>
-            <td>200</td>
+            <td>{{$services}}</td>
             <td>#100,000.00</td>
           </tr>
 
@@ -341,42 +342,44 @@
       <table class="table">
         <thead>
           <tr>
-            <th colspan="3">Top products - Items sold</th>
+            <th colspan="3">Services</th>
           </tr>
         </thead>
         <tbody>
           <tr class = "table-secondary">
             <td>Product</td>
-            <td>Item sold</td>
+            <td>Services Rendered</td>
             <td>Net Sides</td>
           </tr>
           <tr>
             <td class = "text-primary">Daily Plan</td>
-            <td>100</td>
+            <td>{{$planDaily}}</td>
             <td>#100,000.00</td>
           </tr>
 
-          <tr>
-            <td class="text-primary">Monthly plan</td>
-            <td>200</td>
-            <td>#100,000.00</td>
-          </tr>
 
           <tr></tr>
             <td class="text-primary">Weekly plan</td>
-            <td>200</td>
+            <td>{{$planWeekly}}</td>
+            <td>#100,000.00</td>
+          </tr>
+
+
+          <tr>
+            <td class="text-primary">Monthly plan</td>
+            <td>{{$planMonthly}}</td>
             <td>#100,000.00</td>
           </tr>
 
           <tr></tr>
             <td class="text-primary">3 Months plan</td>
-            <td>200</td>
+            <td>{{$planQuarterly}}</td>
             <td>#100,000.00</td>
           </tr>
 
           <tr></tr>
             <td class="text-primary">Annually plan</td>
-            <td>200</td>
+            <td>{{$planAnnually}}</td>
             <td>#100,000.00</td>
           </tr>
         </tbody>

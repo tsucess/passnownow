@@ -114,6 +114,16 @@ public function showStats()
         //successful order
       $successfulOrders = Transaction::where('payment_status', 'success')->count();
 
+
+      //plan name
+      $planDaily = Transaction::where('plan_name', 'daily')->count();
+      $planWeekly = Transaction::where('plan_name', 'weekly')->count();
+      $planMonthly = Transaction::where('plan_name', 'monthly')->count();
+      $planQuarterly = Transaction::where('plan_name', '3 months')->count();
+      $planAnnually = Transaction::where('plan_name', 'yearly')->count();
+      $services = Transaction::where('services', 'services')->count();
+      $resources = Transaction::where('services', 'resources')->count();
+
          // Sum the 'amount' column where 'status' is 'successful'
          $totalAmount = Transaction::where('payment_status', 'success')->sum('amount');
 
@@ -176,7 +186,7 @@ return [
 })->values();
 
 
-    return view('admin.detailedstat', compact('successfulOrders',  'totalAmount', 'dataForFirstGraph', 'dataForSecondGraph'));
+    return view('admin.detailedstat', compact('successfulOrders', 'services', 'resources', 'planDaily', 'planWeekly', 'planMonthly',  'planQuarterly', 'planAnnually',  'totalAmount', 'dataForFirstGraph', 'dataForSecondGraph'));
 }
 
 
