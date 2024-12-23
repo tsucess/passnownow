@@ -276,7 +276,7 @@
         </div>
     @else
         <div class ="row mb-3">
-            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden  h-50">
+            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden" style = "height:100px;">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
 
@@ -295,9 +295,10 @@
                         <div class="progress-bar bg-primary" style="width: 75%"></div>
                     </div> --}}
                 </a>
+
             </div>
 
-            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary h-75  overflow-hidden">
+        <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden" style="height: 100px;">
                 <span class = "ms-2 mt-3">Total Administrators</span><br>
                 <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"

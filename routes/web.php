@@ -23,6 +23,7 @@ use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
 use App\Models\Exams;
 use App\Http\Controllers\PayController;
+use App\Http\Controllers\ChartDataController;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
@@ -171,16 +172,17 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/detailedstat', function () {
-        return view('admin.detailedstat');
-    });
+    // Route::get('/detailedstat', function () {
+    //     return view('admin.detailedstat');
+    // });
 
-    Route::get('/totalsales', function () {
-        return view('admin.totalsales');
-    });
+    Route::get('/detailedstat', [ChartDataController::class, 'showStats']);
+
+
+    Route::get('/totalsales', [ChartDataController::class, 'salesAnalysis']);
 });
 
-require __DIR__ . '/auth.php';
+// require __DIR__ . '/auth.php';
 
 
 
@@ -280,6 +282,17 @@ Route::middleware('auth')->group(function () {
         return view('admin.checkoutdetails');
     });
 
+    Route::get('/order', [ChartDataController::class, 'orderAnalysis']);
+
+
+});
+
+Route::get('/servicesubscription', function () {
+
+    $eoutput = Exams::get();
+    // $coutput = Classes::get();
+    $poutput = Transaction::where('services','services')->where('payment_status','success')->get();
+    return view('admin.servicesubscription', ['fetchClasses' => $poutput, 'fetchExams' => $eoutput]);
 });
 
 
@@ -296,15 +309,11 @@ Route::get('/product', function () {
     return view('admin.product');
 });
 
-Route::get('/order', function () {
-    return view('admin.order');
-});
+
 
 Route::get('/pastquestion', function () {
     return view('admin.pastquestion');
 });
-
-
 
 
 Route::get('/class', function () {
@@ -316,13 +325,7 @@ Route::get('/subscription', function () {
     return view('admin.subscription');
 });
 
-Route::get('/servicesubscription', function () {
 
-    $eoutput = Exams::get();
-    // $coutput = Classes::get();
-    $poutput = Pay::get();
-    return view('admin.servicesubscription', ['fetchClasses' => $poutput, 'fetchExams' => $eoutput]);
-});
 
 
 
@@ -392,8 +395,8 @@ Route::get('/dashboard', function () {
     $subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
-    $totalSum = Transaction::get()->sum('amount');
-    $totalOrders = Transaction::get()->count();
+    $totalSum = Transaction::get()->where('payment_status', 'success')->sum('amount');
+    $totalOrders = Transaction::get()->where('payment_status', 'success')->count();
     $users = Admin::where('role', 'user')->get();
     $totalSum = number_format($totalSum);
 

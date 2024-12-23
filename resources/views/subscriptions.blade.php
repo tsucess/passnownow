@@ -49,7 +49,7 @@
                 <div class="card plan sty">
                     <div class="card-body top">
                         <h5 class="card-title">Daily Plan</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <p class="card-text">Access to all class notes and past questions</p>
                         <h2 class="primary_header">N300</h2>
                         <p class="card-text">per day</p>
                         <hr>
@@ -86,7 +86,7 @@
                 <div class="card plan special sty">
                     <div class="card-body top">
                         <h5 class="card-title">Monthly Plan</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <p class="card-text">Access to all class notes and past questions</p>
                         <h2 class="primary_header">N1,100</h2>
                         <p class="card-text">per month</p>
                         <hr>
@@ -123,7 +123,7 @@
                 <div class="card plan sty">
                     <div class="card-body top">
                         <h5 class="card-title">Weekly Plan</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <p class="card-text">Access to all class notes and past questions</p>
                         <h2 class="primary_header">N500</h2>
                         <p class="card-text">per week</p>
                         <hr>
@@ -160,7 +160,7 @@
                 <div class="card plan sty">
                     <div class="card-body top">
                         <h5 class="card-title">Quaterly Plan</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <p class="card-text">Access to all class notes and past questions</p>
                         <h2 class="primary_header">N2,600</h2>
                         <p class="card-text">For 4 Months</p>
                         <hr>
@@ -197,7 +197,7 @@
                 <div class="card plan special sty">
                     <div class="card-body top">
                         <h5 class="card-title">Half Year Plan</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <p class="card-text">Access to all class notes and past questions</p>
                         <h2 class="primary_header">N5,100</h2>
                         <p class="card-text">For 6 Months</p>
                         <hr>
@@ -234,7 +234,7 @@
                 <div class="card plan sty">
                     <div class="card-body top">
                         <h5 class="card-title">Year Plan</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                        <p class="card-text">Access to all class notes and past questions</p>
                         <h2 class="primary_header">N10,100</h2>
                         <p class="card-text">per year</p>
                         <hr>
@@ -272,7 +272,7 @@
             <div class="col-12 text-center mb-5 header">
                 <h6>Buy a plan</h6>
                 <p class="text-dark">
-                    Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum.
+                    Subscribe to a plan today!  Embrace the benefits and start your journey towards success now
                 </p>
             </div>
             <div class="col-12 col-md-6">
@@ -281,9 +281,9 @@
                 </div>
                 <h5 class="primary_header mt-5 mb-3">Payment Using ATM Card</h5>
                 <ul>
-                    <li>Click on “Pay Using ATM Card”</li>
-                    <li>Fill in the required fields to place order</li>
-                    <li>Click on “Place Order” at the button right of the page</li>
+                    <li>Click on “Pay Using Bank transfer”</li>
+                    <li>Fill in the required fields to make payment</li>
+                    <li>Click on “place order” at the button right of the page</li>
                     <li>You will get an automatic confirmation</li>
                     <li>This will take effect and your account would be activated</li>
                     <li>You can now gain access to a passnownow.com Class Notes and Past Questions</li>
@@ -295,9 +295,9 @@
                 </div>
                 <h5 class="primary_header mt-5 mb-3">Payment Using Bank Transfer</h5>
                 <ul>
-                    <li>Click on “Pay Using Bank Tranfer”</li>
+                    <li>Click on “Pay Using make payment”</li>
                     <li>Fill in the required fields to place order</li>
-                    <li>Click on “Place Order” at the button right of the page</li>
+                    <li>Click on “Pay Now” at the bottom right of the page</li>
                     <li>You will get an manual confirmation</li>
                     <li>This can take up to four hours before your account is activated</li>
                     <li>You can now gain access to a passnownow.com Class Notes and Past Questions</li>

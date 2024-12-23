@@ -14,11 +14,12 @@
         </div>
         <div class="row">
             <div class="col-12 mb-3 mb-md-0 shadow subscription_history update">
-                {{-- <table>
+                <table id="sub-table">
                     <thead>
                         <tr>
-                            <th class="col-4">Package</th>
+                            <th class="col-3">Package</th>
                             <th class="col-1">Price</th>
+                            <th class="col-1">Payment_status</th>
                             <th class="col-1">Expiry date</th>
                             <th class="col-1">Status</th>
                         </tr>
@@ -33,6 +34,9 @@
                                     </td>
                                     <td>
                                         <h6>N{{ number_format($history->amount) }}</h6>
+                                    </td>
+                                    <td>
+                                        <h6>{{ $history->payment_status }}</h6>
                                     </td>
                                     <td>
                                         <h6>{{ $history->expiry_date }}</h6>
@@ -61,8 +65,23 @@
                             </tr>
                         @endif
                     </tbody>
-                </table> --}}
+                </table>
             </div>
         </div>
     </section>
+
+
+
+    <script src="{{ 'js/table/jquery-3.3.1.min.js' }}"></script>
+    <script src="{{ 'js/jquery.min.js' }}"></script>
+    <script src="{{ 'js/table/jquery.dataTables.min.js' }}"></script>
+    <script src="{{ 'js/table/dataTables.bootstrap.min.js' }}"></script>
+
+
+
+
+    <script>
+        let table = new DataTable('#sub-table');
+    </script>
+
 @endsection
