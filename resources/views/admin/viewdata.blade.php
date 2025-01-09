@@ -38,7 +38,7 @@
                                 <div>
                                     <p class="text-sm mt-2 text-danger">
                                         {{ __('Your email address is unverified.') }}
-                
+
                                         <button form="send-verification" class="underline text-sm hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                             {{ __('Click here to re-send the verification email.') }}
                                         </button>
@@ -58,10 +58,10 @@
                                         </p>
                                     @endif
                                 </div>
-                            @endif 
-                        
+                            @endif
+
                         </div>
-                        @if ($user->role !== 'user' ) 
+                        @if ($user->role !== 'user' )
                             <div class="mb-3">
                                 <x-input-label class="form-label" :value="__('User Role')" />
                                 <select name="role" class="form-control py-2" :value="old('role', $user->role)">
@@ -106,13 +106,14 @@
                         </div>
                     </div>
                 </form>
-                
+
             </div>
             <div class="col-12 col-lg-5 profile">
                 <div class="image_wrapper">
                     <img src="{{asset('images/avatar.png')}}" class="profile_image" alt="">
                 </div>
-                <h5>Winner Effiong</h5>
+                {{-- <h5>Winner Effiong</h5> --}}
+                <h6>{{ ucfirst(Auth::user()->first_name) }}  {{ ucfirst(Auth::user()->last_name) }} </h6>
                 <button class="btn">Change profile photo</button>
                 <br>
                 <a href="#">Delete profile photo</a href="#">
@@ -120,7 +121,7 @@
         </div>
     </section>
 
-    @if ($user->role === 'user' ) 
+    @if ($user->role === 'user' )
     <section class="container-fluid history__container">
         <div class="row">
             <div class="col-12 mt-5">

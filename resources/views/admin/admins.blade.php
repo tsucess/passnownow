@@ -68,7 +68,7 @@
                             @endif
                           </td>
                         <td>{{ $Admin['created_at'] }}</td>
-                        <td> 
+                        <td>
                             <a href="{{ route('admin.edit', ['data' => $Admin])}}" class="btn controlbtn sub p-1 px-3">view</a>
                             <a href="{{ route('admin.destroy', ['data' => $Admin->id])}}" class="btn btn-danger p-1 px-3">Delete</a>
                         </td>
@@ -92,7 +92,7 @@
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content" id="form_add">
-              
+
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="addModalLabel">Add Admin</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
