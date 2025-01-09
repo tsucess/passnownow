@@ -116,27 +116,27 @@ public function showStats()
 
 
       //plan name
-      $planDaily = Transaction::where('plan_name', 'daily')->count();
-      $planWeekly = Transaction::where('plan_name', 'weekly')->count();
-      $planMonthly = Transaction::where('plan_name', 'monthly')->count();
-      $planQuarterly = Transaction::where('plan_name', '3 months')->count();
-      $planAnnually = Transaction::where('plan_name', 'yearly')->count();
-      $services = Transaction::where('services', 'services')->count();
-      $resources = Transaction::where('services', 'resources')->count();
+      $planDaily = Transaction::where('plan_name', 'daily')->where('payment_status', 'success')->count();
+      $planWeekly = Transaction::where('plan_name', 'weekly')->where('payment_status', 'success')->count();
+      $planMonthly = Transaction::where('plan_name', 'monthly')->where('payment_status', 'success')->count();
+      $planQuarterly = Transaction::where('plan_name', '3 months')->where('payment_status', 'success')->count();
+      $planAnnually = Transaction::where('plan_name', 'yearly')->where('payment_status', 'success')->count();
+      $services = Transaction::where('services', 'services')->where('payment_status', 'success')->count();
+      $resources = Transaction::where('services', 'resources')->where('payment_status', 'success')->count();
 
     // Sum the 'amount' column for the plans'
-    $netDaily = Transaction::where('plan_name', 'daily')->sum('amount');
-    $netWeekly = Transaction::where('plan_name', 'weekly')->sum('amount');
-    $netMonthly = Transaction::where('plan_name', 'monthly')->sum('amount');
-    $netQuarterly = Transaction::where('plan_name', '3 months')->sum('amount');
-    $netYearly = Transaction::where('plan_name', 'yearly')->sum('amount');
+    $netDaily = Transaction::where('plan_name', 'daily')->where('payment_status', 'success')->sum('amount');
+    $netWeekly = Transaction::where('plan_name', 'weekly')->where('payment_status', 'success')->sum('amount');
+    $netMonthly = Transaction::where('plan_name', 'monthly')->where('payment_status', 'success')->sum('amount');
+    $netQuarterly = Transaction::where('plan_name', '3 months')->where('payment_status', 'success')->sum('amount');
+    $netYearly = Transaction::where('plan_name', 'yearly')->where('payment_status', 'success')->sum('amount');
 
 
       // Sum the 'amount' column where 'services' is 'resources'
-      $netResources = Transaction::where('services', 'resources')->sum('amount');
+      $netResources = Transaction::where('services', 'resources')->where('payment_status', 'success')->sum('amount');
 
      // Sum the 'amount' column where 'services' is 'services'
-            $netServices = Transaction::where('services', 'services')->sum('amount');
+            $netServices = Transaction::where('services', 'services')->where('payment_status', 'success')->sum('amount');
 
 
          // Sum the 'amount' column where 'status' is 'successful'

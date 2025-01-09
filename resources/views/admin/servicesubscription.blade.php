@@ -98,14 +98,13 @@
         {{-- <php if (isset($output)) {?> --}}
         <div class="table-responsive mb-5 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
-                <thead class="bg-primary text-white">
+                <thead class="table-secondary">
                     <tr>
                         <th scope="col">S/N</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Last Name</th>
-                        {{-- <th scope="col">Avatar</th> --}}
                         <th scope="col">Email</th>
-                        <th scope="col">Services</th>
+                        <th scope="col" class="col-3">Services</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Phone Number</th>
                         <th scope="col">Status</th>
@@ -119,33 +118,14 @@
                             <th>{{ ++$sn }}</th>
                             <td>{{ $Class->first_name }}</td>
                             <td>{{ $Class->last_name }}</td>
-                            {{-- <td>{{ $Class->avatar }}</td> --}}
                             <td>{{ $Class->email}}</td>
-                            <td>{{ $Class->plan}}</td>
+                            <td>{{ $Class->plan_name}}</td>
                             <td>
-                                @if($Class->plan === 'daily')
-                                <p>{{ 300}}</p>
-
-                                @elseif($Class->plan === 'weekly')
-                                <p> {{ 500 }}
-
-                                @elseif($Class->plan === 'monthly')
-                                <p> {{ 1100 }}
-
-                                @elseif($Class->plan === 'quarterly')
-                                <p> {{ 2600 }}
-
-                               @elseif($Class->plan === 'halfly')
-                                <p> {{ 5100 }}
-
-                              @elseif($Class->plan === 'yearly')
-                             <p> {{ 10100 }}
-
-                            @endif
+                                {{ $Class->amount}}
                             </td>
                             <td>{{ $Class->phone}}</td>
                             <td>
-                                
+                                {{ $Class->active_status}}
                             </td>
                         </tr>
                     @endforeach

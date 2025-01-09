@@ -2,57 +2,14 @@
 
 
 @section('admincontent')
+
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Order Analysis</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-        <div class="btn-group me-2" id="topButton">
-            <a href="/dashboard" class="btn btn-secondary p-1 px-5 shadow">Back</a>
-        </div>
-    </div>
-</div>
-
-<div class = "row border border-1 border-black p-2 mt-3 mb-2">
-    <div class = "border-bottom border-black border-1">
-        <span>Stats Overview</span>
-        <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
-    </div>
-    <div class="d-flex justify-content-between border-bottom border-black border-1">
-        <div class="pt-2" style = "width: 100px;">Today</div>
-        <div class="p-2 text-black">Week to Date</div>
-        <div class="p-2 text-black pe-5 float-start">Month to Date</div>
-    </div>
-
-    <div class="d-flex justify-content-between border-bottom border-black border-1 px-0">
-        <div class = "profit w-100 border-start border-black border-1 m-0">
-            <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark"
-                href = "{{ url('totalsales') }}">
-                <div class="profit">
-                    <span>Total Sales</span> <br>
-                    <span>N 0 </span>
-                    <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                        style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
-                        {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
-                    </span>
-                </div>
-            </a>
-        </div>
-        <div class = "profit w-100 border-start border-black border-1 m-0">
-            <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark" href = "{{ url('order') }}">
-                <div class="profit">
-                    {{-- class  = "fw-3" --}}
-                    <span class = "ms-2 ">Orders</span> <br>
-                    <span class  = "ms-2">N 0 </span>
-                    <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                        style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
-                        <i class="fa-solid fa-receipt"></i>
-                        {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                        aria-hidden="true"></i>6.7% --}}
-                    </span>
-
-                </div>
-            </a>
-        </div>
-    </div>
+  <h1 class="h2">Detailed Statistics</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2" id="topButton">
+          <a href="/dashboard" class="btn btn-secondary p-1 px-5 shadow">Back</a>
+      </div>
+  </div>
 </div>
 
 
@@ -102,15 +59,6 @@
                 <td class = "w-50 profit">
                     <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark profit" href = "{{ url('order') }}">Order</a></p>
                     <span class = "float-start ps-1"><a class = "text-decoration-none text-dark" href = "{{ url('product') }}"><b>{{ $successfulOrders }}</b></a></span>
-                    {{-- <span class = "float-end mb-2">
-                      <a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">
-                      <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                      </a></span> --}}
-                      {{-- <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                              style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
-                         <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%
-                          </span> --}}
-
                           <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                         style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
                         <i class="fa-solid fa-receipt"></i>
@@ -125,36 +73,6 @@
 
 
               <table class="table table-bordered">
-
-                <tr>
-                  {{-- <td class = "profit w-50">
-                      <p class = "m-0 p-0 mt-2" ><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">Order</a></p>
-                      <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">18</a></strong></span> --}}
-                      {{-- <span class = "float-end mb-2">
-                        <a class = "text-decoration-none text-dark order" href = "{{ url('order') }}">
-                        <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                        </a></span> --}}
-                        {{-- <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6; --}}
-                                {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
-                            {{-- </span>
-                  </td> --}}
-
-
-                  {{-- <td class = "profit w-50">
-                      <p class = "m-0 p-0 mt-2"><a class = "text-decoration-none text-dark product" href = "{{ url('product') }}">Product Sold</a></p>
-                      <span class = "float-start"><strong><a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">18</a></strong></span> --}}
-                      {{-- <span class = "float-end mb-2">
-                        <a class = "text-decoration-none text-dark order" href = "{{ url('product') }}">
-                        <span class = "float-end rounded-5 mb-2 text-white p-2 bg-opacity-25 opacity-10 pe-3" style="font-size: 8px; background-color: red;"><i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7%</span>
-                        </a></span> --}}
-                        {{-- <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6; --}}
-                                {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
-                            {{-- </span>
-
-                  </td> --}}
-                </tr>
                 </table>
 
 
@@ -330,13 +248,13 @@
           <tr>
             <td class = "text-primary">Resources</td>
             <td>{{$resources}}</td>
-            <td>N {{$netResources}}</td>
+            <td>N {{number_format($netResources)}}</td>
           </tr>
 
           <tr>
             <td class="text-primary">Services</td>
             <td>{{$services}}</td>
-            <td>N {{$netServices}}</td>
+            <td>N {{number_format($netServices)}}</td>
           </tr>
 
         </tbody>
@@ -362,33 +280,33 @@
           <tr>
             <td class = "text-primary">Daily Plan</td>
             <td>{{$planDaily}}</td>
-            <td>N {{$netDaily}}</td>
+            <td>N {{number_format($netDaily)}}</td>
           </tr>
 
 
           <tr></tr>
             <td class="text-primary">Weekly plan</td>
             <td>{{$planWeekly}}</td>
-            <td>N {{$netWeekly}}</td>
+            <td>N {{number_format($netWeekly)}}</td>
           </tr>
 
 
           <tr>
             <td class="text-primary">Monthly plan</td>
             <td>{{$planMonthly}}</td>
-            <td>N {{$netMonthly}} </td>
+            <td>N {{number_format($netMonthly)}} </td>
           </tr>
 
           <tr></tr>
             <td class="text-primary">3 Months plan</td>
             <td>{{$planQuarterly}}</td>
-            <td>N {{$netQuarterly}} </td>
+            <td>N {{number_format($netQuarterly)}} </td>
           </tr>
 
           <tr></tr>
             <td class="text-primary">Annually plan</td>
             <td>{{$planAnnually}}</td>
-            <td>N {{$netYearly}} </td>
+            <td>N {{number_format($netYearly)}} </td>
           </tr>
         </tbody>
       </table>
