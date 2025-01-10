@@ -47,12 +47,12 @@
                                 @endif
                               </td>
                             <td>{{ $User['created_at'] }}</td>
-                            <td> 
+                            <td>
                                 <a href="{{ route('admin.edit', ['data' => $User])}}" class="btn btn-primary controlbtn sub p-1 px-3">view</a>
                                 <a href="{{ route('admin.destroy', ['data' => $User->id])}}" class="btn btn-danger p-1 px-3">Delete</a>
-                                
+
                             </td>
-    
+
                         </tr>
                     @endforeach
                 </tbody>
@@ -69,7 +69,7 @@
      aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content" id="form_add">
-           
+
              <div class="modal-header">
                  <h1 class="modal-title fs-5" id="addModalLabel">Add Admin</h1>
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -83,14 +83,14 @@
                          <div class="col-6">
                              <div class="mb-3">
                                  <x-input-label :value="__('First Name')" />
-                                 <x-text-input type="text" class="form-control" name="fname" :value="old('fname')" aria-describedby="textBlock" placeholder="First Name" required />
+                                 <x-text-input type="text" class="form-control" id = "fname" name="fname" :value="old('fname')" aria-describedby="textBlock" placeholder="First Name" required />
                                  <x-input-error :messages="$errors->get('fname')" class="mt-2 text-danger" />
                              </div>
                          </div>
                          <div class="col-6">
                              <div class="mb-3">
                                  <x-input-label :value="__('Last Name')" />
-                                 <x-text-input type="text" class="form-control" name="lname" :value="old('lname')" aria-describedby="textBlock" placeholder="Last Name" required />
+                                 <x-text-input type="text" class="form-control" id = "lname" name="lname" :value="old('lname')" aria-describedby="textBlock" placeholder="Last Name" required />
                                  <x-input-error :messages="$errors->get('lname')" class="mt-2 text-danger" />
                              </div>
                          </div>
@@ -114,7 +114,7 @@
                      <div class="row">
                          <div class="col-12">
                              <div class="mb-3">
-                                
+
                              <x-text-input  class="form-control" type="text" name="role" :value="old('role')"  value="user" required readonly />
                                  {{-- <x-input-label class="form-label" :value="__('User Role')" /> --}}
                                  {{-- <select name="role" class="form-control py-2">

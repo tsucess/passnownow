@@ -113,7 +113,14 @@
                     <img src="{{asset('images/avatar.png')}}" class="profile_image" alt="">
                 </div>
                 {{-- <h5>Winner Effiong</h5> --}}
-                <h6>{{ ucfirst(Auth::user()->first_name) }}  {{ ucfirst(Auth::user()->last_name) }} </h6>
+                {{-- <h6>{{ ucfirst(Auth::user()->first_name) }}  {{ ucfirst(Auth::user()->last_name) }} </h6> --}}
+                <script>
+                   var x =  document.getElementById('firstname').value;
+                   var y =  document.getElementById('lastname').value;
+                   var z = x + " " +  y
+                   document.write(z +  "<br>");
+                </script>
+
                 <button class="btn">Change profile photo</button>
                 <br>
                 <a href="#">Delete profile photo</a href="#">
