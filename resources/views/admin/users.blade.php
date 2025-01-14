@@ -50,8 +50,10 @@
                             <td>
                                 <a href="{{ route('admin.edit', ['data' => $User])}}" class="btn btn-primary controlbtn sub p-1 px-3">view</a>
                                 <a href="{{ route('admin.destroy', ['data' => $User->id])}}" class="btn btn-danger p-1 px-3">Delete</a>
+                             </td>
 
-                            </td>
+                            {{-- <a href="{{ route('admin.edit', ['data' => $Admin])}}" class="btn controlbtn sub p-1 px-3">view</a>
+                            <a href="{{ route('admin.destroy', ['data' => $Admin->id])}}" class="btn btn-danger p-1 px-3">Delete</a> --}}
 
                         </tr>
                     @endforeach

@@ -15,6 +15,8 @@
 }
   </style>
 
+
+
 @section('content')
     <Section class="container-fluid container__banner">
         <div class="row">
@@ -28,12 +30,42 @@
             <div class="col-12 col-md-6 search__form">
                 <form action="">
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" value="" placeholder="Search Subject">
+                    <input type="text" id = "searchInput" value="" placeholder="Search Subject">
                     <input type="button" value="Search">
                 </form>
             </div>
         </div>
     </section>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const subjectContainers = document.querySelectorAll('.myWrapper');
+
+            searchInput.addEventListener('input', () => {
+                const filter = searchInput.value.toLowerCase().trim();
+
+                let found = false;
+
+                subjectContainers.forEach((container) => {
+                    const subjectName = container.querySelector('h5').textContent.toLowerCase();
+
+                    if (subjectName.includes(filter)) {
+                        container.style.display = ''; // Show matching subject
+                        found = true;
+                    } else {
+                        container.style.display = 'none'; // Hide non-matching subjects
+                    }
+                });
+
+                if (!found && filter) {
+                    console.log('No subjects found matching your search.');
+                }
+            });
+        });
+    </script>
+
 
 
     <section class="container-fluid container__subjects ">

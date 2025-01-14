@@ -132,6 +132,17 @@
         /* .sty {}
   animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
         */
+
+        .filePhoto
+        {
+            margin: 20px;
+        }
+
+        input[type=file]::file-selector-button
+        {
+            background-color: #aebaca;
+        }
+
     </style>
 </head>
 

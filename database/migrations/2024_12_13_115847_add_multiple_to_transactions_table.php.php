@@ -27,7 +27,7 @@ return new class extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             //
-            $table->dropColumn(['phone','services', 'active_status']);
+           // $table->dropColumn(['phone','services', 'active_status']);
         });
     }
 };

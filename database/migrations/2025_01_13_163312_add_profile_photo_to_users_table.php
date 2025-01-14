@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('pays', function (Blueprint $table) {
-            //
-            $table->string('phone', 20)->after('plan');
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('profile_photo')->nullable()->after('email'); // Add column for profile photo
         });
     }
 
@@ -22,9 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('pays', function (Blueprint $table) {
-            //
-            $table->dropColumn('phone');
+        Schema::table('users', function (Blueprint $table) {
         });
     }
 };
