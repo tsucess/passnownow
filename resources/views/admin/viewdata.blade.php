@@ -70,6 +70,10 @@
                                     <option value="admin">Admin</option>
                                 </select>
                             </div>
+                            @else
+                            <div class="mb-3">
+                                <input type="hidden" value ="{{$user->role}}" name="role" class="form-control py-2" :value="old('role', $user->role)">
+                            </div>
                         @endif
                         <div class="mb-3">
                             <input type="submit" class="btn btn-primary" value="Save changes" />

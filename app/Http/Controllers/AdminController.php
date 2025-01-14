@@ -24,7 +24,7 @@ class AdminController extends Controller
         $users = Admin::wherenot('role', 'user')->get();
         return view('admin.admins', ['fetchAdmins' => $users]);
     }
-    
+
     public function usersonly()
     {
         /**
@@ -133,12 +133,25 @@ class AdminController extends Controller
             'role' => $request->role,
         ]);
 
-        if ($done) {
-            // return back()->with('status', 'User updated Successfully');
-            return redirect('/admins')->with('success', 'User updated Successfully');
-        } else {
-            return redirect('/admins')->with('error', 'Something went wrong');
-        };
+        if ($request->role === "user") {
+            if ($done) {
+                // return back()->with('status', 'User updated Successfully');
+                return redirect('/users')->with('success', 'User updated Successfully');
+            } else {
+                return redirect('/users')->with('error', 'Something went wrong');
+            };
+        }
+        else{
+            if ($done) {
+                // return back()->with('status', 'User updated Successfully');
+                return redirect('/admins')->with('success', 'User updated Successfully');
+            } else {
+                return redirect('/admins')->with('error', 'Something went wrong');
+            };
+
+        }
+
+
     }
 
     /**
@@ -163,7 +176,6 @@ class AdminController extends Controller
             return back()->with('status', 'error');
             // return redirect('/admins')->with('error', 'Something went wrong');
         };
-       
     }
 
 
