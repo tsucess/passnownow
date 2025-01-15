@@ -133,12 +133,25 @@ class AdminController extends Controller
             'role' => $request->role,
         ]);
 
-        if ($done) {
-            // return back()->with('status', 'User updated Successfully');
-            return redirect('/admins')->with('success', 'User updated Successfully');
-        } else {
-            return redirect('/admins')->with('error', 'Something went wrong');
-        };
+        if ($request->role === "user") {
+            if ($done) {
+                // return back()->with('status', 'User updated Successfully');
+                return redirect('/users')->with('success', 'User updated Successfully');
+            } else {
+                return redirect('/users')->with('error', 'Something went wrong');
+            };
+        }
+        else{
+            if ($done) {
+                // return back()->with('status', 'User updated Successfully');
+                return redirect('/admins')->with('success', 'User updated Successfully');
+            } else {
+                return redirect('/admins')->with('error', 'Something went wrong');
+            };
+
+        }
+
+
     }
 
     /**
@@ -163,7 +176,10 @@ class AdminController extends Controller
             return back()->with('status', 'error');
             // return redirect('/admins')->with('error', 'Something went wrong');
         };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4d02ed871aafbb50401b88a5bf243db4b7ce30c0
     }
 
 
