@@ -24,7 +24,7 @@ class AdminController extends Controller
         $users = Admin::wherenot('role', 'user')->get();
         return view('admin.admins', ['fetchAdmins' => $users]);
     }
-    
+
     public function usersonly()
     {
         /**
@@ -48,7 +48,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         // dd($request);
-        // Validate 
+        // Validate
         $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Admin::class],
             'fname' => ['required', 'string', 'max:255'],
@@ -163,7 +163,7 @@ class AdminController extends Controller
             return back()->with('status', 'error');
             // return redirect('/admins')->with('error', 'Something went wrong');
         };
-       
+
     }
 
 
