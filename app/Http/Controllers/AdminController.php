@@ -176,10 +176,6 @@ class AdminController extends Controller
             return back()->with('status', 'error');
             // return redirect('/admins')->with('error', 'Something went wrong');
         };
-<<<<<<< HEAD
-
-=======
->>>>>>> 4d02ed871aafbb50401b88a5bf243db4b7ce30c0
     }
 
 

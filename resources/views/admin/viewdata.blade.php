@@ -115,7 +115,9 @@
             <div class="col-12 col-lg-5 profile">
                 <div class="image_wrapper">
                     {{-- <img src="{{asset('images/avatar.png')}}" class="profile_image" alt=""> --}}
-                    <img src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('images/avatar.png') }}" class="profile_image" alt="Profile Photo">
+                    <img src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('images/avatar.png') }}" class="profile_image" alt="Profile Photo" id = "profilePreview">
+
+
                 </div>
                 {{-- <h5>Winner Effiong</h5> --}}
                 {{-- <h6>{{ ucfirst(Auth::user()->first_name) }}  {{ ucfirst(Auth::user()->last_name) }} </h6> --}}
@@ -124,26 +126,41 @@
                    var y =  document.getElementById('lastname').value;
                    var z = x + " " +  y
                    document.write(z +  "<br>");
-                </script>
 
-<form action="{{ route('profile.photo.update') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-                {{-- <button class="btn">Change profile photo</button> --}}
-        <button type="submit" class="btn">Change Profile Photo</button>
-        {{-- <input type="file" name="photo" style = "margin-left:70px;" accept="image/*" required> --}}
-        <div class="form-group mb-3">
-            <input type="file" name="photo" accept="image/*" required class="form-control">
-          </div>
+                    // Function to trigger the file input
+                    function triggerFileInput() {
+                         document.getElementById('profilePhotoInput').click();
+                         console.log('File input triggered');
+                    }
 
-    </form>
-                <br>
+                // Function to preview the selected file
+            function previewProfilePhoto(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById('profilePreview').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        </script>
+
+            <form action="{{ route('profile.photo.update') }}"  method="POST" enctype="multipart/form-data">
+                @csrf
+
+            <input type="file" id="profilePhotoInput" name = "photo" accept="image/*" class="d-none" onchange="previewProfilePhoto(event)" required>
+
+                <button class="btn w-50" onclick="triggerFileInput()">Change Profile Photo</button>
+
+            </form>
 
                 <form action="{{ route('profile.photo.delete') }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-link text-dark text-decoration-none">Delete Profile Photo</button>
+                    <button type="submit" class="btn bg-white text-danger ">Delete Profile Photo</button>
+
                 </form>
-                {{-- <a href="#">Delete profile photo</a href="#"> --}}
 
             </div>
         </div>

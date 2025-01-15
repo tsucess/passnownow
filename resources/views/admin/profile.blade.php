@@ -107,12 +107,43 @@
             </div>
             <div class="col-12 col-lg-5 profile">
                 <div class="image_wrapper">
-                    <img src="{{asset('images/avatar.png')}}" class="profile_image" alt="">
+                    {{-- <img src="{{asset('images/avatar.png')}}" class="profile_image" alt=""> --}}
+                    <img src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('images/avatar.png') }}" class="profile_image" alt="Profile Photo" id = "profilePreview">
                 </div>
                 <h5>{{$user->first_name .' '. $user->last_name}}</h5>
-                <button class="btn">Change profile photo</button>
+
+                <script>
+                      // Function to trigger the file input
+                      function triggerFileInput() {
+                         document.getElementById('profilePhotoInput').click();
+                         console.log('File input triggered');
+                    }
+
+                // Function to preview the selected file
+            function previewProfilePhoto(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById('profilePreview').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        </script>
+
+                <form action="{{ route('profile.photo.update') }}"  method="POST" enctype="multipart/form-data">
+                    @csrf
+
+                <input type="file" id="profilePhotoInput" name = "photo" accept="image/*" class="d-none" onchange="previewProfilePhoto(event)" required>
+
+                <button class="btn w-50" onclick="triggerFileInput()">Change profile photo</button>
                 <br>
-                <a href="#">Delete profile photo</a href="#">
+                {{-- <a href="#">Delete profile photo</a href="#"> --}}
+
+                    @method('DELETE')
+                    <button type="submit" class="btn bg-white text-danger ">Delete Profile Photo</button>
+                </form>
             </div>
 
 
