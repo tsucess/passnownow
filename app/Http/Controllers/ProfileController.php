@@ -84,6 +84,7 @@ class ProfileController extends Controller
         return back()->with('success', 'Profile photo updated successfully!');
     }
 
+
     public function deletePhoto()
     {
         $user = Auth::user();

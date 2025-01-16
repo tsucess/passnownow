@@ -113,55 +113,44 @@
 
             </div>
             <div class="col-12 col-lg-5 profile">
-                <div class="image_wrapper">
-                    {{-- <img src="{{asset('images/avatar.png')}}" class="profile_image" alt=""> --}}
-                    <img src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('images/avatar.png') }}" class="profile_image" alt="Profile Photo" id = "profilePreview">
+                <div class="image_wrapper" style="position: relative; display: inline-block; width: 150px; height: 150px;">
+                    <img
+                        src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('images/avatar.png') }}"
+                        class="profile_image"
+                        alt="Profile Photo"
+                        id="profilePreview"
+                        style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; cursor: pointer;"
+                        onclick="document.getElementById('profilePhotoInput').click();"
+                    >
 
-
+                    <i
+                        class="fa fa-pencil"
+                        style="position: absolute; bottom: 10px; right: 10px; background: rgba(0, 0, 0, 0.5); color: white; padding: 5px; border-radius: 50%; cursor: pointer;"
+                        onclick="document.getElementById('profilePhotoInput').click();"
+                    ></i>
                 </div>
-                {{-- <h5>Winner Effiong</h5> --}}
-                {{-- <h6>{{ ucfirst(Auth::user()->first_name) }}  {{ ucfirst(Auth::user()->last_name) }} </h6> --}}
-                <script>
-                   var x =  document.getElementById('firstname').value;
-                   var y =  document.getElementById('lastname').value;
-                   var z = x + " " +  y
-                   document.write(z +  "<br>");
 
-                    // Function to trigger the file input
-                    function triggerFileInput() {
-                         document.getElementById('profilePhotoInput').click();
-                         console.log('File input triggered');
-                    }
+                <!-- Profile Photo Form -->
+                <form action="{{ route('profile.photo.update') }}" method="POST" enctype="multipart/form-data" id="photoForm">
+                    @csrf
+                    <input
+                        type="file"
+                        id="profilePhotoInput"
+                        name="photo"
+                        accept="image/*"
+                        style="display: none;"
+                        onchange="previewProfilePhoto(event)"
+                        required
+                    >
+                    <button type="submit" class="btn w-50" id="saveButton" disabled>Select Photo</button>
+                </form>
 
-                // Function to preview the selected file
-            function previewProfilePhoto(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = function (e) {
-                        document.getElementById('profilePreview').src = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
-                }
-            }
-        </script>
-
-            <form action="{{ route('profile.photo.update') }}"  method="POST" enctype="multipart/form-data">
-                @csrf
-
-            <input type="file" id="profilePhotoInput" name = "photo" accept="image/*" class="d-none" onchange="previewProfilePhoto(event)" required>
-
-                <button class="btn w-50" onclick="triggerFileInput()">Change Profile Photo</button>
-
-            </form>
-
+                <!-- Delete Profile Photo Form -->
                 <form action="{{ route('profile.photo.delete') }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn bg-white text-danger ">Delete Profile Photo</button>
-
+                    <button type="submit" class="btn bg-white text-danger">Delete Profile Photo</button>
                 </form>
-
             </div>
         </div>
     </section>
@@ -244,3 +233,44 @@
     </section>
     @endif
 @endsection
+
+<script>
+    // Preview the selected profile photo
+    function previewProfilePhoto(event) {
+        const file = event.target.files[0]; // Get the selected file
+
+        // Check if a file is selected
+        if (!file) {
+            console.error("No file selected.");
+            return;
+        }
+
+        // Ensure the file is an image
+        if (!file.type.startsWith('image/')) {
+            console.error("The selected file is not an image.");
+            alert("Please select a valid image file.");
+            return;
+        }
+
+        const reader = new FileReader();
+
+        reader.onload = function (e) {
+            const profilePreview = document.getElementById('profilePreview');
+
+            // Update the image preview
+            profilePreview.src = e.target.result;
+
+            // Enable the save button
+            const saveButton = document.getElementById('saveButton');
+            saveButton.textContent = 'Saved';
+            saveButton.disabled = false;
+        };
+
+        reader.onerror = function (e) {
+            console.error("Error reading file:", e);
+            alert("There was an error reading the file. Please try again.");
+        };
+
+        reader.readAsDataURL(file); // Read the file as a data URL
+    }
+</script>
