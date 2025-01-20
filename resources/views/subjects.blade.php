@@ -24,7 +24,7 @@
                 <h1>SUBJECTS</h1>
             </div>
         </div>
-    </Section>
+    </section>
     <section class="container-fluid container__search">
         <div class="row p-0 m-0">
             <div class="col-12 col-md-6 search__form">

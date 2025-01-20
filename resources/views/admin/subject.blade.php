@@ -47,6 +47,30 @@
 @section('admincontent')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Subjects</h1>
+
+        <div class="position-relative">
+            <i class="fa-solid fa-magnifying-glass position-absolute top-50 start-0 translate-middle ms-3 text-muted"></i>
+            <input type="text" class="form-control ps-5" id="subjectFilterInput" placeholder="Search by Year">
+          </div>
+
+          <script>
+            document.getElementById('subjectFilterInput').addEventListener('input', function () {
+                const filterValue = this.value.trim().toLowerCase();
+                const cards = document.querySelectorAll('.animated-card');
+
+                cards.forEach(card => {
+                    const year = card.getAttribute('subject-class').toLowerCase();
+                    if (filterValue === '' || year.includes(filterValue)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+
+
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
                 <a href="/classes" class="btn btn-secondary p-1 px-5 shadow">Back</a>
@@ -56,7 +80,7 @@
     <div class = "row mt-3 ms-3">
         @if (!empty($fetchSubjects[0]))
             @foreach ($fetchSubjects as $subject)
-                <div class = "col-12 col-md-4 animated-card">
+                <div class = "col-12 col-md-4 animated-card mb-5" subject-class="{{ $subject->title }}">
                     <img src="{{ asset('storage/' . $subject->avatar) }}" class = "img-fluid mb-2" style="height:15rem" />
                     <span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">{{ $subject->title }}</span>
                     <p class = "p text-md-start">{{ $subject->description }}
@@ -78,6 +102,20 @@
             </div>
         @endif
 
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+              <li class="page-item disabled">
+                <a class="page-link">Previous</a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+              </li>
+            </ul>
+          </nav>
     </div>
 
     <!-- Subscribe Modal -->
