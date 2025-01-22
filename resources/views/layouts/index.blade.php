@@ -63,6 +63,51 @@
   animation-play-state: running;
 }
 
+
+/* Scroll to Top Button Styles */
+#scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #0D2F5F; /* Blue color */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+#scrollToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#scrollToTop:hover {
+  background-color: #0056b3; /* Darker blue */
+}
+
+#scrollToTop .arrow {
+  font-size: 24px;
+  animation: spin 1s linear infinite;
+}
+
+/* @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
         </style>
 </head>
 
@@ -256,6 +301,34 @@
                 </div>
             </footer>
         </div>
+
+
+        <!-- Scroll to Top Button -->
+        <div id="scrollToTop">
+            <i class="arrow">↑</i>
+        </div>
+
+          <script>
+            // Scroll to Top Button Logic
+            const scrollToTopButton = document.getElementById('scrollToTop');
+
+            // Show the button when scrolling down
+            window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollToTopButton.classList.add('show');
+            } else {
+                scrollToTopButton.classList.remove('show');
+            }
+            });
+
+            // Scroll to the top smoothly when clicked
+            scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+            });
+            </script>
     </div>
 
 
