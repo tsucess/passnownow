@@ -1,5 +1,15 @@
 @extends('layouts.index')
 
+<style>
+    .hover-grow {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-grow:hover {
+  transform: scale(1.1);
+}
+</style>
+
 @section('content')
     <Section class="container-fluid container__banner career_banner">
         <div class="row">
@@ -16,21 +26,21 @@
     <Section class="container-fluid container__subjects career_gallery">
         <div class="row p-5">
             <div class="col-12 col-md-3">
-                <div class="image-wrapped">
+                <div class="image-wrapped hover-grow">
                     <img src="{{ asset('images/cc1.png') }}" alt="">
                 </div>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 hover-grow">
                 <div class="image-wrapped">
                     <img src="{{ asset('images/cc2.png') }}" alt="">
                 </div>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 hover-grow">
                 <div class="image-wrapped">
                     <img src="{{ asset('images/cc3.png') }}" alt="">
                 </div>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 hover-grow">
                 <div class="image-wrapped">
                     <img src="{{ asset('images/cc4.png') }}" alt="">
                 </div>

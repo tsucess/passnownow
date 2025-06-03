@@ -196,7 +196,7 @@
                                         @csrf
 
                                         <li>
-                                            <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')" onclick="event.preventDefault();                                              this.closest('form').submit();">
+                                            <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')" onclick="event.preventDefault();">                                              this.closest('form').submit();">
                                                 {{ __('Signout') }}
                                             </x-dropdown-link>
                                         </li>

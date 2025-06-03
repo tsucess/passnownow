@@ -8,7 +8,7 @@
     .myWrapper:hover {
         transform: scale(1.05);/* Slightly increase size */
         /* box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); */
-     
+
     }
 </style>
 
@@ -42,7 +42,7 @@
                     <div class="note_info p-2">
                         <h5>JSSCE Past Questions</h5>
                         <p>Test yourself on any JSSCE Exam Past Questions</p>
-                        <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
+                        <a href="#" class="note_btn w-100">VIEW ALL QUESTIONS</a>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     <div class="note_info p-2">
                         <h5>SSCE Past Questions</h5>
                         <p>Test yourself on any JSSCE Exam Past Questions</p>
-                        <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
+                        <a href="#" class="note_btn w-100">VIEW ALL QUESTIONS</a>
                     </div>
                 </div>
             </div>
@@ -63,10 +63,10 @@
                     <div class="image-wrapper">
                         <img src="{{ asset('images/education-stackbook.png') }}" alt="">
                     </div>
-                    <div class="note_info p-2">
+                    <div class="note_info p-2 ">
                         <h5>UTME/JAMB Past Questions</h5>
                         <p>Test yourself on any JSSCE Exam Past Questions</p>
-                        <a href="#" class="note_btn">VIEW ALL QUESTIONS</a>
+                        <a href="#" class="note_btn w-100">VIEW ALL QUESTIONS</a>
                     </div>
 
                 </div>
