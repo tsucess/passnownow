@@ -16,7 +16,6 @@
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
@@ -107,6 +106,17 @@
     transform: rotate(360deg);
   }
 } */
+
+  .animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.animate__animated {
+  opacity: 1 !important;
+}
+
+
 
         </style>
 </head>
@@ -333,6 +343,36 @@
 
 
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    function isElementInView(element) {
+      const top = $(element).offset().top;
+      const bottom = top + $(element).outerHeight();
+      const scrollTop = $(window).scrollTop();
+      const windowHeight = $(window).height();
+      return bottom > scrollTop && top < scrollTop + windowHeight;
+    }
+
+    function triggerAnimations() {
+      $('.section').each(function () {
+        const $section = $(this);
+        const $ul = $section.find('ul.animate-on-scroll');
+
+        if (isElementInView($section) && !$ul.hasClass('animate__animated')) {
+          $ul.addClass('animate__animated animate__fadeInUp');
+        }
+      });
+    }
+
+    $(window).on('scroll resize', triggerAnimations);
+    triggerAnimations(); // Initial check (optional)
+  });
+</script>
+
+
+
 
 </body>
 
