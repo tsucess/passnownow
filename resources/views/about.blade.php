@@ -77,6 +77,7 @@
             </div>
         </div>
     </section>
+
     <section class="container-fluid container__subjects bg-tertiary-accent about">
         <div class="row skill_list p-md-2 p-lg-3">
             <div class="col-12 col-md-6 p-4">
@@ -84,7 +85,7 @@
                     <img src="{{ asset('images/bgpinkart.png') }}" alt="">
                 </div>
             </div>
-            
+
             <div class="col-12 col-md-6 p-4 section">
 
                 <img src="{{ asset('images/icons-barchart-white.png') }}" alt="">
@@ -102,11 +103,13 @@
                         their role in shaping it for the best</li>
                 </ul>
             </div>
+
             <hr class="text-white">
+
             <div class="col-12 col-md-6 p-4 section">
                 <img src="{{ asset('images/icons-barchart-white.png') }}" alt="">
                 <h5 class="my-2">Expected Outcomes</h5>
-                <ul class="animate-on-scroll ">
+                <ul class="animate-on-scroll">
                     <li>An increase in the success rate of students at university entrance examinations in Nigeria</li>
                     <li>A more responsible, employable, innovative, creatively inclined, and empathetic youth population
                     </li>
@@ -115,6 +118,7 @@
                         assistance with their studies</li>
                 </ul>
             </div>
+
             <div class="col-12 col-md-6 p-4">
                 <div class="image-wrapper  mt-md-5">
                     <img src="{{ asset('images/bgpinkart.png') }}" alt="">
@@ -130,7 +134,7 @@
             <div class="col-12 col-md-6 p-4 section">
                 <img src="{{ asset('images/icons-barchart-white.png') }}" alt="">
                 <h5 class="my-2">Our Core Objectives</h5>
-                <ul class="animate-on-scroll ">
+                <ul class="animate-on-scroll">
                     <li> Passnownow.com is easy to use. </li>
                     <li> It is a fun and trendy integrated learning platform. </li>
                     <li>It provides flexible learning experience for users.</li>

@@ -107,17 +107,16 @@
   }
 } */
 
-  .animate-on-scroll {
+.animate-on-scroll {
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.animate__animated {
-  opacity: 1 !important;
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
-
-
-
         </style>
 </head>
 
@@ -344,33 +343,33 @@
 
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function () {
-    function isElementInView(element) {
-      const top = $(element).offset().top;
-      const bottom = top + $(element).outerHeight();
-      const scrollTop = $(window).scrollTop();
-      const windowHeight = $(window).height();
-      return bottom > scrollTop && top < scrollTop + windowHeight;
+    function isFullyInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      );
     }
 
     function triggerAnimations() {
-      $('.section').each(function () {
-        const $section = $(this);
-        const $ul = $section.find('ul.animate-on-scroll');
+      // Target all divs that contain things to animate
+      $('.section, .mb-3').each(function () {
+        const $container = $(this);
+        const $targets = $container.find('.animate-on-scroll');
 
-        if (isElementInView($section) && !$ul.hasClass('animate__animated')) {
-          $ul.addClass('animate__animated animate__fadeInUp');
+        if (!$targets.hasClass('visible') && isFullyInViewport(this)) {
+          $targets.addClass('visible');
         }
       });
     }
 
-    $(window).on('scroll resize', triggerAnimations);
-    triggerAnimations(); // Initial check (optional)
+    $(window).on('scroll resize load', triggerAnimations);
   });
 </script>
-
 
 
 
