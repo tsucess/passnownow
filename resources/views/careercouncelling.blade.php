@@ -92,7 +92,7 @@
                 <p class="text-dark text-white animate-on-scroll">
                     We’ll guide your child/ward on the best courses and career direction that is best suited for his/her personality trait by conducting detailed analysis of their grades and co-curricular interests, get to know what they enjoy doing, the kind of work they feel they’ll be most productive doing and more importantly, their plans and interests after secondary school. The information gathered will be used to help us make an informed decision on the Courses and Career Path that is best suited for the person in question.
                 </p>
-                <a href="{{ url('good-teacher') }}" class="animate-on-scroll">READ NOW &nbsp; <i class="fa-solid fa-arrow-right-long"></i></a>
+                <a href="{{ url('good-teacher') }}" class="">READ NOW &nbsp; <i class="fa-solid fa-arrow-right-long"></i></a>
             </div>
             <hr class="text-white">
             <div class="col-12 col-md-6 p-md-4 mb-3 section">
@@ -100,7 +100,7 @@
                 <p class="text-dark text-white animate-on-scroll">
                     Book a phone conversation or physical appointment with our Career and Education Counsellors to help you through this difficult decision as you watch your child/children live their Dreams. We will provide your children/wards with vital information and guidance on all they need to know about the options available to them and help them make the best decisions based on their qualifications and career goals.
                 </p>
-                <a href="{{ url('good-teacher') }}" class="animate-on-scroll">READ NOW &nbsp; <i class="fa-solid fa-arrow-right-long"></i></a>
+                <a href="{{ url('good-teacher') }}" class="">READ NOW &nbsp; <i class="fa-solid fa-arrow-right-long"></i></a>
             </div>
             <div class="col-12 col-md-6 p-md-4">
                 <div class="image-wrapped  mt-md-5">

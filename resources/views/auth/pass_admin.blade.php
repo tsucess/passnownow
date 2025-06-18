@@ -7,13 +7,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Register Here</title>
-
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
+        
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"> 
-    
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
@@ -90,7 +91,7 @@
                             <div class="mb-3">
                                 <x-input-label for="cPassword" :value="__('Confirm Password')" />
                                 <x-text-input type="password" id="cPassword" class="form-control" :value="old('password_confirmation ')" name="password_confirmation" aria-describedby="passwordBlock" placeholder="Repeat Password" />
-                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-danger" />         
+                                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2 text-danger" />
                             </div>
                             <div class="mb-3 form-check">
                                 <input type="checkbox" name="terms" class="form-check-input" id="check_terms" />

@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
+
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -20,7 +22,7 @@
     <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/regular.css') }} ">
-   
+
 
     <!-- Datatables  -->
     <link rel="stylesheet" href="{{ asset('css/table/dataTables.bootstrap5.min.css') }} ">

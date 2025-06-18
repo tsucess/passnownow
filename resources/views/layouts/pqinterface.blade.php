@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
 
 
     <!-- Fonts -->
@@ -124,7 +125,7 @@
 
 
         .opennav {
-            width: 100%;   
+            width: 100%;
         }
         .closenav {
            width: 0;
@@ -214,7 +215,7 @@
                                         {{ $Question->title }}
                                     </button>
                                 </h2>
-                             
+
                             </div>
                         @endforeach
                     </div>

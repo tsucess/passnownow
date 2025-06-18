@@ -3,7 +3,8 @@
 
 <head>
   <title>Administrator</title>
-  
+      <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
+
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +21,7 @@
   </head>
 
   <body>
-  
+
     <nav class="navbar navbar-expand-lg bg-body-tertiary mb-3 border border-1 border-black">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"><img src="Images/logo.png" width="150px" height="50px" class = "myLogo"
@@ -30,21 +31,21 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
-  
+
           <div class="input-group mt-2 w-100 offset-md-3">
               <input type="search" class="form-control" placeholder="Search" aria-label="Search..." aria-describedby="searchIcon">
             </div>
-  
-  
+
+
             <div class = "container text-md-end">
               <span><img src="Images/imagenotification.png" width = "50px" height = "30px" /></span>
               <span><img src="Images/global.png" width = "50px" height = "40px" /></span>
               <span style = "border: 1px solid gray; border-radius: 10px; margin-top: 20px; padding: 6px; line-height: 2px;  justify-content: center; align-items: center;"><i class="fa fa-user-circle" aria-hidden="true"></i> <i class="fas fa-caret-down"></i></span>
-                
+
           </div>
-  
-  
-  
+
+
+
           </div>
       </div>
     </nav>
@@ -55,22 +56,22 @@
 <!-- Main for Class Note -->
 <div class = "container-fluid mb-3">
     <div class = "row align-items-start">
-       
+
     <!-- <div class="col-xs-12 col-sm-3 col-md-4 col-lg-2 col-xl-2 h-100 text-md-start mt-1 border-end border-1 border-primary"> -->
       <div class="col-xs-12 col-sm-3 col-md-4 col-lg-2 col-xl-2 h-auto text-md-start mt-1 align-items-center">
       <nav class="nav flex-column">
         <a class="nav-link" href="#" style = "color: #000;">
           <i class="fa fa-th-large me-3"></i> Dashboard
         </a>
-        
+
         <a class="nav-link b text-bg-primary" style = "color: #000;" href="#">
           <i class="fa fa-user me-3"></i> Admin
         </a>
-        
+
         <a class="nav-link b" href="#" style = "color: #000;">
             <i class="fa fa-user-circle me-3"></i> Users
           </a>
-        
+
           <a class="nav-link b" href="#" style = "color: #000;">
           <i class="fa fa-calendar me-3"></i> Class
         </a>
@@ -93,11 +94,11 @@
 
       </nav>
     </div>
-        
-    
-       
+
+
+
 <div class = "col-sm-9 h-100 mx-1 border-start border-1 border-primary">
-       
+
 <!-- <h4 class = "h4 w-100  pb-3 float-start fs-3 fw-bold mb-3" style = "font-family: Montserrat; font-weight: bold; display: inline;">Administrator</h4>
 <button type="button" class="btn btn-outline-primary">Add Admin</button> -->
 
@@ -109,7 +110,7 @@
   <button type="button" class="btn btn-outline-primary float-end" data-bs-toggle="modal" data-bs-target="#myModal">
     Add User
   </button>
-    
+
 <!-- The modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog modal-dialog-scollable">
@@ -124,32 +125,32 @@
             <label for="firstName" class="form-label">Enter First Name</label>
             <input type="text" class="form-control" id="firstName" placeholder="Winner" name="firstname">
           </div>
-  
-  
+
+
           <div class="mb-3 mt-3">
               <label for="LastName" class="form-label">Enter Last Name</label>
               <input type="text" class="form-control" id="LastName" placeholder="Effiong Duff" name="lastname">
             </div>
-  
+
             <div class="mb-3 mt-3">
               <label for="username" class="form-label">Username</label>
               <input type="text" class="form-control" id="username" placeholder="MajorSignature" name="username">
             </div>
-  
+
             <div class="mb-3 mt-3">
               <label for="password" class="form-label">Password</label>
               <input type="password" class="form-control" id="password" placeholder="*******" name="password">
             </div>
-  
+
             <div class="mb-3 mt-3">
               <label for="cpassword" class="form-label">Confirm Password</label>
               <input type="password" class="form-control" id="cpassword" placeholder="*******" name="cpassword">
             </div>
-  
+
             <div class = "d-flex justify-content-center align-items-center">
             <button type="submit" class="btn btn-primary">Upload</button>
           </div>
-  
+
       </form>
   </div>
   </div>
@@ -196,44 +197,44 @@
   <table class="table">
     <thead>
       <tr>
-        
+
         <th scope = "col" class="position-relative pe-4">
          S/N
-          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
-          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
-          
+          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
+          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
+
         </th>
 
         <th scope = "col" class="position-relative">
-          Name 
-          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
-          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
+          Name
+          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
+          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
         </th>
-        
+
         <th scope="col" class="position-relative">
           Email
-          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
-          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
+          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
+          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
         </th>
 
         <th scope="col" class="position-relative pe-5">
-          Username 
-          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
-          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
+          Username
+          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
+          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
         </th>
 
         <th scope="col" class="position-relative">
           Date
-          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
-          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
+          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
+          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
         </th>
 
         <th scope="col" class="position-relative pe-4">
           Action
-          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
-          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i> 
+          <i class="fa fa-sort-asc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
+          <i class="fa fa-sort-desc position-absolute top-50 end-0 translate-middle" aria-hidden="true"></i>
         </th>
-        
+
       </tr>
     </thead>
     <tbody>
@@ -330,7 +331,7 @@
     </tbody>
   </table>
 </div>
-    
+
 <div class = "row justify-content-evenly">
 <div class = "col-6">
   Showing 1 to 10 entries
@@ -397,7 +398,7 @@
 
     </div>
     </div>
-    
+
 
     </div>
     </body>
