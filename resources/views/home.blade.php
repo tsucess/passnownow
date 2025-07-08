@@ -386,28 +386,28 @@ document.addEventListener("DOMContentLoaded", () => {
         <section class="container-fluid container__top pt-3">
             <div class="row">
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Chemistry.png') }}" alt="Chemistry">
-                    <p class="title">Chemistry</p>
+                    <img src="{{ asset('images/WAEC.png') }}" alt="Chemistry">
+                    <p class="title text-dark fw-bold">WAEC</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Cloud_Library.png') }}" alt="Computer">
-                    <p class="title">Computer</p>
+                    <img src="{{ asset('images/JAMB.png') }}" alt="Computer">
+                    {{-- <p class="title">JAMB</p> --}}
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Geography.png') }}" alt="Geography">
-                    <p class="title">Geography</p>
+                    <img src="{{ asset('images/NECO.png') }}" alt="Geography">
+                    {{-- <p class="title">NECO</p> --}}
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Biology.png') }}" alt="Biology">
-                    <p class="title">Biology</p>
+                    <img src="{{ asset('images/TOEFL.png') }}" alt="Biology">
+                    {{-- <p class="title">TOEFL</p> --}}
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Maths.png') }}" alt="Mathematics">
-                    <p class="title">Mathematics</p>
+                    <img src="{{ asset('images/IELTS.png') }}" alt="Mathematics">
+                    {{-- <p class="title">IELTS</p> --}}
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Sports.png') }}" alt="Physical Health">
-                    <p class="title">Physical Health</p>
+                    <img src="{{ asset('images/IGCSE.png') }}" alt="Physical Health">
+                    {{-- <p class="title">IGCSE</p> --}}
                 </div>
             </div>
         </section>
@@ -496,27 +496,32 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h3>Access all subjects</h3>
                     <p>That’s it, you now have access to unlimited Class Notes and Exam Past Questions.</p>
                 </div>
-                <div class="col-12 col-md-4 mb-lg-3 guide">
+
+                {{-- <div class="col-12 col-md-4 mb-lg-3 guide">
                     <img src="{{ asset('images/icon-message.png') }}" alt="Icon" class="mb-3" />
                     <h3>Seek career advice</h3>
                     <p>Seek advice on your career path from our experienced career counselor</p>
                 </div>
+
                 <div class="col-12 col-md-4 mb-lg-3 guide">
                     <img src="{{ asset('images/icon-shield.png') }}" alt="Icon" class="mb-3" />
                     <h3>Access to past questions</h3>
                     <p>Passnownow gives you access to Thousands of exam past questions from JSCE, JSSCE TO JAMB</p>
                 </div>
+
                 <div class="col-12 col-md-4 mb-lg-3 guide">
                     <img src="{{ asset('images/icon-medal.png') }}" alt="Icon" class="mb-3" />
                     <h3>Improve academic performance</h3>
                     <p>Learn with Passnownow to improve academic performance</p>
-                </div>
+                </div> --}}
+
+
             </div>
         </section>
 
         <Section class="container-fluid container__hero-down mb-3">
             <div class="row">
-                <div class="col-12 col-md-6 hero-down__content">
+                <div class="col-12 col-md-6 hero-down__content" style = "background:#4082BC;">
                     <p class="total-enrol">We do home tutoring the right way.</p>
                     <h1>Passnownow: Your Partner In Lifelong Learning.</h1>
                     <p class="hero-down__info">Make Passnownow your partner in lifelomg learning, providing you with the
@@ -526,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6  hero-down-image">
+                <div class="col-12 col-md-6  hero-down-image" style = "background:#4082BC;">
                     <img src="{{ asset('images/hero_down.png') }}" alt="Hero Image">
                 </div>
             </div>
@@ -636,7 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </section>
 
-        <Section class="container-fluid container__performance">
+        <Section class="container-fluid container__performance" style = "background: #4082BC;">
             <div class="bg-image">
                 <div class="row">
                     <div class="col-12 col-md-2 col-lg-3"></div>
@@ -673,7 +678,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 </div>
-                <div class="row mt-5">
+
+                {{-- <div class="row mt-5">
                     <div class="col-12 col-md-2 text-end">
                         <img src="{{ asset('images/quote_tr.png') }}" alt="" class="quote-down-image">
                     </div>
@@ -773,11 +779,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
                     </div>
-                </div>
+                </div> --}}
+
+
             </div>
         </Section>
 
-        <section class="container-fluid container__notes" >
+        {{-- <section class="container-fluid container__notes" >
             <div class="row" id="class__notes">
                 <div class="col-12 text-center mb-5">
                     <h6>Class Notes</h6>
@@ -815,6 +823,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 @endforeach
+                 --}}
                 {{-- <div class="col-12 col-md-4 mb-3">
                 <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
@@ -848,10 +857,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
                 </div> --}}
-            </div>
-        </section>
 
-        <section class="container-fluid container__parent_review">
+            {{-- </div>
+        </section> --}}
+
+        {{-- <section class="container-fluid container__parent_review">
             <div class="row my-4">
                 <div class="col-12 col-md-2 text-end">
                     <img src="{{ asset('images/quote_trans.png') }}" alt="" class="quote-down-image">
@@ -940,7 +950,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="swiper-button-next"></div>
                 </div>
             </div>
-        </section>
+        </section> --}}
+
     </main>
 
 

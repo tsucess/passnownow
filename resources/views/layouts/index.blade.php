@@ -142,7 +142,17 @@
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item"><x-nav-link href="/"
                                 active="{{ request()->is('/') }}">Home</x-nav-link></li>
-                        <li class="nav-item dropdown">
+
+                            <li class="nav-item"><x-nav-link  href="/about"
+                                        active="{{ request()->is('about') }}">About Us</x-nav-link></li>
+
+                        <li class="nav-item"><x-nav-link href="/subscriptions"
+                                active="{{ request()->is('subscriptions') }}">Pricing plan</x-nav-link></li>
+
+                        <li class="nav-item"><x-nav-link  href="/contact"
+                                        active="{{ request()->is('contact') }}">Contact us</x-nav-link></li>
+
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
                                 aria-expanded="false">About us</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
@@ -163,7 +173,8 @@
                                 Resources</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
                                 {{-- <li><a class="dropdown-item" href="{{ url('pastquestions') }}">Past Questions</a></li> --}}
-                                <li><x-nav-link type="drop" href="/pastquestions"
+
+                                {{-- <li><x-nav-link type="drop" href="/pastquestions"
                                         active="{{ request()->is('pastquestions') }}">Past Questions</x-nav-link></li>
                                 <li><x-nav-link type="drop" href="/teacherresources"
                                         active="{{ request()->is('teacherresources') }}">Teacher's
@@ -177,7 +188,8 @@
                         </li>
                         <li class="nav-item"><x-nav-link href="/subscriptions"
                                 active="{{ request()->is('subscriptions') }}">Pricing plan</x-nav-link></li>
-                        </li>
+                        </li> --}}
+
                         {{-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -195,8 +207,8 @@
                     </ul>
                     <div class="nav-btn">
                         @guest
-                            <a href="{{ url('login') }}" class="btn btn-style btn-style-secondary">Login</a>
-                            <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style">Register</a>
+                            <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style text-white" style = "background: #1A69AF;">Register</a>
+                            <a href="{{ url('login') }}" class="btn btn-style btn-style-secondary" style = "border-style:solid; border-width: 1px; border-color: #1A69AF; color: #1A69AF; ">Login</a>
                         @endguest
 
                         @auth
@@ -220,12 +232,8 @@
                                                 @csrf
 
                                         <li>
-<<<<<<< HEAD
                                             <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')"
                                                 onclick="event.preventDefault();                                              this.closest('form').submit();">
-=======
-                                            <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')" onclick="event.preventDefault();">                                              this.closest('form').submit();">
->>>>>>> eb473bf8dda6e44e15f40a86ff52d912730936c9
                                                 {{ __('Signout') }}
                                             </x-dropdown-link>
                                         </li>
@@ -400,5 +408,6 @@
 
 
 </body>
+
 
 </html>
