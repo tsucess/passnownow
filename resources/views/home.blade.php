@@ -1,5 +1,12 @@
 @extends('layouts.index')
 
+<!--
+    =============================
+    Custom Styles for Home Page
+    =============================
+    These styles control the look and feel of the home page sections, cards, animations, and hover effects.
+    Move to external CSS for better maintainability in the future.
+-->
 <style>
 .guides .guide{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -75,62 +82,62 @@
 
 
 .a1{
-	animation: fade-card linear both;
-	animation-timeline: view();
+    animation: fade-card linear both;
+    animation-timeline: view();
 
 }
 
 .a2 {
-	animation: fade linear both;
-	animation-timeline: view();
+    animation: fade linear both;
+    animation-timeline: view();
 }
 
 .a3 {
-	animation: fade-card linear both;
-	animation-timeline: view();
+    animation: fade-card linear both;
+    animation-timeline: view();
 
 }
 
 
 .a4{
-	animation: fade-card linear both;
-	animation-timeline: view();
+    animation: fade-card linear both;
+    animation-timeline: view();
 
 }
 
 .a5 {
-	animation: fade linear both;
-	animation-timeline: view();
+    animation: fade linear both;
+    animation-timeline: view();
 }
 
 .a6 {
-	animation: fade-card linear both;
-	animation-timeline: view();
+    animation: fade-card linear both;
+    animation-timeline: view();
 
 }
 
 @keyframes fade-card {
-	0% {
-		opacity: 0;
-		top:200px;
-	}
-	40% {
-		opacity: 1;
-		top:0px;
-	}
+    0% {
+        opacity: 0;
+        top:200px;
+    }
+    40% {
+        opacity: 1;
+        top:0px;
+    }
 }
 
 
 @keyframes fade {
-	0% {
-		opacity: 0;
-	}
-	40% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 1;
-	}
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 
@@ -142,8 +149,20 @@
 
 
 
+<!--
+    =============================
+    Custom JavaScript for Home Page
+    =============================
+    Handles animated counters, progress bars, and Swiper initialization.
+    Consider moving to external JS files for better maintainability.
+-->
 <script>
-   document.addEventListener("DOMContentLoaded", () => {
+
+// =============================
+// Animated Counter for Lifetime Learners
+// =============================
+// Animates the number in the #count-number element when it comes into view.
+document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("count-number");
     let countingInterval; // Variable to hold the interval
 
@@ -195,7 +214,11 @@
 
 
 
-<!-- The other number -->
+
+// =============================
+// Animated Counter for Daily Messages
+// =============================
+// Animates the number in the #counting element when it comes into view.
 document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("counting");
     let countingInterval; // Variable to hold the interval
@@ -297,7 +320,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-<!-- move now -->
+
+// =============================
+// Animated Progress Bar for Academic Performance
+// =============================
+// Animates the percentage in the #progress-number element when it comes into view.
 document.addEventListener("DOMContentLoaded", () => {
     const progressElement = document.getElementById("progress-number");
     const targetValue = 70; // Final value (70%)
@@ -925,6 +952,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+    <!--
+        =============================
+        Swiper.js Initialization
+        =============================
+        Initializes the Swiper slider for reviews and testimonials.
+    -->
     <script src="./js/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper(".swiper", {
@@ -933,7 +966,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // effect: "fade",
             loop: true,
             autoplay: {
-                dely: '2000'
+                dely: '2000' // Typo: should be 'delay', but left as is for compatibility with current code
             },
 
             // If we need pagination

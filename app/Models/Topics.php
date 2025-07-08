@@ -15,6 +15,8 @@ class Topics extends Model
         'user_unique_id',
         'title',
         'url',
+        'content',
+        'content_type',
         'subject_unique_id',
         'term',
         'order'

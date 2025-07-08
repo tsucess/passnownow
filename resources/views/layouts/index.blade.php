@@ -31,39 +31,43 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
+
+
+    {{-- <link rel="stylesheet" href="{{asset('css/ckeditor5.css')}}" />
+    <script src="{{asset('js/ckeditor5.umd.js')}}"></script> --}}
+
     <style>
-.bounce-on-hover {
-  transition: transform 0.3s ease-in-out;
-}
+        .bounce-on-hover {
+            transition: transform 0.3s ease-in-out;
+        }
 
-.bounce-on-hover:hover {
-  animation: bounce 0.7s infinite;
-}
+        .bounce-on-hover:hover {
+            animation: bounce 0.7s infinite;
+        }
 
-  /* Applying animation to the cards */
-  .sty {
-    animation: fadeIn 0.8s ease-in-out;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        /* Applying animation to the cards */
+        .sty {
+            animation: fadeIn 0.8s ease-in-out;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-/* Hover effect on the card */
-.sty:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+        /* Hover effect on the card */
+        .sty:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
-.aboutImage {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-  animation-iteration-count: infinite;
-  animation-play-state: paused;
-}
+        .aboutImage {
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+            animation-play-state: paused;
+        }
 
-.aboutImage:hover {
-  animation-play-state: running;
-}
-
-        </style>
+        .aboutImage:hover {
+            animation-play-state: running;
+        }
+    </style>
 </head>
 
 <body class="">
@@ -76,38 +80,49 @@
         <header class="container-fluid  container__header grid grid-cols-2 items-center  shadow py-10">
             <nav class="container navbar navbar-expand-lg">
                 <a class="navbar-brand" href="/"><img src="{{ asset('images/logo.png') }}" alt=""></a>
-                    <button class="navbar-toggler"
-                    type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span
-                        class="navbar-toggler-icon fa fa-bars"></span></button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon fa fa-bars"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><x-nav-link  href="/" active="{{ request()->is('/') }}">Home</x-nav-link></li>
+                        <li class="nav-item"><x-nav-link href="/"
+                                active="{{ request()->is('/') }}">Home</x-nav-link></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
                                 aria-expanded="false">About us</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
-                                <li><x-nav-link  type="drop" href="/about" active="{{ request()->is('about') }}">About Passnownow</x-nav-link></li>
-                                <li><x-nav-link  type="drop" href="/contact" active="{{ request()->is('contact') }}">Contact us</x-nav-link></li>
+                                <li><x-nav-link type="drop" href="/about"
+                                        active="{{ request()->is('about') }}">About Passnownow</x-nav-link></li>
+                                <li><x-nav-link type="drop" href="/contact"
+                                        active="{{ request()->is('contact') }}">Contact us</x-nav-link></li>
 
                             </ul>
                         </li>
-                        <li class="nav-item"><x-nav-link  href="/subjects" active="{{ request()->is('subjects') }}">Subjects</x-nav-link></li>
-                        <li class="nav-item"><x-nav-link  href="/notes" active="{{ request()->is('notes') }}">Classes</x-nav-link></li>
+                        <li class="nav-item"><x-nav-link href="/subjects"
+                                active="{{ request()->is('subjects') }}">Subjects</x-nav-link></li>
+                        <li class="nav-item"><x-nav-link href="/notes"
+                                active="{{ request()->is('notes') }}">Classes</x-nav-link></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
                                 aria-expanded="false">Educational
                                 Resources</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
                                 {{-- <li><a class="dropdown-item" href="{{ url('pastquestions') }}">Past Questions</a></li> --}}
-                                <li><x-nav-link  type="drop" href="/pastquestions" active="{{ request()->is('pastquestions') }}">Past Questions</x-nav-link></li>
-                                <li><x-nav-link  type="drop" href="/teacherresources" active="{{ request()->is('teacherresources') }}">Teacher's Resources</x-nav-link></li>
-                                <li><x-nav-link  type="drop" href="/career-counselling" active="{{ request()->is('career-counselling') }}">Guidance and Counselling</x-nav-link></li>
-                                <li><x-nav-link  type="drop" href="/blog" active="{{ request()->is('blog') }}">Blog</x-nav-link></li>
+                                <li><x-nav-link type="drop" href="/pastquestions"
+                                        active="{{ request()->is('pastquestions') }}">Past Questions</x-nav-link></li>
+                                <li><x-nav-link type="drop" href="/teacherresources"
+                                        active="{{ request()->is('teacherresources') }}">Teacher's
+                                        Resources</x-nav-link></li>
+                                <li><x-nav-link type="drop" href="/career-counselling"
+                                        active="{{ request()->is('career-counselling') }}">Guidance and
+                                        Counselling</x-nav-link></li>
+                                <li><x-nav-link type="drop" href="/blog"
+                                        active="{{ request()->is('blog') }}">Blog</x-nav-link></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><x-nav-link  href="/subscriptions" active="{{ request()->is('subscriptions') }}">Pricing plan</x-nav-link></li>
+                        <li class="nav-item"><x-nav-link href="/subscriptions"
+                                active="{{ request()->is('subscriptions') }}">Pricing plan</x-nav-link></li>
                         </li>
                         {{-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -126,39 +141,40 @@
                     </ul>
                     <div class="nav-btn">
                         @guest
-                        <a href="{{ url('login') }}" class="btn btn-style btn-style-secondary">Login</a>
-                        <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style">Register</a>
+                            <a href="{{ url('login') }}" class="btn btn-style btn-style-secondary">Login</a>
+                            <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style">Register</a>
                         @endguest
 
                         @auth
-                        <span class="top_icon">
-                            <i class="fa-regular fa-bell"></i>
-                        </span>
-                        <span class="top_icon">
-                            <i class="fa-solid fa-globe"></i>
-                        </span>
-                        <div class="nav-item text-nowrap py-1">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    <img src="{{ asset('images/profile.png') }}" alt="">
-                                </a>
-                                <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
-                                    <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
-                                    <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
-                                        <!-- Authentication -->
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
+                            <span class="top_icon">
+                                <i class="fa-regular fa-bell"></i>
+                            </span>
+                            <span class="top_icon">
+                                <i class="fa-solid fa-globe"></i>
+                            </span>
+                            <div class="nav-item text-nowrap py-1">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="{{ asset('images/profile.png') }}" alt="">
+                                    </a>
+                                    <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
+                                        <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
+                                        <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
+                                            <!-- Authentication -->
+                                            <form method="POST" action="{{ route('logout') }}">
+                                                @csrf
 
                                         <li>
-                                            <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')" onclick="event.preventDefault();                                              this.closest('form').submit();">
+                                            <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')"
+                                                onclick="event.preventDefault();                                              this.closest('form').submit();">
                                                 {{ __('Signout') }}
                                             </x-dropdown-link>
                                         </li>
-                                    </form>
-                                </ul>
-                            </li>
-                        </div>
+                                        </form>
+                                    </ul>
+                                </li>
+                            </div>
                         @endauth
                     </div>
                 </div>
@@ -184,9 +200,9 @@
                             </div>
 
                             <!-- Display the success message below the form -->
-                            @if(session('success'))
+                            @if (session('success'))
                                 <div class="alert alert-success" style="margin-top: 10px;">
-                                  {{ session('success') }}
+                                    {{ session('success') }}
                                 </div>
                             @endif
 
@@ -205,18 +221,20 @@
                         <h5>West Africa’s most trusted EdTech Platform for Secondary School Students & Teachers</h5>
                         <p>Super simple self studying,
                             peer to peer collaborative learning both for teachers and students</p>
-                            <img
-                            src="{{ asset('images/NG.png') }}" alt="Nigeria-Icon" class="me-1">
-                            <a href="https://www.google.com/maps/search/8+Adebayo+Muokolu+Street,+Anthony+Village,+Lagos,+Nigeria./@6.558127,3.3687749,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTIxMC4wIKXMDSoASAFQAw%3D%3D" class="text-decoration-none" target="_blank"><span>8 Adebayo Muokolu Street, Anthony Village, Lagos, Nigeria.</span></a>
+                        <img src="{{ asset('images/NG.png') }}" alt="Nigeria-Icon" class="me-1">
+                        <a href="https://www.google.com/maps/search/8+Adebayo+Muokolu+Street,+Anthony+Village,+Lagos,+Nigeria./@6.558127,3.3687749,17z/data=!3m1!4b1?entry=ttu&g_ep=EgoyMDI0MTIxMC4wIKXMDSoASAFQAw%3D%3D"
+                            class="text-decoration-none" target="_blank"><span>8 Adebayo Muokolu Street, Anthony
+                                Village, Lagos, Nigeria.</span></a>
                     </div>
                     <div class="col-12 col-md-3 col-lg-2 mb-3 p-0">
                         <h5 class="title">RELATED LINKS</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2"><a href="/about" class="nav-link p-0">About</a></li>
                             {{-- <li class="nav-item mb-2"><a href="#" class="nav-link p-0">Our Blog</a></li> --}}
-                            <li class="nav-item mb-2"><a href="/parentresources"
-                                    class="nav-link p-0">For Parent</a></li>
-                            <li class="nav-item mb-2"><a href="/teacherresources" class="nav-link p-0">For Teachers</a></li>
+                            <li class="nav-item mb-2"><a href="/parentresources" class="nav-link p-0">For Parent</a>
+                            </li>
+                            <li class="nav-item mb-2"><a href="/teacherresources" class="nav-link p-0">For
+                                    Teachers</a></li>
                             <li class="nav-item mb-2"><a href="/faq" class="nav-link p-0">FAQs</a></li>
                         </ul>
                     </div>
@@ -233,10 +251,14 @@
                         <h5 class="title">CONTACT US</h5>
                         <ul class="nav flex-column">
                             <li class="nav-item mb-2">Call Us:</li>
-                            <li class="nav-item mb-2"><a href="tel:07060545017" target="_blank" class="text-decoration-none">0706.054.5017</a>,
-                                <a href="tel:07060545027" target="_blank" class="text-decoration-none">0706.054.5027</a></li>
+                            <li class="nav-item mb-2"><a href="tel:07060545017" target="_blank"
+                                    class="text-decoration-none">0706.054.5017</a>,
+                                <a href="tel:07060545027" target="_blank"
+                                    class="text-decoration-none">0706.054.5027</a>
+                            </li>
                             <li class="nav-item mb-2">Email: </li>
-                            <li class="nav-item mb-2"> <a href="mailto:info@passnownow.com" target="_blank" class="text-decoration-none">info@passnownow.com</a></li>
+                            <li class="nav-item mb-2"> <a href="mailto:info@passnownow.com" target="_blank"
+                                    class="text-decoration-none">info@passnownow.com</a></li>
                         </ul>
                     </div>
                 </div>

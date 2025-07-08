@@ -34,19 +34,24 @@ class TopicsController extends Controller
         $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Topics::class],
             'title' => ['required', 'string', 'max:255'],
-            'url' => ['required', 'string', 'max:255'],
-            'term' => ['sometimes', 'string', 'max:255'],
-            'order' => ['sometimes', 'integer', 'max:255']
+            'url' => ['nullable', 'string', 'max:255'],
+            'content' => ['nullable', 'string', 'max:10055'],
+            'content_type' => ['required', 'string', 'max:255'],
+            'term' => ['nullable', 'string', 'max:255'],
+            'order' => ['nullable', 'integer', 'max:255']
         ]);
 
         $data = $request->sub_id;
 
         // dd($request);
+
         $done = Topics::create([
             'unique_id' => $request->unique_id,
             'user_unique_id' => Auth::user()->unique_id,
             'title' => $request->title,
             'url' => $request->url,
+            'content' => $request->content,
+            'content_type' => $request->content_type,
             'subject_unique_id' => $request->subject_id,
             'term' => $request->term,
             'order' => $request->order
@@ -76,10 +81,10 @@ class TopicsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function showtopics(Topics $data)
+    public function showtopics(Subjects $data)
     {
-        $subject_id = $data->id;
         $sub_id = $data->id;
+        // dd($sub_id);
         $output = Topics::where('subject_unique_id', $sub_id)->distinct()->get(['term']);
         $result = [];
         foreach ($output as $key ) {
@@ -100,7 +105,7 @@ class TopicsController extends Controller
         // dd($request);
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'url' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string', 'max:255'],
             'edit_order' => ['sometimes', 'integer', 'max:255'],
         ]);
 
@@ -110,7 +115,7 @@ class TopicsController extends Controller
         // dd($class);
         if ($class) {
             $class->title = $request->title;
-            $class->url = $request->url;
+            $class->content = $request->content;
             $class->order = $request->edit_order;
             if ($request->term) {
                 $class->term = $request->term;

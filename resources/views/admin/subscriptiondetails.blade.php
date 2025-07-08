@@ -78,7 +78,18 @@
                                 <td>
                                     <h6>{{ $exp_date[0]->plan_name }} plan, N{{ number_format($exp_date[0]->amount) }}</h6>
                                 </td>
-                                <td><a href="#">Change plan</a></td>
+                                <td>
+                                    <a href="#">Change plan</a> &nbsp;
+                                    <select name="" id="" class="subscription-plan">
+                                        <option value="">Select plan</option>
+                                        <option value="">Daily</option>
+                                        <option value="">Weekly</option>
+                                        <option value="">Monthly</option>
+                                        <option value="">Quaterly</option>
+                                        <option value="">6 Months</option>
+                                        <option value="">Yearly</option>
+                                    </select>
+                                </td>
                             </tr>
                             <tr>
                                 <td>
@@ -97,7 +108,14 @@
                                 <td>
                                     <h6>{{ ucfirst($exp_date[0]->payment_method) }}</h6>
                                 </td>
-                                <td><a href="#">Change method</a></td>
+                                <td>
+                                    <a href="#">Change method</a> &nbsp;
+                                    <select name="" id="" class="payment-method">
+                                        <option value="">Select method</option>
+                                        <option value="">Card</option>
+                                        <option value="">Bank Transfer</option>
+                                    </select>
+                                </td>
                             </tr>
                         @else
                             <tr>
