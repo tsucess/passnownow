@@ -1,8 +1,15 @@
 @extends('layouts.dasboardtemp')
 
+<style>
+#form_add
+{
+    width: 100%;
+}
+</style>
+
 @section('admincontent')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Topics</h1> 
+        <h1 class="h2">Topics</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
                 <a href="/adsubjects" class="btn btn-secondary p-1 px-5 shadow">Back</a>
@@ -78,7 +85,7 @@
     <!-- Add User Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-fullscreen">
             <div class="modal-content" id="form_add">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="addModalLabel">Add new topic</h1>
@@ -225,20 +232,20 @@
             var url = $(this).data('url');
             var editorder = $(this).data('order');
             var editterm = $(this).data('term');
-        
+
             $('#subjectu_id').val(subjectu_id);
             $('#edit-id').val(id);
             $('#edit-title').val(title);
             $('#edit-url').val(url);
             $('#edit-order').val(editorder);
             $('#prev-term').val(editterm);
-            
+
         });
 
-     
+
 
     });
 
- 
+
 </script>
 @endsection
