@@ -16,6 +16,7 @@
             <div class="col-12 mb-3 mb-md-0 shadow subscription_history update">
                 <table id="sub-table">
                     <thead>
+
                         <tr>
                             <th class="col-3">Package</th>
                             <th class="col-1">Price</th>

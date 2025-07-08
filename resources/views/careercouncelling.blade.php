@@ -1,5 +1,15 @@
 @extends('layouts.index')
 
+<style>
+    .hover-grow {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hover-grow:hover {
+  transform: scale(1.1);
+}
+</style>
+
 @section('content')
     <Section class="container-fluid container__banner career_banner">
         <div class="row">
@@ -16,21 +26,21 @@
     <Section class="container-fluid container__subjects career_gallery">
         <div class="row p-5">
             <div class="col-12 col-md-3">
-                <div class="image-wrapped">
+                <div class="image-wrapped hover-grow">
                     <img src="{{ asset('images/cc1.png') }}" alt="">
                 </div>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 hover-grow">
                 <div class="image-wrapped">
                     <img src="{{ asset('images/cc2.png') }}" alt="">
                 </div>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 hover-grow">
                 <div class="image-wrapped">
                     <img src="{{ asset('images/cc3.png') }}" alt="">
                 </div>
             </div>
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 hover-grow">
                 <div class="image-wrapped">
                     <img src="{{ asset('images/cc4.png') }}" alt="">
                 </div>
@@ -77,17 +87,17 @@
                     <img src="{{ asset('images/peoplemeet2.png') }}" alt="">
                 </div>
             </div>
-            <div class="col-12 col-md-6 p-md-4 mb-3">
-                <h5 class="my-2 text-white">Career Advisory</h5>
-                <p class="text-dark text-white">
+            <div class="col-12 col-md-6 p-md-4 mb-3 section">
+                <h5 class="my-2 text-white animate-on-scroll">Career Advisory</h5>
+                <p class="text-dark text-white animate-on-scroll">
                     We’ll guide your child/ward on the best courses and career direction that is best suited for his/her personality trait by conducting detailed analysis of their grades and co-curricular interests, get to know what they enjoy doing, the kind of work they feel they’ll be most productive doing and more importantly, their plans and interests after secondary school. The information gathered will be used to help us make an informed decision on the Courses and Career Path that is best suited for the person in question.
                 </p>
                 <a href="{{ url('good-teacher') }}" class="">READ NOW &nbsp; <i class="fa-solid fa-arrow-right-long"></i></a>
             </div>
             <hr class="text-white">
-            <div class="col-12 col-md-6 p-md-4 mb-3">
-                <h5 class="my-2 text-white">Tertiary Institution Advisory:</h5>
-                <p class="text-dark text-white">
+            <div class="col-12 col-md-6 p-md-4 mb-3 section">
+                <h5 class="my-2 text-white animate-on-scroll">Tertiary Institution Advisory:</h5>
+                <p class="text-dark text-white animate-on-scroll">
                     Book a phone conversation or physical appointment with our Career and Education Counsellors to help you through this difficult decision as you watch your child/children live their Dreams. We will provide your children/wards with vital information and guidance on all they need to know about the options available to them and help them make the best decisions based on their qualifications and career goals.
                 </p>
                 <a href="{{ url('good-teacher') }}" class="">READ NOW &nbsp; <i class="fa-solid fa-arrow-right-long"></i></a>

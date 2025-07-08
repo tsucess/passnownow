@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Passnownow</title>
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
 
 
 
@@ -199,7 +199,7 @@
                 <div class = "row">
                     <form method="POST" action="{{ route('pay') }} " accept-charset="UTF-8" id = "#success"
                         class="form-horizontal" role="form">
-            
+
                         <div class="mb-3">
                             <input type="hidden" name="page" value="services"/>
                             <input type="hidden" name="orderID" class="form-control mb-3"

@@ -68,8 +68,6 @@
                     <a href="{{ route('showpastquestions', ['data' => $Exam]) }}"
                         class="btn btn-outline-primary mt-auto p-2 sub">VIEW PAST QUESTIONS</a>
                 </div>
-
-
             @endforeach
         </div>
     @else

@@ -119,7 +119,7 @@
                         class="profile_image"
                         alt="Profile Photo"
                         id="profilePreview"
-                        style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; cursor: pointer;"
+                        style="width: 100%; height: 100%;  object-fit: contain; cursor: pointer;"
                         onclick="document.getElementById('profilePhotoInput').click();"
                     >
 
@@ -262,7 +262,7 @@
 
             // Enable the save button
             const saveButton = document.getElementById('saveButton');
-            saveButton.textContent = 'Saved';
+            saveButton.textContent = 'Save Picture';
             saveButton.disabled = false;
         };
 

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>New Subscription</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
 </head>
 <body>
         {{-- <img src="{{ asset('images/logo.png') }}" class="mx-auto"> --}}

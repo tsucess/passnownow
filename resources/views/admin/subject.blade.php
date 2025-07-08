@@ -47,6 +47,104 @@
 @section('admincontent')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Subjects</h1>
+
+        <div class="position-relative">
+            <i class="fa-solid fa-magnifying-glass position-absolute top-50 start-0 translate-middle ms-3 text-muted"></i>
+            <input type="text" class="form-control ps-5" id="subjectFilterInput" placeholder="Search by Year">
+          </div>
+
+          <script>
+            document.getElementById('subjectFilterInput').addEventListener('input', function () {
+                const filterValue = this.value.trim().toLowerCase();
+                const cards = document.querySelectorAll('.animated-card');
+
+                cards.forEach(card => {
+                    const year = card.getAttribute('subject-class').toLowerCase();
+                    if (filterValue === '' || year.includes(filterValue)) {
+                        card.style.display = '';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+
+
+
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.animated-card');
+        const paginationContainer = document.getElementById('pagination');
+        const cardsPerPage = 6;
+        const totalCards = cards.length;
+        const totalPages = Math.ceil(totalCards / cardsPerPage);
+        let currentPage = 1;
+
+        function showPage(page) {
+            const start = (page - 1) * cardsPerPage;
+            const end = start + cardsPerPage;
+
+            // Hide all cards
+            cards.forEach((card, index) => {
+                card.style.display = (index >= start && index < end) ? '' : 'none';
+            });
+
+            // Update active pagination link
+            document.querySelectorAll('.page-item').forEach((item, index) => {
+                item.classList.toggle('active', index === page);
+            });
+
+            // Enable/Disable Previous and Next buttons
+            document.getElementById('prevButton').classList.toggle('disabled', page === 1);
+            document.getElementById('nextButton').classList.toggle('disabled', page === totalPages);
+
+            currentPage = page; // Update the current page
+        }
+
+        function createPagination() {
+            // Create "Previous" button
+            const prevItem = document.createElement('li');
+            prevItem.classList.add('page-item', 'disabled');
+            prevItem.id = 'prevButton';
+            prevItem.innerHTML = `<a class="page-link" href="#">Previous</a>`;
+            prevItem.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (currentPage > 1) showPage(currentPage - 1);
+            });
+            paginationContainer.appendChild(prevItem);
+
+            // Create page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                const pageItem = document.createElement('li');
+                pageItem.classList.add('page-item');
+                pageItem.dataset.page = i;
+                pageItem.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                pageItem.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    showPage(i);
+                });
+                paginationContainer.appendChild(pageItem);
+            }
+
+            // Create "Next" button
+            const nextItem = document.createElement('li');
+            nextItem.classList.add('page-item');
+            nextItem.id = 'nextButton';
+            nextItem.innerHTML = `<a class="page-link" href="#">Next</a>`;
+            nextItem.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (currentPage < totalPages) showPage(currentPage + 1);
+            });
+            paginationContainer.appendChild(nextItem);
+        }
+
+        createPagination();
+        showPage(1); // Show the first page by default
+    });
+        </script>
+
+
+
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
                 <a href="/classes" class="btn btn-secondary p-1 px-5 shadow">Back</a>
@@ -56,28 +154,37 @@
     <div class = "row mt-3 ms-3">
         @if (!empty($fetchSubjects[0]))
             @foreach ($fetchSubjects as $subject)
-                <div class = "col-12 col-md-4 animated-card">
-                    <img src="{{ asset('storage/' . $subject->avatar) }}" class = "img-fluid mb-2" style="height:15rem" />
-                    <span class = "d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">{{ $subject->title }}</span>
-                    <p class = "p text-md-start">{{ $subject->description }}
-                    </p>
-                    <div class="d-flex justify-content-start mb-3">
-                        @if (Auth::user()->status === 1)
-                            <a class="btn btn-outline-primary mb-3 sub"
-                                href = "{{ route('learning', ['data' => $subject]) }}">VIEW NOTE</a>
-                        @else
-                            <button type="button" class="btn btn-outline-primary sub" data-bs-toggle="modal"
-                                data-bs-target="#subscribeModal">Subscribe Now</button>
-                        @endif
-                    </div>
-                </div>
-            @endforeach
+            <div
+            class="col-12 col-md-4 animated-card mb-5"
+            subject-class="{{ $subject->title }}"
+            data-index="{{ $subject }}"
+            style="display: none;"
+        >
+            <img src="{{ asset('storage/' . $subject->avatar) }}" class="img-fluid mb-2" style="height:15rem" />
+            <span class="d-block fw-bold fs-sm-5 fs-md-6 fs-lg-7 text-start jss">{{ $subject->title }}</span>
+            <p class="p text-md-start">{{ $subject->description }}</p>
+            <div class="d-flex justify-content-start mb-3">
+                @if (Auth::user()->status === 1)
+                    <a class="btn btn-outline-primary mb-3 sub"
+                        href="{{ route('learning', ['data' => $subject]) }}">VIEW NOTE</a>
+                @else
+                    <button type="button" class="btn btn-outline-primary sub" data-bs-toggle="modal"
+                        data-bs-target="#subscribeModal">Subscribe Now</button>
+                @endif
+            </div>
+        </div>
+    @endforeach
         @else
             <div class = "col-12 animated-card text-center">
                 <p>No Subjects uploaded yet, come back later</p>
             </div>
         @endif
 
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center" id = "pagination">
+            </ul>
+          </nav>
     </div>
 
     <!-- Subscribe Modal -->

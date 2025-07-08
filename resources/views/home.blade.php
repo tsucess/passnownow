@@ -442,7 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="row">
                         <div class="col-12 col-md-6 review">
                             <h3 id = "count-number">5M+</h3>
-                            <p>Lifetime <br /> Learners</p>
+                            <p>Lifetime <br/> Learners</p>
                         </div>
                         <div class="col-12 col-md-6 review">
                             <h3>1M+</h3>

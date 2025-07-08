@@ -3,6 +3,7 @@
 
 <head>
   <title>Administrator</title>
+  <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
 
 
     <meta charset="UTF-8">

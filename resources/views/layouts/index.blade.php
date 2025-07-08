@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Passnownow</title>
-
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
 
 
     <!-- Fonts -->
@@ -15,7 +14,6 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-
 
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
@@ -64,10 +62,66 @@
             animation-play-state: paused;
         }
 
-        .aboutImage:hover {
-            animation-play-state: running;
-        }
-    </style>
+.aboutImage:hover {
+  animation-play-state: running;
+}
+
+
+/* Scroll to Top Button Styles */
+#scrollToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: #0D2F5F; /* Blue color */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 1000;
+}
+
+#scrollToTop.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+#scrollToTop:hover {
+  background-color: #0056b3; /* Darker blue */
+}
+
+#scrollToTop .arrow {
+  font-size: 24px;
+  animation: spin 1s linear infinite;
+}
+
+/* @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} */
+
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+        </style>
 </head>
 
 <body class="">
@@ -166,8 +220,12 @@
                                                 @csrf
 
                                         <li>
+<<<<<<< HEAD
                                             <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')"
                                                 onclick="event.preventDefault();                                              this.closest('form').submit();">
+=======
+                                            <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')" onclick="event.preventDefault();">                                              this.closest('form').submit();">
+>>>>>>> eb473bf8dda6e44e15f40a86ff52d912730936c9
                                                 {{ __('Signout') }}
                                             </x-dropdown-link>
                                         </li>
@@ -278,10 +336,68 @@
                 </div>
             </footer>
         </div>
+
+
+        <!-- Scroll to Top Button -->
+        <div id="scrollToTop">
+            <i class="arrow">↑</i>
+        </div>
+
+          <script>
+            // Scroll to Top Button Logic
+            const scrollToTopButton = document.getElementById('scrollToTop');
+
+            // Show the button when scrolling down
+            window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollToTopButton.classList.add('show');
+            } else {
+                scrollToTopButton.classList.remove('show');
+            }
+            });
+
+            // Scroll to the top smoothly when clicked
+            scrollToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth',
+            });
+            });
+            </script>
     </div>
 
 
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    function isFullyInViewport(el) {
+      const rect = el.getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      );
+    }
+
+    function triggerAnimations() {
+      // Target all divs that contain things to animate
+      $('.section, .mb-3').each(function () {
+        const $container = $(this);
+        const $targets = $container.find('.animate-on-scroll');
+
+        if (!$targets.hasClass('visible') && isFullyInViewport(this)) {
+          $targets.addClass('visible');
+        }
+      });
+    }
+
+    $(window).on('scroll resize load', triggerAnimations);
+  });
+</script>
+
+
 
 </body>
 
