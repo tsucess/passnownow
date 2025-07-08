@@ -387,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="row">
                 <div class="col-3 col-md-2">
                     <img src="{{ asset('images/WAEC.png') }}" alt="Chemistry">
-                    <p class="title text-dark fw-bold">WAEC</p>
+                    <p class="title text-dark fw-bold" style="font-size: 10px;">WAEC</p>
                 </div>
                 <div class="col-3 col-md-2">
                     <img src="{{ asset('images/JAMB.png') }}" alt="Computer">
