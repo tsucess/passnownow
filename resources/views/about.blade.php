@@ -1,5 +1,12 @@
 @extends('layouts.index')
 
+<!--
+    =============================
+    Custom Styles for About Page
+    =============================
+    These styles control the look and feel of the About page sections, images, and hover effects.
+    Move to external CSS for better maintainability in the future.
+-->
 <style>
 .zoom-on-hover {
   transition: transform 0.3s ease-in-out;

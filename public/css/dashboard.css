@@ -556,6 +556,12 @@ body {
   font-size: 700;
 }
 
+.subscription_details table tr td .payment-method,
+.subscription_details table tr td .subscription-plan{
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
 .checkoutsummary__container {
   margin-top: 2rem;
 }

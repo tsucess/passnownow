@@ -1,3 +1,10 @@
+<!--
+    =============================
+    Useful Skills Page Blade Template
+    =============================
+    Displays useful skills for teachers with images and descriptions.
+    Add more documentation as needed for maintainability.
+-->
 @extends('layouts.index')
 
 @section('content')

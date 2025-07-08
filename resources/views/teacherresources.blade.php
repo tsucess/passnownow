@@ -1,3 +1,10 @@
+<!--
+    =============================
+    Teacher Resources Page Blade Template
+    =============================
+    Provides resources and methodologies for teachers.
+    Add more documentation as needed for maintainability.
+-->
 @extends('layouts.index')
 
 @section('content')

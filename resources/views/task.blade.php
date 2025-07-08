@@ -1,3 +1,10 @@
+<!--
+    =============================
+    Task Page Blade Template
+    =============================
+    Describes the 'teaching by task' methodology for teachers.
+    Add more documentation as needed for maintainability.
+-->
 @extends('layouts.index')
 
 @section('content')

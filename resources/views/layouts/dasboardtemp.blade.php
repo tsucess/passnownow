@@ -37,7 +37,8 @@
     <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 
-
+     <link rel="stylesheet" href="{{ asset('css/ckeditor5.css')}}" />
+    
 
     <style>
         @media (min-width: 768px) {
@@ -95,13 +96,13 @@
         }
 
         /* @media only screen and (max-width: 320px) { */
-            /* .show {
+        /* .show {
                 margin-left: 0;
                 background: red;
             } */
-        } */
+        }
 
-        .sub:hover {
+        */ .sub:hover {
             background-color: #1A69AF;
         }
 
@@ -133,7 +134,6 @@
         /* .sty {}
   animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
         */
-
     </style>
 </head>
 
