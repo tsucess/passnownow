@@ -152,6 +152,10 @@ Route::get('/checkout', function () {
 });
 
 
+Route::get('/policy', function () {
+    return view('policy');
+});
+
 
 Route::get('/subscribeform', function () {
     return view('subscribeform');
