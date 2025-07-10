@@ -386,27 +386,27 @@ document.addEventListener("DOMContentLoaded", () => {
         <section class="container-fluid container__top pt-3">
             <div class="row">
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/WAEC.png') }}" alt="Chemistry">
-                    <p class="title text-dark fw-bold" style="font-size: 10px;">WAEC</p>
+                    <img src="{{ asset('images/WAEC.png') }}" class = "w-50"  alt="Chemistry">
+                    <p class="title fw-bold mt-2" style="font-size: 15px; color: #103161;">WAEC</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/JAMB.png') }}" alt="Computer">
+                    <img src="{{ asset('images/JAMB.png') }}" class = "w-50" alt="Computer">
                     {{-- <p class="title">JAMB</p> --}}
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/NECO.png') }}" alt="Geography">
+                    <img src="{{ asset('images/NECO.png') }}" class = "w-50" alt="Geography">
                     {{-- <p class="title">NECO</p> --}}
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/TOEFL.png') }}" alt="Biology">
+                    <img src="{{ asset('images/TOEFL.png') }}" class = "w-50"  alt="Biology">
                     {{-- <p class="title">TOEFL</p> --}}
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/IELTS.png') }}" alt="Mathematics">
+                    <img src="{{ asset('images/IELTS.png') }}" class = "w-50"alt="Mathematics">
                     {{-- <p class="title">IELTS</p> --}}
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/IGCSE.png') }}" alt="Physical Health">
+                    <img src="{{ asset('images/IGCSE.png') }}" class = "w-50" alt="Physical Health">
                     {{-- <p class="title">IGCSE</p> --}}
                 </div>
             </div>

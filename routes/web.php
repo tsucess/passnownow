@@ -156,6 +156,10 @@ Route::get('/policy', function () {
     return view('policy');
 });
 
+Route::get('/terms', function () {
+    return view('terms');
+});
+
 
 Route::get('/subscribeform', function () {
     return view('subscribeform');

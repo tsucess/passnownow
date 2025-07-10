@@ -1,14 +1,23 @@
 @extends('layouts.index')
 
+<style>
+    @media only screen and (max-width: 768px) {
+    .hide-on-mobile {
+        display: none;
+    }
+}
+
+ </style>
+
 @section('content')
 <div class = "container-fluid" style = "background: #CFD5DF;">
     <div class="row justify-content-between">
-    <div class="col-4 ms-5 p-5">
+    <div class="col-lg-4 col-12 ms-5 p-5">
       <h1 class = "h1 text-primary fw-bold">Privacy Page</h1>
-      <p>Last Updated: December 2025</p> 
+      <p>Last Updated: December 2025</p>
     </div>
-    <div class="col-4 mb-5">
-      <img src="{{ asset('images/privacy.png') }}" class="img-fluid" alt="privacy policy image">
+    <div class="col-lg-4 hide-on-mobile mb-3">
+      <img src="{{ asset('images/privacy.png') }}" class="img-fluid w-50" alt="privacy policy image">
     </div>
   </div>
 </div>
