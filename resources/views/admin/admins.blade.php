@@ -7,12 +7,12 @@
         color: #ffffff;
     }
 </style>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div class="container-fluid d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style = "background-color:#f1f1f1;">
         <h1 class="h2">Administrators</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-md btn-outline-primary" data-bs-toggle="modal"
-                    data-bs-target="#addModal">Add admin</button>
+                    data-bs-target="#addModal">Add Administrator</button>
             </div>
         </div>
     </div>
@@ -38,14 +38,22 @@
         @php
             $sn= 0;
         @endphp
-    <div class="table-responsive mb-5 pb-5">
+
+
+    <div class="container- table-responsive mb-5 pb-5 bg-white">
+        <h6>ADMINISTRATORS PROFILE</h6>
+        <p>Your awesome text goes here</p>
+
         <table id="admin-table" class="table custom-table mb-5 pb-5">
+
             <thead class="table-secondary">
                 <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Username</th>
                     <th scope="col">Email</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Gender</th>
                     <th scope="col">Role</th>
                     <th scope="col">Date</th>
                     <th scope="col">Actions</th>
@@ -56,8 +64,10 @@
                     <tr>
                         <th>{{  ++$sn }}</th>
                         <td> {{ $Admin->first_name }} {{ $Admin->last_name }}</td>
-                        <td>{{ $Admin->username }}</td>
                         <td>{{ $Admin->email }}</td>
+                        <td>{{ $Admin->username }}</td>
+                        {{-- <td>{{ $Admin->phone number }}</td>
+                        <td>{{ $Admin->gender }}</td> --}}
                         <td>
                             @if ($Admin->role === 'sadmin')
                             {{ 'Super Admin'}}
@@ -78,6 +88,7 @@
             </tbody>
         </table>
     </div>
+
 
     {{-- <section>
     <iframe src="https://app.Lumi.education/api/v1/run/CSLOMd/embed" width="1088" height="720" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe>

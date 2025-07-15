@@ -349,6 +349,10 @@ Route::get('/pqexams', function () {
     return view('pqexams');
 });
 
+Route::get('/examupload', function () {
+    return view('admin.examupload');
+});
+
 
 
 

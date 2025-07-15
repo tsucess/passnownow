@@ -275,17 +275,42 @@
             </div>
         </div>
     @else
+  <div class="row mt-3 justify-content-between">
+    <div class="col-4">
+      <h3 class = "fw-bold">Dashboard Overview</h3>
+      <p>Welcome to Passnownow Admin</p>
+
+
+
+    </div>
+    <div class="col-4">
+     <button type="button" class="btn text-white" style = "background-color:#1A69AF">Examination Upload</button>
+     <button type="button" class="btn btn-light border border-primary ms-1" style = "color: #1A69AF;">Add Admin</button>
+    </div>
+  </div>
+
+
+
         <div class ="row mb-3">
-            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden" style = "height:100px;">
+            <div class = "col-sm ms-3 mt-3 mb-2 p-3  rounded-3 border border-primary overflow-hidden" style = "height:130px;">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
 
                     <span class  = "ms-2 mb-4 fw-bold fs-5  profit">N{{ $totalSum }}</span>
-                    <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                        style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">&#x20A6;
-                        {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                            aria-hidden="true"></i>6.7% --}}
-                    </span>
+                    <span class = "float-end rounded-pill bg-success mb-2 p-2 bg-opacity-75"
+                        style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6;">
+                        <i class="fa fa-arrow-up pe-3 ps-2"
+                            aria-hidden="true"></i><span class="p-2 rounded-circle bg-succes">6.7%</span>
+                    </span><br><br>
+                    {{-- <p>Monthly Goal</p> --}}
+                    <div class="row justify-content-between ms-1 me-1">
+    <div class="col-5">
+        Monthly Goal
+    </div>
+    <div class="col-4 text-end">
+      70%
+    </div>
+  </div>
                     {{-- <br><br>
                     <span>Monthly goal</span>
                     <span class = "float-end">70%</span>
@@ -296,9 +321,15 @@
                     </div> --}}
                 </a>
 
+
+<div class="progress mb-3 mt-1 ms-2 me-1" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
+<div class="progress-bar bg-primary" style="width: 75%"></div>
+</div>
+
+
             </div>
 
-        <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden" style="height: 100px;">
+        <div class = "col-sm ms-3 mt-3 mb-2 p-3 rounded-3 border border-primary overflow-hidden" style="height: 130px;">
                 <span class = "ms-2 mt-3">Total Administrators</span><br>
                 <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -307,7 +338,10 @@
                         aria-hidden="true"></i>6.7% --}}
                     <i class="fa-solid fa-user-tie"></i>
 
-                </span>
+                </span><br><br>
+
+               <p> <i class="fa-solid fa-user-tie fa-2x"></i> </p>
+
 
                 {{--
                     <span>Monthly goal</span>
@@ -319,7 +353,7 @@
                     </div>
                  --}}
             </div>
-            <div class = "col-sm ms-3 mt-3 p-3 mb-2 border border-primary overflow-hidden">
+            <div class = "col-sm ms-3 mt-3 p-3 mb-2 rounded-3 border border-primary overflow-hidden" style = "height: 130px;">
                 <span class = "ms-2 mt-3">Total Users</span><br>
                 <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -328,7 +362,7 @@
                         aria-hidden="true"></i>6.7% --}}
                     <i class="fas fa-users" aria-hidden="true"></i>
                 </span>
-                {{-- <br><br>
+                {{--
 
                 <span>Monthly goal</span>
                 <span class = "float-end">70%</span>
@@ -336,11 +370,93 @@
                 <div class="progress mb-3 mt-1" role="progressbar" aria-label="Basic example" aria-valuenow="75"
                     aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
                     <div class="progress-bar bg-primary" style="width: 75%"></div>
-                </div> --}}
+                </div> --}}<br><br>
+
+                               <p><i class="fa-solid fa-school fa-2x"></i></p>
             </div>
         </div>
 
-        <div class = "row ms-2 border border-1 border-black p-2 mb-2">
+
+        <div class = "row mb-3">
+            <div class = "col-sm ms-3 mt-3 mb-2 p-3 rounded-3 border border-primary overflow-hidden" style="height: 130px;">
+                <span class = "ms-2 mt-3">Total Number of Examination</span><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
+                <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                    style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
+
+                </span><br><br>
+
+               <p><i class="fa-solid fa-book-open fa-2x"></i> </p>
+
+
+            </div>
+
+
+            <div class = "col-sm ms-3 mt-3 mb-2 p-3 rounded-3 border border-primary overflow-hidden" style="height: 130px;">
+                <span class = "ms-2 mt-3">Total Number of Question</span><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
+                <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                    style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
+
+                </span><br><br>
+
+               <p><i class="fa-solid fa-bell fa-2x"></i></p>
+
+
+            </div>
+
+
+
+<div class = "col-sm ms-3 mt-3 mb-2 p-3  overflow-hidden" style="height: 130px;">
+</div>
+        </div>
+
+
+<div class = "container">
+    <div class = "row">
+        <h6 class = "mt-2 mb-2">CANDIDATE PROFILE</h6>
+        <p>Your awesome text goes here</p>
+
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email Address</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Date</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Winner Effiong</td>
+      <td>majorsignature@gmail.com</td>
+      <td>08102929049</td>
+      <td>2023-10-01</td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <th scope="row">2</th>
+      <td>Taofeeq Bola Asiwaju</td>
+      <td>taofeeqbolaasiwaju@gmail.com</td>
+      <td>08102929049</td>
+      <td>2023-10-01</td>
+      <td></td>
+    </tr>
+
+  </tbody>
+</table>
+    </div>
+</div>
+
+
+
+
+        {{-- <div class = "row ms-2 border border-1 border-black p-2 mb-2">
             <div class = "border-bottom border-black border-1">
                 <span>Stats Overview</span>
                 <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
@@ -365,25 +481,25 @@
                         </div>
                     </a>
                 </div>
-                <div class = "profit w-100 border-start border-black border-1 m-0">
+
+                {{-- <div class = "profit w-100 border-start border-black border-1 m-0">
                     <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark" href = "{{ url('order') }}">
                         <div class="profit">
-                            {{-- class  = "fw-3" --}}
                             <span class = "ms-2 ">Orders</span> <br>
                             <span class  = "ms-2">{{ $totalOrders }}</span>
                             <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                                 style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
                                 <i class="fa-solid fa-receipt"></i>
-                                {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                                aria-hidden="true"></i>6.7% --}}
+
                             </span>
 
                         </div>
                     </a>
-                </div>
+                </div> --}}
+
             </div>
         </div>
-        <div class="row ms-2 border border-black">
+        {{-- <div class="row ms-2 border border-black">
             <div class ="col-12 profit p-2">
                 <a href = "{{ url('detailedstat') }}" class = "text-decoration-none detailedstat">View
                     detailed stats</a>
@@ -394,10 +510,10 @@
                 <span class = "float-start mt-2">Recent user
                     <i class="fa fa-ellipsis-v float-end mt-1 mb-1" aria-hidden="true"></i>
                 </span>
-        </div>
+        </div> --}}
 
         @php $sn= 0;  @endphp
-        <div class="table-responsive w-100 small float-start mt-2 ms-2 mb-5 pb-5">
+        {{-- <div class="table-responsive w-100 small float-start mt-2 ms-2 mb-5 pb-5">
             <table class="table custom-table mb-5 pb-5" id="userss">
                 <thead class="table-secondary">
                     <tr>
@@ -431,7 +547,7 @@
                                 <div class="action">
                                     <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
                                     {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                                    <ul class="more-options">
+                                    {{-- <ul class="more-options">
                                         <li><a href="{{ route('admin.edit', ['data' => $User]) }}"
                                                 class="btn btn-primary p-1 px-3">view</a></li>
                                         <li><a href="{{ route('admin.destroy', ['data' => $User->id]) }}"
@@ -443,6 +559,6 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+        </div>  --}}
     @endif
 @endsection

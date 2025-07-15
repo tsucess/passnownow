@@ -38,9 +38,23 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 
      <link rel="stylesheet" href="{{ asset('css/ckeditor5.css')}}" />
-    
+
 
     <style>
+
+            /* Animation applied to each card */
+    .cardhover {
+        animation: fadeIn 0.6s ease-in-out;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Hover effect */
+    .cardhover:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+
         @media (min-width: 768px) {
             /* .bd-placeholder-img-lg {
             font-size: 3.5rem;
@@ -140,9 +154,17 @@
 <body>
 
     <header class="navbar sticky-top bg-white flex-md-nowrap p-1 g-1 shadow pe-md-3">
+<div class="d-flex align-items-center">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
             <img src="{{ asset('images/logo.png') }}" alt="">
         </a>
+
+ <form class="d-flex ms-5" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+
+      </form>
+    </div>
+
         <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
             data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -156,6 +178,9 @@
             <span class="top_icon">
                 <i class="fa-solid fa-globe"></i>
             </span> --}}
+
+
+
             <div class="nav-item text-nowrap py-1">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
@@ -183,7 +208,7 @@
     </header>
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row" style="background: #f1f1f1;">
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse" style = "width:220px;">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
@@ -235,9 +260,17 @@
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
                                     <i class="fa-regular fa-user"></i>
-                                    Users
+                                    Candidates
                                 </x-sidebar-link>
                             </li>
+
+                             <li class="nav-item">
+                                <x-sidebar-link active="{{ request()->is('users') }}" href="/examupload">
+                                    <i class="fa-regular fa-list"></i>
+                                    Exam Upload
+                                </x-sidebar-link>
+                            </li>
+
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
                                     href="/classes">

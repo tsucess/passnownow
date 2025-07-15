@@ -17,17 +17,6 @@
         }
     }
 
-    /* Animation applied to each card */
-    .cardhover {
-        animation: fadeIn 0.6s ease-in-out;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    /* Hover effect */
-    .cardhover:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
 
     /* Smoothly animate the button's appearance */
     .sub {
