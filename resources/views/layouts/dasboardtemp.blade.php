@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
 
 
     <!-- Fonts -->
@@ -35,6 +36,8 @@
 
     <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
+
+    <link rel="stylesheet" href="{{ asset('css/ckeditor5.css') }}" />
 
 
 
@@ -94,13 +97,13 @@
         }
 
         /* @media only screen and (max-width: 320px) { */
-            /* .show {
+        /* .show {
                 margin-left: 0;
                 background: red;
             } */
-        } */
+        }
 
-        .sub:hover {
+        */ .sub:hover {
             background-color: #1A69AF;
         }
 
