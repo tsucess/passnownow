@@ -1,15 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\ExamPrep;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Questions extends Model
+class Subjects extends Model
 {
-    protected $table = 'questions';
-    use HasFactory;
-
+    protected $table = 'subjects';
     use HasFactory;
 
     protected $fillable = [
@@ -17,9 +15,7 @@ class Questions extends Model
         'user_unique_id',
         'title',
         'description',
-        'year',
-        'url',
-        'exam_unique_id',
-        'order'
+        'class_unique_id',
+        'avatar'
     ];
 }

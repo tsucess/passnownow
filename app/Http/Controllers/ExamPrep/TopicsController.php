@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ExamPrep;
 
-use App\Models\Topics;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Subjects;
+use App\Models\ExamPrep\Topics;
+use App\Models\ExamPrep\Subjects;
 
 class TopicsController extends Controller
 {

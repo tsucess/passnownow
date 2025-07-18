@@ -1,20 +1,24 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\ExamPrep;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Classes extends Model
+class Topics extends Model
 {
-    protected $table = 'classes';
+    use HasFactory;
     use HasFactory;
 
     protected $fillable = [
         'unique_id',
         'user_unique_id',
         'title',
-        'description',
-        'avatar'
+        'url',
+        'content',
+        'content_type',
+        'subject_unique_id',
+        'term',
+        'order'
     ];
 }

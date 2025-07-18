@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ExamPrep;
 
-use App\Models\Classes;
-use App\Models\Exams;
+use App\Http\Controllers\Controller;
+use App\Models\ExamPrep\Classes;
+use App\Models\ExamPrep\Exams;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -32,28 +33,41 @@ class ExamsController extends Controller
      */
     public function store(Request $request)
     {
-          //dd($request);
-          //dd($request->input('avatar'));
+        //   dd($request);
        $data = $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Exams::class],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'avatar' => ['required', 'mimes:jpeg,jpg,png', 'max:2048']
+            'avatar' => ['sometimes', 'mimes:jpeg,jpg,png', 'max:2048']
         ]);
 
 
+ 
+        
+        if ($request->file('avatar')) {
+            $avatar = $request->file('avatar')->store('upload');
+            // Add class
+            $done = Exams::create([
+                'unique_id' => $request->unique_id,
+                'user_unique_id' => Auth::user()->unique_id,
+                'title' => $request->title,
+                'description' => $request->description,
+                'avatar' => $avatar
+            ]);
+        }
 
-        $avatar = $request->file('avatar')->store('upload');
+        else
+        {
+            // Add class
+            $done = Exams::create([
+                'unique_id' => $request->unique_id,
+                'user_unique_id' => Auth::user()->unique_id,
+                'title' => $request->title,
+                'description' => $request->description,
+                'avatar' => null
+            ]);
 
-
-        // Add class
-        $done = Exams::create([
-            'unique_id' => $request->unique_id,
-            'user_unique_id' => Auth::user()->unique_id,
-            'title' => $request->title,
-            'description' => $request->description,
-            'avatar' => $avatar
-        ]);
+        }
 
 
         if($done) {

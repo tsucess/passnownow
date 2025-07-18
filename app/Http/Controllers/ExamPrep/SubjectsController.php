@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ExamPrep;
 
-use App\Models\Classes;
-use App\Models\Subjects;
+use App\Http\Controllers\Controller;
+use App\Models\ExamPrep\Classes;
+use App\Models\ExamPrep\Subjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;

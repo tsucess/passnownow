@@ -1,29 +1,31 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ExamsController;
-use App\Http\Controllers\ClassesController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\SubjectsController;
-use App\Http\Controllers\TopicsController;
-use App\Http\Controllers\QuestionsController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\SubscriptionController;
-use App\Models\Admin;
-use App\Models\Subjects;
-use App\Models\Questions;
-use App\Models\Classes;
-use App\Models\Pay;
-use App\Models\Transaction;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
+
+use App\Http\Controllers\ExamPrep\AdminController;
+use App\Http\Controllers\ExamPrep\ExamsController;
+use App\Http\Controllers\ExamPrep\ClassesController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ExamPrep\SubjectsController;
+use App\Http\Controllers\ExamPrep\TopicsController;
+use App\Http\Controllers\ExamPrep\QuestionsController;
+use App\Http\Controllers\ExamPrep\PaymentController;
+use App\Http\Controllers\ExamPrep\SubscriptionController;
+use App\Models\ExamPrep\Admin;
+use App\Models\ExamPrep\Subjects;
+use App\Models\ExamPrep\Questions;
+use App\Models\ExamPrep\Classes;
+use App\Models\ExamPrep\Pay;
+use App\Models\ExamPrep\Transaction;
+use App\Models\ExamPrep\Exams;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
-use App\Models\Exams;
-use App\Http\Controllers\PayController;
-use App\Http\Controllers\ChartDataController;
+use App\Http\Controllers\ExamPrep\PayController;
+use App\Http\Controllers\ExamPrep\ChartDataController;
 use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {

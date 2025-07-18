@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ExamPrep;
 
 use Illuminate\Http\Request;
 
@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
 use Unicodeveloper\Paystack\Facades\Paystack;
-use App\Models\Pay;
+use App\Models\ExamPrep\Pay;
 use App\Mail\PayFormMail;
 use Illuminate\Support\Facades\Mail;
 

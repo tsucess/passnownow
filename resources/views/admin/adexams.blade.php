@@ -199,6 +199,7 @@
                                         <x-input-label :value="__('Exam Image')" />
                                         <input type="file" class="form-control" name="avatar"
                                             aria-describedby="textBlock" />
+                                            <x-input-error :messages="$errors->get('avatar')" class="mt-2 text-danger" />
                                     </div>
                                 </div>
                             </div>

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ExamPrep;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use App\Models\Admin;
-use App\Models\Carddetail;
-use App\Models\Pay;
-use App\Models\Transaction;
+use App\Models\ExamPrep\Admin;
+use App\Models\ExamPrep\Carddetail;
+use App\Models\ExamPrep\Pay;
+use App\Models\ExamPrep\Transaction;
 use DateTime;
 use Illuminate\Support\Facades\Redirect;
 use Unicodeveloper\Paystack\Facades\Paystack;

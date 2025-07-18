@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ExamPrep;
 
-use App\Models\Admin;
+use App\Http\Controllers\Controller;
+use App\Models\ExamPrep\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Http\RedirectResponse;
@@ -59,19 +60,6 @@ class AdminController extends Controller
             'role' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
-
-        // $admin = new User;
-
-        //     $admin->unique_id = $request->input('unique_id');
-        //     $admin->first_name = $request->input('fname');
-        //     $admin->last_name = $request->input('lname');
-        //     $admin->username = $request->input('username');
-        //     $admin->email = $request->input('email');
-        //     $admin->terms = $request->input('terms');
-        //     $admin->role = $request->input('role');
-        //     $admin->password = Hash::make($request->input('password'));
-
-        // $admin->save();
 
 
 
@@ -165,10 +153,6 @@ class AdminController extends Controller
         };
        
     }
-
-
-
-
 
 
 
