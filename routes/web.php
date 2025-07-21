@@ -353,6 +353,26 @@ Route::get('/examupload', function () {
     return view('admin.examupload');
 });
 
+Route::get('/examclass', function () {
+    return view('admin.examclass');
+});
+
+Route::get('/examsubject', function () {
+    return view('admin.examsubject');
+});
+
+
+Route::get('/testdashboard', function () {
+    return view('admin.testdashboard');
+});
+
+Route::get('/dasboardtemp', function () {
+    return view('layouts.dasboardtemp');
+});
+
+Route::get('/noadministrator', function () {
+    return view('admin.noadministrator');
+});
 
 
 

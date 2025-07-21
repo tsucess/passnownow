@@ -58,6 +58,10 @@
 }
 
 
+.sidebar .navbar-brand img {
+  width: 5rem;
+}
+
 body {
   font-size: .875rem;
 }
@@ -121,16 +125,28 @@ body {
   text-transform: uppercase;
 }
 
+#sidebarMenu
+{
+    top: 0px;
+}
+
 /*
 * Navbar
 */
 
+header.navbar
+{
+    margin-left:220px;
+    background-color: #1A69AF;
+
+}
 
 .navbar-brand {
-  padding-top: .75rem;
-  padding-bottom: .75rem;
+  /* padding-top: .75rem; */
   font-size: 1rem;
+
 }
+
 
 .navbar .navbar-toggler {
   top: .25rem;
@@ -739,3 +755,312 @@ body {
         width: 24rem !important;
     }
 }
+
+   .sidebar {
+      background-color: #f8f9fa;
+      min-height: 100vh;
+    }
+
+    .sidebar a {
+      padding: 10px 20px;
+      display: block;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #e4e4e4;
+    }
+
+            /* Animation applied to each card */
+    .cardhover {
+        animation: fadeIn 0.6s ease-in-out;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Hover effect */
+    .cardhover:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+
+        @media (min-width: 768px) {
+            /* .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          } */
+        }
+
+        .profit {
+            padding: 6px;
+        }
+
+        .profit:hover {
+            background-color: #1A69AF;
+            color: #fff;
+        }
+
+
+        .profit:hover a {
+            color: #fff !important;
+        }
+
+
+        .profit:hover span {
+            color: #fff;
+        }
+
+
+
+        .detailedstat:hover {
+            background-color: #1A69AF;
+            color: #fff;
+            border-radius: 10px;
+        }
+
+
+        .detailedstat {
+            color: #1A69AF;
+            font-weight: 600;
+            padding: 6px;
+        }
+
+        .product:hover {
+            background-color: #1A69AF;
+            color: #fff;
+            border-radius: 10px;
+            padding: 6px;
+        }
+
+        .order:hover {
+            background-color: #1A69AF;
+            color: #fff;
+            border-radius: 10px;
+            padding: 6px;
+        }
+
+         .sub:hover {
+            background-color: #1A69AF;
+        }
+
+        /* Smooth animation for buttons */
+        .sub {
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        /* Hover effect for buttons */
+        .sub:hover {
+            background-color: #0056b3;
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        /* Applying animation to the cards */
+        .sty {
+            animation: fadeIn 0.8s ease-in-out;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        /* Hover effect on the card */
+        .sty:hover {
+            transform: scale(1.03);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+
+        @media only screen and (max-width: 768px) {
+        .harmburger span
+        {
+            float: right;
+        }
+    }
+
+    @media only screen and (min-width:1024px)
+    {
+        .myfooter
+        {
+            padding-left:200px;
+        }
+    }
+
+
+    /* Keyframes for fade-in and slide-in from the bottom */
+    @keyframes fadeInSlideUp {
+        0% {
+            transform: translateY(30px);
+            /* Start slightly below */
+            opacity: 0;
+            /* Start invisible */
+        }
+
+        100% {
+            transform: translateY(0);
+            /* End at the original position */
+            opacity: 1;
+            /* Fully visible */
+        }
+    }
+
+    /* Apply animation to the cards */
+    .animated-card {
+        opacity: 0;
+        /* Start invisible */
+        animation: fadeInSlideUp 0.8s ease-out forwards;
+        /* Forward to keep the final state */
+    }
+
+    /* Staggered animation using nth-child */
+    .animated-card:nth-child(1) {
+        animation-delay: 0s;
+    }
+
+    .animated-card:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .animated-card:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+
+    .animated-card:nth-child(4) {
+        animation-delay: 0.6s;
+    }
+
+    .subHere {
+        margin: auto;
+        height: 20rem;
+    }
+
+    /* Keyframes for fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Animation applied to each card */
+    .subHere {
+        animation: fadeIn 0.6s ease-in-out;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    /* Hover effect */
+    .subHere:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sub:hover,
+    .sub:hover a {
+        color: white
+    }
+
+
+
+    .chart-wrapper {
+        text-align: center;
+    }
+
+    .chart-container {
+        width: 330px;
+        height: 190px;
+        position: relative;
+        margin: auto;
+    }
+
+    .chart-center-label {
+        position: absolute;
+        top: 55%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 12px;
+        color: #444;
+        font-weight: 600;
+        pointer-events: none;
+    }
+
+    .visitor-stats {
+        margin-top: 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .visitor-stats div {
+        text-align: center;
+    }
+
+    .visitor-stats .count {
+        font-size: 12px;
+        font-weight: bold;
+        color: #1f2b3a;
+    }
+
+    .visitor-stats .label {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+
+    .chart-containers {
+        position: relative;
+        width: 370px;
+        height: 150px;
+        margin: auto;
+    }
+
+    .custom-legend {
+        margin-top: 15px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: #555;
+    }
+
+    .legend-color {
+        width: 10px;
+        height: 10px;
+        margin-right: 5px;
+        border-radius: 2px;
+    }
+
+    .transaction-stats {
+        margin-top: 35px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .transaction-stats div {
+        text-align: center;
+    }
+
+    .transaction-stats .count {
+        font-size: 12px;
+        font-weight: bold;
+        color: #1f2b3a;
+    }
+
+    .transaction-stats .label {
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    @media screen and (min-width: 1024px) {
+        .calculationBox {
+            width: 32% !important;
+            margin: 6px;
+            /* box-sizing: border-box; */
+        }
+    }
