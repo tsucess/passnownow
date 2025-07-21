@@ -62,7 +62,6 @@ class AdminController extends Controller
         ]);
 
 
-
         // Register
         Admin::create([
             'unique_id' => $request->unique_id,
@@ -76,8 +75,6 @@ class AdminController extends Controller
         ]);
 
         // event(new Registered($user));
-
-
         return redirect('/admins')->with('success', 'Admin Created successfully');
     }
 
@@ -151,7 +148,6 @@ class AdminController extends Controller
             return back()->with('status', 'error');
             // return redirect('/admins')->with('error', 'Something went wrong');
         };
-       
     }
 
 

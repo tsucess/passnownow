@@ -58,7 +58,6 @@
         <div class="row mt-3 gap-2 gap-lg-1">
             @foreach ($fetchExams as $Exam)
                 <div class = "col-12 col-sm-6 col-md-4 col-lg-3 border text-center rounded p-2 p-lg-2 cardhover" style = "width:32%;">
-
                     <img src="{{ asset('storage/' . $Exam->avatar) }}" class=" mb-3 img-responsive" alt="{{ $Exam->title }}"
                         style="height: 7rem;">
                     <div class="" style="height: 8rem">
@@ -68,14 +67,12 @@
                     <a href="{{ route('showpastquestions', ['data' => $Exam]) }}"
                         class="btn btn-outline-primary mt-auto p-2 sub">VIEW PAST QUESTIONS</a>
                 </div>
-
-
             @endforeach
         </div>
     @else
         <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Exams</h1>
+            <h1 class="h2 ps-2">Exams</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group me-2">
                     <button type="button" class="btn btn-md btn-outline-primary" data-bs-toggle="modal"
@@ -103,7 +100,7 @@
             </div>
         @endif
 
-        <div class="table-responsive mb-5 pb-5">
+        <div class="table-responsive mb-5 pb-5 px-2">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
                 <thead class="table-secondary">
                     <tr>
@@ -144,9 +141,9 @@
                                                 data-avatar="{{ $Exam->avatar }}" data-bs-toggle="modal"
                                                 data-bs-target="#editModal">edit</button></li>
 
-                                        <li><a href="{{ route('adpastquestions', ['data' => $Exam]) }}"
+                                        {{-- <li><a href="{{ route('adpastquestions', ['data' => $Exam]) }}"
                                                 class="btn btn-primary p-1">Questions</a>
-                                        </li>
+                                        </li> --}}
                                         <li><a onclick="validate(this)"
                                                 href="{{ route('adexams.destroy', ['data' => $Exam->id]) }}"
                                                 class="btn btn-danger p-1">delete</a></li>

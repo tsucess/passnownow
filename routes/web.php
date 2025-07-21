@@ -4,7 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-
+use App\Http\Controllers\ExamPrep\StudentOperation;
+use App\Http\Controllers\ExamPrep\SpecialAdminController;
 use App\Http\Controllers\ExamPrep\AdminController;
 use App\Http\Controllers\ExamPrep\ExamsController;
 use App\Http\Controllers\ExamPrep\ClassesController;
@@ -200,7 +201,18 @@ Route::get('/subscription', function () {
 
 
 
+Route::middleware(['auth'])->group(function () {
 
+    Route::get('/dashboard', [StudentOperation::class, 'dashboard']);
+
+    Route::get('/exam', [StudentOperation::class, 'exam']);
+    Route::get('/join_exam/{id}', [StudentOperation::class, 'join_exam']);
+    Route::post('/submit_questions', [StudentOperation::class, 'submit_questions']);
+    Route::get('/show_result/{id}', [StudentOperation::class, 'show_result']);
+    Route::get('/apply_exam/{id}', [StudentOperation::class, 'apply_exam']);
+    Route::get('/view_result/{id}', [StudentOperation::class, 'view_result']);
+    Route::get('/view_answer/{id}', [StudentOperation::class, 'view_answer']);
+});
 
 
 Route::middleware('auth')->group(function () {
@@ -212,6 +224,54 @@ Route::middleware('auth')->group(function () {
     Route::get('/admins/{data}/destroy', [AdminController::class, 'destroy'])->name('admin.destroy');
 
     Route::get('/users', [AdminController::class, 'usersonly'])->name('users');
+
+
+
+
+    
+
+    // Special Question features STARTS 
+    Route::get('/dashboard', [SpecialAdminController::class, 'index']);
+    Route::get('/exam_category', [SpecialAdminController::class, 'exam_category']);
+    Route::get('/delete_category/{id}', [SpecialAdminController::class, 'delete_category']);
+    Route::get('/edit_category/{id}', [SpecialAdminController::class, 'edit_category']);
+    Route::get('/category_status/{id}', [SpecialAdminController::class, 'category_status']);
+    Route::get('/manage_exam', [SpecialAdminController::class, 'manage_exam']);
+    Route::get('/exam_status/{id}', [SpecialAdminController::class, 'exam_status']);
+    Route::get('/delete_exam/{id}', [SpecialAdminController::class, 'delete_exam']);
+    Route::get('/edit_exam/{id}', [SpecialAdminController::class, 'edit_exam']);
+    // Route::get('/manage_students', [SpecialAdminController::class, 'manage_students']);
+    // Route::get('/student_status/{id}', [SpecialAdminController::class, 'student_status']);
+    // Route::get('/delete_students/{id}', [SpecialAdminController::class, 'delete_students']);
+    Route::get('/add_questions/{id}', [SpecialAdminController::class, 'add_questions']);
+    Route::get('/question_status/{id}', [SpecialAdminController::class, 'question_status']);
+    Route::get('/delete_question/{id}', [SpecialAdminController::class, 'delete_question']);
+    Route::get('/update_question/{id}', [SpecialAdminController::class, 'update_question']);
+    // Route::get('/registered_students', [SpecialAdminController::class, 'registered_students']);
+    // Route::get('/delete_registered_students/{id}', [SpecialAdminController::class, 'delete_registered_students']);
+    Route::get('/apply_exam/{id}', [SpecialAdminController::class, 'apply_exam']);
+    Route::get('/admin_view_result/{id}', [SpecialAdminController::class, 'admin_view_result']);
+
+    Route::post('/edit_question_inner', [SpecialAdminController::class, 'edit_question_inner']);
+    Route::post('/add_new_question', [SpecialAdminController::class, 'add_new_question']);
+    Route::post('/edit_students_final', [SpecialAdminController::class, 'edit_students_final']);
+    // Route::post('/add_new_exam', [SpecialAdminController::class, 'add_new_exam']);
+    // Route::post('/add_new_category', [SpecialAdminController::class, 'add_new_category']);
+    // Route::post('/edit_new_category', [SpecialAdminController::class, 'edit_new_category']);
+    Route::post('/edit_exam_sub', [SpecialAdminController::class, 'edit_exam_sub']);
+    // Route::post('/add_new_students', [SpecialAdminController::class, 'add_new_students']);
+    // Special Question features Ends
+
+
+
+
+
+
+
+
+
+
+
 
 
     // Classes Routes
@@ -232,11 +292,11 @@ Route::middleware('auth')->group(function () {
 
 
     // Topics Routes
-    Route::get('/viewtopics/{data}/view', [TopicsController::class, 'show'])->name('viewtopics');
-    Route::post('/viewtopics', [TopicsController::class, 'store'])->name('viewtopics.store');
-    Route::post('/viewtopics/{data}/edit', [TopicsController::class, 'edit'])->name('viewtopics.edit');
-    Route::patch('/viewtopics', [TopicsController::class, 'update'])->name('viewtopics.update');
-    Route::get('/viewtopics/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewtopics.destroy');
+    Route::get('/viewquestions/{data}/view', [TopicsController::class, 'show'])->name('viewquestions');
+    Route::post('/viewquestions', [TopicsController::class, 'store'])->name('viewquestions.store');
+    Route::post('/viewquestions/{data}/edit', [TopicsController::class, 'edit'])->name('viewquestions.edit');
+    Route::patch('/viewquestions', [TopicsController::class, 'update'])->name('viewquestions.update');
+    Route::get('/viewquestions/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewquestions.destroy');
 
 
     // Exams Routes
@@ -285,15 +345,27 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::get('/order', [ChartDataController::class, 'orderAnalysis']);
-
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::get('/servicesubscription', function () {
 
     $eoutput = Exams::get();
     // $coutput = Classes::get();
-    $poutput = Transaction::where('services','services')->where('payment_status','success')->get();
+    $poutput = Transaction::where('services', 'services')->where('payment_status', 'success')->get();
     return view('admin.servicesubscription', ['fetchClasses' => $poutput, 'fetchExams' => $eoutput]);
 });
 
@@ -393,7 +465,7 @@ Route::get('/dashboard', function () {
     $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
     $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
 
-    $questions= Questions::limit(6)->get();
+    $questions = Questions::limit(6)->get();
     $subjects = Subjects::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
@@ -402,7 +474,7 @@ Route::get('/dashboard', function () {
     $users = Admin::where('role', 'user')->get();
     $totalSum = number_format($totalSum);
 
-    return view('admin.dashboard',['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
+    return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

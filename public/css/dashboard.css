@@ -53,8 +53,10 @@
   background: var(--color-primary-dark);
 }
 
-.navbar .navbar-brand img {
-  width: 4rem;
+
+#sidebarMenu .nav-item .navbar-brand img {
+  width: 5rem;
+  margin-bottom: 1rem;
 }
 
 
@@ -125,8 +127,9 @@ body {
 * Navbar
 */
 
-
+.sidebarMenu
 .navbar-brand {
+  background-color: #000000;
   padding-top: .75rem;
   padding-bottom: .75rem;
   font-size: 1rem;
@@ -653,7 +656,6 @@ body {
 @media screen and (min-width: 768px) {
 
   .sidebar {
-    top: 5rem;
     padding: 1rem;
 
   }

@@ -100,10 +100,11 @@
         /* .show {
                 margin-left: 0;
                 background: red;
-            } */
+            }
         }
 
-        */ .sub:hover {
+        */
+        .sub:hover {
             background-color: #1A69AF;
         }
 
@@ -140,54 +141,18 @@
 
 <body>
 
-    <header class="navbar sticky-top bg-white flex-md-nowrap p-1 g-1 shadow pe-md-3">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
-            <img src="{{ asset('images/logo.png') }}" alt="">
-        </a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
-            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon fa fa-bars"></span>
-        </button>
-        {{-- <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"> --}}
-        <div class="navbar-nav">
-            {{-- <span class="top_icon">
-                <i class="fa-regular fa-bell"></i>
-            </span>
-            <span class="top_icon">
-                <i class="fa-solid fa-globe"></i>
-            </span> --}}
-            <div class="nav-item text-nowrap py-1">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        <img src="{{ asset('images/profile.png') }}" alt="">
-                    </a>
-                    <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
-                        <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
-                        <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
-                            <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
-                                @csrf
 
-                        <li>
-                            <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')"
-                                onclick="event.preventDefault();                                              this.closest('form').submit();">
-                                {{ __('Signout') }}
-                            </x-dropdown-link>
-                        </li>
-                        </form>
-                    </ul>
-                </li>
-            </div>
-        </div>
-    </header>
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse" style = "width:220px;">
+            <nav id="sidebarMenu" class="col-md-3  col-xl-2 d-md-block bg-white sidebar collapse">
                 <div class="position-sticky">
                     <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
+                                <img src="{{ asset('images/logo.png') }}" alt="">
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('dashboard') }}" href="/dashboard">
                                 <i class="fa-solid fa-table-list"></i>
@@ -236,16 +201,16 @@
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
                                     <i class="fa-regular fa-user"></i>
-                                    Users
+                                    Candidate
                                 </x-sidebar-link>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
                                     href="/classes">
                                     <i class="fa-solid fa-layer-group"></i>
                                     Classes
                                 </x-sidebar-link>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
                                     <i class="fa-solid fa-swatchbook"></i>
@@ -303,7 +268,49 @@
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-9 ms-sm-auto col-xl-10 ">
+                <header class="navbar sticky-top bg-white flex-md-nowrap
+                p-1 g-1 shadow pe-md-3">
+                    <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon fa fa-bars"></span>
+                    </button>
+                    <div></div>
+                    {{-- <input class="form-control form-control-dark" type="text" placeholder="Search"
+                        aria-label="Search" /> --}}
+                    <div class="navbar-nav">
+                        {{-- <span class="top_icon">
+                            <i class="fa-regular fa-bell"></i>
+                        </span>
+                        <span class="top_icon">
+                            <i class="fa-solid fa-globe"></i>
+                        </span> --}}
+                        <div class="nav-item text-nowrap py-1">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('images/profile.png') }}" alt="">
+                                </a>
+                                <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
+                                    <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
+                                    <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
+                                        <!-- Authentication -->
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+
+                                    <li>
+                                        <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')"
+                                            onclick="event.preventDefault();                                              this.closest('form').submit();">
+                                            {{ __('Signout') }}
+                                        </x-dropdown-link>
+                                    </li>
+                                    </form>
+                                </ul>
+                            </li>
+                        </div>
+                    </div>
+                </header>
 
                 @yield('admincontent')
 

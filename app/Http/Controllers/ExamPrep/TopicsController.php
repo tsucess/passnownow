@@ -15,7 +15,7 @@ class TopicsController extends Controller
      */
     public function index()
     {
-        return view('admin.viewtopics');
+        return view('admin.viewquestions');
     }
 
     /**
@@ -59,9 +59,9 @@ class TopicsController extends Controller
         ]);
 
         if ($done) {
-            return redirect('/viewtopics/' . $data . '/view')->with('success', 'New Topic added successfully');
+            return redirect('/viewquestions/' . $data . '/view')->with('success', 'New Topic added successfully');
         } else {
-            return redirect('/viewtopics/' . $data . '/view')->with('error', 'Something went wrong');
+            return redirect('/viewquestions/' . $data . '/view')->with('error', 'Something went wrong');
         };
     }
 
@@ -76,7 +76,7 @@ class TopicsController extends Controller
         $sub_id = $data->id;
 
         $output = Topics::where('subject_unique_id', $sub_id)->orderBy('term', 'asc')->orderBy('order', 'asc')->get();
-        return view('admin.viewtopics', ['subject' => $subject_id, 'sub_id' => $sub_id, 'fetchTopics' => $output]);
+        return view('admin.viewquestions', ['subject' => $subject_id, 'sub_id' => $sub_id, 'fetchTopics' => $output]);
     }
 
     /**
@@ -128,9 +128,9 @@ class TopicsController extends Controller
 
 
             $class->save();
-            return redirect('/viewtopics/' . $data_id . '/view')->with('success', 'Topic updated successfully');
+            return redirect('/viewquestions/' . $data_id . '/view')->with('success', 'Topic updated successfully');
         } else {
-            return redirect('/viewtopics/' . $data_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/viewquestions/' . $data_id . '/view')->with('error', 'Something went wrong');
         };
     }
 
@@ -142,9 +142,9 @@ class TopicsController extends Controller
         // dd($data);
         $done = $data->delete();
         if ($done) {
-            return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('success', 'Topic deleted successfully');
+            return redirect('/viewquestions/' . $data->subject_unique_id . '/view')->with('success', 'Topic deleted successfully');
         } else {
-            return redirect('/viewtopics/' . $data->subject_unique_id . '/view')->with('error', 'Something went wrong');
+            return redirect('/viewquestions/' . $data->subject_unique_id . '/view')->with('error', 'Something went wrong');
         };
     }
 }

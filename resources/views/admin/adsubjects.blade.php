@@ -29,7 +29,7 @@
             <p class="m-0">{{ \Session::get('success') }}</p>
         </div>
     @endif
-  
+
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="table-secondary">
@@ -37,7 +37,7 @@
                     <th scope="col">S/N</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
-                    <th scope="col">Class</th>
+                    <th scope="col">Exam</th>
                     <th scope="col">Date</th>
                     {{-- <th scope="col">Status</th> --}}
                     <th scope="col">Actions</th>
@@ -47,30 +47,38 @@
             <tbody>
                 @php $sn = 0  @endphp
                 @foreach ($fetchSubjects as $Subject)
-                <tr>
-                    <th>{{ ++$sn }}</th>
-                    <td>{{ $Subject->title }}</td>
-                    <td>{{ $Subject->description }}</td>
-                    <td>{{ $Subject->class_unique_id }}</td>
-                    <td>{{ $Subject->created_at }}</td>
-                    {{-- <td>
+                    <tr>
+                        <th>{{ ++$sn }}</th>
+                        <td>{{ $Subject->title }}</td>
+                        <td>{{ $Subject->description }}</td>
+                        <td>{{ $Subject->exam_unique_id }}</td>
+                        <td>{{ $Subject->created_at }}</td>
+                        {{-- <td>
                         <div class="form-check form-switch">
                             <input class="form-check-input enable-btn" value="<=$video['status'];?>" type="checkbox" data-value ="<=$video['id'];?>"  {{if($video['status'] == 1){ 'checked';}} />
                             <input class="form-check-input enable-btn" value="" type="checkbox" data-value ="" checked />
                         </div>
                     </td> --}}
-                    <td>
-                        <div class="action">
-                            <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                            {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
-                            <ul class="more-options">
-                                <li><button id="" class="btn btn-warning edit-btn p-1" data-id="{{ $Subject->id }}" data-title="{{ $Subject->title }}" data-description="{{ $Subject->description }}" data-class="{{ $Subject->class_unique_id }}" data-avatar="{{ $Subject->avatar }}" data-bs-toggle="modal" data-bs-target="#editModal">edit</button></li>
-                                <li><a href="{{ route('viewtopics', ['data' => $Subject]) }}" class="btn btn-primary p-1">Topics</a></li>
-                                <li><a onclick="validate(this)" href="{{ route('adsubjects.destroy', ['data' => $Subject->id]) }}" class="btn btn-danger p-1">delete</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
+                        <td>
+                            <div class="action">
+                                <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
+                                {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
+                                <ul class="more-options">
+                                    <li><button id="" class="btn btn-warning edit-btn p-1"
+                                            data-id="{{ $Subject->id }}" data-title="{{ $Subject->title }}"
+                                            data-description="{{ $Subject->description }}"
+                                            data-exam="{{ $Subject->exam_unique_id }}"
+                                            data-avatar="{{ $Subject->avatar }}" data-bs-toggle="modal"
+                                            data-bs-target="#editModal">edit</button></li>
+                                    <li><a href="{{ route('viewquestions', ['data' => $Subject]) }}"
+                                            class="btn btn-primary p-1">Questions</a></li>
+                                    <li><a onclick="validate(this)"
+                                            href="{{ route('adsubjects.destroy', ['data' => $Subject->id]) }}"
+                                            class="btn btn-danger p-1">delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
@@ -92,10 +100,11 @@
                     <h1 class="modal-title fs-5" id="addModalLabel">Add New Subject</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                    <form method="POST" action="{{ route('adsubjects.store') }}" enctype="multipart/form-data" >
-                        @csrf
+                <form method="POST" action="{{ route('adsubjects.store') }}" enctype="multipart/form-data">
+                    @csrf
                     <div class="modal-body">
-                        <x-text-input type="hidden" class="form-control" name="unique_id" value="{{ rand(time(), 10000000) }}" />
+                        <x-text-input type="hidden" class="form-control" name="unique_id"
+                            value="{{ rand(time(), 10000000) }}" />
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
@@ -114,12 +123,12 @@
                             </div>
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <x-input-label :value="__('Class')" class="form-label" />
-                                    <select  class="form-control py-2" name = "class_id" >
-                                        <option value ="">Select Class</option>
-                                        @foreach ($fetchClasses as $Class)
-                                        <option value="{{ $Class->title }}">{{ $Class->title }}</option>
-                                    @endforeach
+                                    <x-input-label :value="__('Exam')" class="form-label" />
+                                    <select class="form-control py-2" name = "exam_id">
+                                        <option value ="">Select Exam</option>
+                                        @foreach ($fetchExams as $Exams)
+                                            <option value="{{ $Exams->title }}">{{ $Exams->title }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -152,9 +161,10 @@
                     <h1 class="modal-title fs-5" id="editModalLabel">Edit Subject</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="edit-form" method="POST" action="{{ route('adsubjects.update') }}" enctype="multipart/form-data">
-                        @csrf
-                        @method('patch')
+                <form id="edit-form" method="POST" action="{{ route('adsubjects.update') }}"
+                    enctype="multipart/form-data">
+                    @csrf
+                    @method('patch')
                     <div class="modal-body">
                         <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
@@ -176,12 +186,12 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="edit-class" class="form-label">Class</label>
-                                    <input type="hidden" name="prevclass" id="prev-class" class="form-control py-2" />
-                                    <select name="class_id" id="edit-class" class="form-control py-2">
-                                        <option value ="">Select Class</option>
-                                        @foreach ($fetchClasses as $Class)
-                                            <option value="{{ $Class->title }}">{{ $Class->title }}</option>
+                                    <label for="edit-class" class="form-label">Exam</label>
+                                    <input type="hidden" name="prevexam" id="prev-exam" class="form-control py-2" />
+                                    <select name="exam_id" id="edit-exam" class="form-control py-2">
+                                        <option value ="">Select Exam</option>
+                                        @foreach ($fetchExams as $Exams)
+                                            <option value="{{ $Exams->title }}">{{ $Exams->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -223,25 +233,23 @@
         let table = new DataTable('#admin-table');
     </script>
 
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function() {
 
-        $('#admin-table tbody').on('click', '.edit-btn', function() {
-            var id = $(this).data('id');
-            var title = $(this).data('title');
-            var description = $(this).data('description');
-            var editclass = $(this).data('class');
-            var editavatar = $(this).data('avatar');
+            $('#admin-table tbody').on('click', '.edit-btn', function() {
+                var id = $(this).data('id');
+                var title = $(this).data('title');
+                var description = $(this).data('description');
+                var editexam = $(this).data('exam');
+                var editavatar = $(this).data('avatar');
+               
+                $('#edit-id').val(id);
+                $('#edit-title').val(title);
+                $('#edit-description').val(description);
+                $('#prev-exam').val(editexam);
+                $('#prev-avatar').val(editavatar);
+            });
 
-            $('#edit-id').val(id);
-            $('#edit-title').val(title);
-            $('#edit-description').val(description);
-            $('#prev-class').val(editclass);
-            $('#prev-avatar').val(editavatar);
         });
-
-    });
-
- 
-</script>
+    </script>
 @endsection

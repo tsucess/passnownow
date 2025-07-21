@@ -15,7 +15,7 @@ class Subjects extends Model
         'user_unique_id',
         'title',
         'description',
-        'class_unique_id',
+        'exam_unique_id',
         'avatar'
     ];
 }

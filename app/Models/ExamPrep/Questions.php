@@ -15,8 +15,10 @@ class Questions extends Model
     protected $fillable = [
         'unique_id',
         'user_unique_id',
-        'title',
-        'description',
+        'question',
+        'ans',
+        'options',
+        'status',
         'year',
         'url',
         'exam_unique_id',

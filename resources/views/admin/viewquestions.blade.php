@@ -2,13 +2,13 @@
 
 @section('admincontent')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Topics</h1>
+        <h1 class="h2">Question</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
                 <a href="/adsubjects" class="btn btn-secondary p-1 px-5 shadow">Back</a>
                 <button type="button" class="btn btn-md btn-outline-primary addTopic px-4"
                     data-subject_id="{{ $subject }}" data-id="{{ $sub_id }}" data-bs-toggle="modal"
-                    data-bs-target="#addModal">Add topic</button>
+                    data-bs-target="#addModal">Add Question</button>
             </div>
         </div>
     </div>
@@ -72,7 +72,7 @@
                                             data-content_type="{{ $Topic->content_type }}" data-bs-toggle="modal"
                                             data-bs-target="#editModal">edit</button></li>
                                     <li><a onclick="validate(this)"
-                                            href="{{ route('viewtopics.destroy', ['data' => $Topic->id]) }}"
+                                            href="{{ route('viewquestions.destroy', ['data' => $Topic->id]) }}"
                                             class="btn btn-danger p-1">delete</a></li>
                                 </ul>
                             </div>
@@ -83,21 +83,167 @@
         </table>
     </div>
 
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Default box -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Title</h3>
+
+                            <div class="card-tools">
+                                <a class="btn btn-info btn-sm" href="javascript:;" data-toggle="modal"
+                                    data-target="#myModal">Add new</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-striped table-bordered table-hover datatable">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Question</th>
+                                        <th>ans</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($questions as $key => $question)
+                                        <tr>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $question['questions'] }}</td>
+                                            <td>{{ $question['ans'] }}</td>
+                                            <td><input class="question_status" data-id="{{ $question['id'] }}"
+                                                    <?php if ($question['status'] == 1) {
+                                                        echo 'checked';
+                                                    } ?> type="checkbox" name="status"></td>
+                                            <td>
+                                                <a href="{{ url('admin/update_question/' . $question['id']) }}"
+                                                    class="btn btn-primary btn-sm">Update</a>
+                                                <a href="{{ url('admin/delete_question/' . $question['id']) }}"
+                                                    class="btn btn-danger btn-sm">Delete</a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Question</th>
+                                        <th>ans</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+            </div>
+        </div>
+    </section>
 
 
 
 
 
-    <!-- Add User Modal -->
+     <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add new Question</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ url('/admin/add_new_question') }}" class="database_operation">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="">Enter Question</label>
+                                        {{ csrf_field() }}
+                                        <input type="hidden" name="exam_id" value="{{ Request::segment(3) }}">
+                                        <input type="text" required="required" name="question"
+                                            placeholder="Enter Question" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Enter Option 1</label>
+                                        <input type="text" required="required" name="option_1"
+                                            placeholder="Enter Question" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Enter Option 2</label>
+                                        <input type="text" required="required" name="option_2"
+                                            placeholder="Enter Option 2" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Enter Option 3</label>
+                                        <input type="text" required="required" name="option_3"
+                                            placeholder="Enter  Option 3" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Enter Option 4</label>
+                                        <input type="text" required="required" name="option_4"
+                                            placeholder="Enter  Option 4" class="form-control">
+                                    </div>
+                                </div>
+                                {{-- <div class="col-sm-12">
+                        <div class="form-group">
+                            <label for="">Enter correct ans</label>
+                            <input type="text" required="required" name="ans" placeholder="Enter  correct ans" class="form-control">
+                        </div>
+                    </div> --}}
+                                <div class="form-group">
+                                    <label for="">Select correct option</label>
+                                    <select class="form-control" required="required" name="ans">
+                                        <option value="">Select</option>
+
+                                        <option value="option_1">option 1</option>
+                                        <option value="option_2">option 2</option>
+                                        <option value="option_3">option 3</option>
+                                        <option value="option_4">option 4</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <button class="btn btn-primary">Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    <!-- Add Question Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
             <div class="modal-content" id="form_add" style="overflow-y:scroll;">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="addModalLabel">Add new topic</h1>
+                    <h1 class="modal-title fs-5" id="addModalLabel">Add Question</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="{{ route('viewtopics.store') }}">
+                <form method="POST" action="{{ route('viewquestions.store') }}">
                     @csrf
                     <div class="modal-body">
                         <x-text-input type="hidden" class="form-control" name="unique_id"
@@ -170,16 +316,16 @@
     </div>
 
 
-    <!-- Edit User Modal -->
+    <!-- Edit Question Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="editModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content" id="form">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="editModalLabel">Edit topic</h1>
+                    <h1 class="modal-title fs-5" id="editModalLabel">Edit Question</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form id="edit-form" method="POST" action="{{ route('viewtopics.update') }}">
+                <form id="edit-form" method="POST" action="{{ route('viewquestions.update') }}">
                     @csrf
                     @method('patch')
                     <div class="modal-body">
@@ -216,7 +362,8 @@
                                 <div class="mb-3">
                                     <div class="mb-3">
                                         <x-input-label :value="__('Content Type')" class="form-label" />
-                                        <select class="form-control py-2" name="edit_content_type" id="edit_content_type" required>
+                                        <select class="form-control py-2" name="edit_content_type" id="edit_content_type"
+                                            required>
                                             <option value ="">Select Content Type</option>
                                             <option value="url">url</option>
                                             <option value="content">Content</option>
