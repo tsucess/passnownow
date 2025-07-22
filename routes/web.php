@@ -326,6 +326,10 @@ Route::get('/pastquestion', function () {
     return view('admin.pastquestion');
 });
 
+Route::get('/questions', function () {
+    return view('admin.questions');
+});
+
 
 Route::get('/class', function () {
     return view('admin.class');

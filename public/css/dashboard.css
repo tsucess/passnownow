@@ -243,7 +243,6 @@ header.navbar
 
 }
 
-
 .greeting__containter .row .greeting-text {
   font-size: 1.1rem;
 }
@@ -463,10 +462,6 @@ header.navbar
 
 
 
-
-
-
-
 .profile__container {
   margin-top: 3rem;
   /* padding:; */
@@ -628,8 +623,6 @@ header.navbar
 
 /* ADMIN CSS  */
 
-
-
 .table-responsive {
   position: relative;
   z-index: 99;
@@ -667,8 +660,6 @@ header.navbar
     margin: auto;
     height: 20rem;
 }
-
-
 
 
 
@@ -877,13 +868,13 @@ header.navbar
         }
     }
 
-    @media only screen and (min-width:1024px)
+    /* @media only screen and (min-width:1024px)
     {
         .myfooter
         {
             padding-left:200px;
         }
-    }
+    } */
 
 
     /* Keyframes for fade-in and slide-in from the bottom */

@@ -1,9 +1,5 @@
 @extends('layouts.dasboardtemp')
 
-<style>
-
-</style>
-
 
 @section('admincontent')
 
@@ -102,10 +98,10 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
-         </section>
-         <section class="container-fluid history__container">
-            <div class="row">
+             </div>
+             </section>
+              <section class="container-fluid history__container">
+             <div class="row">
                 <div class="col-12 col-lg-7 mb-3 mb-md-0 shadow subscription_history">
                     <div class="top">
                         <h5>Subscription History</h5>
@@ -173,8 +169,8 @@
                         </div>
                     @endforeach
                 </div>
-            </div>
-         </section>
+             </div>
+              </section>
 
 
          <!-- Subscribe Modal -->
@@ -202,7 +198,7 @@
          </div>
           @else
          {{-- <div class = "container-fluid"> --}}
-            <div class = "container-fluid">
+        <div class = "container-fluid">
          <div class="row justify-content-end">
             <div class="col-12 col-md-6 col-lg-6">
                 <h3 class = "fw-bold">Dashboard Overview</h3>
@@ -392,12 +388,10 @@
             </div>
         {{-- </div> --}}
 
-        <div class = "container-fluid mt-5">
-            {{-- <div class="row justify-content-evenly mx-auto mt-5"> --}}
+         <div class = "container-fluid mt-5">
                  <div class="row justify-content-start ">
 
-
-                <div class="col-12 col-md-4 col-lg-4 pt-4 pb-4 bg-white chart-wrapper">
+                 <div class="col-12 col-md-4 col-lg-4 pt-4 pb-4 bg-white chart-wrapper">
                     <h6 class = "text-center">TOTAL UNIQUE VISITORS</h6>
                     <div class="chart-container">
                         <canvas id="candidateChart"></canvas>
@@ -448,9 +442,7 @@
                     <p>Your awesome text goes here</p>
                 </div>
             </div>
-        </div>
-
-        {{-- </div> <!-- End of container-fluid --> --}}
+        </div> <!-- End of container-fluid -->
         <script>
             <!-- Visitor Chart -->
             const ctx = document.getElementById('candidateChart').getContext('2d');
