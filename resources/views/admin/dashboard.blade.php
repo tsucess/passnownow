@@ -1,7 +1,7 @@
 @extends('layouts.dasboardtemp')
 
 <style>
-    
+
 </style>
 
 
@@ -28,7 +28,7 @@
 
     @if (Auth::user()->role === 'user')
 
-        <section class="container-fluid notifiication__containter  shadow mt-4">
+         <section class="container-fluid notifiication__containter  shadow mt-4">
             <div class="row p-2">
                 @if (\Session::has('error'))
                     <div class="alert alert-danger">
@@ -74,8 +74,8 @@
                     </div>
                 @endif
             </div>
-        </section>
-        <section class="container-fluid top-courses__containter  shadow py-2 my-4">
+         </section>
+         <section class="container-fluid top-courses__containter  shadow py-2 my-4">
             <div class="row">
                 <div class="col-12 top">
                     <h5>Top Subjects Pick for You</h5>
@@ -103,8 +103,8 @@
                     </div>
                 @endforeach
             </div>
-        </section>
-        <section class="container-fluid history__container">
+         </section>
+         <section class="container-fluid history__container">
             <div class="row">
                 <div class="col-12 col-lg-7 mb-3 mb-md-0 shadow subscription_history">
                     <div class="top">
@@ -174,11 +174,11 @@
                     @endforeach
                 </div>
             </div>
-        </section>
+         </section>
 
 
-        <!-- Subscribe Modal -->
-        <div class="modal fade" id="subscribeModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
+         <!-- Subscribe Modal -->
+         <div class="modal fade" id="subscribeModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content" id="">
@@ -199,10 +199,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-    @else
-        {{-- <div class = "container-fluid"> --}}
-        <div class="row justify-content-end">
+         </div>
+          @else
+         {{-- <div class = "container-fluid"> --}}
+            <div class = "container-fluid">
+         <div class="row justify-content-end">
             <div class="col-12 col-md-6 col-lg-6">
                 <h3 class = "fw-bold">Dashboard Overview</h3>
                 <p>Welcome to Passnownow Admin</p>
@@ -214,19 +215,19 @@
                     Admin</button>
             </div>
 
-        </div>
-        {{-- </div> --}}
+         </div>
+         {{-- </div> --}}
 
-        {{-- <div class = "container-fluid mt-3"> --}}
-        <div class ="row mb-3">
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2  rounded-3 border border-primary calculationBox"
-                style = "height:130px;">
+         {{-- <div class = "container-fluid mt-3"> --}}
+         <div class ="row mb-3">
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style = "height:130px; border-color: #f1f1f1;">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-1 mt-3 profit">Total Profit</span><br>
 
                     <span class  = "ms-1 mb-4 fw-bold fs-5  profit">N{{ $totalSum }}</span>
-                    <span class = "float-end rounded-pill bg-success mb-2 p-2 bg-opacity-75"
-                        style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6;">
+                    <span class = "float-end rounded-pill  mb-2 p-2 bg-opacity-75"
+                        style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
                         <i class="fa fa-arrow-up pe-3 ps-2" aria-hidden="true"></i><span
                             class="p-2 rounded-circle bg-succes">6.7%</span>
                     </span><br><br>
@@ -257,8 +258,8 @@
 
             </div>
 
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 rounded-3 border border-primary calculationBox"
-                style="height: 130px;">
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style="height: 130px; border-color: #f1f1f1;">
                 <span class = " mt-3">Total Administrators</span><br>
                 <span class  = "ms-1 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -282,8 +283,8 @@
                     </div>
                  --}}
             </div>
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2  rounded-3 border border-primary calculationBox"
-                style = "height: 130px;">
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style = "height: 130px; border-color: #f1f1f1;">
                 <span class = "mt-3">Total Users</span><br>
                 <span class  = "ms-1 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -304,12 +305,12 @@
 
                 <p><i class="fa-solid fa-school fa-2x"></i></p>
             </div>
-        </div>
-        {{-- </div> --}}
+         </div>
+         {{-- </div> --}}
 
 
-        <div class = "row mb-3">
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 p-3 rounded-3 border border-primary calculationBox" style="height: 130px;">
+         <div class = "row mb-3">
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox" style="height: 130px; border-color: #f1f1f1;">
                 <span class = "ms-2 mt-3">Total Number of Examination</span><br>
                 <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -323,8 +324,9 @@
             </div>
 
 
-            <div class = "col-12 col-md-3 col-lg-3 ms-3 mt-3 mb-2 p-3 rounded-3 border border-primary calculationBox"
-                style="height: 130px;">
+            {{-- <div class = "col-12 col-md-3 col-lg-3 ms-2 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style="height: 130px; border-color: #f1f1f1;"> --}}
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox" style="height: 130px; border-color: #f1f1f1;">
                 <span class = "ms-2 mt-3">Total Number of Question</span><br>
                 <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -339,7 +341,7 @@
 
 
 
-            <div class = "col-12 col-md-3 col-lg-3 ms-3 mt-3 mb-2 p-3 " style="height: 130px;">
+            {{-- <div class = "col-12 col-md-3 col-lg-3 ms-3 mt-3 mb-2 p-3 " style="height: 130px;"> --}}
             </div>
         </div>
 
@@ -390,12 +392,13 @@
             </div>
         {{-- </div> --}}
 
-        <div class = "container">
-            <div class="row justify-content-evenly mx-auto mt-5">
+        <div class = "container-fluid mt-5">
+            {{-- <div class="row justify-content-evenly mx-auto mt-5"> --}}
+                 <div class="row justify-content-start ">
 
 
-                <div class="col col-md-4 col-lg-4 bg-white chart-wrapper">
-                    <h6>TOTAL UNIQUE VISITORS</h6>
+                <div class="col-12 col-md-4 col-lg-4 pt-4 pb-4 bg-white chart-wrapper">
+                    <h6 class = "text-center">TOTAL UNIQUE VISITORS</h6>
                     <div class="chart-container">
                         <canvas id="candidateChart"></canvas>
                         <div class="chart-center-label">Candidates</div>
@@ -417,8 +420,8 @@
                 </div>
 
 
-                <div class = "col col-md-4 col-lg-4  chart-wrapper">
-                    <h6 class = "ms-5">NUMBER OF TRANSACTIONS</h6>
+                <div class = "col-12 col-md-4 col-lg-4 ms-2 pb-4 bg-white chart-wrapper">
+                    <h6 class = "mt-4 text-center ">NUMBER OF TRANSACTIONS</h6>
 
                     <div class="chart-containers">
                         <canvas id="transactionChart"></canvas>
@@ -440,13 +443,14 @@
 
                 </div>
 
-                <div class = "col col-md-4 col-lg-4  chart-wrapper">
-                    <h6>NEW USERS</h6>
+                <div class = "col col-md-4 col-lg-4 pb-4 bg-white chart-wrapper">
+                    <h6 class="text-center">NEW USERS</h6>
                     <p>Your awesome text goes here</p>
                 </div>
             </div>
         </div>
 
+        {{-- </div> <!-- End of container-fluid --> --}}
         <script>
             <!-- Visitor Chart -->
             const ctx = document.getElementById('candidateChart').getContext('2d');

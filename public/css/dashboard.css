@@ -64,6 +64,7 @@
 
 body {
   font-size: .875rem;
+  background:#f1f1f1;
 }
 
 .feather {
@@ -757,7 +758,8 @@ header.navbar
 }
 
    .sidebar {
-      background-color: #f8f9fa;
+      /* background-color: #f8f9fa; */
+      background-color: #fefefe;
       min-height: 100vh;
     }
 
@@ -962,10 +964,13 @@ header.navbar
     }
 
 
-
+@media screen and (min-width: 1024px) {
     .chart-wrapper {
         text-align: center;
+        width:30% !important;
+        margin-left:20px;
     }
+}
 
     .chart-container {
         width: 330px;
