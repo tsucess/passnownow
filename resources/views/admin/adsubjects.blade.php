@@ -37,6 +37,7 @@
                     <th scope="col">S/N</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
+                    <th scope="col">Duration</th>
                     <th scope="col">Exam</th>
                     <th scope="col">Date</th>
                     {{-- <th scope="col">Status</th> --}}
@@ -51,7 +52,19 @@
                         <th>{{ ++$sn }}</th>
                         <td>{{ $Subject->title }}</td>
                         <td>{{ $Subject->description }}</td>
-                        <td>{{ $Subject->exam_unique_id }}</td>
+                        <td>{{ $Subject->exam_duration }}</td>
+                        <td>
+                            @php
+                                $examTitle = '';
+                                foreach ($fetchExams as $exam) {
+                                    if ($exam->id == $Subject->exam_unique_id) {
+                                        $examTitle = $exam->title;
+                                        break;
+                                    }
+                                }
+                            @endphp
+                            {{ $examTitle }}
+                        </td>
                         <td>{{ $Subject->created_at }}</td>
                         {{-- <td>
                         <div class="form-check form-switch">
@@ -67,6 +80,7 @@
                                     <li><button id="" class="btn btn-warning edit-btn p-1"
                                             data-id="{{ $Subject->id }}" data-title="{{ $Subject->title }}"
                                             data-description="{{ $Subject->description }}"
+                                            data-exam_duration="{{ $Subject->exam_duration }}"
                                             data-exam="{{ $Subject->exam_unique_id }}"
                                             data-avatar="{{ $Subject->avatar }}" data-bs-toggle="modal"
                                             data-bs-target="#editModal">edit</button></li>
@@ -88,7 +102,7 @@
 
 
 
-    <!-- Add User Modal -->
+    <!-- Add Subject Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -118,7 +132,15 @@
                                 <div class="mb-3">
                                     <x-input-label :value="__('Description')" class="form-label" />
                                     <textarea name="description" class="form-control" rows="5">{{ old('description') }}</textarea>
-                                    <x-input-error :messages="$errors->get('descripion')" class="mt-2 text-danger" />
+                                    <x-input-error :messages="$errors->get('description')" class="mt-2 text-danger" />
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <x-input-label :value="__('Exam Duration')" />
+                                    <x-text-input type="text" class="form-control" name="exam_duration" :value="old('exam_duration')"
+                                        aria-describedby="textBlock" placeholder="Enter Exam duration" />
+                                    <x-input-error :messages="$errors->get('exam_duration')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-12">
@@ -127,7 +149,7 @@
                                     <select class="form-control py-2" name = "exam_id">
                                         <option value ="">Select Exam</option>
                                         @foreach ($fetchExams as $Exams)
-                                            <option value="{{ $Exams->title }}">{{ $Exams->title }}</option>
+                                            <option value="{{ $Exams->id }}">{{ $Exams->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -141,7 +163,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" name="submit" id="save" class="btn btn-primary">Save changes</button>
+                        <button type="submit" name="submit" id="save" class="btn btn-primary">Save
+                            changes</button>
                     </div>
                 </form>
             </div>
@@ -149,7 +172,7 @@
     </div>
 
 
-    <!-- Edit User Modal -->
+    <!-- Edit Subject Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="editModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -182,7 +205,14 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <x-input-label :value="__('Exam Duration')" />
+                                <x-text-input type="text" class="form-control" name="exam_duration" :value="old('exam_duration')"
+                                    aria-describedby="textBlock"  id="edit-exam_duration" />
+                                <x-input-error :messages="$errors->get('exam_duration')" class="mt-2 text-danger" />
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-12">
                                 <div class="mb-3">
@@ -191,7 +221,7 @@
                                     <select name="exam_id" id="edit-exam" class="form-control py-2">
                                         <option value ="">Select Exam</option>
                                         @foreach ($fetchExams as $Exams)
-                                            <option value="{{ $Exams->title }}">{{ $Exams->title }}</option>
+                                            <option value="{{ $Exams->id }}">{{ $Exams->title }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -240,12 +270,15 @@
                 var id = $(this).data('id');
                 var title = $(this).data('title');
                 var description = $(this).data('description');
+                var editexam_duration = $(this).data('exam_duration');
                 var editexam = $(this).data('exam');
                 var editavatar = $(this).data('avatar');
-               
+                console.log(editexam_duration);
+
                 $('#edit-id').val(id);
                 $('#edit-title').val(title);
                 $('#edit-description').val(description);
+                $('#edit-exam_duration').val(editexam_duration);
                 $('#prev-exam').val(editexam);
                 $('#prev-avatar').val(editavatar);
             });

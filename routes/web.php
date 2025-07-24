@@ -11,7 +11,7 @@ use App\Http\Controllers\ExamPrep\ExamsController;
 use App\Http\Controllers\ExamPrep\ClassesController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExamPrep\SubjectsController;
-use App\Http\Controllers\ExamPrep\TopicsController;
+// use App\Http\Controllers\ExamPrep\TopicsController;
 use App\Http\Controllers\ExamPrep\QuestionsController;
 use App\Http\Controllers\ExamPrep\PaymentController;
 use App\Http\Controllers\ExamPrep\SubscriptionController;
@@ -292,16 +292,16 @@ Route::middleware('auth')->group(function () {
 
 
     // Topics Routes
-    Route::get('/viewquestions/{data}/view', [TopicsController::class, 'show'])->name('viewquestions');
-    Route::post('/viewquestions', [TopicsController::class, 'store'])->name('viewquestions.store');
-    Route::post('/viewquestions/{data}/edit', [TopicsController::class, 'edit'])->name('viewquestions.edit');
-    Route::patch('/viewquestions', [TopicsController::class, 'update'])->name('viewquestions.update');
-    Route::get('/viewquestions/{data}/destroy', [TopicsController::class, 'destroy'])->name('viewquestions.destroy');
+    Route::get('/viewquestions/{data}/view', [QuestionsController::class, 'show'])->name('viewquestions');
+    Route::post('/viewquestions', [QuestionsController::class, 'store'])->name('viewquestions.store');
+    Route::post('/viewquestions/{data}/edit', [QuestionsController::class, 'edit'])->name('viewquestions.edit');
+    Route::patch('/viewquestions', [QuestionsController::class, 'update'])->name('viewquestions.update');
+    Route::get('/viewquestions/{data}/destroy', [QuestionsController::class, 'destroy'])->name('viewquestions.destroy');
 
 
     // Exams Routes
-    //Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
-    Route::get('/learning/{data}/view', [TopicsController::class, 'showtopics'])->name('learning');
+    //Route::get('/showsubjects/{data}/view', [QuestionsController::class, 'usershow'])->name('showsubjects');
+    Route::get('/learning/{data}/view', [QuestionsController::class, 'showtopics'])->name('learning');
 
     // Exams Routes
     Route::get('/adexams', [ExamsController::class, 'show'])->name('adexams');
@@ -312,7 +312,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/enableExam', [ExamsController::class, 'enableStatus'])->name('enableExam');
 
 
-    Route::get('/showpastquestions/{data}/view', [QuestionsController::class, 'usershow'])->name('showpastquestions');
+    Route::get('/showsubjects/{data}/view', [SubjectsController::class, 'usershow'])->name('showsubjects');
     Route::get('/pqlearning/{data}/view', [QuestionsController::class, 'showpastquest'])->name('pqlearning');
 
     // Questions Routes
@@ -466,7 +466,7 @@ Route::get('/dashboard', function () {
     $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
 
     $questions = Questions::limit(6)->get();
-    $subjects = Subjects::limit(3)->get();
+    $topExams = Exams::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
     $totalSum = Transaction::get()->where('payment_status', 'success')->sum('amount');
@@ -474,7 +474,7 @@ Route::get('/dashboard', function () {
     $users = Admin::where('role', 'user')->get();
     $totalSum = number_format($totalSum);
 
-    return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'subjects' => $subjects, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
+    return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'topExams' => $topExams, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

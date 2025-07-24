@@ -152,22 +152,21 @@
         <section class="container-fluid top-courses__containter  shadow py-2 my-4">
             <div class="row">
                 <div class="col-12 top">
-                    <h5>Top Subjects Pick for You</h5>
-                    <a href="/classes">See All</a>
+                    <h5>Top Exams Picked for You</h5>
+                    <a href="/adexams">See All</a>
                 </div>
-                @foreach ($subjects as $subject)
+                @foreach ($topExams as $exam)
                     <div class="col-12 col-md-6 col-lg-4 mb-2 ">
                         {{-- <div class="card courses sty"> --}}
                         <div class="card courses sty subHere">
                             <div class="image_wrapper m-0 p-0"
-                                style="background-image: url('{{ url('storage/' . $subject->avatar) }}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;">
+                                style="background-image: url('{{ url('storage/' . $exam->avatar) }}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;">
                             </div>
                             <div class="card-body">
                                 <div class="courses-tag">Passnownow</div>
-                                <h5 class="card-title">{{ $subject->title }} ({{ $subject->class_unique_id }})</h5>
+                                <h5 class="card-title">{{ $exam->title }} </h5>
                                 @if (Auth::user()->status === 1)
-                                    <a href="{{ route('learning', ['data' => $subject]) }}" class="btn buton">View
-                                        Details</a>
+                                    <a href="{{ route('showsubjects', ['data' => $exam]) }}" class="btn buton">Select Exam</a>
                                 @else
                                     <button type="button" class="btn buton" data-bs-toggle="modal"
                                         data-bs-target="#subscribeModal">Subscribe Now</button>

@@ -15,6 +15,7 @@ class Subjects extends Model
         'user_unique_id',
         'title',
         'description',
+        'exam_duration',
         'exam_unique_id',
         'avatar'
     ];

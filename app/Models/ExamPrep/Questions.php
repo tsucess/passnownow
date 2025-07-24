@@ -16,12 +16,12 @@ class Questions extends Model
         'unique_id',
         'user_unique_id',
         'question',
+        'mark',
         'ans',
         'options',
         'status',
-        'year',
-        'url',
-        'exam_unique_id',
+        'question_type',
+        'subject_unique_id',
         'order'
     ];
 }

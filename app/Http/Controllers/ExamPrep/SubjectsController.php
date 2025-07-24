@@ -38,6 +38,7 @@ class SubjectsController extends Controller
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Subjects::class],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
+            'exam_duration' => ['sometimes', 'nullable', 'max:255'],
             'exam_id' => ['required', 'string', 'max:255'],
             'avatar' => ['required', 'mimes:jpg,png,jpeg', 'max:2048']
         ]);
@@ -49,6 +50,7 @@ class SubjectsController extends Controller
             'user_unique_id' => Auth::user()->unique_id,
             'title' => $request->title,
             'description' => $request->description,
+            'exam_duration' => $request->exam_duration,
             'exam_unique_id' => $request->exam_id,
             'avatar' => $avatar
         ]);
@@ -87,8 +89,27 @@ class SubjectsController extends Controller
     public function show()
     {
         $examdata = Exams::get();
+        // dd($examdata);
         $output = Subjects::orderBy('exam_unique_id', 'asc')->get();
         return view('admin.adsubjects', ['fetchSubjects' => $output, 'fetchExams' => $examdata]);
+    }
+
+
+       /**
+     * Display the User specified resource.
+     */
+    public function usershow(Exams $data)
+    {
+
+        $exam_id = $data->id;
+        $output = Subjects::where('exam_unique_id', $exam_id)->get();
+        // dd($output);
+
+        // $result = [];
+        // foreach ($output as $key) {
+        //     $result[] = Subjects::where('exam_unique_id', $ex_id)->where('year', $key->year)->get();
+        // }
+        return view('admin.showsubjects', ['exam' => $exam_id, 'userFetchSubjects' => $output ]);
     }
 
 
@@ -104,6 +125,7 @@ class SubjectsController extends Controller
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
+            'exam_duration' => ['sometimes', 'nullable', 'max:255'],
             'exam_id' => ['sometimes', 'nullable', 'max:255'],
             'avatar' => ['sometimes', 'mimes:jpg,png,jpeg', 'max:2048', 'image']
         ]);
@@ -115,12 +137,13 @@ class SubjectsController extends Controller
         if ($exam) {
             $exam->title = $request->title;
             $exam->description = $request->description;
+            $exam->exam_duration = $request->exam_duration;
             if ($request->exam_id) {
                 $exam->exam_unique_id = $request->exam_id;
             }
             else
             {
-                $exam->exam_unique_id = $request->prevclass;
+                $exam->exam_unique_id = $request->prevexam;
             }
 
             if ($request->avatar) {

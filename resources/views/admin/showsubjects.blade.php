@@ -2,31 +2,33 @@
 
 @section('admincontent')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Past Questions</h1>
+        <h1 class="h2">Subjects</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
                 <a href="/adexams" class="btn btn-secondary p-1 px-5 shadow">Back</a>
             </div>
         </div>
     </div>
-
+    
     @if (Auth::user()->role === 'user')
-        <div class = "row mt-3 gap-2">
-            {{-- {{ $result }} --}}
-            @foreach ($userFetchQuestions as $Question)
+    <p>Apply for your preferred subjects</p>
+    <div class = "row mt-3 gap-2">
+
+        {{-- {{ $result }} --}}
+            @foreach ($userFetchSubjects as $subject)
                 {{-- <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%"> --}}
                 <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%">
                     {{-- <img src="{{ asset('/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
-                    <h5 class = "text-center fw-bold jss px-4">{{ $Question[0]->year }}</h5>
+                    <h5 class = "text-center fw-bold jss px-4">{{ $subject->title }}</h5>
                     <p class = "text-center px-5 py-2">
-                        {{ $Question[0]->description }}
+                        {{ $subject->description }}
                         {{-- Start Studying with our wide collection of
                         all Class Notes for all Terms and all Subjects --}}
                     </p>
                     <div class="d-flex justify-content-center mt-5 mb-3">
                         @if (Auth::user()->status === 1)
-                            <a href="{{ route('pqlearning', ['data' => $Question[0]]) }}"
-                                class="btn btn-outline-primary mb-3 py-2 px-4 sub">VIEW ALL QUESTIONS</a>
+                            <a href="{{ route('pqlearning', ['data' => $subject]) }}"
+                                class="btn btn-outline-primary mb-3 py-2 px-4 sub">Apply</a>
                         @else
                             <button type="button" class="btn btn-outline-primary sub" data-bs-toggle="modal"
                                 data-bs-target="#subscribeModal">Subscribe Now</button>
@@ -56,10 +58,7 @@
             $(document).ready(function() {
                 $('#topButton').on('click', '.addExam', function() {
                     var exam_id = $(this).data('exam_id');
-                    var ex_id = $(this).data('id');
                     $('#exam_id').val(exam_id);
-                    console.log(ex_id);
-                    $('#ex_id').val(ex_id);
                 });
 
 
