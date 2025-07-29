@@ -74,12 +74,12 @@
          <section class="container-fluid top-courses__containter  shadow py-2 my-4">
             <div class="row">
                 <div class="col-12 top">
-                    <h5>Top Subjects Pick for You</h5>
+                    <h5>Top Examination Pick for You</h5>
                     <a href="/classes">See All</a>
                 </div>
-                @foreach ($subjects as $subject)
+                {{-- @foreach ($subjects as $subject)
                     <div class="col-12 col-md-6 col-lg-4 mb-2 ">
-                        {{-- <div class="card courses sty"> --}}
+
                         <div class="card courses sty subHere">
                             <div class="image_wrapper m-0 p-0"
                                 style="background-image: url('{{ url('storage/' . $subject->avatar) }}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;">
@@ -97,36 +97,81 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @endforeach --}}
+
+<div class = "col-12 col-md-3 col-lg-3 pt-3 ms-2 mb-2  bg-white border text-center rounded">
+<p class = "float-end fw-bold">100</p>
+<img src="{{ asset('images/WAEC.png') }}"  class = "w-25" alt="WAEC">
+<p style = "font-size: 12px;">West African Examination Council</p>
+</div>
+
+
+
+<div class = "col-12 col-md-3 col-lg-3 pt-3 ms-2  mb-2 bg-white border text-center rounded">
+<p class = "float-end fw-bold">100</p>
+<img src="{{ asset('images/JAMB.png') }}"  class = "w-25" alt="JAMB" >
+<p style = "font-size: 12px;">Joint Admission and Matriculation Board</p>
+</div>
+
+
+
+<div class = "col-12 col-md-3 col-lg-3 pt-3 ms-2 mb-2 bg-white border text-center rounded">
+<p class = "float-end fw-bold">100</p>
+<img src="{{ asset('images/NECO.png') }}"  class = "w-25" alt="NECO">
+<p style = "font-size: 12px;">National Examination Council</p>
+</div>
+
+
              </div>
              </section>
               <section class="container-fluid history__container">
              <div class="row">
                 <div class="col-12 col-lg-7 mb-3 mb-md-0 shadow subscription_history">
-                    <div class="top">
-                        <h5>Subscription History</h5>
+                    <div class="top mb-0">
+                        <h5>SUBSCRIPTION HISTORY</h5>
                         <a href="/subscriptiondetails">See All</a>
                     </div>
 
+                    <div><p>Your awesome text goes here</p></div>
+
+
+
                     <table>
+
                         <thead>
                             <tr>
+                                <th>-</th>
                                 <th>Package</th>
                                 <th>Price</th>
+                                <th>Start Date</th>
+                                <th>Expiring Date</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             @if (!empty($subhistory[0]))
                                 @foreach ($subhistory as $history)
                                     <tr>
+                                        <td></td>
+
                                         <td>
                                             <h6>{{ $history->plan_name }} Plan</h6>
                                             <p>#{{ $history->orderID }} | {{ $history->updated_at }}</p>
                                         </td>
+
                                         <td>
                                             <h6>N{{ number_format($history->amount) }}</h6>
                                         </td>
+
+                                        <td>
+                                            <h6>{{$history->created_at}}</h6>
+                                        </td>
+
+                                        <td>
+                                            <h6>{{$history->expiry_date}}</h6>
+                                        </td>
+
                                         <td>
                                             @php
                                                 $exp_day = date_create($history->expiry_date);
@@ -212,7 +257,7 @@
             </div>
 
          </div>
-         {{-- </div> --}}
+
 
          {{-- <div class = "container-fluid mt-3"> --}}
          <div class ="row mb-3">
@@ -279,7 +324,7 @@
                     </div>
                  --}}
             </div>
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
                 style = "height: 130px; border-color: #f1f1f1;">
                 <span class = "mt-3">Total Users</span><br>
                 <span class  = "ms-1 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span>
@@ -339,21 +384,20 @@
 
             {{-- <div class = "col-12 col-md-3 col-lg-3 ms-3 mt-3 mb-2 p-3 " style="height: 130px;"> --}}
             </div>
-        </div>
+         </div>
 
 
 
-        {{-- <div class = "container"> --}}
+         {{-- <div class = "container"> --}}
             <div class = "row">
                 <h6 class = "mt-2 mb-2">CANDIDATE PROFILE</h6>
                 <p>Your awesome text goes here</p>
-
 
                 <div class = "table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">-</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email Address</th>
                                 <th scope="col">Phone Number</th>
@@ -369,7 +413,7 @@
                                 <td>majorsignature@gmail.com</td>
                                 <td>08102929049</td>
                                 <td>2023-10-01</td>
-                                <td></td>
+                                <td>&hellip;</td>
                             </tr>
 
                             <tr>
@@ -378,7 +422,7 @@
                                 <td>taofeeqbolaasiwaju@gmail.com</td>
                                 <td>08102929049</td>
                                 <td>2023-10-01</td>
-                                <td></td>
+                                <td>&hellip;</td>
                             </tr>
 
                         </tbody>
@@ -386,7 +430,7 @@
                 </div>
 
             </div>
-        {{-- </div> --}}
+         {{-- </div> --}}
 
          <div class = "container-fluid mt-5">
                  <div class="row justify-content-start ">
@@ -425,10 +469,11 @@
 
                     <!-- Transaction Counts -->
                     <div class="transaction-stats ms-5">
-                        <div class = "ms-4">
+                        <div class = "ms-3">
                             <div class="count">2,854</div>
                             <div class="label">Payment Done</div>
                         </div>
+
                         <div>
                             <div class="count">22</div>
                             <div class="label">Payment Due</div>
@@ -437,13 +482,46 @@
 
                 </div>
 
-                <div class = "col col-md-4 col-lg-4 pb-4 bg-white chart-wrapper">
-                    <h6 class="text-center">NEW USERS</h6>
-                    <p>Your awesome text goes here</p>
+                <div class = "col col-md-4 col-lg-4 pb-4 bg-white chart-wrapper" style = "text-align: left;">
+                    <h6 class = "mt-4">NEW USERS</h6>
+                    <p>Your awesome text goes here</p><br>
+
+
+                    <img src = "images/avatar.png" width = "15px" height = "18px">
+
+                    <span class = "ms-2"> <strong>Winner Effiong Duff</strong>
+
+                        <span class="badge ms-5 p-2 bg-success text-success rounded-circle" style="width: 20px; height: 20px;">o</span>
+
+
+                    </span>
+
+                    <span style = "margin-left: 30px;">Nigeria
+                    <span style = "margin-left: 130px;">Now</span>
+                    </span>
+
+
+                    <br><br>
+
+                    <img src = "images/avatar.png" width = "15px" height = "18px">
+
+                    <span class = "ms-2"> <strong>Taofeeq Bola Asiwaju</strong>
+
+                        <span class="badge ms-5 p-2 bg-danger text-danger rounded-circle" style="width: 20px; height: 20px;">o</span>
+
+
+                    </span>
+
+                    <span style = "margin-left: 30px;">Nigeria
+                    <span style = "margin-left: 120px;" class = "chat">10min ago</span>
+                    </span>
+
+
+
                 </div>
             </div>
-        </div> <!-- End of container-fluid -->
-        <script>
+         </div> <!-- End of container-fluid -->
+         <script>
             <!-- Visitor Chart -->
             const ctx = document.getElementById('candidateChart').getContext('2d');
             new Chart(ctx,
@@ -516,10 +594,10 @@
                             <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                                 style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
                                 {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
-        </span>
+        {{-- </span>
         </div>
         </a>
-        </div>
+        </div> --}}
 
         {{-- <div class = "profit w-100 border-start border-black border-1 m-0">
                     <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark" href = "{{ url('order') }}">
@@ -536,8 +614,8 @@
                     </a>
                 </div> --}}
 
-        </div>
-        </div>
+        {{-- </div> --}}
+        {{-- </div> --}}
         {{-- <div class="row ms-2 border border-black">
             <div class ="col-12 profit p-2">
                 <a href = "{{ url('detailedstat') }}" class = "text-decoration-none detailedstat">View

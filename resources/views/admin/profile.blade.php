@@ -52,15 +52,37 @@
                             @endif
 
                         </div>
+
+
                         <div class="mb-3">
-                            <input type="submit" class="btn btn-primary" value="Save changes" />
+                            <x-input-label for="update_password_current_password" :value="__('Current Password')" class="form-label" />
+                            <x-text-input id="update_password_current_password" name="current_password" type="password" class="form-control" autocomplete="current-password" />
+                            <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
+                        </div>
+                        <div class="mb-3">
+                            <x-input-label for="update_password_password" :value="__('New Password')" class="form-label" />
+                            <x-text-input id="update_password_password" name="password" type="password" class="form-control" autocomplete="new-password" />
+                            <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
+                        </div>
+                        <div class="mb-3">
+                            <x-input-label for="update_password_password_confirmation" :value="__('Confirm Password')" class="form-label" />
+                            <x-text-input id="update_password_password_confirmation" name="password_confirmation" type="password" class="form-control" autocomplete="new-password" />
+                            <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
+                        </div>
+
+
+
+
+                        <div class="mb-3">
+                            <input type="submit" class="btn btn-primary w-100" value="Save changes" />
                             @if (session('status') === 'profile-updated')
                             <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)" class="bg-success-subtle w-100 text-center text-success mt-2 btn" >{{ __('Profile Updated Successfully.') }}</p>
                         @endif
                         </div>
                     </div>
                 </form>
-                <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
+
+                {{-- <form method="post" action="{{ route('password.update') }}" class="mt-6 space-y-6">
                     @csrf
                     @method('put')
                     <div class="row shadow py-2">
@@ -87,8 +109,10 @@
                             @endif
                         </div>
                     </div>
-                </form>
-                <div class="row shadow py-2">
+                </form> --}}
+
+
+                {{-- <div class="row shadow py-2">
                     <div class="mb-3">
                         <h2>Delete Account</h2>
                         <p>
@@ -98,12 +122,11 @@
                         </p>
                     </div>
                     <div class="mb-3">
-                        {{-- <x-danger-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-                            type="submit" >{{ __('Delete Account') }} </x-danger-button> --}}
                         <button data-bs-toggle="modal" data-bs-target="#deleteAccountModal"
                             type="button" class="btn btn-danger"  >{{ __('Delete Account') }} </button>
                     </div>
-                </div>
+                </div> --}}
+
             </div>
             <div class="col-12 col-lg-5 profile">
                 <div class="image_wrapper" style="position: relative; display: inline-block; width: 150px; height: 150px;">

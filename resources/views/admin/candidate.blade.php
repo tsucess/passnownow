@@ -79,15 +79,15 @@
 
             <div class = "col-12 col-md-4 col-lg-4 p-3 text-white h-50 w-30" style="background: #1A69AF; border-radius: 10px;">
                 <div class = "float-start">
-                    <h4 style="font-family: montserrat;">2</h4>
-                    <p>Total Admin</p>
+                    <h4 style="font-family: montserrat;">400</h4>
+                    <p>Total Candidate</p>
                 </div>
 
                 <div class = "float-end">
-                    <p>Active Admin</p>
+                    <p>Active Candidate</p>
                     <h6>2</h6><br>
 
-                    <p>Deactived Admin</p>
+                    <p>Deactived Candidate</p>
                     <h6>2</h6><br>
                 </div>
 

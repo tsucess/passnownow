@@ -6,7 +6,7 @@
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-md btn-outline-primary" data-bs-toggle="modal"
-                    data-bs-target="#addModal">Add Subject</button>
+                    data-bs-target="#addModal">Upload Subject</button>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <p class="m-0">{{ \Session::get('success') }}</p>
         </div>
     @endif
-  
+
     <div class="table-responsive mb-5 pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="table-secondary">
@@ -242,6 +242,6 @@
 
     });
 
- 
+
 </script>
 @endsection

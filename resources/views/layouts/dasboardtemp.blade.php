@@ -82,7 +82,17 @@
       </form>
 
 
+      <div class = "d-flex align-items-center gap-3">
+      <span class="top_icon" style = "background: #1A69AF; font-size: 20px;">
+                                <i class="fa-regular fa-bell"></i>
+                            </span>
+                            <span class="top_icon" style = "background: #1A69AF; font-size: 20px;">
+                                <i class="fa-solid fa-globe"></i>
+                            </span>
+
+
         <div class="dropdown">
+
             {{-- <div class = "nav-item text-nowrap py-1"> --}}
 
                     <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="dropdownProfile" data-bs-toggle="dropdown"
@@ -107,6 +117,8 @@
             {{-- </div> --}}
 
     </div>
+      </div>
+
     </div>
     {{-- </div> --}}
     </div>
@@ -140,16 +152,18 @@
                         </li>
                         @if (Auth::user()->role === 'user')
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
-                                    href="/classes">
+                                {{-- <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
+                                    href="/classes"> --}}
+                                    <x-sidebar-link active="{{ request()->is('profile') }}"
+                                    href="/profile">
                                     <i class="fa-solid fa-layer-group"></i>
-                                    Classes
+                                    Candidate Profile
                                 </x-sidebar-link>
                             </li>
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
+                                <x-sidebar-link active="{{ request()->is('examupload') }}" href="/examupload">
                                     <i class="fa-solid fa-list"></i>
-                                    Exams
+                                    Examination
                                 </x-sidebar-link>
                             </li>
                             <li class="nav-item">
@@ -178,18 +192,22 @@
                                 </li>
                             @endif
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
+                                <x-sidebar-link active="{{ request()->is('candidate') }}" href="/candidate">
                                     <i class="fa-regular fa-user"></i>
-                                    Candidates
+                                    Candidate
                                 </x-sidebar-link>
                             </li>
 
                              <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('users') }}" href="/examupload">
+                                <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
                                     <i class="fa-regular fa-list"></i>
-                                    Examination Upload
+                                    Question
                                 </x-sidebar-link>
                             </li>
+
+
+
+
 
                             {{-- <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
@@ -201,7 +219,7 @@
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
                                     <i class="fa-solid fa-swatchbook"></i>
-                                    Questions
+                                    Subject
                                 </x-sidebar-link>
                             </li>
                             {{-- <li class="nav-item">
@@ -263,7 +281,7 @@
 
                 <section class="container-fluid footer__container">
                     <div class="row">
-                        <div class="col-12 col-md-5 col-lg-6 mb-2 myfooter">&copy; Copyright Passnownow 2024, All Right
+                        <div class="col-12 col-md-5 col-lg-6 mb-2">&copy; Copyright Passnownow 2024, All Right
                             Reserverd</div>
                         {{-- <div class="col-12 col-md-2 col-lg-4"></div> --}}
                         <div class="col-12 col-md-5 col-lg-6 text-lg-end">

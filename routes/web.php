@@ -335,6 +335,14 @@ Route::get('/class', function () {
     return view('admin.class');
 });
 
+Route::get('/questionsubject', function () {
+    return view('admin.questionsubject');
+});
+
+Route::get('/englishupload', function () {
+    return view('admin.englishupload');
+});
+
 
 Route::get('/subscription', function () {
     return view('admin.subscription');
@@ -361,8 +369,12 @@ Route::get('/examclass', function () {
     return view('admin.examclass');
 });
 
-Route::get('/examsubject', function () {
-    return view('admin.examsubject');
+Route::get('/examinstruction', function () {
+    return view('admin.examinstruction');
+});
+
+Route::get('/candidate', function () {
+    return view('admin.candidate');
 });
 
 
