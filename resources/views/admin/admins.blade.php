@@ -17,11 +17,7 @@
       padding: 1rem;
     } */
 
-    #adminChart {
-      height: 50px;
-      /* background: red; */
 
-    }
 
 
     .chart-center-label {
@@ -94,39 +90,40 @@
             </div>
 
 
-        <div class = "col-12 col-md-6 col-lg-6 ms-3  d-flex flex-column align-items-start text-white bg-white" style = "height: 200px;">
-        {{-- <div class = "float-start"> --}}
+        <div class = "col-12 col-md-6 col-lg-6 d-flex flex-row  align-items-start text-white bg-white mobileanalytics" style = "height: 200px;">
+
+
         <div class="chart-containers">
 
           <canvas id="adminChart"></canvas>
           <div class="chart-center-label">Administrators</div>
+        </div>
 
 
-        {{-- </div> --}}
+    <!-- New div added here -->
+    <div class="d-flex flex-column justify-content-between mt-4" style = "height:140px;">
 
-        <div class = "float-end">
-            <h1></h1>
-           </div>
+            <div>
+        <h5 style = "color:#313A46;">1,507</h5>
+            <span class = "text-dark" style = "margin-left:5px;">Male</span>
 
-        {{-- <div class="text-center mt-2">
-          <span class="me-3">
-            <span style="display:inline-block; width:10px; height:10px; background:#55C2A5; border-radius:2px; margin-right:5px;"></span>
-            <span class="legend-label">Male</span>
-          </span>
-          <span>
-            <span style="display:inline-block; width:10px; height:10px; background:#eeeeee; border-radius:2px; margin-right:5px;"></span>
-            <span class="legend-label">Female</span>
-          </span>
-        </div> --}}
+    </div>
+
+            <div>
+        <h5 style = "color:#313A46; margin-left:2px;">854</h5>
+            <span class = "text-dark">Female</span>
+
+    </div>
+</div>
+
 
             </div>
 
-         <div class = "col-12 col-md-2 col-lg-2">
-         </div>
 
 
         </div>
     </div>
+    
 
 
     <div class="container-fluid table-responsive mb-5 p-3 bg-white">
@@ -199,6 +196,7 @@
             </tbody>
         </table>
     </div>
+
 
 
     {{-- <section>

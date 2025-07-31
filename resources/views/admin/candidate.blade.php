@@ -9,19 +9,7 @@
         color: #ffffff;
     }
 
- /* .chart-containers {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      margin: 0;
-      padding: 1rem;
-    } */
 
-    #adminChart {
-      height: 50px;
-      /* background: red; */
-
-    }
 
 
     .chart-center-label {
@@ -33,6 +21,7 @@
       font-size: 0.7rem;
       color: #6c757d;
     }
+
 
 /*
      .legend-label {
@@ -94,19 +83,34 @@
             </div>
 
 
-        <div class = "col-12 col-md-6 col-lg-6 ms-3  d-flex flex-column align-items-start text-white bg-white" style = "height: 200px;">
+        <div class = "col-12 col-md-6 col-lg-6  d-flex flex-row align-items-start text-white bg-white mobileanalytics" style = "height: 200px;">
+
         {{-- <div class = "float-start"> --}}
         <div class="chart-containers">
 
           <canvas id="adminChart"></canvas>
-          <div class="chart-center-label">Administrators</div>
+          <div class="chart-center-label">Candidate</div>
+        </div>
 
+         <!-- New div added here -->
+    <div class="d-flex flex-column justify-content-between mt-4" style = "height:140px;">
+
+        <div>
+        <h5 style = "color:#313A46;">1,507</h5>
+            <span class = "text-dark" style = "margin-left:5px;">Male</span>
+
+    </div>
+
+            <div>
+        <h5 style = "color:#313A46; margin-left:2px;">854</h5>
+            <span class = "text-dark">Female</span>
+
+    </div>
+</div>
 
         {{-- </div> --}}
 
-        <div class = "float-end">
-            <h1></h1>
-           </div>
+
 
         {{-- <div class="text-center mt-2">
           <span class="me-3">
@@ -121,8 +125,6 @@
 
             </div>
 
-         <div class = "col-12 col-md-2 col-lg-2">
-         </div>
 
 
         </div>
@@ -148,23 +150,27 @@
                 </tr>
             </thead>
 
-            <tbody>
+            {{-- <tbody>
                 @foreach ($fetchAdmins as $Admin)
-                    <tr>
+                    <tr> --}}
+
                         {{-- <th>{{  ++$sn }}</th> --}}
-                        <th></th>
+
+                        {{-- <th></th>
                         <td> {{ $Admin->first_name }} {{ $Admin->last_name }}</td>
                         <td>{{ $Admin->email }}</td>
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td>
+                        <td> --}}
+
                         {{-- <button class="@if ($Admin->status === 0) btn btn-success @else btn btn-danger @endif">Button Text</button> --}}
                           {{-- <button class="@if ($Admin->status === 0) btn btn-success @else btn btn-danger @endif" style = "opacity: 0.7; width: 100%; border-radius: 40%;">
     <span style="display: inline-block;  width: 10px; height: 10px; border-radius: 80%; background-color: #fff; margin-right: 5px;"></span>
     @if ($Admin->status === 0) Active @else Deactivated @endif
 </button> --}}
-@if($Admin->status === 0)
+
+{{-- @if($Admin->status === 0)
 
 <span class="status p-2 mt-1 mb-1 rounded-3" style = "background: #34c759;"><i class="fa-solid fa-circle text-white rounded-2"></i>
                                                     <span>Activated</span></span>
@@ -173,7 +179,9 @@
                                                     <span>Deactivated</span></span>
 @endif
                     </td>
-                        <td>&hellip;</td>
+                        <td>&hellip;</td> --}}
+
+
 
                         {{-- <td>{{ $Admin->username }}</td> --}}
                         {{-- <td>{{ $Admin->phone number }}</td>
@@ -194,9 +202,10 @@
                             <a href="{{ route('admin.destroy', ['data' => $Admin->id])}}" class="btn btn-danger p-1 px-3">Delete</a>
                         </td> --}}
 
-                    </tr>
+                    {{-- </tr>
                 @endforeach
-            </tbody>
+            </tbody> --}}
+
         </table>
     </div>
 
@@ -295,7 +304,7 @@
     const adminChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ['Male', 'Female'],
+         labels: ['Male', 'Female'],
         datasets: [{
           data: [1507, 854],
           backgroundColor: ['#55C2A5', '#eeeeee'],
