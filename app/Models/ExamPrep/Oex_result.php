@@ -9,8 +9,19 @@ class Oex_result extends Model
 {
     use HasFactory;
 
-    protected $table="oex_results";
-    protected $primaryKey="id";
+    protected $table = "oex_results";
+    protected $primaryKey = "id";
 
-    protected $fillable=['exam','question_id','yes_ans','no_ans','result_json'];
+    protected $fillable = [
+        'exam',
+        'question_id',
+        'yes_ans',
+        'no_ans',
+        'result_json'
+    ];
+
+     public function exam()
+    {
+        return $this->belongsTo(Subjects::class, 'exam_id', 'id');
+    }
 }

@@ -1,6 +1,6 @@
-@extends('layouts.student')
+@extends('layouts.dasboardtemp')
 @section('title','Result')
-@section('content')
+@section('admincontent')
 
     <!-- /.content-header -->
      <!-- Content Wrapper. Contains page content -->
@@ -10,14 +10,15 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0">Result</h1>
+            <h1 class="mt-2">Result</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
+          {{-- <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
               <li class="breadcrumb-item active">Exam</li>
             </ol>
-          </div><!-- /.col -->
+          </div> --}}
+          <!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
 
@@ -36,7 +37,7 @@
                         <table class="table">
                             <tr>
                                 <td>Name : </td>
-                                <td>{{ $student_info->name}}</td>
+                                <td>{{ $student_info->first_name}} {{ $student_info->last_name}}</td>
                             </tr>
                             <tr>
                                 <td>E-mail : </td>
@@ -52,7 +53,7 @@
                             </tr>
                             <tr>
                                 <td>Exam date : </td>
-                                <td>{{ $exam_info->exam_date}}</td>
+                                <td>{{ \Carbon\Carbon::parse($result_info->updated_at)->format('d M Y H:i')}}</td>
                             </tr>
                         </table>
                         <h2>Result info</h2>
@@ -67,7 +68,9 @@
                             </tr>
                             <tr>
                                 <td>Total : </td>
-                                <td>{{ $result_info->yes_ans+$result_info->no_ans}}</td>
+                                <td>{{ $rounded = round(($result_info->yes_ans/($result_info->yes_ans+
+                                
+                                $result_info->no_ans)) * 100, 2) }}%</td>
                             </tr>
                         </table>
                     </div>

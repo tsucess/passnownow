@@ -7,7 +7,7 @@
             <div class="btn-group me-2" id="topButton">
                 <a href="/adsubjects" class="btn btn-secondary p-1 px-5 shadow">Back</a>
                 <button type="button" class="btn btn-md btn-outline-primary addTopic px-4"
-                    data-subject_id="{{ $subject }}" data-subject_name="{{ $subject_name }}" data-id="{{ $sub_id }}" data-bs-toggle="modal"
+                    data-subject_id="{{ $subject_id }}" data-subject_name="{{ $subject_name }}" data-id="{{ $sub_id }}" data-bs-toggle="modal"
                     data-bs-target="#addModal">Add Question</button>
             </div>
         </div>
@@ -75,7 +75,7 @@
                                             data-id="{{ $Question->id }}" data-question="{{ $Question->question }}"
                                             data-ans="{{ $Question->ans }}" data-order="{{ $Question->order }}"
                                             data-question_type="{{ $Question->question_type }}"
-                                            data-mark="{{ $Question->mark }}" data-subjectu_id="{{ $subject_name }}"
+                                            data-mark="{{ $Question->mark }}" data-subjectu_id="{{ $subject_id }}" data-subjectu_name="{{ $subject_name }}"
                                             data-options="{{ $Question->options }}" data-bs-toggle="modal"
                                             data-bs-target="#editModal">edit</button></li>
                                     <li><a onclick="validate(this)"
@@ -288,13 +288,13 @@
                     @csrf
                     @method('patch')
                     <div class="modal-body">
-                        {{-- <input type="hidden" name="subject_id" id="subjectu_id" class="form-control py-2" /> --}}
+                        <input type="hidden" name="subject_id" id="subjectu_id" class="form-control py-2" />
                         <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
                             <div class="col-4">
                                 <div class="mb-3">
-                                    <label for="subjectu_id" class="form-label">Subject</label>
-                                    <input type="text" name="subject_id" class="form-control py-2" id="subjectu_id"
+                                    <label for="subjectu_name" class="form-label">Subject</label>
+                                    <input type="text" name="subject_name" class="form-control py-2" id="subjectu_name"
                                         readonly />
                                 </div>
                             </div>
@@ -450,6 +450,7 @@
 
             $('#admin-table tbody').on('click', '.edit-btn', function() {
                 var subjectu_id = $(this).data('subjectu_id');
+                var subjectu_name = $(this).data('subjectu_name');
                 var id = $(this).data('id');
                 var question = $(this).data('question');
                 var edit_mark = $(this).data('mark');
@@ -502,9 +503,15 @@
                     $('#edit-multiple-options input, #edit-multiple-options select').prop('disabled', true);
                     $('#edit-alternate-option input, #edit-alternate-option select').prop('disabled', true);
                     $('#edit-theory-field textarea').prop('disabled', false);
+                    if (window.CKEDITOR && CKEDITOR.instances.editor2) {
+                        CKEDITOR.instances.editor2.setData(edit_ans);
+                    } else {
+                        $('#editor2').val('');
+                    }
                 }
 
                 $('#subjectu_id').val(subjectu_id);
+                $('#subjectu_name').val(subjectu_name);
                 $('#edit-id').val(id);
                 $('#edit-question').val(question);
                 $('#edit-mark').val(edit_mark);
@@ -590,11 +597,6 @@
                     $('#edit-alternate-option input, #edit-alternate-option select').prop('disabled',
                         false);
                     $('#edit-theory-field textarea').prop('disabled', true);
-                    if (window.CKEDITOR && CKEDITOR.instances.editor2) {
-                        CKEDITOR.instances.editor2.setData('');
-                    } else {
-                        $('#editor2').val('');
-                    }
                 } else {
                     $('#edit-multiple-options').show();
                     $('#edit-alternate-option').hide();
@@ -603,11 +605,6 @@
                         false);
                     $('#edit-alternate-option input, #edit-alternate-option select').prop('disabled', true);
                     $('#edit-theory-field textarea').prop('disabled', true);
-                    if (window.CKEDITOR && CKEDITOR.instances.editor2) {
-                        CKEDITOR.instances.editor2.setData('');
-                    } else {
-                        $('#editor2').val('');
-                    }
                 }
             });
 

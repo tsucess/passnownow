@@ -206,12 +206,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [StudentOperation::class, 'dashboard']);
 
     Route::get('/exam', [StudentOperation::class, 'exam']);
-    Route::get('/join_exam/{id}', [StudentOperation::class, 'join_exam']);
+    Route::get('/start_exam/{id}', [StudentOperation::class, 'start_exam']);
     Route::post('/submit_questions', [StudentOperation::class, 'submit_questions']);
     Route::get('/show_result/{id}', [StudentOperation::class, 'show_result']);
-    Route::get('/apply_exam/{id}', [StudentOperation::class, 'apply_exam']);
-    Route::get('/view_result/{id}', [StudentOperation::class, 'view_result']);
-    Route::get('/view_answer/{id}', [StudentOperation::class, 'view_answer']);
+    Route::get('/apply_exam/{exam_id}/{id}', [StudentOperation::class, 'apply_exam']);
+    Route::get('/view_result/{data}', [StudentOperation::class, 'view_result']);
+    Route::get('/view_answer/{data}', [StudentOperation::class, 'view_answer']);
 });
 
 
@@ -249,7 +249,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/update_question/{id}', [SpecialAdminController::class, 'update_question']);
     // Route::get('/registered_students', [SpecialAdminController::class, 'registered_students']);
     // Route::get('/delete_registered_students/{id}', [SpecialAdminController::class, 'delete_registered_students']);
-    Route::get('/apply_exam/{id}', [SpecialAdminController::class, 'apply_exam']);
+    // Route::get('/apply_exam/{id}', [SpecialAdminController::class, 'apply_exam']);
     Route::get('/admin_view_result/{id}', [SpecialAdminController::class, 'admin_view_result']);
 
     Route::post('/edit_question_inner', [SpecialAdminController::class, 'edit_question_inner']);
@@ -313,6 +313,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/showsubjects/{data}/view', [SubjectsController::class, 'usershow'])->name('showsubjects');
+    Route::get('/exam_taken', [SubjectsController::class, 'exam_taken'])->name('exam_taken');
     Route::get('/pqlearning/{data}/view', [QuestionsController::class, 'showpastquest'])->name('pqlearning');
 
     // Questions Routes

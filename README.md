@@ -86,3 +86,137 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
                     alert('Error:' +xhr.status+ '_' + xhr.statusText)
                 }
             });
+
+
+
+
+
+{
+ array:9 [▼
+      "exam_id" => "1"
+      "_token" => "BqeomwdVb6bJasuG9Bh11r3KAqHflKlXpiumB30J"
+      "question1" => "1"
+      "ans1" => "A name of things"
+      "question2" => "2"
+      "ans2" => "An Action word"
+      "question3" => "3"
+      "ans3" => "Run"
+      "index" => "3"
+    ]
+  }
+
+{
+ array:20 [▼
+      "exam_id" => "2"
+      "_token" => "zqVHY2Im5zAVhlTm1Nhh7b5boQ2d30ZGn53hjmiq"
+      "question_type1" => "theory"
+      "question1" => "5"
+      "ans1" => """
+        change the position of 4 over to right by subtracting both side by 4, = 12
+        divide both side by 3 , which is 12/3 = 4
+        """
+      "question_type2" => "multiple"
+      "question2" => "14"
+      "ans2" => "5"
+      "question_type3" => "multiple"
+      "question3" => "15"
+      "ans3" => "2/3"
+      "question_type4" => "multiple"
+      "question4" => "16"
+      "ans4" => "5"
+      "question_type5" => "alternate"
+      "question5" => "17"
+      "ans5" => "True"
+      "question_type6" => "theory"
+      "question6" => "18"
+      "index" => "1"
+    ]
+  }
+Science is the art of life
+
+
+
+
+
+    <form action="{{ url('submit_questions') }}" method="POST" id="form">
+                                        <input type="hidden" name="exam_id" value="{{ $subject->id }}">
+                                        {{ csrf_field() }}
+                                        <div class="row list">
+                                            <?php $key = 0; ?>
+                                            @foreach ($questions as $q)
+                                                <div class="col-sm-12 mt-4 item">
+                                                    <p>{{ $loop->iteration }}. {{ $q->question }}</p>
+                                                    <?php
+                                                    $options = json_decode(json_decode(json_encode($q->options)), true);
+                                                    ?>
+                                                    <input type="hidden" name="question_type{{ $loop->iteration }}"
+                                                        value="{{ $q->question_type }}" />
+                                                    <input type="hidden" name="question{{ $loop->iteration }}"
+                                                        value="{{ $q['id'] }}" />
+                                                    @if ($q->question_type === 'multiple')
+                                                        <ul class="question_options">
+                                                            <li><input type="radio" value="{{ $options['option1'] }}"
+                                                                    name="ans{{ $loop->iteration }}">
+                                                                {{ $options['option1'] }}
+                                                            </li>
+                                                            <li><input type="radio" value="{{ $options['option2'] }}"
+                                                                    name="ans{{ $loop->iteration }}">
+                                                                {{ $options['option2'] }}
+                                                            </li>
+                                                            <li><input type="radio" value="{{ $options['option3'] }}"
+                                                                    name="ans{{ $loop->iteration }}">
+                                                                {{ $options['option3'] }}
+                                                            </li>
+                                                            <li><input type="radio" value="{{ $options['option4'] }}"
+                                                                    name="ans{{ $loop->iteration }}">
+                                                                {{ $options['option4'] }}
+                                                            </li>
+
+                                                            <li style="display: none;"><input value="0" type="radio"
+                                                                    checked="checked" name="ans{{ $loop->iteration }}">
+                                                                {{ $options['option4'] }}</li>
+                                                        </ul>
+                                                    @elseif ($q->question_type === 'alternate')
+                                                        <ul class="question_options">
+                                                            <li><input type="radio" value="{{ $options['option1'] }}"
+                                                                    name="ans{{ $loop->iteration }}">
+                                                                {{ $options['option1'] }}
+                                                            </li>
+                                                            <li><input type="radio" value="{{ $options['option2'] }}"
+                                                                    name="ans{{ $loop->iteration }}">
+                                                                {{ $options['option2'] }}
+                                                            </li>
+                                                            {{-- <li style="display: none;"><input value="0" type="radio"
+                                                                    checked="checked" name="ans{{ $key + 1 }}">
+                                                                {{ $options['option4'] }}</li> --}}
+                                                        </ul>
+                                                    @else
+                                                        <textarea class="w-100" id="" rows="3" name="ans{{ $loop->iteration }}"
+                                                            placeholder="Type in your Answer here"></textarea>
+                                                    @endif
+                                                </div>
+                                            @endforeach
+
+
+                                            {{-- <div class="pagination">
+
+                                            </div> --}}
+
+                                            <div class="row p-0">
+                                                <?php if (isset($questions)) {?>
+                                                <div class="col-12">
+                                                    <ul class="page-nums"></ul>
+                                                </div>
+                                                <?php }?>
+                                            </div>
+
+
+
+                                            <div class="col-sm-12">
+
+                                                <input type="hidden" name="index" value="{{ $key + 1 }}">
+                                                <button type="submit" class="btn btn-primary"
+                                                    id="myCheck">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>

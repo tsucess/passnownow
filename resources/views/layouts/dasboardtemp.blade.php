@@ -2,6 +2,9 @@
 <html lang="en">
 
 <head>
+    <script type="text/javascript">
+        BASE_URL = "<?php echo url(''); ?>"
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -160,17 +163,23 @@
                             </x-sidebar-link>
                         </li>
                         @if (Auth::user()->role === 'user')
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
                                     href="/classes">
                                     <i class="fa-solid fa-layer-group"></i>
                                     Classes
                                 </x-sidebar-link>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
                                     <i class="fa-solid fa-list"></i>
                                     Exams
+                                </x-sidebar-link>
+                            </li>
+                            <li class="nav-item">
+                                <x-sidebar-link active="{{ request()->is('exam_taken') }}" href="/exam_taken">
+                                    <i class="fa-solid fa-list"></i>
+                                    Exams Completed
                                 </x-sidebar-link>
                             </li>
                             <li class="nav-item">
@@ -183,7 +192,6 @@
                             <li class="nav-item effect">
                                 <x-sidebar-link active="{{ request()->is('checkoutdetails') }}"
                                     href="/checkoutdetails">
-                                    {{-- <i class="fa-solid fa-dollar"></i> --}}
                                     <span class = "me-2"
                                         style = "font-size: 20px; color:rgba(35, 33, 33, 0.774);">&#x20A6;</span>
                                     Subscribe
@@ -212,17 +220,18 @@
                                 </x-sidebar-link>
                             </li> --}}
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
-                                    <i class="fa-solid fa-swatchbook"></i>
-                                    Subjects
-                                </x-sidebar-link>
-                            </li>
-                            <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
                                     <i class="fa-solid fa-list"></i>
                                     Exams
                                 </x-sidebar-link>
                             </li>
+                            <li class="nav-item">
+                                <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
+                                    <i class="fa-solid fa-swatchbook"></i>
+                                    Subjects
+                                </x-sidebar-link>
+                            </li>
+
                             {{-- <li class="nav-item">
                             <a class="nav-link" href="{{url('adpastquestions')}}">
                                 <i class="fa-solid fa-list"></i>

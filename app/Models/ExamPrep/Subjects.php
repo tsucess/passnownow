@@ -19,4 +19,9 @@ class Subjects extends Model
         'exam_unique_id',
         'avatar'
     ];
+
+    public function results()
+    {
+        return $this->hasMany(Oex_result::class, 'exam_id', 'id');
+    }
 }

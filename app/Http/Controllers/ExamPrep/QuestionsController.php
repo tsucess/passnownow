@@ -52,7 +52,7 @@ class QuestionsController extends Controller
         switch ($request->question_type) {
             case 'theory':
                 $request->validate([
-                    'ans' => ['required', 'string', 'max:255'],
+                    'ans' => ['required', 'string', 'max:10255'],
                 ]);
                 $ans = $request->ans;
                 $options = json_encode(['option1' => 'None']);
@@ -60,7 +60,7 @@ class QuestionsController extends Controller
 
             case 'alternate':
                 $request->validate([
-                    'ans' => ['required', 'string', 'max:255'],
+                    'ans' => ['required', 'string', 'max:10255'],
                     'option1' => ['required', 'string', 'max:10055'],
                     'option2' => ['required', 'string', 'max:10055'],
                 ]);
@@ -70,7 +70,7 @@ class QuestionsController extends Controller
 
             default:
                 $request->validate([
-                    'ans' => ['required', 'string', 'max:255'],
+                    'ans' => ['required', 'string', 'max:10255'],
                     'option1' => ['required', 'string', 'max:10055'],
                     'option2' => ['required', 'string', 'max:10055'],
                     'option3' => ['required', 'string', 'max:10055'],
@@ -122,7 +122,7 @@ class QuestionsController extends Controller
         $subject_name = $data->title;
 
 
-        return view('admin.viewquestions', ['subject_name' => $subject_name, 'subject' => $subject_id, 'sub_id' => $sub_id, 'fetchQuestions' => $output]);
+        return view('admin.viewquestions', ['subject_name' => $subject_name, 'subject_id' => $subject_id, 'sub_id' => $sub_id, 'fetchQuestions' => $output]);
     }
 
 
@@ -184,7 +184,7 @@ class QuestionsController extends Controller
         switch ($request->edit_question_type) {
             case 'theory':
                 $request->validate([
-                    'edit_ans' => ['required', 'string', 'max:255'],
+                    'edit_ans' => ['required', 'string', 'max:100255'],
                 ]);
                 $ans = $request->edit_ans;
                 $options = json_encode(['option1' => 'None']);
@@ -192,7 +192,7 @@ class QuestionsController extends Controller
 
             case 'alternate':
                 $request->validate([
-                    'edit_ans' => ['required', 'string', 'max:255'],
+                    'edit_ans' => ['required', 'string', 'max:10255'],
                     'edit_option1' => ['required', 'string', 'max:10055'],
                     'edit_option2' => ['required', 'string', 'max:10055'],
                 ]);
@@ -205,7 +205,7 @@ class QuestionsController extends Controller
 
             default:
                 $request->validate([
-                    'edit_ans' => ['required', 'string', 'max:255'],
+                    'edit_ans' => ['required', 'string', 'max:10255'],
                     'edit_option1' => ['required', 'string', 'max:10055'],
                     'edit_option2' => ['required', 'string', 'max:10055'],
                     'edit_option3' => ['required', 'string', 'max:10055'],
@@ -221,7 +221,7 @@ class QuestionsController extends Controller
         }
 
         $data_id = $request->subject_id;
-
+      
         $subject = Questions::find($request->id);
         // dd($subject);
         if ($subject) {
