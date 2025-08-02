@@ -155,7 +155,7 @@ class SubjectsController extends Controller
                 }
                 return $attempt;
             });
-
+        // dd($results);
         return view('admin.exam_taken', compact('results'));
     }
 

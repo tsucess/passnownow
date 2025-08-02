@@ -233,10 +233,9 @@ class StudentOperation extends Controller
     //View answer
     public function view_answer(Oex_result $data)
     {
-        $id = $data->id;
+        // $id = $data->id;
         $exam_id = $data->exam_id;
-
-        $output['questions'] = Questions::where('exam_id', $id)->get()->toArray();
+        $output['questions'] = Questions::where('subject_unique_id', $exam_id)->get()->toArray();
         // dd($output);
         return view('student.view_answer', $output);
     }
