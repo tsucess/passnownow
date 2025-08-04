@@ -123,7 +123,7 @@
 
         </div>
     </div>
-    
+
 
 
     <div class="container-fluid table-responsive mb-5 p-3 bg-white">
@@ -161,14 +161,26 @@
     <span style="display: inline-block;  width: 10px; height: 10px; border-radius: 80%; background-color: #fff; margin-right: 5px;"></span>
     @if ($Admin->status === 0) Active @else Deactivated @endif
 </button> --}}
-@if($Admin->status === 0)
+{{-- @if($Admin->status === 0) --}}
 
-<span class="status p-2 mt-1 mb-1 rounded-3" style = "background: #34c759;"><i class="fa-solid fa-circle text-white rounded-2"></i>
+{{-- <span class="status p-2 mt-1 mb-1 rounded-3" style = "background: #34c759;"><i class="fa-solid fa-circle text-white rounded-2"></i>
                                                     <span>Activated</span></span>
+
+
 @else
 <span class="status exp p-2 mt-1 mb-1 rounded-3" style = "background: #fd645b;"><i class="fa-solid fa-circle text-white rounded-2"></i>
                                                     <span>Deactivated</span></span>
-@endif
+@endif --}}
+
+                        @if($Admin->status === 0)
+
+                                            <span class="status exp"><i class="fa-solid fa-circle"></i>
+                                                <span>Expired</span></span>
+                                        @else
+                                            <span class="status"><i class="fa-solid fa-circle"></i>
+                                                <span>Active</span></span>
+                                        @endif
+
                     </td>
                         <td>&hellip;</td>
 
@@ -193,6 +205,7 @@
 
                     </tr>
                 @endforeach
+                {{-- @endif --}}
             </tbody>
         </table>
     </div>

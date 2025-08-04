@@ -30,7 +30,7 @@
     } */
 </style>
     <div class="container-fluid d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3" style = "background-color:#f1f1f1;">
-        <h1 class="h2">Administrators</h1>
+        <h1 class="h2">Candidate</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-md text-white" data-bs-toggle="modal"

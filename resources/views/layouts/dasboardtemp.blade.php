@@ -54,7 +54,7 @@
   <div class="row align-items-center">
 
         <!-- Logo (col-3) -->
-        <div class="col-md-2 col-12 logo-box d-flex justify-content-between align-items-center">
+        <div class="stick-top col-md-2 col-12 logo-box d-flex justify-content-between align-items-center">
         {{-- <a class="navbar-brand col-md-3 col-lg-2 me-5 px-3" href="{{ url('/') }}"> --}}
         <img src="{{ asset('images/logo.png') }}" alt="" class = "img-fluid mx-auto" style="max-height: 90px;">
         {{-- </a> --}}
@@ -78,7 +78,7 @@
     {{-- <div class="col-md-10 col-12 d-flex justify-content-between align-items-center" style = "margin-top: -20px; background: #1A69AF;"> --}}
         <div class="col-12 col-md-10 d-flex flex-column flex-md-row justify-content-between align-items-center px-3 py-2" style="background: #1A69AF;">
         <form class="d-none d-md-block w-50">
-        <input class="form-control mt-3 me-2" type="search" placeholder="Search" aria-label="Search"/>
+        {{-- <input class="form-control mt-3 me-2" type="search" placeholder="Search" aria-label="Search"/> --}}
       </form>
 
 
@@ -198,6 +198,13 @@
                                 </x-sidebar-link>
                             </li>
 
+                            <li class="nav-item">
+                                <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
+                                    <i class="fa-solid fa-swatchbook"></i>
+                                    Subject
+                                </x-sidebar-link>
+                            </li>
+
                              <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
                                     <i class="fa-regular fa-list"></i>
@@ -216,12 +223,7 @@
                                     Classes
                                 </x-sidebar-link>
                             </li> --}}
-                            <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
-                                    <i class="fa-solid fa-swatchbook"></i>
-                                    Subject
-                                </x-sidebar-link>
-                            </li>
+
                             {{-- <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
                                     <i class="fa-solid fa-list"></i>
