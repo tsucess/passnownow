@@ -127,8 +127,14 @@ body {
 * Navbar
 */
 
-.sidebarMenu
-.navbar-brand {
+.navbar {
+  padding: 1rem 1.125rem;
+  background: var(--color-primary-blue);
+}
+
+
+
+.sidebarMenu .navbar-brand {
   background-color: #000000;
   padding-top: .75rem;
   padding-bottom: .75rem;
@@ -138,6 +144,7 @@ body {
 .navbar .navbar-toggler {
   top: .25rem;
   right: 1rem;
+  color: var(--color-faint-ash);
 }
 
 .navbar .form-control {
@@ -186,7 +193,7 @@ body {
 .navbar .profile {
   /* width: 1rem; */
   /* overflow: none; */
-  border: 1px solid var(--color-primary-dark);
+  border: 1px solid var(--color-text-white);
   padding: 0.3rem 0.3rem;
   padding-right: 0.8rem;
   border-radius: 4rem;
@@ -195,15 +202,28 @@ body {
 .navbar .profile img {
   width: 2rem;
   overflow: none;
-  border: 1px solid var(--color-primary-dark);
+  border: 1px solid var(--color-text-white);
   border-radius: 50%;
+}
+
+
+/* Target only the chevron of the profile dropdown */
+.nav-link.dropdown-toggle.profile::after {
+  border-top: 0.3em solid white !important;
+  /* Arrow color */
+  border-right: 0.3em solid transparent;
+  border-left: 0.3em solid transparent;
+}
+
+
+.dropdown-toggle.profile {
+  border: 1px solid var(--color-faint-ash);
 }
 
 .dropdown-menu {
   width: 5rem !important;
   position: absolute !important;
   left: -6rem !important;
-
 }
 
 
@@ -374,10 +394,26 @@ body {
 .subscription_history table tr th:last-child {
   text-align: center;
 }
+
 .subscription_history table tr th {
   background-color: var(--color-dash);
   padding: 0.5rem;
 }
+
+.table-responsive table .status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  gap: 0.4rem;
+  background-color: #DCFCE7;
+  color: #16A34A;
+  padding: 0.08rem 0.1rem;
+  border-radius: 0.8rem;
+  width: 80%;
+  font-size: 0.8rem;
+}
+
 
 .subscription_history table .status {
   display: flex;
@@ -389,16 +425,22 @@ body {
   color: #16A34A;
   padding: 0.06rem 0.1rem;
   border-radius: 0.8rem;
-  width: 100%;
+  width: 30%;
 }
 
+
+
+.table-responsive table .status.exp {
+  background-color: #fccbc8;
+  color: #FD645B;
+}
 
 .subscription_history table .status.exp {
   background-color: #fccbc8;
   color: #FD645B;
-
 }
 
+.table-responsive table .status i,
 .subscription_history table .status i {
   font-size: 0.4rem;
 }
@@ -566,7 +608,8 @@ body {
 .checkoutsummary__container .checkout__summary table {
   width: 100%;
 }
-.checkoutsummary__container .checkout__summary table tr td{
+
+.checkoutsummary__container .checkout__summary table tr td {
   line-height: 2.5rem;
 }
 
@@ -628,7 +671,9 @@ body {
   /* left:rem; */
   z-index: 99999999;
 }
-.more-options > li > button, .more-options > li > a {
+
+.more-options>li>button,
+.more-options>li>a {
   width: 100%;
   margin: 0 auto;
   text-align: center;
@@ -643,9 +688,9 @@ body {
 
 /* examcard */
 .examcard {
-    width: 17rem !important;
-    margin: auto;
-    height: 20rem;
+  width: 17rem !important;
+  margin: auto;
+  height: 20rem;
 }
 
 
@@ -724,14 +769,14 @@ body {
 }
 
 @media screen and (min-width: 1250px) {
-    .examcard {
-        width: 20rem !important;
-    }
+  .examcard {
+    width: 20rem !important;
+  }
 }
 
 
 @media screen and (min-width: 1440px) {
-    .examcard {
-        width: 24rem !important;
-    }
+  .examcard {
+    width: 24rem !important;
+  }
 }

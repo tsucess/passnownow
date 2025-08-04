@@ -166,7 +166,8 @@
                                 <div class="courses-tag">Passnownow</div>
                                 <h5 class="card-title">{{ $exam->title }} </h5>
                                 @if (Auth::user()->status === 1)
-                                    <a href="{{ route('showsubjects', ['data' => $exam]) }}" class="btn buton">Select Exam</a>
+                                    <a href="{{ route('showsubjects', ['data' => $exam]) }}" class="btn buton">Select
+                                        Exam</a>
                                 @else
                                     <button type="button" class="btn buton" data-bs-toggle="modal"
                                         data-bs-target="#subscribeModal">Subscribe Now</button>
@@ -184,51 +185,52 @@
                         <h5>Subscription History</h5>
                         <a href="/subscriptiondetails">See All</a>
                     </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Package</th>
+                                    <th>Price</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (!empty($subhistory[0]))
+                                    @foreach ($subhistory as $history)
+                                        <tr>
+                                            <td>
+                                                <h6>{{ $history->plan_name }} Plan</h6>
+                                                <p>#{{ $history->orderID }} | {{ $history->updated_at }}</p>
+                                            </td>
+                                            <td>
+                                                <h6>N{{ number_format($history->amount) }}</h6>
+                                            </td>
+                                            <td>
+                                                @php
+                                                    $exp_day = date_create($history->expiry_date);
+                                                    $exp_day = date_format($exp_day, 'Y-m-d');
+                                                @endphp
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Package</th>
-                                <th>Price</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (!empty($subhistory[0]))
-                                @foreach ($subhistory as $history)
+                                                @if ($now > $exp_day)
+                                                    <span class="status exp"><i class="fa-solid fa-circle"></i>
+                                                        <span>Expired</span></span>
+                                                @else
+                                                    <span class="status"><i class="fa-solid fa-circle"></i>
+                                                        <span>Current</span></span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                @else
                                     <tr>
-                                        <td>
-                                            <h6>{{ $history->plan_name }} Plan</h6>
-                                            <p>#{{ $history->orderID }} | {{ $history->updated_at }}</p>
-                                        </td>
-                                        <td>
-                                            <h6>N{{ number_format($history->amount) }}</h6>
-                                        </td>
-                                        <td>
-                                            @php
-                                                $exp_day = date_create($history->expiry_date);
-                                                $exp_day = date_format($exp_day, 'Y-m-d');
-                                            @endphp
-
-                                            @if ($now > $exp_day)
-                                                <span class="status exp"><i class="fa-solid fa-circle"></i>
-                                                    <span>Expired</span></span>
-                                            @else
-                                                <span class="status"><i class="fa-solid fa-circle"></i>
-                                                    <span>Current</span></span>
-                                            @endif
+                                        <td colspan="3" class="text-center p-3">
+                                            <p>You have no subscription history</p>
                                         </td>
                                     </tr>
-                                @endforeach
-                            @else
-                                <tr>
-                                    <td colspan="3" class="text-center p-3">
-                                        <p>You have no subscription history</p>
-                                    </td>
-                                </tr>
-                            @endif
-                        </tbody>
-                    </table>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <div class="col-12 col-lg-5 shadow subjects_history">
@@ -274,8 +276,8 @@
             </div>
         </div>
     @else
-        <div class ="row mb-3">
-            <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden" style = "height:100px;">
+        <div class ="row mb-3 p-2">
+            <div class = "col-sm mt-3 mb-2 p-3 border border-primary overflow-hidden" style = "height:100px;">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
 
@@ -297,7 +299,7 @@
 
             </div>
 
-        <div class = "col-sm ms-3 mt-3 mb-2 p-3 border border-primary overflow-hidden" style="height: 100px;">
+            <div class = "col-sm mt-3 mb-2 p-3 border border-primary overflow-hidden" style="height: 100px;">
                 <span class = "ms-2 mt-3">Total Administrators</span><br>
                 <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -318,7 +320,7 @@
                     </div>
                  --}}
             </div>
-            <div class = "col-sm ms-3 mt-3 p-3 mb-2 border border-primary overflow-hidden">
+            <div class = "col-sm mt-3 p-3 mb-2 border border-primary overflow-hidden">
                 <span class = "ms-2 mt-3">Total Users</span><br>
                 <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
@@ -339,7 +341,7 @@
             </div>
         </div>
 
-        <div class = "row ms-2 border border-1 border-black p-2 mb-2">
+        <div class = "row border border-1 border-black p-2 mb-2">
             <div class = "border-bottom border-black border-1">
                 <span>Stats Overview</span>
                 <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
@@ -382,21 +384,21 @@
                 </div>
             </div>
         </div>
-        <div class="row ms-2 border border-black">
+        <div class="row border border-black">
             <div class ="col-12 profit p-2">
                 <a href = "{{ url('detailedstat') }}" class = "text-decoration-none detailedstat">View
                     detailed stats</a>
             </div>
         </div>
 
-        <div class ="row border border-1 border-black mt-2 ms-2 mb-3 p-2">
-                <span class = "float-start mt-2">Recent user
-                    <i class="fa fa-ellipsis-v float-end mt-1 mb-1" aria-hidden="true"></i>
-                </span>
+        <div class ="row border border-1 border-black mt-2 mb-3 p-2">
+            <span class = "float-start mt-2">Recent user
+                <i class="fa fa-ellipsis-v float-end mt-1 mb-1" aria-hidden="true"></i>
+            </span>
         </div>
 
         @php $sn= 0;  @endphp
-        <div class="table-responsive w-100 small float-start mt-2 ms-2 mb-5 pb-5">
+        <div class="table-responsive w-100 small float-start mt-2 mb-5 pb-5">
             <table class="table custom-table mb-5 pb-5" id="userss">
                 <thead class="table-secondary">
                     <tr>
@@ -404,7 +406,8 @@
                         <th scope="col">Name</th>
                         <th scope="col">Username</th>
                         <th scope="col" class="col-2">Email</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Status</th>
                         <th scope="col" class="col-2">Date</th>
                         <th scope="col">Actions</th>
                     </tr>
@@ -424,6 +427,21 @@
                                 @else
                                     {{ 'User' }}
                                 @endif
+                            </td>
+                            <td>
+                                @php
+                                    $exp_day = date_create($User->created_at);
+                                    $exp_day = date_format($exp_day, 'Y-m-d');
+                                @endphp
+
+                                @if ($now > $exp_day)
+                                    <span class="status exp"><i class="fa-solid fa-circle"></i>
+                                        <span>Deactivated</span></span>
+                                @else
+                                    <span class="status"><i class="fa-solid fa-circle"></i>
+                                        <span>Active</span></span>
+                                @endif
+
                             </td>
                             <td>{{ $User['created_at'] }}</td>
                             <td>

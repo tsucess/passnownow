@@ -40,6 +40,7 @@
     <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 
+    {{-- CKEditor --}}
     <link rel="stylesheet" href="{{ asset('css/ckeditor5.css') }}" />
 
 
@@ -277,9 +278,8 @@
                 </div>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-xl-10 ">
-                <header class="navbar sticky-top bg-white flex-md-nowrap
-                p-1 g-1 shadow pe-md-3">
+            <main class="col-md-9 ms-sm-auto col-xl-10 p-0">
+                <header class="navbar sticky-top flex-md-nowrap p-3">
                     <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
                         data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
                         aria-expanded="false" aria-label="Toggle navigation">

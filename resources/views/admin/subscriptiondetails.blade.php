@@ -97,7 +97,8 @@
                                 <td>
                                     <h6>{{ ucfirst($exp_date[0]->payment_method) }}</h6>
                                 </td>
-                                <td><a href="#">Change method</a></td>
+                                {{-- <td><a href="#">Change method</a></td> --}}
+                                <td><a href="#">Active</a></td>
                             </tr>
                         @else
                             <tr>
