@@ -82,7 +82,7 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 100;
+  /* z-index: 100; */
   padding: 15rem 1rem;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
@@ -1052,7 +1052,7 @@ header.navbar
     }
 
     .transaction-stats {
-        margin-top: 45px;
+        margin-top: 10px;
         display: flex;
         justify-content: start;
         gap: 20px;

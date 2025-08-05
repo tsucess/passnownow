@@ -247,12 +247,13 @@
         {{-- <div class = "container-fluid"> --}}
         <div class = "container-fluid">
             <div class="row justify-content-end">
-                <div class="col-12 col-md-6 col-lg-6">
+
+                <div class="col-12 col-md-6 col-lg-6 mt-3">
                     <h3 class = "fw-bold">Dashboard Overview</h3>
                     <p>Welcome to Passnownow Admin</p>
                 </div>
 
-                <div class="col-12 col-lg-6 col-md-6 d-flex justify-content-end" style = "height: 55px;">
+                <div class="col-12 col-lg-6 col-md-6 mt-3 d-flex justify-content-end" style = "height: 55px;">
                     <button type="button" class="btn text-white" style = "background-color:#1A69AF">Examination
                         Upload</button>
                     <button type="button" class="btn btn-light border border-primary ms-2" style = "color: #1A69AF;">Add
@@ -260,7 +261,6 @@
                 </div>
 
             </div>
-
 
             {{-- <div class = "container-fluid mt-3"> --}}
             <div class ="row mb-3">

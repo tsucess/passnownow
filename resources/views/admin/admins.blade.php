@@ -1,221 +1,217 @@
-
 @extends('layouts.dasboardtemp')
-
 @section('admincontent')
 
-<style>
-    .controlbtn{
-        background-color: #0056b3;
-        color: #ffffff;
-    }
+    <style>
+        .card-admin-summary {
+            background: #1A69AF;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
- /* .chart-containers {
-      position: relative;
-      width: 100%;
-      max-width: 600px;
-      margin: 0;
-      padding: 1rem;
-    } */
+        .controlbtn {
+            background-color: #0056b3;
+            color: #ffffff;
+        }
+
+        .card-admin-chart {
+            display: flex;
+            /* overflow: hidden; */
+            /* width: 50%; */
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #6c757d;
+            border-radius: 10px;
+        }
+
+        .chart-containers {
+            position: relative;
+            width: 75%;
+            /* height: 400px; */
+            margin: 0;
+
+        }
 
 
+        .chart-center-label {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-weight: 100;
+            font-size: 0.7rem;
+            color: #6c757d;
+        }
 
+        .gender-breakdown {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-evenly;
+            height: 100%;
+            width: 25%;
+            text-align: center;
+        }
 
-    .chart-center-label {
-      position: absolute;
-      top: 70%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-weight: 100;
-      font-size: 0.7rem;
-      color: #6c757d;
-    }
-
-/*
-     .legend-label {
-      font-size: 0.9rem;
-      color: #6c757d;
-    } */
-</style>
-    <div class="container-fluid d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3" style = "background-color:#f1f1f1;">
+        /*
+                             .legend-label {
+                              font-size: 0.9rem;
+                              color: #6c757d;
+                            } */
+    </style>
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center p-3 pb-2 mb-3 border-bottom px-md-4">
         <h1 class="h2">Administrators</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <button type="button" class="btn btn-md text-white" data-bs-toggle="modal"
-                    data-bs-target="#addModal" style = "background: #1A69AF;">Add Administrator</button>
+                <button type="button" class="btn btn-md btn-outline-primary" data-bs-toggle="modal"
+                    data-bs-target="#addModal">Add Administrator</button>
             </div>
         </div>
     </div>
     @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>
-            @endforeach
-        </ul>
-    </div>
-
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
     @elseif(\Session::has('error'))
-    <div class="alert alert-danger">
-        <p class="m-0">{{\Session::get('error')}}</p>
-    </div>
+        <div class="alert alert-danger">
+            <p class="m-0">{{ \Session::get('error') }}</p>
+        </div>
     @endif
-
     @if (\Session::has('success'))
         <div class="alert alert-success">
-            <p class="m-0">{{\Session::get('success')}}</p>
+            <p class="m-0">{{ \Session::get('success') }}</p>
         </div>
     @endif
-        @php
-            $sn= 0;
-        @endphp
 
-
-    <div class = "container-fluid">
-        <div class = "row mb-3">
-
-            <div class = "col-12 col-md-4 col-lg-4 p-3 text-white h-50 w-30" style="background: #1A69AF; border-radius: 10px;">
-                <div class = "float-start">
-                    <h4 style="font-family: montserrat;">2</h4>
-                    <p>Total Admin</p>
-                </div>
-
-                <div class = "float-end">
-                    <p>Active Admin</p>
-                    <h6>2</h6><br>
-
-                    <p>Deactived Admin</p>
-                    <h6>2</h6><br>
-                </div>
-
+    {{-- <div class = "row mb-3 p-4 gap-4">
+        <div class = "d-flex col-12 col-md-4 p-3 text-white h-50 w-30" style="background: #1A69AF; border-radius: 10px;">
+            <div>
+                <h4>2</h4>
+                <p>Total Admin</p>
             </div>
-
-
-        <div class = "col-12 col-md-6 col-lg-6 d-flex flex-row  align-items-start text-white bg-white mobileanalytics" style = "height: 200px;">
-
-
-        <div class="chart-containers">
-
-          <canvas id="adminChart"></canvas>
-          <div class="chart-center-label">Administrators</div>
+            <div>
+                <p>Active Admin</p>
+                <h6>2</h6>
+                <p>Deactived Admin</p>
+                <h6>2</h6>
+            </div>
         </div>
 
-
-    <!-- New div added here -->
-    <div class="d-flex flex-column justify-content-between mt-4" style = "height:140px;">
-
-            <div>
-        <h5 style = "color:#313A46;">1,507</h5>
-            <span class = "text-dark" style = "margin-left:5px;">Male</span>
-
-    </div>
-
-            <div>
-        <h5 style = "color:#313A46; margin-left:2px;">854</h5>
-            <span class = "text-dark">Female</span>
-
-    </div>
-</div>
-
-
+        <div class = "col-12 col-md-4 d-flex flex-row  align-items-start text-white bg-white shadow mobileanalytics"
+            style="border-radius: 10px;"
+            >
+            <div class="chart-containers">
+                <canvas id="adminChart" height="220px"></canvas>
+                <div class="chart-center-label">Administrators</div>
             </div>
 
-
-
+            <!-- New div added here -->
+            <div class="d-flex flex-column justify-content-between mt-4" style = "height:140px;">
+                <div>
+                    <h5 style = "color:#313A46;">1,507</h5>
+                    <span class = "text-dark">Male</span>
+                </div>
+                <div>
+                    <h5 style = "color:#313A46;">854</h5>
+                    <span class = "text-dark">Female</span>
+                </div>
+            </div>
         </div>
+        <div class="col-12 col-md-4"></div>
+    </div> --}}
+
+    <div class="row p-4 gap-4 dashboard-cards-row">
+        <!-- Admin Summary Card -->
+        <div class="card-admin-summary col-12 col-md-5 col-xl-4  p-2 p-lg-3 text-white w-30">
+            <div class="admin-count-summary">
+                <h4 class="total-admin-count">2</h4>
+                <p class="label-total-admin">Total Admin</p>
+            </div>
+            <div class="admin-status-details">
+                <p class="label-active-admin">Active Admin</p>
+                <h6 class="active-admin-count">2</h6> <br> <br>
+                <p class="label-deactive-admin">Deactivated Admin</p>
+                <h6 class="deactive-admin-count">2</h6>
+            </div>
+        </div>
+
+        <!-- Admin Chart Card -->
+        <div class="card-admin-chart col-12 col-md-6 col-lg-5 text-white  mobileanalytics p-0">
+            <div class="chart-containers p-2">
+                <canvas id="adminChart" class="chart-admin" height="100px"></canvas>
+                <div class="chart-center-label">Administrators</div>
+            </div>
+
+            <!-- Gender Breakdown -->
+            <div class="gender-breakdown p-2 p-lg-3">
+                <div class="gender-male">
+                    <h5 class="male-count" style="color:#313A46;">1,507</h5>
+                    <span class="male-label text-dark">Male</span>
+                </div>
+                <div class="gender-female">
+                    <h5 class="female-count" style="color:#313A46;">854</h5>
+                    <span class="female-label text-dark">Female</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Placeholder card -->
+        <div class="card-placeholder col-12 col-md-4"></div>
     </div>
 
 
-
-    <div class="container-fluid table-responsive mb-5 p-3 bg-white">
-        <h6>ADMINISTRATORS PROFILE</h6>
-        <p>Your awesome text goes here</p>
-
+    @php
+        $sn = 0;
+    @endphp
+    <div class="table-responsive mb-5 p-4 pb-5 px-md-4">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
-
             <thead class="table-secondary">
                 <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Username</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Gender</th>
-                    <th scope="col">No of Uploads</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Actions</th>
                 </tr>
             </thead>
-
             <tbody>
                 @foreach ($fetchAdmins as $Admin)
                     <tr>
-                        {{-- <th>{{  ++$sn }}</th> --}}
-                        <th></th>
+                        <th>{{ ++$sn }}</th>
                         <td> {{ $Admin->first_name }} {{ $Admin->last_name }}</td>
+                        <td>{{ $Admin->username }}</td>
                         <td>{{ $Admin->email }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
                         <td>
-                        {{-- <button class="@if ($Admin->status === 0) btn btn-success @else btn btn-danger @endif">Button Text</button> --}}
-                          {{-- <button class="@if ($Admin->status === 0) btn btn-success @else btn btn-danger @endif" style = "opacity: 0.7; width: 100%; border-radius: 40%;">
-    <span style="display: inline-block;  width: 10px; height: 10px; border-radius: 80%; background-color: #fff; margin-right: 5px;"></span>
-    @if ($Admin->status === 0) Active @else Deactivated @endif
-</button> --}}
-{{-- @if($Admin->status === 0) --}}
-
-{{-- <span class="status p-2 mt-1 mb-1 rounded-3" style = "background: #34c759;"><i class="fa-solid fa-circle text-white rounded-2"></i>
-                                                    <span>Activated</span></span>
-
-
-@else
-<span class="status exp p-2 mt-1 mb-1 rounded-3" style = "background: #fd645b;"><i class="fa-solid fa-circle text-white rounded-2"></i>
-                                                    <span>Deactivated</span></span>
-@endif --}}
-
-                        @if($Admin->status === 0)
-
-                                            <span class="status exp"><i class="fa-solid fa-circle"></i>
-                                                <span>Expired</span></span>
-                                        @else
-                                            <span class="status"><i class="fa-solid fa-circle"></i>
-                                                <span>Active</span></span>
-                                        @endif
-
-                    </td>
-                        <td>&hellip;</td>
-
-                        {{-- <td>{{ $Admin->username }}</td> --}}
-                        {{-- <td>{{ $Admin->phone number }}</td>
-                        <td>{{ $Admin->gender }}</td> --}}
-
-                        {{-- <td>
                             @if ($Admin->role === 'sadmin')
-                            {{ 'Super Admin'}}
+                                {{ 'Super Admin' }}
                             @elseif ($Admin->role === 'admin')
-                            {{'Admin'}}
+                                {{ 'Admin' }}
                             @else
-                            {{ 'User'}}
+                                {{ 'User' }}
                             @endif
-                          </td>
+                        </td>
                         <td>{{ $Admin['created_at'] }}</td>
                         <td>
-                            <a href="{{ route('admin.edit', ['data' => $Admin])}}" class="btn controlbtn sub p-1 px-3">view</a>
-                            <a href="{{ route('admin.destroy', ['data' => $Admin->id])}}" class="btn btn-danger p-1 px-3">Delete</a>
-                        </td> --}}
+                            <a href="{{ route('admin.edit', ['data' => $Admin]) }}"
+                                class="btn controlbtn sub p-1 px-3">view</a>
+                            <a href="{{ route('admin.destroy', ['data' => $Admin->id]) }}"
+                                class="btn btn-danger p-1 px-3">Delete</a>
+                        </td>
 
                     </tr>
                 @endforeach
-                {{-- @endif --}}
             </tbody>
         </table>
     </div>
 
-
-
-    {{-- <section>
-    <iframe src="https://app.Lumi.education/api/v1/run/CSLOMd/embed" width="1088" height="720" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe>
-    <script src="https://app.Lumi.education/api/v1/h5p/core/js/h5p-resizer.js" charset="UTF-8"></script>
-</section> --}}
 
 
 
@@ -233,20 +229,23 @@
                 <form method="POST" action="{{ route('admin.store') }}">
                     @csrf
                     <div class="modal-body">
-                        <x-text-input type="hidden"  class="form-control" name="unique_id" value="{{ rand(time(), 10000000);}}" />
-                        <x-text-input type="hidden"  class="form-control" name="terms" value="on" />
+                        <x-text-input type="hidden" class="form-control" name="unique_id"
+                            value="{{ rand(time(), 10000000) }}" />
+                        <x-text-input type="hidden" class="form-control" name="terms" value="on" />
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
                                     <x-input-label :value="__('First Name')" />
-                                    <x-text-input type="text" class="form-control" name="fname" :value="old('fname')" aria-describedby="textBlock" placeholder="First Name" required />
+                                    <x-text-input type="text" class="form-control" name="fname" :value="old('fname')"
+                                        aria-describedby="textBlock" placeholder="First Name" required />
                                     <x-input-error :messages="$errors->get('fname')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
                                     <x-input-label :value="__('Last Name')" />
-                                    <x-text-input type="text" class="form-control" name="lname" :value="old('lname')" aria-describedby="textBlock" placeholder="Last Name" required />
+                                    <x-text-input type="text" class="form-control" name="lname" :value="old('lname')"
+                                        aria-describedby="textBlock" placeholder="Last Name" required />
                                     <x-input-error :messages="$errors->get('lname')" class="mt-2 text-danger" />
                                 </div>
                             </div>
@@ -254,16 +253,18 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                <x-input-label :value="__('User Name')" />
-                                <x-text-input type="text"  class="form-control" name="username" :value="old('username')" aria-describedby="textBlock" placeholder="User Name" required />
-                                <x-input-error :messages="$errors->get('username')" class="mt-2 text-danger" />
+                                    <x-input-label :value="__('User Name')" />
+                                    <x-text-input type="text" class="form-control" name="username" :value="old('username')"
+                                        aria-describedby="textBlock" placeholder="User Name" required />
+                                    <x-input-error :messages="$errors->get('username')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
                                     <x-input-label for="email" :value="__('Email Address')" />
-                                <x-text-input  class="form-control" type="email" name="email" :value="old('email')" aria-describedby="emailBlock" placeholder="example@email.com" required />
-                                <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
+                                    <x-text-input class="form-control" type="email" name="email" :value="old('email')"
+                                        aria-describedby="emailBlock" placeholder="example@email.com" required />
+                                    <x-input-error :messages="$errors->get('email')" class="mt-2 text-danger" />
                                 </div>
                             </div>
                         </div>
@@ -282,12 +283,15 @@
                         </div>
                         <div class="mb-3">
                             <x-input-label :value="__('Password')" />
-                                <x-text-input type="password"  class="form-control" :value="old('password')" name="password" aria-describedby="passwordBlock" placeholder="password"  required/>
-                                <x-input-error :messages="$errors->get('password')" class="mt-2 text-danger" />
+                            <x-text-input type="password" class="form-control" :value="old('password')" name="password"
+                                aria-describedby="passwordBlock" placeholder="password" required autocomplete=false />
+                            <x-input-error :messages="$errors->get('password')" class="mt-2 text-danger" />
                         </div>
                         <div class="mb-3">
                             <x-input-label :value="__('Confirm Password')" />
-                            <x-text-input type="password" class="form-control" :value="old('password_confirmation ')" name="password_confirmation" aria-describedby="passwordBlock" placeholder="Repeat Password" />
+                            <x-text-input type="password" class="form-control" :value="old('password_confirmation ')"
+                                name="password_confirmation" aria-describedby="passwordBlock"
+                                placeholder="Repeat Password" autocomplete=false />
                             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                         </div>
                     </div>
@@ -301,41 +305,31 @@
     </div>
 
 
-<script>
-    const ctx = document.getElementById('adminChart').getContext('2d');
-    const adminChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Male', 'Female'],
-        datasets: [{
-          data: [1507, 854],
-          backgroundColor: ['#55C2A5', '#eeeeee'],
-          borderWidth: 0,
-          cutout: '75%'
-        }]
-      },
-      options: {
-        responsive: true,
-        rotation: -90 * (Math.PI / 180), // Start from left
-        plugins: {
-          legend: {
-            display: false
-          },
-          tooltip: {
-            enabled: true
-          }
-        }
-      }
-    });
-  </script>
-
     <script src="{{ 'js/table/jquery-3.3.1.min.js' }}"></script>
     <script src="{{ 'js/table/jquery.dataTables.min.js' }}"></script>
     <script src="{{ 'js/table/dataTables.bootstrap.min.js' }}"></script>
 
-
-
     <script>
         let table = new DataTable('#admin-table');
     </script>
+    <script>
+        const ctx = document.getElementById('adminChart');
+
+        const config = {
+            type: 'doughnut',
+            data: {
+                labels: ['Male', 'Female'],
+                datasets: [{
+                    data: [1507, 854],
+                    backgroundColor: ['#55C2A5', '#eeeeee'],
+                    borderWidth: 0,
+                    cutout: '90%'
+                }]
+            }
+        }
+
+        new Chart(ctx, config);
+    </script>
+
+
 @endsection

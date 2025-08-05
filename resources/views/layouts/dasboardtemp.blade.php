@@ -47,27 +47,18 @@
 
 <body>
 
-    {{-- <div class="container-fluid sticky-top">
-        <div class="row"> --}}
 
 <div class="container-fluid sticky-top">
   <div class="row align-items-center">
 
         <!-- Logo (col-3) -->
-        <div class="stick-top col-md-2 col-12 logo-box d-flex justify-content-between align-items-center">
+        <div class="position-sticky top-0 col-md-2 col-12 logo-box d-flex justify-content-between align-items-center bg-white opacity-100 z-3">
         {{-- <a class="navbar-brand col-md-3 col-lg-2 me-5 px-3" href="{{ url('/') }}"> --}}
-        <img src="{{ asset('images/logo.png') }}" alt="" class = "img-fluid mx-auto" style="max-height: 90px;">
-        {{-- </a> --}}
+        <a class="mx-auto mt-1" href="{{ url('/') }}">
+        <img src="{{ asset('images/logo.png') }}" alt="logo" class = "img-fluid" style="max-height: 60px; width: 120px;">
+        </a>
 
-    <!-- harmburger visible on small device -->
-        {{-- <button class="navbar-toggler position-absolute d-md-none collapsed bg-primary " type="button"
-            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon fa fa-bars"></span>
-        </button> --}}
-
-         <button class="navbar-toggler d-md-none  ms-auto" type="button"
-            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+         <button class="navbar-toggler d-md-none  ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon fa fa-bars"></span>
         </button>
@@ -133,10 +124,11 @@
 
             {{-- <div class="col-md-2 col-12 collapse d-md-block sidebar"> --}}
             {{-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  sidebar collapse" > --}}
-                    <nav id="sidebarMenu" class="col-md-2 col-12 collapse d-md-block sidebar">
+                    {{-- <nav id="sidebarMenu" class="col-md-2 col-12 collapse d-md-block sidebar"> --}}
+                        <nav id="sidebarMenu" class="col-md-2 col-12 collapse d-md-block sidebar bg-white p-3 shadow z-3">
 
                 {{-- <div class="position-sticky"> --}}
-                    <div class = "pt-5">
+                    <div class = "pt-4">
                     <ul class="nav flex-column pt-3">
 
                         {{-- <li class = "nav-item">
@@ -192,7 +184,7 @@
                                 </li>
                             @endif
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('candidate') }}" href="/candidate">
+                                <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
                                     <i class="fa-regular fa-user"></i>
                                     Candidate
                                 </x-sidebar-link>
