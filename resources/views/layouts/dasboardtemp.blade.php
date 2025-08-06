@@ -55,7 +55,7 @@
         <div class="position-sticky top-0 col-md-2 col-12 logo-box d-flex justify-content-between align-items-center bg-white opacity-100 z-3">
         {{-- <a class="navbar-brand col-md-3 col-lg-2 me-5 px-3" href="{{ url('/') }}"> --}}
         <a class="mx-auto mt-1" href="{{ url('/') }}">
-        <img src="{{ asset('images/logo.png') }}" alt="logo" class = "img-fluid" style="max-height: 60px; width: 120px;">
+        <img src="{{ asset('images/logo.png') }}" alt="logo" class = "img-fluid" style="max-height: 60px; width: 100px;">
         </a>
 
          <button class="navbar-toggler d-md-none  ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
