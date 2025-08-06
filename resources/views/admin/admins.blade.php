@@ -66,7 +66,7 @@
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
                 <button type="button" class="btn btn-md btn-outline-primary" data-bs-toggle="modal"
-                    data-bs-target="#addModal">Add admin</button>
+                    data-bs-target="#addModal">Add Administrator</button>
             </div>
         </div>
     </div>
@@ -130,12 +130,12 @@
         <!-- Admin Summary Card -->
         <div class="card-admin-summary col-12 col-md-5 col-xl-4  p-2 p-lg-3 text-white w-30">
             <div class="admin-count-summary">
-                <h4 class="total-admin-count">2</h4>
+                <h4 class="total-admin-count">{{$countAdmins}}</h4>
                 <p class="label-total-admin">Total Admin</p>
             </div>
             <div class="admin-status-details">
                 <p class="label-active-admin">Active Admin</p>
-                <h6 class="active-admin-count">2</h6> <br> <br>
+                <h6 class="active-admin-count">1</h6> <br> <br>
                 <p class="label-deactive-admin">Deactivated Admin</p>
                 <h6 class="deactive-admin-count">2</h6>
             </div>
@@ -151,11 +151,11 @@
             <!-- Gender Breakdown -->
             <div class="gender-breakdown p-2 p-lg-3">
                 <div class="gender-male">
-                    <h5 class="male-count" style="color:#313A46;">1,507</h5>
+                    <h5 class="male-count" style="color:#313A46;">{{$noOfMaleAdmins}}</h5>
                     <span class="male-label text-dark">Male</span>
                 </div>
                 <div class="gender-female">
-                    <h5 class="female-count" style="color:#313A46;">854</h5>
+                    <h5 class="female-count" style="color:#313A46;">{{$noOfFemaleAdmins}}</h5>
                     <span class="female-label text-dark">Female</span>
                 </div>
             </div>
@@ -313,6 +313,8 @@
         let table = new DataTable('#admin-table');
     </script>
     <script>
+        const maleCount = @json($noOfMaleAdmins);
+        const femaleCount = @json($noOfFemaleAdmins);
         const ctx = document.getElementById('adminChart');
 
         const config = {
@@ -320,7 +322,7 @@
             data: {
                 labels: ['Male', 'Female'],
                 datasets: [{
-                    data: [1507, 854],
+                    data: [maleCount, femaleCount],
                     backgroundColor: ['#55C2A5', '#eeeeee'],
                     borderWidth: 0,
                     cutout: '90%'

@@ -68,7 +68,7 @@
 
         </div>
     @else
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center p-3 pb-2 mb-3 border-bottom">
             <h1 class="h2">Services</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 {{-- <div class="btn-group me-2">
@@ -96,7 +96,7 @@
             </div>
         @endif
         {{-- <php if (isset($output)) {?> --}}
-        <div class="table-responsive mb-5 pb-5">
+        <div class="table-responsive mb-5 p-4 pb-5">
             <table id="admin-table" class="table custom-table mb-5 pb-5">
                 <thead class="table-secondary">
                     <tr>

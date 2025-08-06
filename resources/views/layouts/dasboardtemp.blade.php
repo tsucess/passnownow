@@ -179,7 +179,7 @@
                             </li>
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('exam_taken') }}" href="/exam_taken">
-                                    <i class="fa-solid fa-list"></i>
+                                    <i class="fa-solid fa-clock-rotate-left"></i>
                                     Exams Completed
                                 </x-sidebar-link>
                             </li>
@@ -190,14 +190,14 @@
                                     Subscription
                                 </x-sidebar-link>
                             </li>
-                            <li class="nav-item effect">
+                            {{-- <li class="nav-item effect">
                                 <x-sidebar-link active="{{ request()->is('checkoutdetails') }}"
                                     href="/checkoutdetails">
                                     <span class = "me-2"
                                         style = "font-size: 20px; color:rgba(35, 33, 33, 0.774);">&#x20A6;</span>
                                     Subscribe
                                 </x-sidebar-link>
-                            </li>
+                            </li> --}}
                         @else
                             @if (Auth::user()->role === 'sadmin')
                                 <li class="nav-item">

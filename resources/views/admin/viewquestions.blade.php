@@ -7,8 +7,8 @@
             <div class="btn-group me-2" id="topButton">
                 <a href="/adsubjects" class="btn btn-secondary p-1 px-5 shadow">Back</a>
                 <button type="button" class="btn btn-md btn-outline-primary addTopic px-4"
-                    data-subject_id="{{ $subject_id }}" data-subject_name="{{ $subject_name }}" data-id="{{ $sub_id }}" data-bs-toggle="modal"
-                    data-bs-target="#addModal">Add Question</button>
+                    data-subject_id="{{ $subject_id }}" data-subject_name="{{ $subject_name }}"
+                    data-id="{{ $sub_id }}" data-bs-toggle="modal" data-bs-target="#addModal">Add Question</button>
             </div>
         </div>
     </div>
@@ -61,10 +61,10 @@
                         <th>
                             <input class="question_status" data-id="{{ $Question->id }}" <?php if ($Question->status == 1) {
                                 echo 'checked';
-                            } ?> type="checkbox"
-                                name="status">
+                            } ?>
+                                type="checkbox" name="status">
                         </th>
-                       
+
                         {{-- <td>{{ Str::limit($Question->{$Question->content_type}, 150) }}</td> --}}
                         <td>{{ $Question->created_at }}</td>
                         <td>
@@ -75,7 +75,8 @@
                                             data-id="{{ $Question->id }}" data-question="{{ $Question->question }}"
                                             data-ans="{{ $Question->ans }}" data-order="{{ $Question->order }}"
                                             data-question_type="{{ $Question->question_type }}"
-                                            data-mark="{{ $Question->mark }}" data-subjectu_id="{{ $subject_id }}" data-subjectu_name="{{ $subject_name }}"
+                                            data-mark="{{ $Question->mark }}" data-subjectu_id="{{ $subject_id }}"
+                                            data-subjectu_name="{{ $subject_name }}"
                                             data-options="{{ $Question->options }}" data-bs-toggle="modal"
                                             data-bs-target="#editModal">edit</button></li>
                                     <li><a onclick="validate(this)"
@@ -111,21 +112,11 @@
                             <div class="col-3">
                                 <div class="mb-3">
                                     <label for="subject_id" class="form-label">Subject</label>
-                                    <input type="text" name="subject_id" class="form-control py-2" id="subject_id"
+                                    <input type="hidden" name="subject_id" class="form-control py-2" id="subject_id"
                                         readonly />
+                                    <input type="text" class="form-control py-2" id="subject_name" readonly />
                                 </div>
                             </div>
-                            {{-- <div class="col-4">
-                                <div class="mb-3">
-                                    <x-input-label :value="__('Term')" class="form-label" />
-                                    <select class="form-control py-2" name = "term">
-                                        <option value ="">Select Term</option>
-                                        <option value="first">First Term</option>
-                                        <option value="second">Second Term</option>
-                                        <option value="third">Thrid Term</option>
-                                    </select>
-                                </div>
-                            </div> --}}
 
                             <div class="col-3">
                                 <div class="mb-3">
@@ -163,24 +154,11 @@
                             </div>
 
                             <div class="col-12">
-                                {{-- <div class="mb-3 url-field" id="url-field">
-                                    <label for="url" class="form-label">Url</label>
-                                    <input type="text" name="url" class="form-control py-2" id="url" />
-                                </div> --}}
                                 <div class="mb-3 theory-field" id="theory-field" style="display: none">
                                     <label for="content" class="form-label">Answer</label> <br>
                                     <textarea name="ans" class="w-100" id="editor" rows="10"></textarea>
                                 </div>
                                 <div class="row multiple-options" id="multiple-options">
-                                    {{-- <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label for="">Enter Question</label>
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="exam_id" value="{{ Request::segment(3) }}">
-                                            <input type="text"  name="question"
-                                                placeholder="Enter Question" class="form-control">
-                                        </div>
-                                    </div> --}}
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="">Enter Option 1</label>
@@ -209,13 +187,6 @@
                                                 class="form-control">
                                         </div>
                                     </div>
-                                    {{-- <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label for="">Enter correct ans</label>
-                                            <input type="text"  name="ans"
-                                                placeholder="Enter  correct ans" class="form-control">
-                                        </div>
-                                    </div> --}}
                                     <div class="form-group">
                                         <label for="">Select correct option</label>
                                         <select class="form-control" name="ans">
@@ -244,13 +215,6 @@
                                                 class="form-control">
                                         </div>
                                     </div>
-                                    {{-- <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label for="">Enter correct ans</label>
-                                            <input type="text"  name="ans"
-                                                placeholder="Enter  correct ans" class="form-control">
-                                        </div>
-                                    </div> --}}
                                     <div class="form-group">
                                         <label for="">Select correct option</label>
                                         <select class="form-control" name="ans">
@@ -261,9 +225,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -291,27 +252,20 @@
                         <input type="hidden" name="subject_id" id="subjectu_id" class="form-control py-2" />
                         <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="mb-3">
                                     <label for="subjectu_name" class="form-label">Subject</label>
-                                    <input type="text" name="subject_name" class="form-control py-2" id="subjectu_name"
-                                        readonly />
+                                    <input type="text" name="subject_name" class="form-control py-2"
+                                        id="subjectu_name" readonly />
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="mb-3">
                                     <label for="edit-order" class="form-label">Order (Optional)</label>
                                     <input type="text" name="edit_order" class="form-control py-2" id="edit-order">
                                 </div>
                             </div>
-                            <div class="col-4">
-                                <div class="mb-3">
-                                    <label for="edit-mark" class="form-label">Mark</label>
-                                    <input type="text" name="edit_mark" class="form-control py-2" id="edit-mark">
-                                </div>
-                            </div>
-
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="mb-3">
                                     <x-input-label :value="__('Question Type')" class="form-label" />
                                     <select class="form-control py-2" name="edit_question_type" id="edit-question-type"
@@ -323,6 +277,14 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-3">
+                                <div class="mb-3">
+                                    <label for="edit-mark" class="form-label">Mark</label>
+                                    <input type="text" name="edit_mark" class="form-control py-2" id="edit-mark">
+                                </div>
+                            </div>
+
+
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="edit-question" class="form-label">Enter Question</label>
@@ -443,9 +405,10 @@
                 var subject_id = $(this).data('subject_id');
                 var subject_name = $(this).data('subject_name');
                 var sub_id = $(this).data('id');
-                $('#subject_id').val(subject_name);
+                $('#subject_id').val(subject_id);
+                $('#subject_name').val(subject_name);
                 $('#sub_id').val(sub_id);
-                
+
             });
 
             $('#admin-table tbody').on('click', '.edit-btn', function() {

@@ -17,18 +17,18 @@
         }
 
         .page-nums li {
-            background-color: var(--primary-light);
-            padding: 0.9rem;
+            background-color: #5E7494;
+            padding: 0.5rem 0.9rem;
             display: inline-block;
             margin: 0 10px;
             margin: 4px;
             cursor: pointer;
-            color: var(--text-white);
+            color: white;
             border-radius: 0.5rem;
         }
 
         .page-nums .active {
-            background: var(--secondary-color);
+            background: #1A69AF;
             color: var(--text-dark);
         }
     </style>

@@ -100,7 +100,7 @@ class QuestionsController extends Controller
 
         $data = $request->sub_id;
         if ($done) {
-            return redirect('/viewquestions/' . $data . '/view')->with('success', 'New Question added successfully');
+            return redirect('/viewquestions/' . $data . '/view')->with('success', 'Question uploaded successfully');
         } else {
             return redirect('/viewquestions/' . $data . '/view')->with('error', 'Something went wrong');
         }

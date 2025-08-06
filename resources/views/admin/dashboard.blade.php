@@ -235,15 +235,15 @@
 
                 <div class="col-12 col-lg-5 shadow subjects_history">
                     <div class="top">
-                        <h5>Available Past Questions</h5>
+                        <h5>Applied Examinations</h5>
                         <a href="/adexams">See All</a>
                     </div>
-                    @foreach ($questions as $question)
+                    @foreach ($appliedExams as $subject)
                         <div class="subject sub">
                             <span><i class="fa-solid fa-graduation-cap"></i></span>
                             <span>
-                                <h6>{{ $question->year }}</h6>
-                                <a href="#" class="mb-0">view</a>
+                                <h6>{{ $subject->title }}</h6>
+                                <a href="{{ url('start_exam/'.$subject->id)}}" class="mb-0">Start Exam</a>
                             </span>
                         </div>
                     @endforeach
@@ -276,8 +276,8 @@
             </div>
         </div>
     @else
-        <div class ="row mb-3 p-2">
-            <div class = "col-sm mt-3 mb-2 p-3 border border-primary overflow-hidden" style = "height:100px;">
+        <div class ="row mb-3">
+            <div class = "col-sm mt-3 mb-2 p-3 border border-primary overflow-hidden" >
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-2 mt-3 profit">Total Profit</span><br>
 
@@ -341,7 +341,7 @@
             </div>
         </div>
 
-        <div class = "row border border-1 border-black p-2 mb-2">
+        <div class = "row border border-1 border-black mb-2">
             <div class = "border-bottom border-black border-1">
                 <span>Stats Overview</span>
                 <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
@@ -384,21 +384,21 @@
                 </div>
             </div>
         </div>
-        <div class="row border border-black">
+        <div class="row border border-black p-3">
             <div class ="col-12 profit p-2">
                 <a href = "{{ url('detailedstat') }}" class = "text-decoration-none detailedstat">View
                     detailed stats</a>
             </div>
         </div>
 
-        <div class ="row border border-1 border-black mt-2 mb-3 p-2">
+        <div class ="row border border-1 border-black mt-2 mb-3">
             <span class = "float-start mt-2">Recent user
                 <i class="fa fa-ellipsis-v float-end mt-1 mb-1" aria-hidden="true"></i>
             </span>
         </div>
 
         @php $sn= 0;  @endphp
-        <div class="table-responsive w-100 small float-start mt-2 mb-5 pb-5">
+        <div class="table-responsive w-100 small float-start mt-2 mb-5 p-4 pb-5">
             <table class="table custom-table mb-5 pb-5" id="userss">
                 <thead class="table-secondary">
                     <tr>
@@ -419,15 +419,7 @@
                             <td>{{ $User->first_name }} {{ $User->last_name }}</td>
                             <td>{{ $User->username }} </td>
                             <td>{{ $User->email }}</td>
-                            <td>
-                                @if ($User->role === 'sadmin')
-                                    {{ 'Super Admin' }}
-                                @elseif ($User->role === 'admin')
-                                    {{ 'Admin' }}
-                                @else
-                                    {{ 'User' }}
-                                @endif
-                            </td>
+                            <td>{{ucfirst($User->gender)}}</td>
                             <td>
                                 @php
                                     $exp_day = date_create($User->created_at);

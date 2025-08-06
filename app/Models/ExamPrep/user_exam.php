@@ -19,4 +19,14 @@ class user_exam extends Model
         'std_status',
         'exam_joined'
     ];
+
+    public function subject()
+    {
+        return $this->belongsTo(Subjects::class, 'subject_id');
+    }
+
+    public function exam()
+    {
+        return $this->belongsTo(Exams::class, 'exam_id');
+    }
 }

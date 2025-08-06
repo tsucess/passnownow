@@ -18,6 +18,7 @@ use App\Http\Controllers\ExamPrep\SubscriptionController;
 use App\Models\ExamPrep\Admin;
 use App\Models\ExamPrep\Subjects;
 use App\Models\ExamPrep\Questions;
+use App\Models\ExamPrep\user_exam;
 use App\Models\ExamPrep\Classes;
 use App\Models\ExamPrep\Pay;
 use App\Models\ExamPrep\Transaction;
@@ -228,7 +229,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-    
+
 
     // Special Question features STARTS 
     Route::get('/dashboard', [SpecialAdminController::class, 'index']);
@@ -462,11 +463,31 @@ Route::post('/email/verification-notification', function (Request $request) {
 // DASHBOARD ROUTING
 Route::get('/dashboard', function () {
 
-    $userID = Auth::user()->unique_id;
-    $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
-    $subExpiry = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
+    $userUniqueID = Auth::user()->unique_id;
+    $userID = Auth::user()->id;
+    // $subHistory = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')->get();
+    $subHistory = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')
+        ->orderBy('created_at', 'desc')  // newest first
+        ->get();
 
-    $questions = Questions::limit(6)->get();
+    $subExpiry = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
+
+
+    $appExams = user_exam::where('user_id', $userID)->orderBy('created_at', 'desc')->limit(6)->get()->shuffle();   // Laravel Collection shuffle;
+    $appliedExams = [];
+    foreach ($appExams as $exam) {
+        $appliedExams[] = Subjects::find($exam->subject_id);
+    }
+
+    // $appExams = user_exam::with(['subject', 'exam'])
+    //     ->where('user_id', $userID)
+    //     ->orderBy('created_at', 'desc')
+    //     ->limit(6)
+    //     ->get()
+    //     ->shuffle();
+
+
+
     $topExams = Exams::limit(3)->get();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
@@ -475,7 +496,7 @@ Route::get('/dashboard', function () {
     $users = Admin::where('role', 'user')->get();
     $totalSum = number_format($totalSum);
 
-    return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'topExams' => $topExams, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'questions' => $questions, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
+    return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'topExams' => $topExams, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'appliedExams' => $appliedExams, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

@@ -16,6 +16,7 @@ class Admin extends Model
         'last_name',
         'username',
         'email',
+        'gender',
         'terms',
         'role',
         'password'

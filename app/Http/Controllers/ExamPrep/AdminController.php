@@ -23,17 +23,40 @@ class AdminController extends Controller
          * Get all data with user role only
          */
         $users = Admin::wherenot('role', 'user')->get();
-        return view('admin.admins', ['fetchAdmins' => $users]);
+        // $countAdmins = Admin::wherenot('role', 'user')->count();
+        $noOfMaleAdmins = Admin::wherenot('role', 'user')->where('gender', 'male')->count();
+        $noOfFemaleAdmins = Admin::wherenot('role', 'user')->where('gender', 'female')->count();
+        $countAdmins = $users->count();
+
+
+        return view('admin.admins', [
+            'fetchAdmins' => $users,
+            'countAdmins' => $countAdmins,
+            'noOfMaleAdmins' => $noOfMaleAdmins,
+            'noOfFemaleAdmins' => $noOfFemaleAdmins,
+        ]);
     }
-    
+
     public function usersonly()
     {
         /**
          * Get all data with user role only
          */
         $users = Admin::where('role', 'user')->get();
-        // $users = Admin::get();
-        return view('admin.users', ['fetchUsers' => $users]);
+        $usersActive = Admin::where('role', 'user')->where('status', 1)->count();
+        $usersNotActive = Admin::where('role', 'user')->where('status', 0)->count();
+        $noOfMaleUsers = Admin::where('role', 'user')->where('gender', 'male')->count();
+        $noOfFemaleUsers = Admin::where('role', 'user')->where('gender', 'female')->count();
+        $countUsers = $users->count();
+
+        return view('admin.users', [
+            'fetchUsers' => $users,
+            'countUsers' => $countUsers,
+            'usersActive' => $usersActive,
+            'usersNotActive' => $usersNotActive,
+            'noOfMaleUsers' => $noOfMaleUsers,
+            'noOfFemaleUsers' => $noOfFemaleUsers,
+        ]);
     }
     /**
      * Show the form for creating a new resource.
@@ -75,6 +98,11 @@ class AdminController extends Controller
         ]);
 
         // event(new Registered($user));
+
+        if ($request->role === 'user') {
+            return redirect('/users')->with('success', 'User Created successfully');
+            exit();
+        }
         return redirect('/admins')->with('success', 'Admin Created successfully');
     }
 
@@ -101,30 +129,57 @@ class AdminController extends Controller
     public function update(Admin $data, Request $request)
     {
 
-        $request->validate([
+        // dd($request->role);
 
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
-            // 'username' => ['required', 'string', 'max:255', 'unique:'.Admin::class],
-            // 'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.Admin::class],
-            'role' => ['required', 'string', 'max:255'],
-        ]);
+
+        if ($request->role) {
+            $request->validate([
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name'  => ['required', 'string', 'max:255'],
+                'gender'     => ['nullable', 'in:male,female,other'],
+                'role'  => ['required', 'string', 'max:255'],
+                // if you want to update email:
+                // 'email' => ['required', 'string', 'email', 'max:255', 'unique:admins,email,' . $data->id],
+            ]);
+            $role = $request->role;
+        } else {
+            $request->validate([
+                'first_name' => ['required', 'string', 'max:255'],
+                'last_name'  => ['required', 'string', 'max:255'],
+                'gender'     => ['nullable', 'in:male,female,other'],
+            ]);
+            $role = 'user';
+        }
+
 
         $done = $data->update([
             'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            // 'username' => $request->username,
-            // 'email' => $request->email,
-            'role' => $request->role,
+            'last_name'  => $request->last_name,
+            'gender'     => $request->gender, // <-- added
+            'role'       => $role,
+            // 'email'   => $request->email,
         ]);
 
+        // $done = $data->update([
+        //     'first_name' => $request->first_name,
+        //     'last_name'  => $request->last_name,
+        //     'gender'     => $request->gender, // <-- added
+        //     'role'       => $request->role,
+        //     // 'email'   => $request->email,
+        // ]);
+
+
         if ($done) {
-            // return back()->with('status', 'User updated Successfully');
-            return redirect('/admins')->with('success', 'User updated Successfully');
+            if ($request == null) {
+                return redirect('/admins')->with('success', 'Admin updated successfully');
+            } else {
+                return redirect('/users')->with('success', 'User updated successfully');
+            }
         } else {
             return redirect('/admins')->with('error', 'Something went wrong');
-        };
+        }
     }
+
 
     /**
      * Update the user's password.
