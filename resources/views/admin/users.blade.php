@@ -17,13 +17,21 @@
 
         .card-admin-chart {
             display: flex;
-            /* overflow: hidden; */
-            /* width: 50%; */
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border-radius: 10px;
+        }
+
+        /* .card-admin-chart {
+            display: flex;
+            overflow: hidden;
+            width: 50%;
             align-items: center;
             justify-content: space-between;
             border: 1px solid #6c757d;
             border-radius: 10px;
-        }
+        } */
 
         .chart-containers {
             position: relative;
@@ -126,7 +134,7 @@
                         <td>{{ $User->username }}</td>
                         <td>{{ $User->email }}</td>
                         <td>
-                            {{ ucfirst($User->gender )}}
+                            {{ ucfirst($User->gender) }}
                         </td>
                         <td>{{ $User['created_at'] }}</td>
                         <td>

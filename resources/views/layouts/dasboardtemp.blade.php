@@ -149,10 +149,10 @@
 
     <div class="container-fluid">
         <div class="row">
-            <nav id="sidebarMenu" class="col-md-3  col-xl-2 d-md-block bg-white sidebar collapse">
+            <nav id="sidebarMenu" class="col-md-3  col-xl-2 d-md-block bg-white h-100 sidebar collapse">
                 <div class="position-sticky">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
+                    <ul class="nav flex-column pt-5 pt-md-0">
+                        <li class="nav-item mt-5 my-md-0">
                             <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
                                 <img src="{{ asset('images/logo.png') }}" alt="">
                             </a>
@@ -265,14 +265,14 @@
                                 Signout
                             </a>
                         </li> --}}
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('servicesubscription') }}"
                                     href="/servicesubscription">
-                                    {{-- <i class="fa-solid fa-hand-holding-dollar"></i> --}}
+                                    <i class="fa-solid fa-hand-holding-dollar"></i>
                                     <i class="fas fa-camera"></i>
                                     Service Subscription
                                 </x-sidebar-link>
-                            </li>
+                            </li> --}}
                         @endif
                     </ul>
                 </div>
@@ -280,12 +280,13 @@
 
             <main class="col-md-9 ms-sm-auto col-xl-10 p-0">
                 <header class="navbar sticky-top flex-md-nowrap p-3">
-                    <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon fa fa-bars"></span>
-                    </button>
-                    <div></div>
+                    <div>
+                        <button class="navbar-toggler d-md-none collapsed mt-2 pt-3" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon fa fa-bars"></span>
+                        </button>
+                    </div>
                     {{-- <input class="form-control form-control-dark" type="text" placeholder="Search"
                         aria-label="Search" /> --}}
                     <div class="navbar-nav">

@@ -17,11 +17,9 @@
 
         .card-admin-chart {
             display: flex;
-            /* overflow: hidden; */
-            /* width: 50%; */
             align-items: center;
             justify-content: space-between;
-            border: 1px solid #6c757d;
+            background: #ffffff;
             border-radius: 10px;
         }
 
