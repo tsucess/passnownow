@@ -82,6 +82,21 @@
 
 @section('admincontent')
 
+
+    <div class="row">
+
+        <div class="col-12 col-md-6 col-lg-6 mt-3">
+            <h3 class = "fw-bold">Dashboard Overview</h3>
+        </div>
+
+        {{-- <div class="col-12 col-lg-6 col-md-6 mt-3 d-flex justify-content-end" style = "height: 55px;">
+                <button type="button" class="btn text-white" style = "background-color:#1A69AF">Examination
+                    Upload</button>
+                <button type="button" class="btn btn-light border border-primary ms-2" style = "color: #1A69AF;">Add
+                    Admin</button>
+            </div> --}}
+
+    </div>
     @php
         $now = date('Y-m-d');
     @endphp
@@ -93,6 +108,8 @@
                     <p>Let's learn something today</p>
                     <br>
                     <p class="greeting-text">Goodluck with your studies</p>
+                @else
+                    <p>Welcome to Passnownow Admin</p>
                 @endif
             </div>
             <div class="col-12 col-md-6  p-4 pb-0 greeting-img">
@@ -242,7 +259,7 @@
                             <span><i class="fa-solid fa-graduation-cap"></i></span>
                             <span>
                                 <h6>{{ $subject->title }}</h6>
-                                <a href="{{ url('start_exam/'.$subject->id)}}" class="mb-0">Start Exam</a>
+                                <a href="{{ url('start_exam/' . $subject->id) }}" class="mb-0">Start Exam</a>
                             </span>
                         </div>
                     @endforeach
@@ -275,17 +292,27 @@
             </div>
         </div>
     @else
-        <div class ="row mb-3">
-            <div class = "col-sm mt-3 mb-2 p-3 border border-primary overflow-hidden" >
+        <div class ="row m-2 gap-2">
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style = "height:130px; border-color: #f1f1f1;">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
-                    <span class = "ms-2 mt-3 profit">Total Profit</span><br>
+                    <span class = "ms-1 mt-3 profit">Total Profit</span><br>
 
-                    <span class  = "ms-2 mb-4 fw-bold fs-5  profit">N{{ $totalSum }}</span>
-                    <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                        style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">&#x20A6;
-                        {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                            aria-hidden="true"></i>6.7% --}}
-                    </span>
+                    <span class  = "ms-1 mb-4 fw-bold fs-5  profit">N{{ $totalSum }}</span>
+                    <span class = "float-end rounded-pill  mb-2 p-2 bg-opacity-75"
+                        style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
+                        <i class="fa fa-arrow-up pe-3 ps-2" aria-hidden="true"></i><span
+                            class="p-2 rounded-circle bg-succes">6.7%</span>
+                    </span><br><br>
+                    {{-- <p>Monthly Goal</p> --}}
+                    <div class="row justify-content-between ms-1 me-1">
+                        <div class="col-5">
+                            Monthly Goal
+                        </div>
+                        <div class=" col-4 text-end">
+                            70%
+                        </div>
+                    </div>
                     {{-- <br><br>
                     <span>Monthly goal</span>
                     <span class = "float-end">70%</span>
@@ -296,18 +323,27 @@
                     </div> --}}
                 </a>
 
+
+                <div class="progress mb-3 mt-1 ms-2 me-1" role="progressbar" aria-label="Basic example"
+                    aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
+                    <div class="progress-bar bg-primary" style="width: 75%;"></div>
+                </div>
+
             </div>
-
-            <div class = "col-sm mt-3 mb-2 p-3 border border-primary overflow-hidden" style="height: 100px;">
-                <span class = "ms-2 mt-3">Total Administrators</span><br>
-                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
-                <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                    style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
-                    {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                        aria-hidden="true"></i>6.7% --}}
-                    <i class="fa-solid fa-user-tie"></i>
-
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style="height: 130px; border-color: #f1f1f1;">
+                <span class = " mt-3">Total Administrators</span><br>
+                <span class  = "ms-1 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
+                <span class = "float-end rounded-pill  mb-2 p-2 bg-opacity-75"
+                    style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
+                    <i class="fa fa-arrow-up pe-3 ps-2" aria-hidden="true"></i><span
+                        class="p-2 rounded-circle bg-succes">6.7%</span>
                 </span>
+
+                </span><br><br>
+
+                <p> <i class="fa-solid fa-user-tie fa-2x"></i> </p>
+
 
                 {{--
                     <span>Monthly goal</span>
@@ -319,16 +355,16 @@
                     </div>
                  --}}
             </div>
-            <div class = "col-sm mt-3 p-3 mb-2 border border-primary overflow-hidden">
-                <span class = "ms-2 mt-3">Total Users</span><br>
-                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span>
-                <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                    style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
-                    {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                        aria-hidden="true"></i>6.7% --}}
-                    <i class="fas fa-users" aria-hidden="true"></i>
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style = "height: 130px; border-color: #f1f1f1;">
+                <span class = "mt-3">Total Users</span><br>
+                <span class  = "ms-1 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span>
+                <span class = "float-end rounded-pill  mb-2 p-2 bg-opacity-75"
+                    style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
+                    <i class="fa fa-arrow-up pe-3 ps-2" aria-hidden="true"></i><span
+                        class="p-2 rounded-circle bg-succes">6.7%</span>
                 </span>
-                {{-- <br><br>
+                {{--
 
                 <span>Monthly goal</span>
                 <span class = "float-end">70%</span>
@@ -336,66 +372,53 @@
                 <div class="progress mb-3 mt-1" role="progressbar" aria-label="Basic example" aria-valuenow="75"
                     aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
                     <div class="progress-bar bg-primary" style="width: 75%"></div>
-                </div> --}}
+                </div> --}}<br><br>
+
+                <p><i class="fa-solid fa-school fa-2x"></i></p>
             </div>
         </div>
 
-        <div class = "row border border-1 border-black mb-2">
-            <div class = "border-bottom border-black border-1">
-                <span>Stats Overview</span>
-                <span class = "float-end  mb-2"><i class="fa fa-ellipsis-v mt-2" aria-hidden="true"></i></span>
-            </div>
-            <div class="d-flex justify-content-between border-bottom border-black border-1">
-                <div class="pt-2" style = "width: 100px;">Today</div>
-                <div class="p-2 text-black">Week to Date</div>
-                <div class="p-2 text-black pe-5 float-start">Month to Date</div>
+        <div class = "row m-2 gap-2">
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style="height: 130px; border-color: #f1f1f1;">
+                <span class = "ms-2 mt-3">Total Number of Examination</span><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
+                <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                    style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
+
+                </span><br><br>
+
+                <p><i class="fa-solid fa-book-open fa-2x"></i> </p>
+
+
             </div>
 
-            <div class="d-flex justify-content-between border-bottom border-black border-1 px-0">
-                <div class = "profit w-100 border-start border-black border-1 m-0">
-                    <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark"
-                        href = "{{ url('totalsales') }}">
-                        <div class="profit">
-                            <span>Total Sales</span> <br>
-                            <span>N {{ $totalSum }}</span>
-                            <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">&#x20A6;
-                                {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10" aria-hidden="true"></i>6.7% --}}
-                            </span>
-                        </div>
-                    </a>
-                </div>
-                <div class = "profit w-100 border-start border-black border-1 m-0">
-                    <a class = "col-12 col-md-6  mt-2 mb-3  text-decoration-none text-dark" href = "{{ url('order') }}">
-                        <div class="profit">
-                            {{-- class  = "fw-3" --}}
-                            <span class = "ms-2 ">Orders</span> <br>
-                            <span class  = "ms-2">{{ $totalOrders }}</span>
-                            <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
-                                style = "font-size: 30px; font-weight:bold; margin-top: -15px;">
-                                <i class="fa-solid fa-receipt"></i>
-                                {{-- <i class="fa fa-arrow-up pe-3 ps-2 bg-opacity-10"
-                                aria-hidden="true"></i>6.7% --}}
-                            </span>
 
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row border border-black p-3">
-            <div class ="col-12 profit p-2">
-                <a href = "{{ url('detailedstat') }}" class = "text-decoration-none detailedstat">View
-                    detailed stats</a>
+            {{-- <div class = "col-12 col-md-3 col-lg-3 ms-2 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style="height: 130px; border-color: #f1f1f1;"> --}}
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+                style="height: 130px; border-color: #f1f1f1;">
+                <span class = "ms-2 mt-3">Total Number of Question</span><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
+                <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                    style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
+
+                </span><br><br>
+
+                <p><i class="fa-solid fa-bell fa-2x"></i></p>
+
+
             </div>
         </div>
 
-        <div class ="row border border-1 border-black mt-2 mb-3">
-            <span class = "float-start mt-2">Recent user
-                <i class="fa fa-ellipsis-v float-end mt-1 mb-1" aria-hidden="true"></i>
-            </span>
-        </div>
 
+
+
+
+        <div class = "row">
+            <h6 class = "mt-2 mb-2">CANDIDATE PROFILE</h6>
+            <p>Your awesome text goes here</p>
+        </div>
         @php $sn= 0;  @endphp
         <div class="table-responsive w-100 small float-start mt-2 mb-5 p-4 pb-5">
             <table class="table custom-table mb-5 pb-5" id="userss">
@@ -418,7 +441,7 @@
                             <td>{{ $User->first_name }} {{ $User->last_name }}</td>
                             <td>{{ $User->username }} </td>
                             <td>{{ $User->email }}</td>
-                            <td>{{ucfirst($User->gender)}}</td>
+                            <td>{{ ucfirst($User->gender) }}</td>
                             <td>
                                 @php
                                     $exp_day = date_create($User->created_at);
@@ -452,5 +475,150 @@
                 </tbody>
             </table>
         </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-4 bg-white chart-wrapper">
+                <h6 class = " mt-4 text-center">TOTAL UNIQUE VISITORS</h6>
+                <div class="chart-container">
+                    <canvas id="candidateChart" height="320"></canvas>
+                    <div class="chart-center-label">Candidates</div>
+                </div>
+                <div class="visitor-stats">
+                    <div>
+                        <div class="count">1,507</div>
+                        <div class="label">Visitors Male</div>
+                    </div>
+                    <div>
+                        <div class="count">854</div>
+                        <div class="label">Visitors Female</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class = "col-12 col-md-4 col-lg-4 bg-white chart-wrapper">
+                <h6 class = "mt-4 text-center ">NUMBER OF TRANSACTIONS</h6>
+                <div class="chart-containers">
+                    {{-- <canvas id="transactionChart"></canvas> --}}
+                    <canvas id="transactionChart" height="320"></canvas>
+                </div>
+
+
+
+                <!-- Transaction Counts -->
+                <div class="transaction-stats ms-5">
+                    <div class = "ms-3">
+                        <div class="count">2,854</div>
+                        <div class="label">Payment Done</div>
+                    </div>
+
+                    <div>
+                        <div class="count">22</div>
+                        <div class="label">Payment Due</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class = "col col-md-4 col-lg-4 bg-white chart-wrapper">
+                <h6 class = "mt-4">NEW USERS</h6>
+                <p>Your awesome text goes here</p><br>
+
+                <img src = "images/avatar.png" width = "15px" height = "18px">
+                <span class = "ms-2"> <strong>Winner Effiong Duff</strong>
+                    <span class="badge ms-5 p-2 bg-success text-success rounded-circle"
+                        style="width: 20px; height: 20px;">o</span>
+                </span>
+
+                <span style = "margin-left: 30px;">Nigeria
+                    <span style = "margin-left: 130px;">Now</span>
+                </span>
+
+                <br><br>
+
+                <img src = "images/avatar.png" width = "15px" height = "18px">
+
+                <span class = "ms-2"> <strong>Taofeeq Bola Asiwaju</strong>
+                    <span class="badge ms-5 p-2 bg-danger text-danger rounded-circle"
+                        style="width: 20px; height: 20px;">o</span>
+                </span>
+
+                <span style = "margin-left: 30px;">Nigeria
+                    <span style = "margin-left: 120px;" class = "chat">10min ago</span>
+                </span>
+            </div>
+        </div>
+
+        <script>
+            // <!-- Visitor Chart
+            // -->
+            const ctx = document.getElementById('candidateChart');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Male', 'Female'],
+                    datasets: [{
+                        data: [1507, 854],
+                        backgroundColor: ['#4dc9c0', '#e5e5e5'],
+                        borderWidth: 0,
+                        cutout: '70%',
+                        // large center
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                            // hide
+                            // legend
+                            // completely
+                        },
+                        tooltip: {
+                            enabled: true
+                        }
+                    }
+                }
+            });
+
+
+            // document.addEventListener("DOMContentLoaded", function() {
+            const ctxpie = document.getElementById('transactionChart').getContext('2d');
+
+            const config = {
+                type: 'pie',
+                data: {
+                    labels: ['Done', 'Due', 'Hold'],
+                    datasets: [{
+                        data: [300, 50, 100],
+                        backgroundColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(54, 162, 235)',
+                            'rgb(255, 205, 86)'
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.formattedValue}`;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            new Chart(ctxpie, config);
+            // });
+        </script>
+
     @endif
 @endsection

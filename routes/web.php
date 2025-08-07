@@ -501,8 +501,6 @@ Route::get('/dashboard', function () {
 
 
 
-
-
 Route::middleware('guest')->group(function () {
     // Password Reset Link Request Routes
     Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])->name('password.request');
@@ -514,14 +512,8 @@ Route::middleware('guest')->group(function () {
 });
 
 
-
-
-
 //Subscribe mails
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe'])->name('subscribe');
-
-
-
 
 
 require __DIR__ . '/auth.php';
