@@ -252,9 +252,9 @@
             </div>
 
             <div class="col-12 col-lg-6 col-md-6 mt-3 d-flex justify-content-end" style = "height: 55px;">
-                <button type="button" class="btn text-white" style = "background-color:#1A69AF">Examination
+                <button type="button" class="btn text-white examUpload" style = "background-color:#1A69AF">Examination
                     Upload</button>
-                <button type="button" class="btn btn-light border border-primary ms-2" style = "color: #1A69AF;">Add
+                <button type="button" class="btn btn-light border border-primary ms-2 examUpload" style = "color: #1A69AF;">Add
                     Admin</button>
             </div>
 
@@ -385,7 +385,7 @@
 
 
         {{-- <div class = "container"> --}}
-            
+
         <div class = "row">
             <h6 class = "mt-2 mb-2">CANDIDATE PROFILE</h6>
             <p>Your awesome text goes here</p>

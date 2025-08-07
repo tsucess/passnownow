@@ -77,6 +77,7 @@ body {
    * Sidebar
    */
 
+
 .sidebar {
   position: fixed;
   top: 0;
@@ -975,6 +976,13 @@ header.navbar
         width: 700px;
     } */
 
+@media screen and (max-width: 320px) {
+    .chart-wrapper {
+        margin: 10px;
+    }
+}
+
+
 @media screen and (min-width: 1024px) {
     .chart-wrapper {
         text-align: center;
@@ -1078,6 +1086,20 @@ header.navbar
             width: 32% !important;
             margin: 6px;
             /* box-sizing: border-box; */
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .calculationBox {
+            margin: 8px;
+            width:300px;
+        }
+    }
+
+    @media screen and (max-width: 320px) {
+        .examUpload {
+            margin-top: 5px;
+            margin-bottom: 5px;
         }
     }
 
