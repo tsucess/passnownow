@@ -101,7 +101,6 @@
         </div>
     </section>
     @if (Auth::user()->role === 'user')
-
         <section class="container-fluid notifiication__containter  shadow mt-4">
             <div class="row p-2">
                 @if (\Session::has('error'))
