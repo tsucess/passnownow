@@ -16,6 +16,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\ExamPrep\Admin;
 use App\Models\User;
 use Symfony\Component\Console\Question\Question;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+
+
 
 class StudentOperation extends Controller
 {
@@ -63,11 +67,11 @@ class StudentOperation extends Controller
     //On submit
     public function submit_questions(Request $request)
     {
-        // dd($request); 
         $data = $request->all();
         $yes_ans = 0;
         $no_ans = 0;
         $result = [];
+        $userId = Auth::id();
 
         for ($i = 1; $i <= $request->index; $i++) {
             if (!isset($data['question' . $i])) {
@@ -84,26 +88,53 @@ class StudentOperation extends Controller
             }
 
             $correctAnswer = $question->ans;
+            $correctMark = $question->mark;
             $isCorrect = false;
+            $aiScore = null;
+            $aiFeedback = null;
+            $questionScore = 0;
 
             // Handle question type
-            if ($questionType === 'multiple' || $questionType === 'alternate') {
+            if (in_array($questionType, ['multiple', 'alternate'])) {
                 $isCorrect = ($userAnswer == $correctAnswer);
+                if ($isCorrect) {
+                    $questionScore = $correctMark;
+                    $yes_ans++;
+                } else {
+                    $no_ans++;
+                }
             } elseif ($questionType === 'theory') {
-                // Remove HTML tags and do basic string compare
-                $cleanCorrect = strtolower(trim(strip_tags($correctAnswer)));
-                $cleanUser = strtolower(trim($userAnswer));
-                $isCorrect = ($cleanCorrect === $cleanUser);
-                // Optional: Instead of marking wrong, mark pending for theory
-                $isCorrect = false; // so manual grading needed
+                try {
+                    $response = Http::post("http://16.171.198.174:8000/score_result", [
+                        'question_id' => $questionId,
+                        'type'        => 'theory',
+                        'answer'      => $userAnswer,
+                        'correct'     => $correctAnswer,
+                        'status'      => 'PENDING',
+                    ]);
+
+                    if ($response->successful()) {
+                        $aiResult = $response->json();
+                        $aiScore = $aiResult['score'] ?? null;
+                        $aiFeedback = $aiResult['feedback'] ?? null;
+                        $isCorrect = $aiScore > 0; // Adjust condition if needed
+                        $questionScore = round($aiScore * $correctMark);
+                        // Update counters
+                        if ($isCorrect) {
+                            $yes_ans++;
+                        } else {
+                            $no_ans++;
+                        }
+                    } else {
+                        $aiFeedback = 'AI scoring failed';
+                    }
+                } catch (\Exception $e) {
+                    Log::error('AI request failed: ' . $e->getMessage());
+                    $aiFeedback = 'AI request failed';
+                }
             }
 
-            // Update counters
-            if ($isCorrect) {
-                $yes_ans++;
-            } else {
-                $no_ans++;
-            }
+
 
             // Add to results
             $result[] = [
@@ -111,73 +142,147 @@ class StudentOperation extends Controller
                 'type'        => $questionType,
                 'answer'      => $userAnswer,
                 'correct'     => $correctAnswer,
-                'status'      => $isCorrect ? 'YES' : ($questionType === 'theory' ? 'PENDING' : 'NO')
+                'mark'        => $correctMark,
+                'score'       => $questionScore,
+                'status'      => $questionType === 'theory'
+                    ? ($aiScore !== null ? 'YES' : 'PENDING')
+                    : ($isCorrect ? 'YES' : 'NO'),
+                'ai_score'    => $questionType === 'theory' ? $aiScore : null,
+                'ai_feedback' => $questionType === 'theory' ? $aiFeedback : null
             ];
         }
 
+
         // Update exam info
-        $std_info = user_exam::where('user_id', Auth::id())
+        $std_info = user_exam::where('user_id', $userId)
             ->where('exam_id', $request->exam_id)
             ->first();
+
         if ($std_info) {
             $std_info->exam_joined = 1;
             $std_info->update();
         }
 
+        // dd($std_info);
+
         // Save results
-        $res = new Oex_result();
-        $res->exam_id = $request->exam_id;
-        $res->user_id = Auth::id();
-        $res->yes_ans = $yes_ans;
-        $res->no_ans = $no_ans;
-        $res->result_json = json_encode($result);
-        $res->save();
+        Oex_result::create([
+            'exam_id'     => $request->exam_id,
+            'user_id'     => $userId,
+            'yes_ans'     => $yes_ans,
+            'no_ans'      => $no_ans,
+            'result_json' => json_encode($result)
+        ]);
 
-        return redirect()->route('dashboard'); // adjust as needed
+        return redirect()->route('dashboard')->with('status', 'Exam submitted successfully');
     }
-
-
 
     // public function submit_questions(Request $request)
     // {
-
-
-    //     $current_user = Auth::user()->id;
+    //     // dd($request); 
+    //     $data = $request->all();
     //     $yes_ans = 0;
     //     $no_ans = 0;
-    //     $data = $request->all();
-    //     dd($data);
-    //     $result = array();
-    //     for ($i = 1; $i <= $request->index; $i++) {
+    //     $result = [];
 
-    //         if (isset($data['question' . $i])) {
-    //             $q = Questions::where('id', $data['question' . $i])->get()->first();
-    //             if ($q->ans == $data['ans' . $i]) {
-    //                 $result[$data['question' . $i]] = 'YES';
-    //                 $yes_ans++;
-    //             } else {
-    //                 $result[$data['question' . $i]] = 'NO';
-    //                 $no_ans++;
+    //     for ($i = 1; $i <= $request->index; $i++) {
+    //         if (!isset($data['question' . $i])) {
+    //             continue;
+    //         }
+
+    //         $questionId = $data['question' . $i];
+    //         $questionType = $data['question_type' . $i] ?? 'multiple';
+    //         $userAnswer = $data['ans' . $i] ?? null;
+
+    //         $question = Questions::find($questionId);
+    //         if (!$question) {
+    //             continue;
+    //         }
+
+    //         $correctAnswer = $question->ans;
+    //         $isCorrect = false;
+
+    //         // Handle question type
+    //         if ($questionType === 'multiple' || $questionType === 'alternate') {
+    //             $isCorrect = ($userAnswer == $correctAnswer);
+    //         } elseif ($questionType === 'theory') {
+    //             // Use AI API to get score + feedback
+    //             try {
+    //                 $response = Http::post("http://16.171.198.174:8000/score_result", [
+    //                     'question_id' => $questionId,
+    //                     'type'        => 'theory',
+    //                     'answer'      => $userAnswer,
+    //                     'correct'     => $correctAnswer,
+    //                     'status'      => 'PENDING',
+    //                 ]);
+
+    //                 if ($response->successful()) {
+    //                     $aiResult = $response->json();
+    //                     $aiScore = $aiResult['score'] ?? null;
+    //                     $aiFeedback = $aiResult['feedback'] ?? null;
+
+    //                     $isCorrect = $aiScore >= 0; // or whatever threshold you want
+    //                 } else {
+    //                     $aiScore = null;
+    //                     $aiFeedback = 'AI scoring failed';
+    //                     $isCorrect = false;
+    //                 }
+    //             } catch (\Exception $e) {
+    //                 $aiScore = null;
+    //                 $aiFeedback = 'AI request failed';
+    //                 $isCorrect = false;
     //             }
     //         }
+
+    //         // } elseif ($questionType === 'theory') {
+    //         //     // Remove HTML tags and do basic string compare
+    //         //     $cleanCorrect = strtolower(trim(strip_tags($correctAnswer)));
+    //         //     $cleanUser = strtolower(trim($userAnswer));
+    //         //     $isCorrect = ($cleanCorrect === $cleanUser);
+    //         //     // Optional: Instead of marking wrong, mark pending for theory
+    //         //     $isCorrect = false; // so manual grading needed
+    //         // }
+
+    //         // Update counters
+    //         if ($isCorrect) {
+    //             $yes_ans++;
+    //         } else {
+    //             $no_ans++;
+    //         }
+
+    //         // Add to results
+    //         $result[] = [
+    //             'question_id' => $questionId,
+    //             'type'        => $questionType,
+    //             'answer'      => $userAnswer,
+    //             'correct'     => $correctAnswer,
+    //             'status'      => $isCorrect ? 'YES' : ($questionType === 'theory' ? 'PENDING' : 'NO'),
+    //             'ai_score'    => $questionType === 'theory' ? $aiScore : null,
+    //             'ai_feedback' => $questionType === 'theory' ? $aiFeedback : null
+    //         ];
     //     }
 
+    //     // Update exam info
+    //     $std_info = user_exam::where('user_id', Auth::id())
+    //         ->where('exam_id', $request->exam_id)
+    //         ->first();
+    //     if ($std_info) {
+    //         $std_info->exam_joined = 1;
+    //         $std_info->update();
+    //     }
 
-    //     $std_info = user_exam::where('user_id', $current_user)->where('exam_id', $request->exam_id)->get()->first();
-    //     $std_info->exam_joined = 1;
-    //     $std_info->update();
-
-
+    //     // Save results
     //     $res = new Oex_result();
     //     $res->exam_id = $request->exam_id;
-    //     $res->user_id = $current_user;
+    //     $res->user_id = Auth::id();
     //     $res->yes_ans = $yes_ans;
     //     $res->no_ans = $no_ans;
     //     $res->result_json = json_encode($result);
+    //     $res->save();
 
-    //     echo $res->save();
-    //     return redirect(url('admin.dashboard'));
+    //     return redirect()->route('dashboard'); // adjust as needed
     // }
+
 
 
 

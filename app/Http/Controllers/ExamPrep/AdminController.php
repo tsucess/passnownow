@@ -22,6 +22,7 @@ class AdminController extends Controller
         /**
          * Get all data with user role only
          */
+        
         $users = Admin::wherenot('role', 'user')->get();
         // $countAdmins = Admin::wherenot('role', 'user')->count();
         $noOfMaleAdmins = Admin::wherenot('role', 'user')->where('gender', 'male')->count();

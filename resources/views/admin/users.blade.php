@@ -89,9 +89,8 @@
 
         <!-- Admin Chart Card -->
         <div class="card-admin-chart col-12 col-md-6 col-lg-5 text-white  mobileanalytics p-0">
-            <div class="chart-containers p-2">
+            <div class="admin-chart-container p-2">
                 <canvas id="adminChart" class="chart-admin" height="220px"></canvas>
-                <div class="chart-center-label">Candidate</div>
             </div>
 
             <!-- Gender Breakdown -->
@@ -139,9 +138,9 @@
                         <td>{{ $User['created_at'] }}</td>
                         <td>
                             <a href="{{ route('admin.edit', ['data' => $User]) }}"
-                                class="btn btn-primary controlbtn sub p-1 px-3">view</a>
+                                class="sub p-1"><i class="fa-solid fa-eye text-warining"></i></a>
                             <a href="{{ route('admin.destroy', ['data' => $User->id]) }}"
-                                class="btn btn-danger p-1 px-3">Delete</a>
+                                class="p-1"><i class="fa-solid fa-circle-xmark text-danger"></i></a>
                         </td>
                     </tr>
                 @endforeach
@@ -255,43 +254,58 @@
     <script>
         let table = new DataTable('#admin-table');
     </script>
-    <script>
+    <script type="module">
         const maleCount = @json($noOfMaleUsers);
         const femaleCount = @json($noOfFemaleUsers);
         const ctx = document.getElementById('adminChart');
 
-        const config = {
-            type: 'doughnut',
-            data: {
-                labels: ['Male', 'Female'],
-                datasets: [{
-                    data: [maleCount, femaleCount],
-                    backgroundColor: ['#55C2A5', '#eeeeee'],
-                    borderWidth: 0,
-                    cutout: '90%'
-                }]
-            }
-        }
+          const centerTextPlugin = {
+                id: 'centerText',
+                beforeDraw(chart, args, options) {
+                    const {
+                        width
+                    } = chart;
+                    const {
+                        height
+                    } = chart;
+                    const ctx = chart.ctx;
 
-        new Chart(ctx, config);
+                    ctx.save();
+                    ctx.font = 'normal 18px sans-serif';
+                    ctx.fillStyle = '#8C9396';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(`Candidate`, width / 2, height / 2);
+                    ctx.restore();
+                }
+            };
 
-        // {
-        //     labels: [
-        //         'Red',
-        //         'Blue',
-        //         'Yellow'
-        //     ],
-        //     datasets: [{
-        //         label: 'My First Dataset',
-        //         data: [300, 50, 100],
-        //         backgroundColor: [
-        //             'rgb(255, 99, 132)',
-        //             'rgb(54, 162, 235)',
-        //             'rgb(255, 205, 86)'
-        //         ],
-        //         hoverOffset: 4,
-        //         cutout: '80%'
-        //     }]
-        // };
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Male', 'Female'],
+                    datasets: [{
+                        data: [maleCount, femaleCount],
+                        backgroundColor: ['#4dc9c0', '#e5e5e5'],
+                        borderWidth: 0,
+                        cutout: '80%'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        tooltip: {
+                            enabled: true
+                        }
+                    }
+                },
+                plugins: [centerTextPlugin]
+            });
+
+      
     </script>
 @endsection

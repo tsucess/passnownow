@@ -112,8 +112,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
       "question_type1" => "theory"
       "question1" => "5"
       "ans1" => """
-        change the position of 4 over to right by subtracting both side by 4, = 12
-        divide both side by 3 , which is 12/3 = 4
+        change the position of 4 over to right by subtracting both side by 4, = 12 divide both side by 3 , which is 12/3 = 4
         """
       "question_type2" => "multiple"
       "question2" => "14"

@@ -81,21 +81,10 @@
 
 
 @section('admincontent')
-
-
-    <div class="row">
-
-        <div class="col-12 col-md-6 col-lg-6 mt-3">
+    <div class="row m-0">
+        <div class="col-12 col-md-6 col-lg-6 mt-3 ">
             <h3 class = "fw-bold">Dashboard Overview</h3>
         </div>
-
-        {{-- <div class="col-12 col-lg-6 col-md-6 mt-3 d-flex justify-content-end" style = "height: 55px;">
-                <button type="button" class="btn text-white" style = "background-color:#1A69AF">Examination
-                    Upload</button>
-                <button type="button" class="btn btn-light border border-primary ms-2" style = "color: #1A69AF;">Add
-                    Admin</button>
-            </div> --}}
-
     </div>
     @php
         $now = date('Y-m-d');
@@ -292,37 +281,24 @@
             </div>
         </div>
     @else
-        <div class ="row m-2 gap-2">
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+        <div class ="row mx-3  gap-2">
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 calculationBox"
                 style = "height:130px; border-color: #f1f1f1;">
                 <a class = "text-decoration-none text-dark" href = "{{ url('adtotalsales') }}">
                     <span class = "ms-1 mt-3 profit">Total Profit</span><br>
 
                     <span class  = "ms-1 mb-4 fw-bold fs-5  profit">N{{ $totalSum }}</span>
-                    <span class = "float-end rounded-pill  mb-2 p-2 bg-opacity-75"
-                        style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
-                        <i class="fa fa-arrow-up pe-3 ps-2" aria-hidden="true"></i><span
-                            class="p-2 rounded-circle bg-succes">6.7%</span>
-                    </span><br><br>
+                    <span class = "float-end rounded-pill  mb-2 py-1 px-2 bg-opacity-75"
+                        style = "font-size: 12px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
+                        <i class="fa fa-arrow-up pe-2" aria-hidden="true"></i><span class="bg-succes">6.7%</span>
+                    </span>
+                    <br><br>
                     {{-- <p>Monthly Goal</p> --}}
                     <div class="row justify-content-between ms-1 me-1">
-                        <div class="col-5">
-                            Monthly Goal
-                        </div>
-                        <div class=" col-4 text-end">
-                            70%
-                        </div>
+                        <div class="col-5"> Monthly Goal</div>
+                        <div class=" col-4 text-end"> 70%</div>
                     </div>
-                    {{-- <br><br>
-                    <span>Monthly goal</span>
-                    <span class = "float-end">70%</span>
-
-                    <div class="progress mb-3 mt-1" role="progressbar" aria-label="Basic example" aria-valuenow="75"
-                        aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
-                        <div class="progress-bar bg-primary" style="width: 75%"></div>
-                    </div> --}}
                 </a>
-
 
                 <div class="progress mb-3 mt-1 ms-2 me-1" role="progressbar" aria-label="Basic example"
                     aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
@@ -330,39 +306,24 @@
                 </div>
 
             </div>
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 calculationBox"
                 style="height: 130px; border-color: #f1f1f1;">
                 <span class = " mt-3">Total Administrators</span><br>
                 <span class  = "ms-1 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
-                <span class = "float-end rounded-pill  mb-2 p-2 bg-opacity-75"
-                    style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
-                    <i class="fa fa-arrow-up pe-3 ps-2" aria-hidden="true"></i><span
-                        class="p-2 rounded-circle bg-succes">6.7%</span>
+                <span class = "float-end rounded-pill  mb-2 py-1 px-2 bg-opacity-75"
+                    style = "font-size: 12px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
+                    <i class="fa fa-arrow-up pe-2" aria-hidden="true"></i><span class="bg-succes">6.7%</span>
                 </span>
-
-                </span><br><br>
-
-                <p> <i class="fa-solid fa-user-tie fa-2x"></i> </p>
-
-
-                {{--
-                    <span>Monthly goal</span>
-                    <span class = "float-end">70%</span>
-
-                    <div class="progress mb-3 mt-1" role="progressbar" aria-label="Basic example" aria-valuenow="75"
-                        aria-valuemin="0" aria-valuemax="100" style = "height: 5px;">
-                        <div class="progress-bar bg-primary" style="width: 75%"></div>
-                    </div>
-                 --}}
+                <br><br>
+                <p><i class="fa-solid fa-user-tie fa-2x"></i></p>
             </div>
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 pt-2 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 calculationBox"
                 style = "height: 130px; border-color: #f1f1f1;">
                 <span class = "mt-3">Total Users</span><br>
                 <span class  = "ms-1 mb-4 fw-bold fs-5 ">{{ $totalUsers }}</span>
-                <span class = "float-end rounded-pill  mb-2 p-2 bg-opacity-75"
-                    style = "font-size: 14px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
-                    <i class="fa fa-arrow-up pe-3 ps-2" aria-hidden="true"></i><span
-                        class="p-2 rounded-circle bg-succes">6.7%</span>
+                <span class = "float-end rounded-pill  mb-2 py-1 px-2 bg-opacity-75"
+                    style = "font-size: 12px;  margin-top: -15px; --bs-bg-opacity: 0.6; background: #e5faf6;">
+                    <i class="fa fa-arrow-up pe-2" aria-hidden="true"></i><span class="bg-succes">6.7%</span>
                 </span>
                 {{--
 
@@ -378,49 +339,45 @@
             </div>
         </div>
 
-        <div class = "row m-2 gap-2">
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+        <div class = "row m-3 mt-0 gap-2">
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 calculationBox"
                 style="height: 130px; border-color: #f1f1f1;">
-                <span class = "ms-2 mt-3">Total Number of Examination</span><br>
-                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
+                <span class = "ms-2 mt-3">Total Number of Examinations</span><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalExams }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                     style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
-
                 </span><br><br>
-
                 <p><i class="fa-solid fa-book-open fa-2x"></i> </p>
-
-
             </div>
-
 
             {{-- <div class = "col-12 col-md-3 col-lg-3 ms-2 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
                 style="height: 130px; border-color: #f1f1f1;"> --}}
-            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 p-3 bg-white border border-start-0 border-end-0 border-3 rounded-3 calculationBox"
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 calculationBox"
                 style="height: 130px; border-color: #f1f1f1;">
-                <span class = "ms-2 mt-3">Total Number of Question</span><br>
-                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalAdmins }}</span>
+                <span class = "ms-2 mt-3">Total Number of Subjects</span><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalSubjects }}</span>
                 <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
                     style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
-
                 </span><br><br>
-
                 <p><i class="fa-solid fa-bell fa-2x"></i></p>
-
-
+            </div>
+            <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 calculationBox"
+                style="height: 130px; border-color: #f1f1f1;">
+                <span class = "ms-2 mt-3">Total Number of Questions</span><br>
+                <span class  = "ms-2 mb-4 fw-bold fs-5 ">{{ $totalQuestions }}</span>
+                <span class = "float-end rounded-5 mb-2 bg-opacity-25 opacity-10 pe-3"
+                    style = "font-size: 30px; font-weight:bold;  margin-top: -15px;">
+                </span><br><br>
+                <p><i class="fa-solid fa-bell fa-2x"></i></p>
             </div>
         </div>
 
-
-
-
-
-        <div class = "row">
+        <div class = "row m-0">
             <h6 class = "mt-2 mb-2">CANDIDATE PROFILE</h6>
             <p>Your awesome text goes here</p>
         </div>
         @php $sn= 0;  @endphp
-        <div class="table-responsive w-100 small float-start mt-2 mb-5 p-4 pb-5">
+        <div class="table-responsive w-100 small mt-2 mb-3 p-4 pb-5">
             <table class="table custom-table mb-5 pb-5" id="userss">
                 <thead class="table-secondary">
                     <tr>
@@ -458,17 +415,22 @@
 
                             </td>
                             <td>{{ $User['created_at'] }}</td>
-                            <td>
-                                <div class="action">
+                            <td class="d-flex ">
+                                <a href="{{ route('admin.edit', ['data' => $User]) }}" class="p-1"><i
+                                        class="fa-solid fa-eye text-warining"></i></a>
+                                <a href="{{ route('admin.destroy', ['data' => $User->id]) }}" class="p-1"><i
+                                        class="fa-solid fa-circle-xmark text-danger"></i></a>
+
+                                {{-- <div class="action">
                                     <i class="fa-solid fa-ellipsis-vertical align-text-bottom text-dark more-button"></i>
-                                    {{-- <span class="align-text-bottom text-dark more-button"></span> --}}
+                                    <span class="align-text-bottom text-dark more-button"></span>
                                     <ul class="more-options">
                                         <li><a href="{{ route('admin.edit', ['data' => $User]) }}"
                                                 class="btn btn-primary p-1 px-3">view</a></li>
                                         <li><a href="{{ route('admin.destroy', ['data' => $User->id]) }}"
                                                 class="btn btn-danger p-1 px-3">Delete</a></li>
                                     </ul>
-                                </div>
+                                </div> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -476,21 +438,28 @@
             </table>
         </div>
 
-        <div class="row">
+        <div class="row m-0 gap-2 p-2">
             <div class="col-12 col-md-4 col-lg-4 bg-white chart-wrapper">
                 <h6 class = " mt-4 text-center">TOTAL UNIQUE VISITORS</h6>
                 <div class="chart-container">
-                    <canvas id="candidateChart" height="320"></canvas>
-                    <div class="chart-center-label">Candidates</div>
+                    <canvas id="candidateChart" width="400" height="320"></canvas>
+
+                    <!-- Optional: Male/Female labels below -->
+                    <div class="text-center">
+                        <span class="me-2"><span style="color:#4dc9c0;">■</span> Male</span>
+                        <span><span style="color:#e5e5e5;">■</span> Female</span>
+                    </div>
+                    {{-- <canvas id="candidateChart" ></canvas>
+                    <div class="chart-center-label">Candidates</div> --}}
                 </div>
-                <div class="visitor-stats">
+                <div class="visitor-stats mt-5">
                     <div>
-                        <div class="count">1,507</div>
-                        <div class="label">Visitors Male</div>
+                        <h5 class="count">{{ $noOfMaleUsers }}</h5>
+                        <p class="label">Visitors Male</p>
                     </div>
                     <div>
-                        <div class="count">854</div>
-                        <div class="label">Visitors Female</div>
+                        <h5 class="count">{{ $noOfFemaleUsers }}</h5>
+                        <p class="label">Visitors Female</p>
                     </div>
                 </div>
             </div>
@@ -498,103 +467,155 @@
 
             <div class = "col-12 col-md-4 col-lg-4 bg-white chart-wrapper">
                 <h6 class = "mt-4 text-center ">NUMBER OF TRANSACTIONS</h6>
-                <div class="chart-containers">
-                    {{-- <canvas id="transactionChart"></canvas> --}}
-                    <canvas id="transactionChart" height="320"></canvas>
+                <div class="chart-container mt-2">
+                    <canvas id="transactionChart" width="400" height="320"></canvas>
+                    <!-- Optional: Done/Due/Hold labels below -->
+                    <div class="text-center mt-2">
+                        <span class="me-1"><span style="color:#e5e5e5;">■</span> Done</span>
+                        <span class="me-1"><span style="color:#4dc9c0;">■</span> Due</span>
+                        <span><span style="color:#E68900;">■</span> Hold</span>
+                    </div>
                 </div>
-
-
 
                 <!-- Transaction Counts -->
-                <div class="transaction-stats ms-5">
+                <div class="transaction-stats mt-5">
                     <div class = "ms-3">
-                        <div class="count">2,854</div>
-                        <div class="label">Payment Done</div>
+                        <h5 class="count">{{ $totalOrders }}</h5>
+                        <p class="label">Payment Done</p>
                     </div>
-
                     <div>
-                        <div class="count">22</div>
-                        <div class="label">Payment Due</div>
+                        <h5 class="count">{{ $totalExpiredOrders }}</h5>
+                        <p class="label">Payment Due</p>
                     </div>
                 </div>
-
             </div>
 
-            <div class = "col col-md-4 col-lg-4 bg-white chart-wrapper">
-                <h6 class = "mt-4">NEW USERS</h6>
+            <div class="col col-md-4 col-lg-4 bg-white chart-wrapper new-users">
+                <h6 class="mt-4">NEW USERS</h6>
                 <p>Your awesome text goes here</p><br>
-
-                <img src = "images/avatar.png" width = "15px" height = "18px">
-                <span class = "ms-2"> <strong>Winner Effiong Duff</strong>
-                    <span class="badge ms-5 p-2 bg-success text-success rounded-circle"
-                        style="width: 20px; height: 20px;">o</span>
-                </span>
-
-                <span style = "margin-left: 30px;">Nigeria
-                    <span style = "margin-left: 130px;">Now</span>
-                </span>
-
-                <br><br>
-
-                <img src = "images/avatar.png" width = "15px" height = "18px">
-
-                <span class = "ms-2"> <strong>Taofeeq Bola Asiwaju</strong>
-                    <span class="badge ms-5 p-2 bg-danger text-danger rounded-circle"
-                        style="width: 20px; height: 20px;">o</span>
-                </span>
-
-                <span style = "margin-left: 30px;">Nigeria
-                    <span style = "margin-left: 120px;" class = "chat">10min ago</span>
-                </span>
+                {{-- fetchNewUsers --}}
+                <div>
+                    @foreach ($fetchNewUsers as $User)
+                        <div class="row mb-3 px-2">
+                            <div class="col-2 p-0">
+                                <div class="image_wrap">
+                                    <img src = "images/avatar.png">
+                                </div>
+                            </div>
+                            <div class="col-8 px-2">
+                                <h5>{{$User->first_name}} {{$User->last_name}}</h5>
+                                <p>Nigeria</p>
+                            </div>
+                            <div class="col-2 p-0 status">
+                                <i class="fa-solid fa-circle {{ $User->status ? 'text-success': 'text-danger'}} "></i> <br>
+                                <span>{{$User->updated_at->diffForHumans()}}</span>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
 
-        <script>
-            // <!-- Visitor Chart
-            // -->
+        <script type="module">
+            // Visitor Chart 
+
+            // const ctx = document.getElementById('candidateChart');
+            // new Chart(ctx, {
+            //     type: 'doughnut',
+            //     data: {
+            //         labels: ['Male', 'Female'],
+            //         datasets: [{
+            //             data: [1507, 854],
+            //             backgroundColor: ['#4dc9c0', '#e5e5e5'],
+            //             borderWidth: 0,
+            //             cutout: '80%',
+            //             // large center
+            //         }]
+            //     },
+            //     options: {
+            //         responsive: true,
+            //         plugins: {
+            //             legend: {
+            //                 position: 'bottom',
+            //                 display: false
+            //             },
+            //             tooltip: {
+            //                 enabled: true
+            //             }
+            //         }
+            //     }
+            // });
+
+            const doneCount = @json($totalOrders);
+            const pendingCount = @json($totalPendingOrders);
+            const expiredCount = @json($totalExpiredOrders);
+
+            const maleCount = @json($noOfMaleUsers);
+            const femaleCount = @json($noOfFemaleUsers);
             const ctx = document.getElementById('candidateChart');
+
+            const centerTextPlugin = {
+                id: 'centerText',
+                beforeDraw(chart, args, options) {
+                    const {
+                        width
+                    } = chart;
+                    const {
+                        height
+                    } = chart;
+                    const ctx = chart.ctx;
+
+                    ctx.save();
+                    ctx.font = 'normal 18px sans-serif';
+                    ctx.fillStyle = '#8C9396';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(`Candidates`, width / 2, height / 2);
+                    ctx.restore();
+                }
+            };
+
             new Chart(ctx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Male', 'Female'],
                     datasets: [{
-                        data: [1507, 854],
+                        data: [maleCount, femaleCount],
                         backgroundColor: ['#4dc9c0', '#e5e5e5'],
                         borderWidth: 0,
-                        cutout: '70%',
-                        // large center
+                        cutout: '80%'
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     plugins: {
                         legend: {
-                            display: false
-                            // hide
-                            // legend
-                            // completely
+                            display: false,
                         },
                         tooltip: {
                             enabled: true
                         }
                     }
-                }
+                },
+                plugins: [centerTextPlugin]
             });
 
 
+
             // document.addEventListener("DOMContentLoaded", function() {
-            const ctxpie = document.getElementById('transactionChart').getContext('2d');
+            const ctxpie = document.getElementById('transactionChart');
 
             const config = {
                 type: 'pie',
                 data: {
                     labels: ['Done', 'Due', 'Hold'],
                     datasets: [{
-                        data: [300, 50, 100],
+                        data: [doneCount, expiredCount, pendingCount],
                         backgroundColor: [
-                            'rgb(255, 99, 132)',
-                            'rgb(54, 162, 235)',
-                            'rgb(255, 205, 86)'
+                            '#F1F1F1',
+                            '#64C5B1',
+                            '#E68900'
                         ],
                         hoverOffset: 4
                     }]
@@ -603,7 +624,7 @@
                     responsive: true,
                     plugins: {
                         legend: {
-                            position: 'bottom',
+                            display: false
                         },
                         tooltip: {
                             callbacks: {

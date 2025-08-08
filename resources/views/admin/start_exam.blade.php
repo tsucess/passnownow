@@ -94,6 +94,8 @@
                                                         value="{{ $q->question_type }}" />
                                                     <input type="hidden" name="question{{ $loop->iteration }}"
                                                         value="{{ $q['id'] }}" />
+                                                    <input type="hidden" name="question_mark{{ $loop->iteration }}"
+                                                        value="{{ $q['mark'] }}" />
                                                     @if ($q->question_type === 'multiple')
                                                         <ul class="question_options">
                                                             <li><input type="radio" value="{{ $options['option1'] }}"

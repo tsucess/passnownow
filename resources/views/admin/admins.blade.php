@@ -141,9 +141,9 @@
 
         <!-- Admin Chart Card -->
         <div class="card-admin-chart col-12 col-md-6 col-lg-5 text-white  mobileanalytics p-0">
-            <div class="chart-containers p-2">
-                <canvas id="adminChart" class="chart-admin" height="220px"></canvas>
-                <div class="chart-center-label">Administrators</div>
+            <div class="admin-chart-container p-2">
+                <canvas id="adminChart" class="chart-admin" width="400" height="320"></canvas>
+                {{-- <div class="chart-center-label">Administrators</div> --}}
             </div>
 
             <!-- Gender Breakdown -->
@@ -197,11 +197,11 @@
                             @endif
                         </td>
                         <td>{{ $Admin['created_at'] }}</td>
-                        <td>
+                        <td class="d-flex">
                             <a href="{{ route('admin.edit', ['data' => $Admin]) }}"
-                                class="btn controlbtn sub p-1 px-3">view</a>
+                                class="sub p-1"><i class="fa-solid fa-eye text-warining"></i></a>
                             <a href="{{ route('admin.destroy', ['data' => $Admin->id]) }}"
-                                class="btn btn-danger p-1 px-3">Delete</a>
+                                class="p-1"><i class="fa-solid fa-circle-xmark text-danger"></i></a>
                         </td>
 
                     </tr>
@@ -310,25 +310,74 @@
     <script>
         let table = new DataTable('#admin-table');
     </script>
-    <script>
+    <script type="module">
         const maleCount = @json($noOfMaleAdmins);
         const femaleCount = @json($noOfFemaleAdmins);
         const ctx = document.getElementById('adminChart');
 
-        const config = {
-            type: 'doughnut',
-            data: {
-                labels: ['Male', 'Female'],
-                datasets: [{
-                    data: [maleCount, femaleCount],
-                    backgroundColor: ['#55C2A5', '#eeeeee'],
-                    borderWidth: 0,
-                    cutout: '90%'
-                }]
-            }
-        }
+        // const config = {
+        //     type: 'doughnut',
+        //     data: {
+        //         labels: ['Male', 'Female'],
+        //         datasets: [{
+        //             data: [maleCount, femaleCount],
+        //             backgroundColor: ['#55C2A5', '#eeeeee'],
+        //             borderWidth: 0,
+        //             cutout: '90%'
+        //         }]
+        //     }
+        // }
 
-        new Chart(ctx, config);
+        // new Chart(ctx, config);
+
+
+            const centerTextPlugin = {
+                id: 'centerText',
+                beforeDraw(chart, args, options) {
+                    const {
+                        width
+                    } = chart;
+                    const {
+                        height
+                    } = chart;
+                    const ctx = chart.ctx;
+
+                    ctx.save();
+                    ctx.font = 'normal 18px sans-serif';
+                    ctx.fillStyle = '#8C9396';
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(`Administrators`, width / 2, height / 2);
+                    ctx.restore();
+                }
+            };
+
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Male', 'Female'],
+                    datasets: [{
+                        data: [maleCount, femaleCount],
+                        backgroundColor: ['#4dc9c0', '#e5e5e5'],
+                        borderWidth: 0,
+                        cutout: '80%'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false,
+                        },
+                        tooltip: {
+                            enabled: true
+                        }
+                    }
+                },
+                plugins: [centerTextPlugin]
+            });
+
     </script>
 
 

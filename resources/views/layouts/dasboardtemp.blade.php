@@ -34,8 +34,10 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
-    <!-- Chart.js -->
-    <script src="{{ asset('js/chart/chart.min.js') }}"></script>
+
+     @vite(['resources/js/app.js'])  
+    
+    {{-- <script src="{{ asset('js/chart/chart.min.js') }}"></script> --}}
 
     <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
@@ -148,7 +150,7 @@
 
 
     <div class="container-fluid">
-        <div class="row">
+        <div class="row p-0">
             <nav id="sidebarMenu" class="col-md-3  col-xl-2 d-md-block bg-white h-100 sidebar collapse">
                 <div class="position-sticky">
                     <ul class="nav flex-column pt-5 pt-md-0">
@@ -321,9 +323,7 @@
                         </div>
                     </div>
                 </header>
-
                 @yield('admincontent')
-
                 <section class="container-fluid footer__container">
                     <div class="row">
                         <div class="col-12 col-md-5 col-lg-6 mb-2">&copy; Copyright Passnownow 2024, All Right

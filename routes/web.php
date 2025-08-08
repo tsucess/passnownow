@@ -488,15 +488,54 @@ Route::get('/dashboard', function () {
 
 
 
+    $totalExpiredOrders = Transaction::get()->where('payment_status', 'success')->where('expiry_date', '<', now())->count();
+
+    /**
+     * Get all data with user role only
+     */
+    $noOfMaleUsers = Admin::where('role', 'user')->where('gender', 'male')->count();
+    $noOfFemaleUsers = Admin::where('role', 'user')->where('gender', 'female')->count();
+
+
+
+
     $topExams = Exams::limit(3)->get();
+    $totalExams = Exams::all()->count();
+    $totalQuestions = Questions::all()->count();
+    $totalSubjects = Subjects::all()->count();
     $countAdmins = Admin::wherenot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
+    $users = Admin::where('role', 'user')->get();
+    
+    $newUsers = Admin::where('role', 'user')->whereDate('updated_at', now())->get();
+
+
     $totalSum = Transaction::get()->where('payment_status', 'success')->sum('amount');
     $totalOrders = Transaction::get()->where('payment_status', 'success')->count();
-    $users = Admin::where('role', 'user')->get();
+    $totalPendingOrders = Transaction::get()->where('payment_status', 'pending')->count();
+
     $totalSum = number_format($totalSum);
 
-    return view('admin.dashboard', ['fetchUsers' => $users, 'totalUsers' => $countUsers, 'totalAdmins' => $countAdmins, 'topExams' => $topExams, 'subhistory' => $subHistory, 'exp_date' => $subExpiry, 'appliedExams' => $appliedExams, 'totalSum' => $totalSum, 'totalOrders' => $totalOrders]);
+    return view('admin.dashboard', [
+        'fetchUsers' => $users,
+        'fetchNewUsers' => $newUsers,
+        'totalUsers' => $countUsers,
+        'totalAdmins' => $countAdmins,
+        'topExams' => $topExams,
+        'subhistory' => $subHistory,
+        'exp_date' => $subExpiry,
+        'appliedExams' => $appliedExams,
+        'totalSum' => $totalSum,
+        'totalOrders' => $totalOrders,
+        'totalPendingOrders' => $totalPendingOrders,
+        'totalExpiredOrders' => $totalExpiredOrders,
+        'totalExams' => $totalExams,
+        'totalSubjects' => $totalSubjects,
+        'totalQuestions' => $totalQuestions,
+
+        'noOfMaleUsers' => $noOfMaleUsers,
+        'noOfFemaleUsers' => $noOfFemaleUsers,
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 

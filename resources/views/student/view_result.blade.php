@@ -75,22 +75,75 @@
                                     <h2>Result info</h2>
                                     <table class="table">
                                         <tr>
-                                            <td>Correst ans : </td>
+                                            <td>Correctly answered : </td>
                                             <td>{{ $result_info->yes_ans }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Wrong ans : </td>
+                                            <td>Failed Questions : </td>
                                             <td>{{ $result_info->no_ans }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Total : </td>
-                                            <td>{{ $rounded = round(($result_info->yes_ans / ($result_info->yes_ans + $result_info->no_ans)) * 100, 2) }}%
+                                            <td>Total Score : </td>
+                                            <td>
+                                                @php
+                                                    $json = $result_info->result_json;
+                                                    $data = json_decode($json, true); // Decode to associative array
+                                                    $totalScore = 0;
+                                                    foreach ($data as $item) {
+                                                        $totalScore += $item['score']; // or floatval($item['mark'])
+                                                    }
+                                                    echo $totalScore;
+                                                @endphp
+                                               
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total Mark : </td>
+                                            <td>
+                                                @php
+                                                    $json = $result_info->result_json;
+                                                    $data = json_decode($json, true); // Decode to associative array
+                                                    $totalMarks = 0;
+                                                    $totalScore = 0;
+
+                                                    foreach ($data as $item) {
+                                                        $totalMarks += $item['mark']; // or floatval($item['mark'])
+                                                        $totalScore += $item['score']; // or floatval($item['mark'])
+                                                    }
+                                                    echo $totalMarks;
+                                                @endphp
+                                                
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Percentage : </td>
+                                            <td>
+                                                @php
+                                                    $json = $result_info->result_json;
+                                                    $data = json_decode($json, true); // Decode to associative array
+                                                    $totalMarks = 0;
+                                                    $totalScore = 0;
+
+                                                    foreach ($data as $item) {
+                                                        $totalMarks += $item['mark']; // or floatval($item['mark'])
+                                                        $totalScore += $item['score']; // or floatval($item['mark'])
+                                                    }
+                                                @endphp
+                                                {{ $rounded = round(($totalScore / $totalMarks) * 100, 2) }}%
+
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
+
+                            {{-- {{
+                            }} --}}
+                            {{-- @foreach ($result_info->result_json as $score)
+                                {{ $score->mark }}
+                            @endforeach --}}
                         </div>
                     </div>
                 </div>
@@ -100,6 +153,7 @@
 
         <!-- Modal -->
 
-
+        {{-- Science can be define as the art of life --}}
+        {{-- Subtract 4 from both sides: 3x = 12. Divide by 3: x = 4. --}}
 
     @endsection
