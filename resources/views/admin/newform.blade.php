@@ -1,11 +1,6 @@
 @extends('layouts.dasboardtemp')
 
 @section('admincontent')
-    <style>
-        label {
-            font-weight: bold
-        }
-    </style>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Questions for {{ $subject_name }}</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -13,7 +8,7 @@
                 <a href="/adsubjects" class="btn btn-secondary p-1 px-5 shadow">Back</a>
                 <button type="button" class="btn btn-md btn-outline-primary addTopic px-4"
                     data-subject_id="{{ $subject_id }}" data-subject_name="{{ $subject_name }}"
-                    data-id="{{ $sub_id }}" data-bs-toggle="modal" data-bs-target="#addModal">Upload Question</button>
+                    data-id="{{ $sub_id }}" data-bs-toggle="modal" data-bs-target="#addModal">Add Question</button>
             </div>
         </div>
     </div>
@@ -114,25 +109,17 @@
                             value="{{ rand(time(), 10000000) }}" />
                         <x-text-input type="hidden" class="form-control" name="sub_id" id="sub_id" />
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-6">
                                 <div class="mb-3">
                                     <label for="subject_id" class="form-label"><b>Subject</b></label>
-                                    <input type="hidden" name="subject_id" class="form-control py-2" id="subject_id"
+                                    <input type="text" name="subject_id" class="form-control py-2" id="subject_id"
                                         readonly />
-                                    <input type="text" class="form-control py-2" id="subject_name" readonly />
                                 </div>
                             </div>
-
-                            {{-- <div class="col-3">
-                                <div class="mb-3">
-                                    <label for="order" class="form-label">Order (Optional)</label>
-                                    <input type="text" name="order" class="form-control py-2" id="order" />
-                                </div>
-                            </div> --}}
-                            <div class="col-3">
+                            <div class="col-6">
                                 <div class="mb-3">
                                     <div class="mb-3">
-                                        <b><x-input-label :value="__('Question Type')" class="form-label" /> </b>
+                                        <b> <x-input-label :value="__('Question Type')" class="form-label" /> </b>
                                         <select class="form-control py-2" name="question_type" required>
                                             <option value ="">Select Question Type</option>
                                             <option value="multiple">Multiple Choice</option>
@@ -142,57 +129,76 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="mb-3">
-                                    <label for="scor" class="form-label">Mark</label>
-                                    <input type="text" name="mark" class="form-control py-2" id="mark"
-                                        required />
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mb-3">
-                                    <label for="question" class="form-label">Enter Questions</label>
-                                    <input type="text" name="question" class="form-control py-2" id="question"
-                                        required />
-                                </div>
-                            </div>
+                        </div>
 
-                            <div class="col-12">
-                                <div class="mb-3 theory-field" id="theory-field" style="display: none">
-                                    <label for="content" class="form-label">Answer</label> <br>
-                                    <textarea name="ans" class="w-100" id="editor" rows="10"></textarea>
-                                </div>
-                                <div class="row multiple-options" id="multiple-options">
-                                    <div class="col-sm-6">
+
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="question" class="form-label"><b>Enter Questions</b></label>
+                                {{-- <input type="hidden" name="exam_id" value="{{ Request::segment(3) }}"> --}}
+                                <input type="text" name="question" class="form-control py-2" id="question"
+                                    required />
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            {{-- <div class="mb-3 url-field" id="url-field">
+                                    <label for="url" class="form-label">Url</label>
+                                    <input type="text" name="url" class="form-control py-2" id="url" />
+                                </div> --}}
+                            <div class="mb-3 theory-field" id="theory-field" style="display: none">
+                                <label for="content" class="form-label">Answer</label> <br>
+                                <textarea name="ans" class="w-100" id="editor" rows="10"></textarea>
+                            </div>
+                            <div class="row multiple-options mt-2" id="multiple-options">
+                                {{-- <div class="col-sm-12">
                                         <div class="form-group">
-                                            <label for="">Enter Option 1</label>
-                                            <input type="text" name="option1" placeholder="Enter Question"
-                                                class="form-control">
+                                            <label for="">Enter Question</label>
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="exam_id" value="{{ Request::segment(3) }}">
+                                            <input type="text"  name="question"
+                                                placeholder="Enter Question" class="form-control">
                                         </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="">Enter Option 2</label>
-                                            <input type="text" name="option2" placeholder="Enter Option 2"
-                                                class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="">Enter Option 3</label>
-                                            <input type="text" name="option3" placeholder="Enter  Option 3"
-                                                class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="">Enter Option 4</label>
-                                            <input type="text" name="option4" placeholder="Enter  Option 4"
-                                                class="form-control">
-                                        </div>
-                                    </div>
+                                    </div> --}}
+                                <div class="col-sm-6">
                                     <div class="form-group">
-                                        <label for="">Select correct option</label>
+                                        <label for=""><b>Enter Option 1</b></label>
+                                        <input type="text" name="option1" placeholder="Enter Question"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for=""><b>Enter Option 2</b></label>
+                                        <input type="text" name="option2" placeholder="Enter Option 2"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group mt-2">
+                                        <label for=""><b>Enter Option 3</b></label>
+                                        <input type="text" name="option3" placeholder="Enter  Option 3"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group mt-2">
+                                        <label for=""><b>Enter Option 4</b></label>
+                                        <input type="text" name="option4" placeholder="Enter  Option 4"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                {{-- <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Enter correct ans</label>
+                                            <input type="text"  name="ans"
+                                                placeholder="Enter  correct ans" class="form-control">
+                                        </div>
+                                    </div> --}}
+
+                                <div class = "col-6 mt-3">
+                                    <div class="form-group ">
+                                        <label for=""><b>Select correct option</b></label>
                                         <select class="form-control" name="ans">
                                             <option value="">Select</option>
 
@@ -204,39 +210,61 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="row alternate-option" id="alternate-option" style="display: none">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="">Enter Option 1</label>
-                                            <input type="text" name="option1" placeholder="Enter Question"
-                                                class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="">Enter Option 2</label>
-                                            <input type="text" name="option2" placeholder="Enter Option 2"
-                                                class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Select correct option</label>
-                                        <select class="form-control" name="ans">
-                                            <option value="">Select</option>
-                                            <option value="option1">option 1</option>
-                                            <option value="option2">option 2</option>
-                                        </select>
+
+                                <div class="col-6 mt-2">
+                                    <div class="mb-3">
+                                        <label for="scor" class="form-label"><b>Mark</b></label>
+                                        <input type="text" name="mark" class="form-control py-2" id="mark"
+                                            required />
                                     </div>
                                 </div>
+
+
+                            </div>
+                            <div class="row alternate-option" id="alternate-option" style="display: none">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Enter Option 1</label>
+                                        <input type="text" name="option1" placeholder="Enter Question"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="">Enter Option 2</label>
+                                        <input type="text" name="option2" placeholder="Enter Option 2"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                {{-- <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="">Enter correct ans</label>
+                                            <input type="text"  name="ans"
+                                                placeholder="Enter  correct ans" class="form-control">
+                                        </div>
+                                    </div> --}}
+                                <div class="form-group">
+                                    <label for="">Select correct option</label>
+                                    <select class="form-control" name="ans">
+                                        <option value="">Select</option>
+                                        <option value="option1">option 1</option>
+                                        <option value="option2">option 2</option>
+                                    </select>
+                                </div>
+
                             </div>
                         </div>
+
+
+
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" name="submit" class="btn btn-primary">Save Question</button>
-                    </div>
-                </form>
             </div>
+            <div class="modal-footer">
+                <button type="submit" name="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
         </div>
+    </div>
     </div>
 
 
@@ -256,20 +284,29 @@
                         <input type="hidden" name="subject_id" id="subjectu_id" class="form-control py-2" />
                         <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-4">
                                 <div class="mb-3">
                                     <label for="subjectu_name" class="form-label">Subject</label>
                                     <input type="text" name="subject_name" class="form-control py-2"
                                         id="subjectu_name" readonly />
                                 </div>
                             </div>
-                            <div class="col-3">
+
+                            <div class="col-4">
                                 <div class="mb-3">
                                     <label for="edit-order" class="form-label">Order (Optional)</label>
                                     <input type="text" name="edit_order" class="form-control py-2" id="edit-order">
                                 </div>
                             </div>
-                            <div class="col-3">
+
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="edit-mark" class="form-label"><b>Mark</b></label>
+                                    <input type="text" name="edit_mark" class="form-control py-2" id="edit-mark">
+                                </div>
+                            </div>
+
+                            <div class="col-4">
                                 <div class="mb-3">
                                     <x-input-label :value="__('Question Type')" class="form-label" />
                                     <select class="form-control py-2" name="edit_question_type" id="edit-question-type"
@@ -281,17 +318,9 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="mb-3">
-                                    <label for="edit-mark" class="form-label">Mark</label>
-                                    <input type="text" name="edit_mark" class="form-control py-2" id="edit-mark">
-                                </div>
-                            </div>
-
-
                             <div class="col-12">
                                 <div class="mb-3">
-                                    <label for="edit-question" class="form-label">Enter Question</label>
+                                    <label for="edit-question" class="form-label"><b>Enter Question</b></label>
                                     <input type="text" name="edit_question" class="form-control py-2"
                                         id="edit-question" required />
                                 </div>
@@ -320,6 +349,7 @@
                                                 id="edit_option_2">
                                         </div>
                                     </div>
+
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="">Enter Option 3</label>
@@ -334,6 +364,7 @@
                                                 id="edit_option_4">
                                         </div>
                                     </div>
+
                                     <div class="form-group">
                                         <label for="">Select correct option</label>
                                         <select class="form-control" name="edit_ans" id="edit_ans">
@@ -409,8 +440,7 @@
                 var subject_id = $(this).data('subject_id');
                 var subject_name = $(this).data('subject_name');
                 var sub_id = $(this).data('id');
-                $('#subject_id').val(subject_id);
-                $('#subject_name').val(subject_name);
+                $('#subject_id').val(subject_name);
                 $('#sub_id').val(sub_id);
 
             });

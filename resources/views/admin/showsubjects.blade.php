@@ -20,7 +20,7 @@
             ?>
             @foreach ($userFetchSubjects as $subject)
                 {{-- <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%"> --}}
-                <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%">
+                <div class = "col-12 col-md-4 border bg-white rounded p-4" style="width: 32%">
                     {{-- <img src="{{ asset('/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
                     <h5 class = "text-center fw-bold jss px-4">{{ $subject->title }}</h5>
                     <p class = "text-center px-5 py-2">

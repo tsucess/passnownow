@@ -58,11 +58,11 @@
         <div class="row mt-3 gap-2 gap-lg-1">
             @if ($fetchExams)
                 @foreach ($fetchExams as $Exam)
-                    <div class = "col-12 col-sm-6 col-md-4 col-lg-3 border text-center rounded p-2 p-lg-2 cardhover" style = "width:32%;">
+                    <div class = "col-12 col-sm-6 col-md-4 col-lg-3 border text-center rounded bg-white p-2 p-lg-2 cardhover" style = "width:32%;">
                         <img src="{{ asset('storage/' . $Exam->avatar) }}" class=" mb-3 img-responsive" alt="{{ $Exam->title }}"
                             style="height: 7rem;">
                         <div class="" style="height: 8rem">
-                            <h5 class="text-center fw-bold px-2">{{ strtoupper($Exam->title) }}</h5>
+                            <h5 class="text-center fw-bold px-2">{{ strtoupper($Exam->title) }}</h5> 
                             <p class="text-md-center">{{ Str::limit($Exam->description, 150) }}</p>
                         </div>
                         <a href="{{ route('showsubjects', ['data' => $Exam]) }}"

@@ -35,8 +35,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
 
-     @vite(['resources/js/app.js'])  
-    
+    @vite(['resources/js/app.js'])
+
     {{-- <script src="{{ asset('js/chart/chart.min.js') }}"></script> --}}
 
     <!-- <script type="text/javascript" src="./bootstrap-5/js/bootstrap.js"></script>  -->
@@ -143,9 +143,62 @@
   animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
         */
     </style>
+    <style>
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(255, 255, 255, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+            animation: slideDownFadeOut 0.6s ease forwards;
+        }
+
+        /* Optional: Slide and fade out loader content */
+        /* @keyframes slideDownFadeOut {
+            0% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+        } */
+    </style>
+
 </head>
 
 <body>
+    {{-- <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="{{ asset('images/logo.png') }}" alt="ExamPrepLogo" height="60"
+            width="60">
+    </div> --}}
+    <!-- Page Loader -->
+    <div id="page-loader" class="page-loader">
+        <div class="loader-content">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            {{-- <img class="animation__shake" src="{{ asset('images/logo.png') }}" alt="ExamPrepLogo" height="60" width="100"> --}}
+            <p class="text-primary mt-3">Loading, please wait...</p>
+        </div>
+    </div>
 
 
 
@@ -340,6 +393,35 @@
         </div>
     </div>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script>
+        window.addEventListener('load', function() {
+            const loader = document.getElementById('page-loader');
+            setTimeout(() => {
+                loader.classList.add('hidden');
+            }, 1000); // wait a bit to make transition smoother
+        });
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('page-loader');
+
+            document.querySelectorAll('form').forEach(form => {
+                form.addEventListener('submit', () => {
+                    loader.classList.remove('hidden');
+                });
+            });
+
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', e => {
+                    if (link.getAttribute('target') === '_blank' || link.href.startsWith(
+                            'javascript:')) return;
+                    loader.classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+
 </body>
 
 </html>

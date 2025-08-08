@@ -17,7 +17,7 @@
         }
 
         .page-nums li {
-            background-color: #5E7494;
+            background-color: #b1b4b8;
             padding: 0.5rem 0.9rem;
             display: inline-block;
             margin: 0 10px;
@@ -29,7 +29,7 @@
 
         .page-nums .active {
             background: #1A69AF;
-            color: var(--text-dark);
+            color: #ffffff;
         }
     </style>
     <!-- /.content-header -->
@@ -42,12 +42,13 @@
                     <div class="col-sm-6">
                         <h1 class="m-0">Exams</h1>
                     </div><!-- /.col -->
-                    <div class="col-sm-6">
+                    {{-- <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">Exam</li>
                         </ol>
-                    </div><!-- /.col -->
+                    </div> --}}
+                    <!-- /.col -->
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
 
@@ -134,7 +135,7 @@
                                                                 {{ $options['option4'] }}</li> --}}
                                                         </ul>
                                                     @else
-                                                        <textarea class="w-100" id="" rows="3" name="ans{{ $loop->iteration }}"
+                                                        <textarea class="w-100 p-2 " style="border-radius: 10px " id="" rows="4" name="ans{{ $loop->iteration }}"
                                                             placeholder="Type in your Answer here"></textarea>
                                                     @endif
                                                 </div>
