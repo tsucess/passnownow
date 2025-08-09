@@ -54,7 +54,7 @@
 
 
         .page-nums li {
-            
+
             padding: 0.5rem 0.9rem;
             display: inline-block;
             margin: 4px;
@@ -93,30 +93,45 @@
         }
 
         /* .page-nums {
-                                                                        padding: 10px;
-                                                                        text-align: center;
-                                                                        list-style: none;
-                                                                    }
+                    padding: 10px;
+                    text-align: center;
+                    list-style: none;
+                }
 
-                                                                    .page-nums li {
-                                                                        background-color: #b1b4b8;
-                                                                        padding: 0.5rem 0.9rem;
-                                                                        display: inline-block;
-                                                                        margin: 0 10px;
-                                                                        margin: 4px;
-                                                                        cursor: pointer;
-                                                                        color: white;
-                                                                        border-radius: 0.5rem;
-                                                                    }
+                .page-nums li {
+                    background-color: #b1b4b8;
+                    padding: 0.5rem 0.9rem;
+                    display: inline-block;
+                    margin: 0 10px;
+                    margin: 4px;
+                    cursor: pointer;
+                    color: white;
+                    border-radius: 0.5rem;
+                }
 
-                                                                    .page-nums .active {
-                                                                        background: #1A69AF;
-                                                                        color: #ffffff;
-                                                                    } */
-
-
+                .page-nums .active {
+                    background: #1A69AF;
+                    color: #ffffff;
+                } */
 
 
+
+        .submitCancel{
+            color: #1A69AF;
+            border: 1px solid #1A69AF;
+            padding: 0.8rem 0.3rem;
+            /* border-radius: 0.5rem; */
+            width: 8rem;
+        }
+        
+        
+        .submitConfirm {
+            background: #1A69AF;
+            color: #ffffff;
+            width: 10rem;
+            padding: 0.8rem 0.3rem;
+            /* border-radius: 0.5rem; */
+        }
 
         #myCheck {
             background: #1A69AF;
@@ -127,6 +142,7 @@
             top: 390px;
         }
 
+        .submitConfirm:hover,
         #myCheck:hover {
             background: #135fa1;
         }
@@ -309,6 +325,23 @@
         <!-- /.content-header -->
 
         <!-- Modal -->
+        <!-- Confirmation Modal -->
+        <div class="modal fade" id="confirmSubmitModal" tabindex="-1" aria-labelledby="confirmSubmitModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content p-2">
+                    <div class="modal-body text-center">
+                        <h4 class="text-color">This process is irreversible</h4>
+                        <p>Are you sure you want to submit?</p>
+                    </div>
+                    <div class="modal-footer mx-auto border-0">
+                        <button type="button" class="btn submitCancel" data-bs-dismiss="modal">Go back</button>
+                        <button type="button" id="confirmSubmitBtn" class="btn submitConfirm">Yes, I want to
+                            submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -454,6 +487,18 @@
             function myFunction() {
                 document.getElementById("myCheck").click();
             }
+
+
+            // Show modal instead of submitting immediately
+            submitButton.addEventListener('click', function(e) {
+                e.preventDefault(); // Stop form submission
+                $('#confirmSubmitModal').modal('show');
+            });
+
+            // Handle modal confirmation
+            document.getElementById('confirmSubmitBtn').addEventListener('click', function() {
+                document.getElementById('form').submit();
+            });
         </script>
 
 
