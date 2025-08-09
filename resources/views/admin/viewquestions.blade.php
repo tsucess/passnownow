@@ -3,10 +3,23 @@
 @section('admincontent')
     <style>
         label {
-            font-weight: bold
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+
+        }
+
+        .primary_color {
+            background-color: #1A69AF;
+        }
+
+        .btn-close {
+            border: 1px solid #1A69AF;
+            border-radius: 50%;
+            padding: 0.5rem;
         }
     </style>
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center px-2 pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Questions for {{ $subject_name }}</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
@@ -36,7 +49,7 @@
         </div>
     @endif
 
-    <div class="table-responsive mb-5 pb-5">
+    <div class="table-responsive mb-5 px-3  pb-5">
         <table id="admin-table" class="table custom-table mb-5 pb-5">
             <thead class="bg-info">
                 <tr>
@@ -114,7 +127,7 @@
                             value="{{ rand(time(), 10000000) }}" />
                         <x-text-input type="hidden" class="form-control" name="sub_id" id="sub_id" />
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-6">
                                 <div class="mb-3">
                                     <label for="subject_id" class="form-label"><b>Subject</b></label>
                                     <input type="hidden" name="subject_id" class="form-control py-2" id="subject_id"
@@ -129,7 +142,7 @@
                                     <input type="text" name="order" class="form-control py-2" id="order" />
                                 </div>
                             </div> --}}
-                            <div class="col-3">
+                            <div class="col-6">
                                 <div class="mb-3">
                                     <div class="mb-3">
                                         <b><x-input-label :value="__('Question Type')" class="form-label" /> </b>
@@ -142,13 +155,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="mb-3">
-                                    <label for="scor" class="form-label">Mark</label>
-                                    <input type="text" name="mark" class="form-control py-2" id="mark"
-                                        required />
-                                </div>
-                            </div>
+
+
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="question" class="form-label">Enter Questions</label>
@@ -157,82 +165,105 @@
                                 </div>
                             </div>
 
-                            <div class="col-12">
-                                <div class="mb-3 theory-field" id="theory-field" style="display: none">
-                                    <label for="content" class="form-label">Answer</label> <br>
-                                    <textarea name="ans" class="w-100" id="editor" rows="10"></textarea>
+                            <div class="">
+                                <div class="row theory-field" id="theory-field" style="display: none">
+                                    <div class="col-12 mb-3">
+                                        <label for="content" class="form-label">Answer</label> <br>
+                                        <textarea name="ans" class="w-100" id="editor" rows="10"></textarea>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="" class="form-label">Mark</label>
+                                        <input type="text" name="mark" class="form-control py-2" />
+                                    </div>
                                 </div>
-                                <div class="row multiple-options" id="multiple-options">
+
+                                <div class="row multiple-options mb-3" id="multiple-options">
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="">Enter Option 1</label>
                                             <input type="text" name="option1" placeholder="Enter Question"
                                                 class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="">Enter Option 2</label>
                                             <input type="text" name="option2" placeholder="Enter Option 2"
                                                 class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="">Enter Option 3</label>
                                             <input type="text" name="option3" placeholder="Enter  Option 3"
                                                 class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="">Enter Option 4</label>
                                             <input type="text" name="option4" placeholder="Enter  Option 4"
                                                 class="form-control">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="">Select correct option</label>
-                                        <select class="form-control" name="ans">
-                                            <option value="">Select</option>
-
-                                            <option value="option1">option 1</option>
-                                            <option value="option2">option 2</option>
-                                            <option value="option3">option 3</option>
-                                            <option value="option4">option 4</option>
-
-                                        </select>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="">Select correct option</label>
+                                            <select class="form-control" name="ans">
+                                                <option value="">Select</option>
+                                                <option value="option1">option 1</option>
+                                                <option value="option2">option 2</option>
+                                                <option value="option3">option 3</option>
+                                                <option value="option4">option 4</option>
+                                            </select>
+                                        </div>
                                     </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Mark</label>
+                                            <input type="text" name="mark" class="form-control py-2" />
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="row alternate-option" id="alternate-option" style="display: none">
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="">Enter Option 1</label>
                                             <input type="text" name="option1" placeholder="Enter Question"
                                                 class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="">Enter Option 2</label>
                                             <input type="text" name="option2" placeholder="Enter Option 2"
                                                 class="form-control">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="">Select correct option</label>
-                                        <select class="form-control" name="ans">
-                                            <option value="">Select</option>
-                                            <option value="option1">option 1</option>
-                                            <option value="option2">option 2</option>
-                                        </select>
+                                    <div class="col-sm-6">
+                                        <div class="form-group mb-3">
+                                            <label for="">Correct Answer</label>
+                                            <select class="form-control" name="ans">
+                                                <option value="">Select</option>
+                                                <option value="option1">option 1</option>
+                                                <option value="option2">option 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="" class="form-label">Mark</label>
+                                            <input type="text" name="mark" class="form-control py-2" />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" name="submit" class="btn btn-primary">Save Question</button>
+                        <button type="submit" name="submit" class="btn p-2 mx-auto primary_color text-white"
+                            style="width: 25rem">Save Question</button>
                     </div>
                 </form>
             </div>
@@ -243,7 +274,7 @@
     <!-- Edit Question Modal -->
     <div class="modal fade" id="editModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="editModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog modal-fullscreen ">
             <div class="modal-content" id="form">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="editModalLabel">Edit Question</h1>
@@ -256,20 +287,20 @@
                         <input type="hidden" name="subject_id" id="subjectu_id" class="form-control py-2" />
                         <input type="hidden" name="id" id="edit-id" class="form-control py-2" />
                         <div class="row">
-                            <div class="col-3">
+                            <div class="col-6">
                                 <div class="mb-3">
                                     <label for="subjectu_name" class="form-label">Subject</label>
                                     <input type="text" name="subject_name" class="form-control py-2"
                                         id="subjectu_name" readonly />
                                 </div>
                             </div>
-                            <div class="col-3">
+                            {{-- <div class="col-3">
                                 <div class="mb-3">
                                     <label for="edit-order" class="form-label">Order (Optional)</label>
                                     <input type="text" name="edit_order" class="form-control py-2" id="edit-order">
                                 </div>
-                            </div>
-                            <div class="col-3">
+                            </div> --}}
+                            <div class="col-6">
                                 <div class="mb-3">
                                     <x-input-label :value="__('Question Type')" class="form-label" />
                                     <select class="form-control py-2" name="edit_question_type" id="edit-question-type"
@@ -281,13 +312,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-3">
-                                <div class="mb-3">
-                                    <label for="edit-mark" class="form-label">Mark</label>
-                                    <input type="text" name="edit_mark" class="form-control py-2" id="edit-mark">
-                                </div>
-                            </div>
-
 
                             <div class="col-12">
                                 <div class="mb-3">
@@ -301,9 +325,19 @@
                                     <label for="url" class="form-label">Url</label>
                                     <input type="text" name="url" class="form-control py-2" id="url" />
                                 </div> --}}
-                                <div class="mb-3 edit-theory-field" id="edit-theory-field">
-                                    <label for="edit_content" class="form-label">Answer</label>
-                                    <textarea name="edit_ans" class="ckeditor w-100" id="editor2" rows="10"></textarea>
+                                <div class="row edit-theory-field" id="edit-theory-field">
+                                    <div class="col-12 mb-3">
+                                        <label for="edit_content" class="form-label">Answer</label>
+                                        <textarea name="edit_ans" class="ckeditor w-100" id="editor2" rows="2"></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="mb-3">
+                                            <label for="edit-mark1" class="form-label edit-mark">Mark</label>
+                                            <input type="text" name="edit_mark" class="form-control py-2"
+                                                id="edit-mark1">
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="row edit-multiple-options" id="edit-multiple-options">
                                     <div class="col-sm-6">
@@ -334,15 +368,24 @@
                                                 id="edit_option_4">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="">Select correct option</label>
-                                        <select class="form-control" name="edit_ans" id="edit_ans">
-                                            <option value="">Select</option>
-                                            <option value="option1">option 1</option>
-                                            <option value="option2">option 2</option>
-                                            <option value="option3">option 3</option>
-                                            <option value="option4">option 4</option>
-                                        </select>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Select correct option</label>
+                                            <select class="form-control" name="edit_ans" id="edit_ans">
+                                                <option value="">Select</option>
+                                                <option value="option1">option 1</option>
+                                                <option value="option2">option 2</option>
+                                                <option value="option3">option 3</option>
+                                                <option value="option4">option 4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="edit-mark2" class="form-label edit-mark">Mark</label>
+                                            <input type="text" name="edit_mark" class="form-control py-2"
+                                                id="edit-mark2">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row edit-alternate-option" id="edit-alternate-option">
@@ -360,21 +403,30 @@
                                                 id="edit_alt_option_2">
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="">Select correct option</label>
-                                        <select class="form-control" name="edit_ans" id="edit_alt_ans">
-                                            <option value="">Select</option>
-                                            <option value="option1">option 1</option>
-                                            <option value="option2">option 2</option>
-                                        </select>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="">Select correct option</label>
+                                            <select class="form-control" name="edit_ans" id="edit_alt_ans">
+                                                <option value="">Select</option>
+                                                <option value="option1">option 1</option>
+                                                <option value="option2">option 2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="edit-mark3" class="form-label edit-mark">Mark</label>
+                                            <input type="text" name="edit_mark" class="form-control py-2"
+                                                id="edit-mark3">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" name="submit" id="updateUser" class="btn btn-success">Update
-                            changes</button>
+                        <button type="submit" name="submit" id="updateUser"
+                            class="btn p-2 mx-auto primary_color text-white" style="width: 25rem">Update changes</button>
                     </div>
                 </form>
             </div>
@@ -384,11 +436,11 @@
     <script src="{{ url('js/ckeditor/ckeditor.js') }}"></script>
     <script>
         CKEDITOR.replace('editor', {
-            height: 200
+            height: 120
         });
 
         CKEDITOR.replace('editor2', {
-            height: 200
+            height: 120
         });
     </script>
 
@@ -481,9 +533,16 @@
                 $('#subjectu_name').val(subjectu_name);
                 $('#edit-id').val(id);
                 $('#edit-question').val(question);
-                $('#edit-mark').val(edit_mark);
                 $('#edit-question-type').val(question_type);
                 $('#edit-order').val(editorder);
+                if (question_type === 'theory') {
+                    $('#edit-mark1').val(edit_mark);
+                } else if (question_type === 'alternate') {
+                    $('#edit-mark3').val(edit_mark);
+
+                } else {
+                    $('#edit-mark2').val(edit_mark);
+                }
 
 
             });
