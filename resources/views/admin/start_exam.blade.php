@@ -93,43 +93,43 @@
         }
 
         /* .page-nums {
-                    padding: 10px;
-                    text-align: center;
-                    list-style: none;
-                }
+                        padding: 10px;
+                        text-align: center;
+                        list-style: none;
+                    }
 
-                .page-nums li {
-                    background-color: #b1b4b8;
-                    padding: 0.5rem 0.9rem;
-                    display: inline-block;
-                    margin: 0 10px;
-                    margin: 4px;
-                    cursor: pointer;
-                    color: white;
-                    border-radius: 0.5rem;
-                }
+                    .page-nums li {
+                        background-color: #b1b4b8;
+                        padding: 0.5rem 0.9rem;
+                        display: inline-block;
+                        margin: 0 10px;
+                        margin: 4px;
+                        cursor: pointer;
+                        color: white;
+                        border-radius: 0.5rem;
+                    }
 
-                .page-nums .active {
-                    background: #1A69AF;
-                    color: #ffffff;
-                } */
+                    .page-nums .active {
+                        background: #1A69AF;
+                        color: #ffffff;
+                    } */
 
 
 
-        .submitCancel{
+        .submitCancel {
             color: #1A69AF;
             border: 1px solid #1A69AF;
-            padding: 0.8rem 0.3rem;
+            padding: 0.3rem;
             /* border-radius: 0.5rem; */
-            width: 8rem;
+            width: 5rem;
         }
-        
-        
+
+
         .submitConfirm {
             background: #1A69AF;
             color: #ffffff;
             width: 10rem;
-            padding: 0.8rem 0.3rem;
+            padding: 0.3rem;
             /* border-radius: 0.5rem; */
         }
 
@@ -162,6 +162,17 @@
                 top: 325px;
                 width: 8rem;
                 padding: 1rem 0.5rem;
+            }
+
+            .submitCancel {
+                padding: 0.8rem 0.3rem;
+                width: 8rem;
+            }
+
+
+            .submitConfirm {
+                width: 10rem;
+                padding: 0.8rem 0.3rem;
             }
         }
 
