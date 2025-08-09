@@ -2,10 +2,10 @@
 @section('title', 'Exams')
 @section('admincontent')
     <style type="text/css">
+        .text-color {
+            color: #1A69AF;
+        }
 
-    .text-color {
-        color: #1A69AF;
-    }
         .list {
             position: relative;
         }
@@ -54,12 +54,13 @@
 
 
         .page-nums li {
-            background-color: #b1b4b8;
+            
             padding: 0.5rem 0.9rem;
             display: inline-block;
             margin: 4px;
             cursor: pointer;
-            color: white;
+            color: rgb(46, 46, 46);
+            border: 1px solid #a1a1a1;
             border-radius: 0.5rem;
         }
 
@@ -87,30 +88,31 @@
             background: #1A69AF;
             width: 5rem;
             padding: 0.5rem 0.3rem;
-            text-align: center
+            text-align: center;
+            color: #ffffff
         }
 
         /* .page-nums {
-                                                                padding: 10px;
-                                                                text-align: center;
-                                                                list-style: none;
-                                                            }
+                                                                        padding: 10px;
+                                                                        text-align: center;
+                                                                        list-style: none;
+                                                                    }
 
-                                                            .page-nums li {
-                                                                background-color: #b1b4b8;
-                                                                padding: 0.5rem 0.9rem;
-                                                                display: inline-block;
-                                                                margin: 0 10px;
-                                                                margin: 4px;
-                                                                cursor: pointer;
-                                                                color: white;
-                                                                border-radius: 0.5rem;
-                                                            }
+                                                                    .page-nums li {
+                                                                        background-color: #b1b4b8;
+                                                                        padding: 0.5rem 0.9rem;
+                                                                        display: inline-block;
+                                                                        margin: 0 10px;
+                                                                        margin: 4px;
+                                                                        cursor: pointer;
+                                                                        color: white;
+                                                                        border-radius: 0.5rem;
+                                                                    }
 
-                                                            .page-nums .active {
-                                                                background: #1A69AF;
-                                                                color: #ffffff;
-                                                            } */
+                                                                    .page-nums .active {
+                                                                        background: #1A69AF;
+                                                                        color: #ffffff;
+                                                                    } */
 
 
 
@@ -157,6 +159,13 @@
                 width: 10rem;
                 padding: 1rem 0.5rem;
             }
+        }
+
+        /* Highlight answered questions */
+        .page-number-row li.answered {
+            background-color: #D0D0D2 !important;
+            /* background-color: #b1b4b8; !important; */
+            /* color: #fff !important; */
         }
     </style>
     <!-- /.content-header -->
@@ -277,10 +286,7 @@
                                             <div class="row ms-2 p-0">
                                                 <?php if (isset($questions)) {?>
                                                 <div class="col-12 p-0">
-                                                    {{-- <h5 class="text-color">Question Numbers</h5> --}}
-                                                    <ul class="page-nums">
-
-                                                    </ul>
+                                                    <ul class="page-nums"></ul>
                                                 </div>
                                                 <?php }?>
                                             </div>
@@ -307,8 +313,152 @@
 
 
         <script src="{{ url('js/table/jquery-3.3.1.min.js') }}"></script>
-
         <script>
+            let currentPage = 1;
+            let limit = 1;
+            const list = document.querySelectorAll('.list .item');
+            const pageNumsContainer = document.querySelector('.page-nums');
+            const submitButton = document.getElementById("myCheck");
+            let answeredQuestions = new Set();
+
+            submitButton.style.display = "none";
+
+            function loadItem() {
+                let startGet = limit * (currentPage - 1);
+                let endGet = limit * currentPage - 1;
+                if (endGet >= list.length) endGet = list.length - 1;
+
+                list.forEach((item, key) => {
+                    if (key >= startGet && key <= endGet) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.classList.add('show'), 100);
+                    } else {
+                        item.classList.remove('show');
+                        setTimeout(() => item.style.display = 'none', 1);
+                    }
+                });
+
+                listPage();
+            }
+
+            function listPage() {
+                let count = Math.ceil(list.length / limit);
+                const container = document.querySelector('.page-nums');
+                container.innerHTML = '';
+
+                // Top row with Prev & Next
+                let controls = document.createElement('div');
+                controls.classList.add('page-controls');
+
+                let prev = document.createElement('li');
+                prev.innerText = 'PREV';
+                if (currentPage > 1) {
+                    prev.addEventListener('click', () => changePage(currentPage - 1));
+                } else {
+                    prev.style.opacity = 0.5;
+                    prev.style.pointerEvents = 'none';
+                }
+
+                let next = document.createElement('li');
+                next.innerText = 'NEXT';
+                if (currentPage < count) {
+                    next.addEventListener('click', () => changePage(currentPage + 1));
+                } else {
+                    next.style.opacity = 0.5;
+                    next.style.pointerEvents = 'none';
+                }
+
+                controls.appendChild(prev);
+                controls.appendChild(next);
+                container.appendChild(controls);
+
+                // Bottom row with page numbers
+                let numbersRow = document.createElement('div');
+                numbersRow.classList.add('page-number-row');
+
+                for (let i = 1; i <= count; i++) {
+                    let newPage = document.createElement('li');
+                    newPage.innerText = i;
+                    if (i === currentPage) newPage.classList.add('active');
+                    if (answeredQuestions.has(i)) newPage.classList.add('answered');
+                    newPage.addEventListener('click', () => changePage(i));
+                    numbersRow.appendChild(newPage);
+                }
+
+                container.appendChild(numbersRow);
+
+                // Show submit button on last page
+                submitButton.style.display = (currentPage === count) ? "block" : "none";
+            }
+
+            function changePage(i) {
+                currentPage = i;
+                loadItem();
+            }
+
+            // Listen for answer changes
+            document.querySelectorAll('input[type=radio], textarea').forEach(input => {
+                input.addEventListener('input', function() {
+                    let qNum = parseInt(this.name.match(/\d+/)[0]);
+
+                    if (this.type === 'radio') {
+                        if (this.checked) {
+                            answeredQuestions.add(qNum);
+                        }
+                    } else if (this.tagName === 'TEXTAREA') {
+                        if (this.value.trim() !== '') {
+                            answeredQuestions.add(qNum);
+                        } else {
+                            answeredQuestions.delete(qNum);
+                        }
+                    }
+
+                    listPage();
+                });
+            });
+
+            // Initial load
+            loadItem();
+
+            // TIMER LOGIC
+            var interval;
+
+            function countdown() {
+                clearInterval(interval);
+                interval = setInterval(function() {
+                    var timer = $('.js-timeout').html();
+                    timer = timer.split(':');
+                    var minutes = timer[0];
+                    var seconds = timer[1];
+                    seconds -= 1;
+                    if (minutes < 0) return;
+                    else if (seconds < 0 && minutes != 0) {
+                        minutes -= 1;
+                        seconds = 59;
+                    } else if (seconds < 10 && seconds.toString().length !== 2) seconds = '0' + seconds;
+
+                    $('.js-timeout').html(minutes + ':' + seconds);
+
+                    if (minutes == 0 && seconds == 0) {
+                        clearInterval(interval);
+                        alert('time UP');
+                        myFunction();
+                    }
+                }, 1000);
+            }
+
+            var time = document.getElementById('timer').textContent;
+            $('.js-timeout').text(time);
+            countdown();
+
+            function myFunction() {
+                document.getElementById("myCheck").click();
+            }
+        </script>
+
+
+
+        {{-- <script>
             let currentPage = 1;
             let limit = 1;
             const list = document.querySelectorAll('.list .item');
@@ -416,7 +566,9 @@
                     else if (seconds < 0 && minutes != 0) {
                         minutes -= 1;
                         seconds = 59;
-                    } else if (seconds < 10 && length.seconds != 2) seconds = '0' + seconds;
+                    } 
+                    // else if (seconds < 10 && length.seconds != 2) seconds = '0' + seconds;
+                    else if (seconds < 10 && seconds.toString().length !== 2) seconds = '0' + seconds;
 
                     $('.js-timeout').html(minutes + ':' + seconds);
 
@@ -428,7 +580,9 @@
                 }, 1000);
             }
 
-            var time = document.getElementById('timer').value;
+            // var time = document.getElementById('timer').value;
+            var time = document.getElementById('timer').textContent;
+
             $('.js-timeout').text(time);
             countdown();
 
@@ -436,7 +590,7 @@
             function myFunction() {
                 document.getElementById("myCheck").click();
             }
-        </script>
+        </script> --}}
         {{-- <script>
             let currentPage = 1;
             let limit = 1;
