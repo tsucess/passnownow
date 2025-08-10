@@ -18,13 +18,18 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-
+    
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/regular.css') }} ">
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+    
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
+
+
 
     <!-- Datatables  -->
     <link rel="stylesheet" href="{{ asset('css/table/dataTables.bootstrap5.min.css') }} ">
@@ -393,6 +398,7 @@
         </div>
     </div>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+   
     <script>
         window.addEventListener('load', function() {
             const loader = document.getElementById('page-loader');
@@ -412,13 +418,13 @@
                 });
             });
 
-            document.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', e => {
-                    if (link.getAttribute('target') === '_blank' || link.href.startsWith(
-                            'javascript:')) return;
-                    loader.classList.remove('hidden');
-                });
-            });
+            // document.querySelectorAll('a').forEach(link => {
+            //     link.addEventListener('click', e => {
+            //         if (link.getAttribute('target') === '_blank' || link.href.startsWith(
+            //                 'javascript:')) return;
+            //         loader.classList.remove('hidden');
+            //     });
+            // });
         });
     </script>
 

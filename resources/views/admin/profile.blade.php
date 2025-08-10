@@ -1,6 +1,18 @@
 @extends('layouts.dasboardtemp')
 
 @section('admincontent')
+    <style>
+        /* .select2-container--default .select2-selection--single {
+                            height: auto !important;
+                            padding: 0.7rem 0.5rem  !important;
+                            border: 1px solid #ced4da;
+                            border-radius: 0.375rem;
+                        }
+
+                        .select2-selection__rendered {
+                            line-height: normal !important;
+                        } */
+    </style>
     <section class="container-fluid profile__container">
         <div class="row">
             <div class="col-12 col-lg-7 profile_data">
@@ -59,6 +71,7 @@
                         @endif
                         </div>
                     </div> --}}
+
                     <div class="row shadow p-2 ">
                         <div class="mb-3">
                             <x-input-label for="firstname" :value="__('First Name')" class="form-label" />
@@ -102,15 +115,55 @@
                                 </div>
                             @endif
                         </div>
+                        <!-- Countries Field -->
+                        {{-- <div class="mb-3">
+                            <x-input-label for="nationality" :value="__('Nationality')" class="form-label" />
+                            <select id="nationality" name="nationality" class="form-control">
+                                <option value="">Select Nationality</option>
+                                @foreach (config('countries') as $country)
+                                    <option value="{{ $country }}"
+                                        {{ old('nationality', $user->nationality ?? '') == $country ? 'selected' : '' }}>
+                                        {{ $country }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <x-input-error class="mt-2 text-danger" :messages="$errors->get('nationality')" />
+                        </div> --}}
+
+
+                        <div class="mb-3">
+                            <x-input-label for="nationality" :value="__('Nationality')" class="form-label" />
+                            {{-- <select id="nationality" name="nationality" class="form-control select2">
+                                <option value="">Select Nationality</option>
+                                @foreach (config('countries') as $country)
+                                    <option value="{{ $country }}">{{ $country }}</option>
+                                @endforeach
+                            </select> --}}
+                            <select id="nationality" name="nationality" class="form-control select2">
+                                <option value="">Select Nationality</option>
+                                @foreach (config('countries') as $country)
+                                    <option value="{{ $country }}"
+                                        {{ old('nationality', $user->nationality ?? '') == $country ? 'selected' : '' }}>
+                                        {{ $country }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            <x-input-error class="mt-2 text-danger" :messages="$errors->get('nationality')" />
+                        </div>
+
+
 
                         <!-- Gender Field -->
                         <div class="mb-3">
                             <x-input-label for="gender" :value="__('Gender (Optional)')" class="form-label" />
                             <select id="gender" name="gender" class="form-control">
                                 <option value="">Select Gender</option>
-                                <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>Male</option>
-                                <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}> Female</option>
-                                <option value="other" {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>Other</option>
+                                <option value="male" {{ old('gender', $user->gender) == 'male' ? 'selected' : '' }}>Male
+                                </option>
+                                <option value="female" {{ old('gender', $user->gender) == 'female' ? 'selected' : '' }}>
+                                    Female</option>
+                                <option value="other" {{ old('gender', $user->gender) == 'other' ? 'selected' : '' }}>
+                                    Other</option>
                             </select>
                             <x-input-error class="mt-2 text-danger" :messages="$errors->get('gender')" />
                         </div>
@@ -225,4 +278,32 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Select2 JS -->
+    <script src="{{ asset('js/select2.min.js') }}"></script>
+
+    <!-- jQuery (required for Select2) -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+
+    {{-- <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            $('#nationality').select2({
+                placeholder: "Select or type a country",
+                allowClear: true,
+                width: '100%'
+            });
+        });
+    </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            $('#nationality').select2({
+                placeholder: "Select or type a country",
+                allowClear: true
+            });
+        });
+    </script>
+
+
 @endsection

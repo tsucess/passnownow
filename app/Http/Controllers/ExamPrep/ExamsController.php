@@ -34,7 +34,7 @@ class ExamsController extends Controller
     public function store(Request $request)
     {
         //   dd($request);
-       $data = $request->validate([
+        $data = $request->validate([
             'unique_id' => ['required', 'string', 'max:255', 'unique:' . Exams::class],
             'title' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
@@ -42,8 +42,8 @@ class ExamsController extends Controller
         ]);
 
 
- 
-        
+
+
         if ($request->file('avatar')) {
             $avatar = $request->file('avatar')->store('upload');
             // Add class
@@ -54,10 +54,7 @@ class ExamsController extends Controller
                 'description' => $request->description,
                 'avatar' => $avatar
             ]);
-        }
-
-        else
-        {
+        } else {
             // Add class
             $done = Exams::create([
                 'unique_id' => $request->unique_id,
@@ -66,17 +63,14 @@ class ExamsController extends Controller
                 'description' => $request->description,
                 'avatar' => null
             ]);
-
         }
 
 
-        if($done) {
+        if ($done) {
             return redirect('/adexams')->with('success', 'New Exam Information Created successfully');
         } else {
             return redirect('/adexams')->with('error', 'Something went wrong');
         };
-
-
     }
 
 
@@ -86,7 +80,9 @@ class ExamsController extends Controller
      */
     public function show()
     {
-        $output = Exams::get();
+
+
+        $output = Exams::withCount('subjects')->get();
         // dd($output);
         return view('admin.adexams', ['fetchExams' => $output]);
     }
@@ -112,12 +108,10 @@ class ExamsController extends Controller
 
             if ($request->avatar) {
                 // dd($request->prevavatar);
-                File::delete(storage_path('app/public/'.$request->prevavatar));
+                File::delete(storage_path('app/public/' . $request->prevavatar));
                 $avatar = $request->file('avatar')->store('upload');
                 $exam->avatar = $avatar;
-            }
-            else
-            {
+            } else {
                 $exam->avatar = $request->prevavatar;
             }
             $exam->save();
@@ -137,7 +131,6 @@ class ExamsController extends Controller
         // dd($exam);
         $exam->status = $request->status;
         $exam->save();
-       
     }
 
     /**
@@ -145,8 +138,8 @@ class ExamsController extends Controller
      */
     public function destroy(Exams $data)
     {
-    
-        File::delete(storage_path('app/public/'.$data->avatar));
+
+        File::delete(storage_path('app/public/' . $data->avatar));
         $done = $data->delete();
         if ($done) {
 
@@ -155,6 +148,4 @@ class ExamsController extends Controller
             return redirect('/adexams')->with('error', 'Something went wrong');
         };
     }
-
-
 }

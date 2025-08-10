@@ -30,51 +30,53 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <table class="table table-striped table-bordered table-hover datatable">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Exam title</th>
-                                                <th>Exam Date</th>
-                                                <th>Status</th>
-                                                <th>Result</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($results as $attempt)
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover datatable">
+                                            <thead>
                                                 <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $attempt->exam->title ?? 'Unknown Exam' }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($attempt->updated_at)->format('d M Y H:i') }}
-                                                    </td>
-                                                    {{-- <td>{{ $attempt->status }}</td> --}}
-                                                    <td>Completed</td>
-                                                    <td>
-                                                        {{-- @if ($attempt->exam_joined == 1) --}}
+                                                    <th>#</th>
+                                                    <th>Exam title</th>
+                                                    <th>Exam Date</th>
+                                                    <th>Status</th>
+                                                    <th>Result</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($results as $attempt)
+                                                    <tr>
+                                                        <td>{{ $loop->iteration }}</td>
+                                                        <td>{{ $attempt->exam->title ?? 'Unknown Exam' }}</td>
+                                                        <td><p style="width:10rem">{{ \Carbon\Carbon::parse($attempt->updated_at)->format('d M Y H:i') }}</p> 
+                                                        </td>
+                                                        {{-- <td>{{ $attempt->status }}</td> --}}
+                                                        <td>Completed</td>
+                                                        <td>
+                                                            {{-- @if ($attempt->exam_joined == 1) --}}
                                                             <a href="{{ url('/view_result', ['data' => $attempt]) }}"
-                                                                class="btn btn-info btn-sm">View Result</a>
-                                                        {{-- @endif --}}
-                                                    </td>
-                                                    <td>
-                                                        {{-- @if (\Carbon\Carbon::parse($attempt->exam_date)->isToday())
+                                                                class="btn btn-info btn-sm" style="width:6rem">View Result</a>
+                                                            {{-- @endif --}}
+                                                        </td>
+                                                        <td>
+                                                            {{-- @if (\Carbon\Carbon::parse($attempt->exam_date)->isToday())
                                                             @if ($attempt->exam_joined == 0)
                                                                 <a href="{{ url('/join_exam/' . $attempt->exam_id) }}"
                                                                     class="btn btn-primary btn-sm">Join Exam</a>
                                                             @else --}}
-                                                                <a href="{{ url('/view_answer', ['data' => $attempt])  }}"
-                                                                    class="btn btn-primary btn-sm">View Answers</a>
+                                                            <a href="{{ url('/view_answer', ['data' => $attempt]) }}"
+                                                                class="btn btn-primary btn-sm" style="width:7rem">View Answers</a>
                                                             {{-- @endif --}}
-                                                        {{-- @endif --}}
-                                                    </td>
-                                                </tr>
-                                            @endforeach
+                                                            {{-- @endif --}}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
 
-                                        </tbody>
-                                        <tfoot>
+                                            </tbody>
+                                            <tfoot>
 
-                                        </tfoot>
-                                    </table>
+                                            </tfoot>
+                                        </table>
+                                    </div>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

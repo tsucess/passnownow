@@ -2,8 +2,6 @@
 
 
 <style>
-
-
     /* Keyframes for fade-in animation */
     @keyframes fadeIn {
         from {
@@ -40,37 +38,51 @@
         transform: scale(1.1);
     }
 
-    @media screen and (min-width: 995px)
-    {
-        .mobileCard
-        {
+    @media screen and (min-width: 768px) {
+        .cardhover {
+            width: 49% !important;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .cardhover {
+            width: 32% !important;
+        }
+    }
+
+
+    @media screen and (min-width: 995px) {
+        .mobileCard {
             width: 100%;
-            background-color:red;
+            background-color: red;
         }
     }
 </style>
 @section('admincontent')
 
     @if (Auth::user()->role === 'user')
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 p-2 mb-3 border-bottom">
             <h1 class="h2">Examinations</h1>
         </div>
-        <div class="row mt-3 gap-2 gap-lg-1">
-            @if ($fetchExams)
+        <div class="row mx-3 mx-lg-2 mt-3 gap-2 gap-2">
+            @if ($fetchExams->isNotEmpty())
                 @foreach ($fetchExams as $Exam)
-                    <div class = "col-12 col-sm-6 col-md-4 col-lg-3 border text-center rounded bg-white p-2 p-lg-2 cardhover" style = "width:32%;">
-                        <img src="{{ asset('storage/' . $Exam->avatar) }}" class=" mb-3 img-responsive" alt="{{ $Exam->title }}"
-                            style="height: 7rem;">
-                        <div class="" style="height: 8rem">
-                            <h5 class="text-center fw-bold px-2">{{ strtoupper($Exam->title) }}</h5> 
+                    <div class = "col-12 col-md-6 col-lg-4 border text-center rounded bg-white p-3 py-4 pt-2 cardhover">
+                        <div class="w-100 text-end pb-2 fs-3"><b>{{ $Exam->subjects_count }}</b></div>
+                        <img src="{{ asset('storage/' . $Exam->avatar) }}" class=" mb-3 img-responsive"
+                            alt="{{ $Exam->title }}" style="height: 8rem;">
+                        <div class="" style="height: 10rem">
+                            <h5 class="text-center fw-bold px-2">{{ strtoupper($Exam->title) }}</h5>
                             <p class="text-md-center">{{ Str::limit($Exam->description, 150) }}</p>
                         </div>
                         <a href="{{ route('showsubjects', ['data' => $Exam]) }}"
                             class="btn btn-outline-primary mt-auto p-2 w-50 sub">Show Subject</a>
                     </div>
-                @endforeach  
+                @endforeach
             @else
-                
+                <div class = "col-12 col-md-6 col-lg-4 border bg-white rounded py-3 subject">
+                    <p>No Exams uploaded yet!</p>
+                </div>
             @endif
         </div>
     @else
@@ -200,7 +212,7 @@
                                         <x-input-label :value="__('Exam Image')" />
                                         <input type="file" class="form-control" name="avatar"
                                             aria-describedby="textBlock" />
-                                            <x-input-error :messages="$errors->get('avatar')" class="mt-2 text-danger" />
+                                        <x-input-error :messages="$errors->get('avatar')" class="mt-2 text-danger" />
                                     </div>
                                 </div>
                             </div>

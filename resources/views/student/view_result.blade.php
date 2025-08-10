@@ -51,11 +51,11 @@
                                     <h2>Student information</h2>
                                     <table class="table">
                                         <tr>
-                                            <td>Name : </td>
+                                            <td>Name: </td>
                                             <td>{{ $student_info->first_name }} {{ $student_info->last_name }}</td>
                                         </tr>
                                         <tr>
-                                            <td>E-mail : </td>
+                                            <td>E-mail: </td>
                                             <td>{{ $student_info->email }}</td>
                                         </tr>
                                         {{-- <tr>
@@ -63,27 +63,27 @@
                                 <td>{{ $student_info->dob}}</td>
                             </tr> --}}
                                         <tr>
-                                            <td>Exam name : </td>
+                                            <td>Exam name: </td>
                                             <td>{{ $exam_info->title }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Exam date : </td>
+                                            <td>Exam date: </td>
                                             <td>{{ \Carbon\Carbon::parse($result_info->updated_at)->format('d M Y H:i') }}
                                             </td>
                                         </tr>
                                     </table>
-                                    <h2>Result info</h2>
+                                    <h2>Result info:</h2>
                                     <table class="table">
                                         <tr>
-                                            <td>Correctly answered : </td>
+                                            <td>Correctly answered: </td>
                                             <td>{{ $result_info->yes_ans }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Failed Questions : </td>
+                                            <td>Failed Questions: </td>
                                             <td>{{ $result_info->no_ans }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Total Score : </td>
+                                            <td>Total Score: </td>
                                             <td>
                                                 @php
                                                     $json = $result_info->result_json;

@@ -104,8 +104,10 @@ class SubjectsController extends Controller
     public function usershow(Exams $data)
     {
 
+// 
+
         $exam_id = $data->id;
-        $output = Subjects::where('exam_unique_id', $exam_id)->get();
+        $output = Subjects::where('exam_unique_id', $exam_id)->withCount('questions')->get();
         $current_user = Auth::user()->id;
 
         $result = [];

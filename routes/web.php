@@ -461,82 +461,165 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 // DASHBOARD ROUTING
+// DASHBOARD ROUTING
 Route::get('/dashboard', function () {
 
     $userUniqueID = Auth::user()->unique_id;
     $userID = Auth::user()->id;
-    // $subHistory = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')->get();
-    $subHistory = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')
-        ->orderBy('created_at', 'desc')  // newest first
+
+    // Subscription history
+    $subHistory = Transaction::where('user_unique_id', $userUniqueID)
+        ->where('payment_status', 'success')
+        ->orderBy('created_at', 'desc')
         ->get();
 
-    $subExpiry = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
+    // Latest subscription expiry
+    $subExpiry = Transaction::where('user_unique_id', $userUniqueID)
+        ->where('payment_status', 'success')
+        ->latest('updated_at')
+        ->limit(1)
+        ->get();
 
+    // Recently applied exams
+    $appExams = user_exam::where('user_id', $userID)
+        ->orderBy('created_at', 'desc')
+        ->limit(6)
+        ->get()
+        ->shuffle();
 
-    $appExams = user_exam::where('user_id', $userID)->orderBy('created_at', 'desc')->limit(6)->get()->shuffle();   // Laravel Collection shuffle;
     $appliedExams = [];
     foreach ($appExams as $exam) {
         $appliedExams[] = Subjects::find($exam->subject_id);
     }
 
-    // $appExams = user_exam::with(['subject', 'exam'])
-    //     ->where('user_id', $userID)
-    //     ->orderBy('created_at', 'desc')
-    //     ->limit(6)
-    //     ->get()
-    //     ->shuffle();
+    // Expired orders
+    $totalExpiredOrders = Transaction::where('payment_status', 'success')
+        ->where('expiry_date', '<', now())
+        ->count();
 
-
-
-    $totalExpiredOrders = Transaction::get()->where('payment_status', 'success')->where('expiry_date', '<', now())->count();
-
-    /**
-     * Get all data with user role only
-     */
+    // Users count by gender
     $noOfMaleUsers = Admin::where('role', 'user')->where('gender', 'male')->count();
     $noOfFemaleUsers = Admin::where('role', 'user')->where('gender', 'female')->count();
 
+    // Top 3 exams with subjects count
+    $topExams = Exams::withCount('subjects')
+        ->limit(3)
+        ->get();
 
-
-
-    $topExams = Exams::limit(3)->get();
-    $totalExams = Exams::all()->count();
-    $totalQuestions = Questions::all()->count();
-    $totalSubjects = Subjects::all()->count();
-    $countAdmins = Admin::wherenot('role', 'user')->count();
+    // Total stats
+    $totalExams = Exams::count();
+    $totalQuestions = Questions::count();
+    $totalSubjects = Subjects::count();
+    $countAdmins = Admin::whereNot('role', 'user')->count();
     $countUsers = Admin::where('role', 'user')->count();
     $users = Admin::where('role', 'user')->get();
-    
-    $newUsers = Admin::where('role', 'user')->whereDate('updated_at', now())->get();
 
+    // New users today
+    $newUsers = Admin::where('role', 'user')
+        ->whereDate('updated_at', now())
+        ->get();
 
-    $totalSum = Transaction::get()->where('payment_status', 'success')->sum('amount');
-    $totalOrders = Transaction::get()->where('payment_status', 'success')->count();
-    $totalPendingOrders = Transaction::get()->where('payment_status', 'pending')->count();
-
-    $totalSum = number_format($totalSum);
+    // Transactions summary
+    $totalSum = Transaction::where('payment_status', 'success')->sum('amount');
+    $totalOrders = Transaction::where('payment_status', 'success')->count();
+    $totalPendingOrders = Transaction::where('payment_status', 'pending')->count();
 
     return view('admin.dashboard', [
         'fetchUsers' => $users,
         'fetchNewUsers' => $newUsers,
         'totalUsers' => $countUsers,
         'totalAdmins' => $countAdmins,
-        'topExams' => $topExams,
+        'topExams' => $topExams, // Each exam now has ->subjects_count
         'subhistory' => $subHistory,
         'exp_date' => $subExpiry,
         'appliedExams' => $appliedExams,
-        'totalSum' => $totalSum,
+        'totalSum' => number_format($totalSum),
         'totalOrders' => $totalOrders,
         'totalPendingOrders' => $totalPendingOrders,
         'totalExpiredOrders' => $totalExpiredOrders,
         'totalExams' => $totalExams,
         'totalSubjects' => $totalSubjects,
         'totalQuestions' => $totalQuestions,
-
         'noOfMaleUsers' => $noOfMaleUsers,
         'noOfFemaleUsers' => $noOfFemaleUsers,
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Route::get('/dashboard', function () {
+
+//     $userUniqueID = Auth::user()->unique_id;
+//     $userID = Auth::user()->id;
+//     // $subHistory = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')->get();
+//     $subHistory = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')
+//         ->orderBy('created_at', 'desc')  // newest first
+//         ->get();
+
+//     $subExpiry = Transaction::where('user_unique_id', $userUniqueID)->where('payment_status', 'success')->latest('updated_at')->limit(1)->get();
+
+
+//     $appExams = user_exam::where('user_id', $userID)->orderBy('created_at', 'desc')->limit(6)->get()->shuffle();   // Laravel Collection shuffle;
+//     $appliedExams = [];
+//     foreach ($appExams as $exam) {
+//         $appliedExams[] = Subjects::find($exam->subject_id);
+//     }
+
+//     // $appExams = user_exam::with(['subject', 'exam'])
+//     //     ->where('user_id', $userID)
+//     //     ->orderBy('created_at', 'desc')
+//     //     ->limit(6)
+//     //     ->get()
+//     //     ->shuffle();
+
+//     $totalExpiredOrders = Transaction::get()->where('payment_status', 'success')->where('expiry_date', '<', now())->count();
+
+//     /**
+//      * Get all data with user role only
+//      */
+//     $noOfMaleUsers = Admin::where('role', 'user')->where('gender', 'male')->count();
+//     $noOfFemaleUsers = Admin::where('role', 'user')->where('gender', 'female')->count();
+
+//     $topExams = Exams::limit(3)->get();
+//     $countSubject = Subjects::where('id', 'subject_id')->count();
+
+//     // $topExams = Exams::limit(3)->get();
+//     $totalExams = Exams::all()->count();
+//     $totalQuestions = Questions::all()->count();
+//     $totalSubjects = Subjects::all()->count();
+//     $countAdmins = Admin::wherenot('role', 'user')->count();
+//     $countUsers = Admin::where('role', 'user')->count();
+//     $users = Admin::where('role', 'user')->get();
+
+//     $newUsers = Admin::where('role', 'user')->whereDate('updated_at', now())->get();
+
+
+//     $totalSum = Transaction::get()->where('payment_status', 'success')->sum('amount');
+//     $totalOrders = Transaction::get()->where('payment_status', 'success')->count();
+//     $totalPendingOrders = Transaction::get()->where('payment_status', 'pending')->count();
+
+//     $totalSum = number_format($totalSum);
+
+//     return view('admin.dashboard', [
+//         'fetchUsers' => $users,
+//         'fetchNewUsers' => $newUsers,
+//         'totalUsers' => $countUsers,
+//         'totalAdmins' => $countAdmins,
+//         'topExams' => $topExams,
+//         'subhistory' => $subHistory,
+//         'exp_date' => $subExpiry,
+//         'appliedExams' => $appliedExams,
+//         'totalSum' => $totalSum,
+//         'totalOrders' => $totalOrders,
+//         'totalPendingOrders' => $totalPendingOrders,
+//         'totalExpiredOrders' => $totalExpiredOrders,
+//         'totalExams' => $totalExams,
+//         'totalSubjects' => $totalSubjects,
+//         'totalQuestions' => $totalQuestions,
+
+//         'countSubject' => $countSubject,
+//         'noOfMaleUsers' => $noOfMaleUsers,
+//         'noOfFemaleUsers' => $noOfFemaleUsers,
+//     ]);
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 
 

@@ -108,7 +108,7 @@
     </section>
     @if (Auth::user()->role === 'user')
         <section class="container-fluid notifiication__containter  shadow mt-4">
-            <div class="row p-2">
+            <div class="row">
                 @if (\Session::has('error'))
                     <div class="alert alert-danger">
                         <p class="m-0">{{ \Session::get('error') }}</p>
@@ -120,7 +120,7 @@
                 @endif
             </div>
 
-            <div class="row p-2">
+            <div class="row mx-2 p-2">
                 @if (!empty($subhistory[0]))
                     <div class="col-12 col-md-8 subscription">
                         <i class="fa-regular fa-credit-card"></i>
@@ -154,24 +154,25 @@
                 @endif
             </div>
         </section>
-        <section class="container-fluid top-courses__containter  shadow py-2 my-4">
-            <div class="row">
+        <section class="container-fluid top-courses__containter  shadow py-2">
+            <div class="row gap-2">
                 <div class="col-12 top">
                     <h5>Top Exams Picked for You</h5>
                     <a href="/adexams">See All</a>
                 </div>
                 @foreach ($topExams as $exam)
-                    <div class="col-12 col-md-6 col-lg-4 mb-2 ">
-                        {{-- <div class="card courses sty"> --}}
-                        <div class="card courses sty subHere">
-                            <div class="image_wrapper m-0 p-0"
-                                style="background-image: url('{{ url('storage/' . $exam->avatar) }}');  bacground-position:center; background-size:cover; background-repeat:none; height: 10rem;">
+                    <div class="col-12 col-md-6 col-lg-4 px-0 pb-3" style="width:32%;">
+                        <div class="card courses subHere">
+                            <span class="w-100 text-end"><b>{{$exam->subjects_count}}</b></span>
+                            <div class="image_wrapper m-0 p-0" style="">
+                                <img src="{{ asset('storage/' . $exam->avatar) }}" class=" mb-3" alt="{{ $exam->title }}"
+                                    style="height: 8rem;">
                             </div>
-                            <div class="card-body">
+                            <div class="card-body pb-2">
                                 <div class="courses-tag">Passnownow</div>
                                 <h5 class="card-title">{{ $exam->title }} </h5>
                                 @if (Auth::user()->status === 1)
-                                    <a href="{{ route('showsubjects', ['data' => $exam]) }}" class="btn buton">Select
+                                    <a href="{{ route('showsubjects', ['data' => $exam]) }}" class="btn buton w-100">Select
                                         Exam</a>
                                 @else
                                     <button type="button" class="btn buton" data-bs-toggle="modal"
@@ -503,12 +504,13 @@
                                 </div>
                             </div>
                             <div class="col-8 px-2">
-                                <h5>{{$User->first_name}} {{$User->last_name}}</h5>
+                                <h5>{{ $User->first_name }} {{ $User->last_name }}</h5>
                                 <p>Nigeria</p>
                             </div>
                             <div class="col-2 p-0 status">
-                                <i class="fa-solid fa-circle {{ $User->status ? 'text-success': 'text-danger'}} "></i> <br>
-                                <span>{{$User->updated_at->diffForHumans()}}</span>
+                                <i class="fa-solid fa-circle {{ $User->status ? 'text-success' : 'text-danger' }} "></i>
+                                <br>
+                                <span>{{ $User->updated_at->diffForHumans() }}</span>
                             </div>
                         </div>
                     @endforeach

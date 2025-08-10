@@ -20,6 +20,12 @@ class Subjects extends Model
         'avatar'
     ];
 
+
+    public function questions()
+    {
+        return $this->hasMany(Questions::class, 'subject_unique_id');
+    }
+
     public function results()
     {
         return $this->hasMany(Oex_result::class, 'exam_id', 'id');

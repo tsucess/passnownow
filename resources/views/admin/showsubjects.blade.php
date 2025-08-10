@@ -1,7 +1,29 @@
 @extends('layouts.dasboardtemp')
 
+<style>
+    .subject p {
+        height: 3rem;
+    }
+
+    @media screen and (min-width: 768px) {
+        .subject {
+            width: 49% !important;
+        }
+
+    }
+
+    @media screen and (min-width: 1024px) {
+        .subject {
+            width: 32% !important;
+        }
+
+    }
+</style>
+
+
 @section('admincontent')
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center px-3 pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Subjects</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
@@ -11,43 +33,47 @@
     </div>
 
     @if (Auth::user()->role === 'user')
-        <p>Apply for your preferred subjects</p>
-        <div class = "row mt-3 gap-2">
-
-            {{-- {{ $result }} --}}
+        <p class="px-3">Apply for your preferred subjects</p>
+        <div class = "row mt-3 gap-2 px-4">
             <?php
             $i = 0;
             ?>
-            @foreach ($userFetchSubjects as $subject)
-                {{-- <div class = "col-12 col-md-4 border rounded p-4" style="width: 32%"> --}}
-                <div class = "col-12 col-md-4 border bg-white rounded p-4" style="width: 32%">
-                    {{-- <img src="{{ asset('/images/jsce.png') }}" class = "img-fluid mb-2" style="height: 15rem" /> --}}
-                    <h5 class = "text-center fw-bold jss px-4">{{ $subject->title }}</h5>
-                    <p class = "text-center px-5 py-2">
-                        {{ $subject->description }}
-                        {{-- Start Studying with our wide collection of
-                        all Class Notes for all Terms and all Subjects --}}
-                    </p>
-                    <div class="d-flex justify-content-center mt-5 mb-3">
-                        @if (Auth::user()->status === 1)
-                            @if ($result[$i++] === null)
-                                <button data-id="{{ $subject->id }}" data-exam_id="{{ $exam }}"
-                                    class="btn btn-outline-primary mb-3 py-2 px-4 sub w-50 apply_exam"> Apply &nbsp;<i
-                                        class="fas fa-arrow-circle-right"></i> </button>
-                            @else
-                                {{-- data-subject_id="{{ $subject->id }}" --}}
-                                <a  href="{{ url('start_exam/'.$subject->id) }}"
-                                    class="btn btn-primary mb-3 py-2 px-4 sub w-50 start_exam">Start Exam &nbsp;<i
-                                        class="fas fa-check"></i> </a>
-                            @endif
-                        @else
-                            <button type="button" class="btn btn-outline-primary sub" data-bs-toggle="modal"
-                                data-bs-target="#subscribeModal">Subscribe Now</button>
-                        @endif
 
+            @if ($userFetchSubjects->isNotEmpty())
+                @foreach ($userFetchSubjects as $subject)
+                    <div class = "col-12 col-md-6 col-lg-4 border bg-white rounded py-3 subject">
+                        <div class="w-100 text-end pb-2 fs-3"><b>{{ $subject->questions_count }}</b></div>
+                        <h5 class = "text-center fw-bold jss">{{ $subject->title }}</h5>
+                        <p class = "text-center pt-2">
+                            {{ $subject->description }}
+                            {{-- Start Studying with our wide collection of
+                        all Class Notes for all Terms and all Subjects --}}
+                        </p>
+                        <div class="d-flex justify-content-center mt-2">
+                            @if (Auth::user()->status === 1)
+                                @if ($result[$i++] === null)
+                                    <button data-id="{{ $subject->id }}" data-exam_id="{{ $exam }}"
+                                        class="btn btn-outline-primary mb-3 py-2 px-4 sub w-50 apply_exam"> Apply &nbsp;<i
+                                            class="fas fa-arrow-circle-right"></i> </button>
+                                @else
+                                    {{-- data-subject_id="{{ $subject->id }}" --}}
+                                    <a href="{{ url('start_exam/' . $subject->id) }}"
+                                        class="btn btn-primary mb-3 py-2 px-4 sub start_exam">Start Exam &nbsp;<i
+                                            class="fas fa-check"></i> </a>
+                                @endif
+                            @else
+                                <button type="button" class="btn btn-outline-primary sub" data-bs-toggle="modal"
+                                    data-bs-target="#subscribeModal">Subscribe Now</button>
+                            @endif
+
+                        </div>
                     </div>
+                @endforeach
+            @else
+                <div class = "col-12 border bg-white rounded py-3 text-center">
+                    <p>No Subjects uploaded yet check back later !</p>
                 </div>
-            @endforeach
+            @endif
         </div>
     @endif
 

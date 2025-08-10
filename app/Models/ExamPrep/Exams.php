@@ -16,4 +16,11 @@ class Exams extends Model
         'avatar',
         'status'
     ];
+
+
+    public function subjects()
+{
+    return $this->hasMany(Subjects::class, 'exam_unique_id');
+}
+
 }
