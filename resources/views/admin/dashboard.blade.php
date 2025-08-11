@@ -82,7 +82,32 @@
         line-height: 1.5rem;
         margin-bottom: 0.5rem;
     }
+
+    .modal-content {
+        border-radius: 16px;
+    }
+
+    .display-3 {
+        font-weight: bold;
+        color: #1A69AF;
+    }
+
+    .result-button {
+        background: #1A69AF !important;
+        color: #ffffff;
+    }
+
+    .result-button:hover {
+        background: #1a69afc9 !important;
+        color: #ffffff;
+    }
+
+    h4.modal-title {
+        color: #1A69AF;
+    }
 </style>
+
+
 
 
 @section('admincontent')
@@ -355,6 +380,53 @@
                 </div>
             </div>
         </div>
+
+
+
+        @if (session('exam_completed'))
+            <div class="modal fade show" id="examCompletedModal" tabindex="-1" aria-labelledby="examCompletedLabel"
+                aria-modal="true" style="display: block;">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content p-4 text-center" style="background-color: #ffffff;">
+                        <div class="modal-header border-0">
+                            <h4 class="modal-title w-100">
+                                <i class="fas fa-trophy"></i> Exam Completed!
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <h1 class="display-3">{{ session('percentage') }}%</h1>
+                            <p class="mb-1">
+                                <i class="fas fa-check-circle text-success"></i> Correct: <b>{{ session('yes_ans') }}</b>
+                            </p>
+                            <p class="mb-1">
+                                <i class="fas fa-times-circle text-danger"></i> Wrong: <b>{{ session('no_ans') }}</b>
+                            </p>
+                            <p>
+                                <i class="fas fa-star text-warning"></i> Marks:
+                                <b>{{ session('marks_obtained') }}/{{ session('marks_total') }}</b>
+                            </p>
+                        </div>
+                        <div class="modal-footer border-0 justify-content-center">
+                            <a href="{{ url('view_result/' . session('result_id')) }}"
+                                class="btn result-button text-white">
+                                <i class="fas fa-chart-bar"></i> View Detailed Results
+                            </a>
+                            <button type="button" class="btn" style="background: #AEBACA"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    var examModal = new bootstrap.Modal(document.getElementById('examCompletedModal'));
+                    examModal.show();
+                });
+            </script>
+        @endif
+
+
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {

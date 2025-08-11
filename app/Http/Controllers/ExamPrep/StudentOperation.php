@@ -73,6 +73,10 @@ class StudentOperation extends Controller
         $result = [];
         $userId = Auth::id();
 
+        // Track total marks
+        $totalPossibleMarks = 0;
+        $totalMarksObtained = 0;
+
         for ($i = 1; $i <= $request->index; $i++) {
             if (!isset($data['question' . $i])) {
                 continue;
@@ -93,6 +97,9 @@ class StudentOperation extends Controller
             $aiScore = null;
             $aiFeedback = null;
             $questionScore = 0;
+
+            // Increase possible marks
+            $totalPossibleMarks += $correctMark;
 
             // Handle question type
             if (in_array($questionType, ['multiple', 'alternate'])) {
@@ -117,9 +124,9 @@ class StudentOperation extends Controller
                         $aiResult = $response->json();
                         $aiScore = $aiResult['score'] ?? null;
                         $aiFeedback = $aiResult['feedback'] ?? null;
-                        $isCorrect = $aiScore > 0; // Adjust condition if needed
+                        $isCorrect = $aiScore > 0;
                         $questionScore = round($aiScore * $correctMark);
-                        // Update counters
+
                         if ($isCorrect) {
                             $yes_ans++;
                         } else {
@@ -133,8 +140,6 @@ class StudentOperation extends Controller
                     $aiFeedback = 'AI request failed';
                 }
             }
-
-
 
             // Add to results
             $result[] = [
@@ -150,8 +155,10 @@ class StudentOperation extends Controller
                 'ai_score'    => $questionType === 'theory' ? $aiScore : null,
                 'ai_feedback' => $questionType === 'theory' ? $aiFeedback : null
             ];
-        }
 
+            // Add obtained marks
+            $totalMarksObtained += $questionScore;
+        }
 
         // Update exam info
         $std_info = user_exam::where('user_id', $userId)
@@ -163,10 +170,8 @@ class StudentOperation extends Controller
             $std_info->update();
         }
 
-        // dd($std_info);
-
         // Save results
-        Oex_result::create([
+        $resultRecord = Oex_result::create([
             'exam_id'     => $request->exam_id,
             'user_id'     => $userId,
             'yes_ans'     => $yes_ans,
@@ -174,114 +179,27 @@ class StudentOperation extends Controller
             'result_json' => json_encode($result)
         ]);
 
-        return redirect()->route('dashboard')->with('status', 'Exam submitted successfully');
+        // Calculate marks
+        $totalPossibleMarks = collect($result)->sum('mark');
+        $totalMarksObtained = collect($result)->sum('score');
+        $percentage = $totalPossibleMarks > 0
+            ? round(($totalMarksObtained / $totalPossibleMarks) * 100, 2)
+            : 0;
+
+        // Redirect to dashboard with session data
+        return redirect()->route('dashboard')->with([
+            'exam_completed'  => true,
+            'result_id'       => $resultRecord->id, // for view_result link
+            'exam_id'         => $request->exam_id,
+            'yes_ans'         => $yes_ans,
+            'no_ans'          => $no_ans,
+            'percentage'      => $percentage,
+            'marks_obtained'  => $totalMarksObtained,
+            'marks_total'     => $totalPossibleMarks
+        ]);
     }
 
-    // public function submit_questions(Request $request)
-    // {
-    //     // dd($request); 
-    //     $data = $request->all();
-    //     $yes_ans = 0;
-    //     $no_ans = 0;
-    //     $result = [];
 
-    //     for ($i = 1; $i <= $request->index; $i++) {
-    //         if (!isset($data['question' . $i])) {
-    //             continue;
-    //         }
-
-    //         $questionId = $data['question' . $i];
-    //         $questionType = $data['question_type' . $i] ?? 'multiple';
-    //         $userAnswer = $data['ans' . $i] ?? null;
-
-    //         $question = Questions::find($questionId);
-    //         if (!$question) {
-    //             continue;
-    //         }
-
-    //         $correctAnswer = $question->ans;
-    //         $isCorrect = false;
-
-    //         // Handle question type
-    //         if ($questionType === 'multiple' || $questionType === 'alternate') {
-    //             $isCorrect = ($userAnswer == $correctAnswer);
-    //         } elseif ($questionType === 'theory') {
-    //             // Use AI API to get score + feedback
-    //             try {
-    //                 $response = Http::post("http://16.171.198.174:8000/score_result", [
-    //                     'question_id' => $questionId,
-    //                     'type'        => 'theory',
-    //                     'answer'      => $userAnswer,
-    //                     'correct'     => $correctAnswer,
-    //                     'status'      => 'PENDING',
-    //                 ]);
-
-    //                 if ($response->successful()) {
-    //                     $aiResult = $response->json();
-    //                     $aiScore = $aiResult['score'] ?? null;
-    //                     $aiFeedback = $aiResult['feedback'] ?? null;
-
-    //                     $isCorrect = $aiScore >= 0; // or whatever threshold you want
-    //                 } else {
-    //                     $aiScore = null;
-    //                     $aiFeedback = 'AI scoring failed';
-    //                     $isCorrect = false;
-    //                 }
-    //             } catch (\Exception $e) {
-    //                 $aiScore = null;
-    //                 $aiFeedback = 'AI request failed';
-    //                 $isCorrect = false;
-    //             }
-    //         }
-
-    //         // } elseif ($questionType === 'theory') {
-    //         //     // Remove HTML tags and do basic string compare
-    //         //     $cleanCorrect = strtolower(trim(strip_tags($correctAnswer)));
-    //         //     $cleanUser = strtolower(trim($userAnswer));
-    //         //     $isCorrect = ($cleanCorrect === $cleanUser);
-    //         //     // Optional: Instead of marking wrong, mark pending for theory
-    //         //     $isCorrect = false; // so manual grading needed
-    //         // }
-
-    //         // Update counters
-    //         if ($isCorrect) {
-    //             $yes_ans++;
-    //         } else {
-    //             $no_ans++;
-    //         }
-
-    //         // Add to results
-    //         $result[] = [
-    //             'question_id' => $questionId,
-    //             'type'        => $questionType,
-    //             'answer'      => $userAnswer,
-    //             'correct'     => $correctAnswer,
-    //             'status'      => $isCorrect ? 'YES' : ($questionType === 'theory' ? 'PENDING' : 'NO'),
-    //             'ai_score'    => $questionType === 'theory' ? $aiScore : null,
-    //             'ai_feedback' => $questionType === 'theory' ? $aiFeedback : null
-    //         ];
-    //     }
-
-    //     // Update exam info
-    //     $std_info = user_exam::where('user_id', Auth::id())
-    //         ->where('exam_id', $request->exam_id)
-    //         ->first();
-    //     if ($std_info) {
-    //         $std_info->exam_joined = 1;
-    //         $std_info->update();
-    //     }
-
-    //     // Save results
-    //     $res = new Oex_result();
-    //     $res->exam_id = $request->exam_id;
-    //     $res->user_id = Auth::id();
-    //     $res->yes_ans = $yes_ans;
-    //     $res->no_ans = $no_ans;
-    //     $res->result_json = json_encode($result);
-    //     $res->save();
-
-    //     return redirect()->route('dashboard'); // adjust as needed
-    // }
 
 
 
@@ -336,12 +254,31 @@ class StudentOperation extends Controller
 
 
     //View answer
+    // public function view_answer(Oex_result $data)
+    // {
+    //     // $id = $data->id;
+    //     $exam_id = $data->exam_id;
+    //     $output['questions'] = Questions::where('subject_unique_id', $exam_id)->get()->toArray();
+    //     // dd($output);
+    //     return view('student.view_answer', $output);
+    // }
     public function view_answer(Oex_result $data)
     {
-        // $id = $data->id;
         $exam_id = $data->exam_id;
-        $output['questions'] = Questions::where('subject_unique_id', $exam_id)->get()->toArray();
-        // dd($output);
-        return view('student.view_answer', $output);
+        $current_user = Auth::id();
+
+        $questions = Questions::where('subject_unique_id', $exam_id)->get();
+
+        $result = Oex_result::where('exam_id', $exam_id)
+            ->where('user_id', $current_user)
+            ->firstOrFail();
+
+        $answers = json_decode($result->result_json, true);
+        $answersMap = collect($answers)->keyBy('question_id');
+
+        return view('student.view_answer', [
+            'questions' => $questions,
+            'answersMap' => $answersMap
+        ]);
     }
 }

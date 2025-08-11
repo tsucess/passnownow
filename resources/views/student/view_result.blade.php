@@ -75,11 +75,11 @@
                                     <h2>Result info:</h2>
                                     <table class="table">
                                         <tr>
-                                            <td>Correctly answered: </td>
+                                            <td>Correct answers: </td>
                                             <td>{{ $result_info->yes_ans }}</td>
                                         </tr>
                                         <tr>
-                                            <td>Failed Questions: </td>
+                                            <td>Wrong Answers: </td>
                                             <td>{{ $result_info->no_ans }}</td>
                                         </tr>
                                         <tr>

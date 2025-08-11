@@ -197,11 +197,11 @@
     <!-- Page Loader -->
     <div id="page-loader" class="page-loader">
         <div class="loader-content">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            {{-- <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="visually-hidden">Loading...</span>
-            </div>
-            {{-- <img class="animation__shake" src="{{ asset('images/logo.png') }}" alt="ExamPrepLogo" height="60" width="100"> --}}
-            <p class="text-primary mt-3">Loading, please wait...</p>
+            </div> --}}
+            <img class="animation__shake" src="{{ asset('images/logo-loader.gif') }}" alt="ExamPrepLogo" width="400">
+            {{-- <p class="text-primary mt-3">Loading, please wait...</p> --}}
         </div>
     </div>
 
