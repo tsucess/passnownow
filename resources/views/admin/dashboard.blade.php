@@ -163,7 +163,7 @@
                 @foreach ($topExams as $exam)
                     <div class="col-12 col-md-6 col-lg-4 px-0 pb-3" style="width:32%;">
                         <div class="card courses subHere">
-                            <span class="w-100 text-end"><b>{{$exam->subjects_count}}</b></span>
+                            <span class="w-100 text-end fs-4 "><b>{{$exam->subjects_count}}</b></span>
                             <div class="image_wrapper m-0 p-0" style="">
                                 <img src="{{ asset('storage/' . $exam->avatar) }}" class=" mb-3" alt="{{ $exam->title }}"
                                     style="height: 8rem;">

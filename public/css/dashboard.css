@@ -382,7 +382,8 @@ main {
 
 .courses {
   padding: 0.8rem;
-  height: 21rem;
+  height: 22rem;
+  border-radius: 1rem;
 }
 
 .courses .image_wrapper {

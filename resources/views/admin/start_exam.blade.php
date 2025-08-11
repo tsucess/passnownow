@@ -93,26 +93,26 @@
         }
 
         /* .page-nums {
-                        padding: 10px;
-                        text-align: center;
-                        list-style: none;
-                    }
+                                padding: 10px;
+                                text-align: center;
+                                list-style: none;
+                            }
 
-                    .page-nums li {
-                        background-color: #b1b4b8;
-                        padding: 0.5rem 0.9rem;
-                        display: inline-block;
-                        margin: 0 10px;
-                        margin: 4px;
-                        cursor: pointer;
-                        color: white;
-                        border-radius: 0.5rem;
-                    }
+                            .page-nums li {
+                                background-color: #b1b4b8;
+                                padding: 0.5rem 0.9rem;
+                                display: inline-block;
+                                margin: 0 10px;
+                                margin: 4px;
+                                cursor: pointer;
+                                color: white;
+                                border-radius: 0.5rem;
+                            }
 
-                    .page-nums .active {
-                        background: #1A69AF;
-                        color: #ffffff;
-                    } */
+                            .page-nums .active {
+                                background: #1A69AF;
+                                color: #ffffff;
+                            } */
 
 
 
@@ -201,18 +201,16 @@
         <!-- Content Header (Page header) -->
         <div class="content-header">
             <div class="container-fluid">
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <h1 class="m-0">Exams</h1>
-                    </div><!-- /.col -->
-                    {{-- <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Exam</li>
-                        </ol>
-                    </div> --}}
-                    <!-- /.col -->
-                </div><!-- /.row -->
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center px-3 pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Exams</h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group me-2" id="topButton">
+                            <a href="/adexams" class="btn btn-secondary p-1 px-5 shadow">Back</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
             </div><!-- /.container-fluid -->
 
             <section class="content">
@@ -221,110 +219,112 @@
                         <div class="col-12">
 
                             @if ($questions->isNotEmpty())
-                            <!-- Default box -->
-                            <div class="card">
-                                <div class="card-body pb-0">
-                                    <div class="row p-2">
-                                        <div class="col-4">
-                                            <h3 class="fs-5 fs-md-4"><b>Time</b>: {{ $subject->exam_duration }}min</h3>
-                                        </div>
-                                        <div class="col-4">
-                                            <h3 class="fs-5 fs-md-4"><b>Timer</b>: <span class="js-timeout"
-                                                    id="timer">{{ $subject['exam_duration'] }}:00</span></h3>
-                                        </div>
+                                <!-- Default box -->
+                                <div class="card">
+                                    <div class="card-body pb-0">
+                                        <div class="row p-2">
+                                            <div class="col-4">
+                                                <h3 class="fs-5 fs-md-4"><b>Time</b>: {{ $subject->exam_duration }}min</h3>
+                                            </div>
+                                            <div class="col-4">
+                                                <h3 class="fs-5 fs-md-4"><b>Timer</b>: <span class="js-timeout"
+                                                        id="timer">{{ $subject['exam_duration'] }}:00</span></h3>
+                                            </div>
 
-                                        <div class="col-4 p-0">
-                                            <h3 class="fs-5 fs-md-4"><b>Status</b>: Running</h3>
+                                            <div class="col-4 p-0">
+                                                <h3 class="fs-5 fs-md-4"><b>Status</b>: Running</h3>
+                                            </div>
                                         </div>
                                     </div>
+                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
-                            <div class=" mt-4">
-                                <div class="card-body pt-0">
-                                    <form action="{{ url('submit_questions') }}" method="POST" id="form">
-                                        @csrf
-                                        <input type="hidden" name="exam_id" value="{{ $subject->id }}">
-                                        <input type="hidden" name="index" value="{{ count($questions) }}">
+                                <!-- /.card -->
+                                <div class=" mt-4">
+                                    <div class="card-body pt-0">
+                                        <form action="{{ url('submit_questions') }}" method="POST" id="form">
+                                            @csrf
+                                            <input type="hidden" name="exam_id" value="{{ $subject->id }}">
+                                            <input type="hidden" name="index" value="{{ count($questions) }}">
 
-                                        <div class="row list">
-                                            @foreach ($questions as $q)
-                                                <div class="col-sm-12 mt-4 item bg-white">
-                                                    <h5 class="mb-3 text-color"> Question {{ $loop->iteration }}.</h5>
-                                                    <p class="fs-5">{{ $q->question }}</p>
-                                                    <?php
-                                                    $options = json_decode(json_decode(json_encode($q->options)), true);
-                                                    ?>
-                                                    <input type="hidden" name="question_type{{ $loop->iteration }}"
-                                                        value="{{ $q->question_type }}" />
-                                                    <input type="hidden" name="question{{ $loop->iteration }}"
-                                                        value="{{ $q['id'] }}" />
-                                                    <input type="hidden" name="question_mark{{ $loop->iteration }}"
-                                                        value="{{ $q['mark'] }}" />
-                                                    @if ($q->question_type === 'multiple')
-                                                        <ul class="ms-md-3 question_options">
-                                                            <li><input type="radio" value="{{ $options['option1'] }}"
-                                                                    name="ans{{ $loop->iteration }}">
-                                                                {{ $options['option1'] }}
-                                                            </li>
-                                                            <li><input type="radio" value="{{ $options['option2'] }}"
-                                                                    name="ans{{ $loop->iteration }}">
-                                                                {{ $options['option2'] }}
-                                                            </li>
-                                                            <li><input type="radio" value="{{ $options['option3'] }}"
-                                                                    name="ans{{ $loop->iteration }}">
-                                                                {{ $options['option3'] }}
-                                                            </li>
-                                                            <li><input type="radio" value="{{ $options['option4'] }}"
-                                                                    name="ans{{ $loop->iteration }}">
-                                                                {{ $options['option4'] }}
-                                                            </li>
+                                            <div class="row list">
+                                                @foreach ($questions as $q)
+                                                    <div class="col-sm-12 mt-4 item bg-white">
+                                                        <h5 class="mb-3 text-color"> Question {{ $loop->iteration }}.</h5>
+                                                        <p class="fs-5">{{ $q->question }}</p>
+                                                        <?php
+                                                        $options = json_decode(json_decode(json_encode($q->options)), true);
+                                                        ?>
+                                                        <input type="hidden" name="question_type{{ $loop->iteration }}"
+                                                            value="{{ $q->question_type }}" />
+                                                        <input type="hidden" name="question{{ $loop->iteration }}"
+                                                            value="{{ $q['id'] }}" />
+                                                        <input type="hidden" name="question_mark{{ $loop->iteration }}"
+                                                            value="{{ $q['mark'] }}" />
+                                                        @if ($q->question_type === 'multiple')
+                                                            <ul class="ms-md-3 question_options">
+                                                                <li><input type="radio" value="{{ $options['option1'] }}"
+                                                                        name="ans{{ $loop->iteration }}">
+                                                                    {{ $options['option1'] }}
+                                                                </li>
+                                                                <li><input type="radio" value="{{ $options['option2'] }}"
+                                                                        name="ans{{ $loop->iteration }}">
+                                                                    {{ $options['option2'] }}
+                                                                </li>
+                                                                <li><input type="radio" value="{{ $options['option3'] }}"
+                                                                        name="ans{{ $loop->iteration }}">
+                                                                    {{ $options['option3'] }}
+                                                                </li>
+                                                                <li><input type="radio" value="{{ $options['option4'] }}"
+                                                                        name="ans{{ $loop->iteration }}">
+                                                                    {{ $options['option4'] }}
+                                                                </li>
 
-                                                            <li style="display: none;"><input value="0" type="radio"
-                                                                    checked="checked" name="ans{{ $loop->iteration }}">
-                                                                {{ $options['option4'] }}</li>
-                                                        </ul>
-                                                    @elseif ($q->question_type === 'alternate')
-                                                        <ul class="ms-md-3 question_options pb-3">
-                                                            <li><input type="radio" value="{{ $options['option1'] }}"
-                                                                    name="ans{{ $loop->iteration }}">
-                                                                {{ $options['option1'] }}
-                                                            </li>
-                                                            <li><input type="radio" value="{{ $options['option2'] }}"
-                                                                    name="ans{{ $loop->iteration }}">
-                                                                {{ $options['option2'] }}
-                                                            </li>
-                                                            {{-- <li style="display: none;"><input value="0" type="radio"
+                                                                <li style="display: none;"><input value="0"
+                                                                        type="radio" checked="checked"
+                                                                        name="ans{{ $loop->iteration }}">
+                                                                    {{ $options['option4'] }}</li>
+                                                            </ul>
+                                                        @elseif ($q->question_type === 'alternate')
+                                                            <ul class="ms-md-3 question_options pb-3">
+                                                                <li><input type="radio" value="{{ $options['option1'] }}"
+                                                                        name="ans{{ $loop->iteration }}">
+                                                                    {{ $options['option1'] }}
+                                                                </li>
+                                                                <li><input type="radio" value="{{ $options['option2'] }}"
+                                                                        name="ans{{ $loop->iteration }}">
+                                                                    {{ $options['option2'] }}
+                                                                </li>
+                                                                {{-- <li style="display: none;"><input value="0" type="radio"
                                                                     checked="checked" name="ans{{ $key + 1 }}">
                                                                 {{ $options['option4'] }}</li> --}}
-                                                        </ul>
-                                                    @else
-                                                        <textarea class="ms-md-3 p-2 " style="width: 97%; border-radius: 10px " id="" rows="4"
-                                                            name="ans{{ $loop->iteration }}" placeholder="Type in your Answer here"></textarea>
-                                                    @endif
-                                                </div>
-                                            @endforeach
+                                                            </ul>
+                                                        @else
+                                                            <textarea class="ms-md-3 p-2 " style="width: 97%; border-radius: 10px " id="" rows="4"
+                                                                name="ans{{ $loop->iteration }}" placeholder="Type in your Answer here"></textarea>
+                                                        @endif
+                                                    </div>
+                                                @endforeach
 
-                                            <div class="col-sm-12">
-                                                <button type="submit" class="btn btn-primary"
-                                                    id="myCheck">Submit</button>
-                                            </div>
-
-                                            <div class="row ms-2 p-0">
-                                                <?php if (isset($questions)) {?>
-                                                <div class="col-12 p-0">
-                                                    <ul class="page-nums"></ul>
+                                                <div class="col-sm-12">
+                                                    <button type="submit" class="btn btn-primary"
+                                                        id="myCheck">Submit</button>
                                                 </div>
-                                                <?php }?>
+
+                                                <div class="row ms-2 p-0">
+                                                    <?php if (isset($questions)) {?>
+                                                    <div class="col-12 p-0">
+                                                        <ul class="page-nums"></ul>
+                                                    </div>
+                                                    <?php }?>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
+                                    <!-- /.card-body -->
                                 </div>
-                                <!-- /.card-body -->
-                            </div>
                             @else
-                                <p>No Questions uploaded for this Exams Yet Check back later!</p>
+                                <p class="border bg-white rounded py-3 text-center">No questions uploaded for this Exams
+                                    yet, Check back later!</p>
                             @endif
                         </div>
                     </div>
