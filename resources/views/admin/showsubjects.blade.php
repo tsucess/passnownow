@@ -18,6 +18,11 @@
         }
 
     }
+
+    #exam-instruction li {
+        line-height: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
 </style>
 
 
@@ -190,33 +195,40 @@
                     </div>
                 </div>
 
+
                 <div class = "container-fluid my-4">
                     <div class = "row">
                         <div class = "col-12 col-md-12 col-lg-12 bg-white d-flex flex-column p-5 w-100 h-75">
                             <h5 class = "fw-bold align-items-start">Instructions</h5>
                             <p>
-                                Please read the instructions before starting your examination.
+                                Please read the following instructions carefully before starting your examination.
                             </p>
-                            <p>
-                                1. This is a timed examination. Your countdown begin as soon as
-                                you begin the exam. The Exam time is located at the top left
-                                corner of your screen and the timer at the center.
-                            </p>
-                            <p>
-                                2. You can only select one answer per question. If you are not sure
-                                of a question, you can skip by pressing the next button and
-                                return by using the previous button.
-                            </p>
-                            <p>
-                                3. Once you have completed your test, click the submit button
-                                located at the last page of your exam on the left corner below your question.
-                            </p>
+                            <ol>
+                                <li>
+                                    <strong>Timed Examination:</strong> The countdown will begin as soon as you start the
+                                    exam.
+                                    The exam duration is shown at the top left of your screen, and the live timer is
+                                    displayed at the center.
+                                </li>
+                                <li>
+                                    <strong>Answering Multiple-Choice & Alternate Questions:</strong> You may select only
+                                    <em>one</em> answer per question.
+                                    If you are unsure about a question, you can skip it using the <strong>Next</strong>
+                                    button and return to it later using the <strong>Previous</strong> button.
+                                </li>
+                                <li>
+                                    <strong>Answering Theory Questions:</strong> For theory questions, type your answer in
+                                    the provided answer area (text box).
+                                    Ensure your responses are clear and complete before moving to the next question.
+                                </li>
+                                <li>
+                                    <strong>Submitting Your Exam:</strong> Once you have completed all questions, click the
+                                    <strong>Submit</strong> button located at the bottom left of the last page.
+                                    Please note that once you submit, your answers cannot be changed.
+                                </li>
+                            </ol>
+
                             <div class="text-center mt-4 startexambutton">
-                                {{-- <button class = "btn p-2" style = "background:#1A69AF; color: #fff;">Start
-                                    Examination</button> --}}
-                                {{-- <a href="{{ url('start_exam/' . $subject->id) }}"
-                                    class="btn btn-primary mb-3 py-2 px-4 sub start_exam" data-bs-toggle="modal"
-                                    data-bs-target="#exam-instruction">Start Exam &nbsp;<i class="fas fa-check"></i> </a> --}}
                                 <a href="#" id="modal-start-exam-link" class="btn btn-primary mb-3 py-2 px-4 sub">
                                     Start Exam &nbsp;<i class="fas fa-check-circle"></i>
                                 </a>

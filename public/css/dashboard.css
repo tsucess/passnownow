@@ -428,6 +428,11 @@ main {
   border-radius: 0.2rem;
 }
 
+.courses .buton:hover {
+  background-color: var(--color-primary-blue);
+  color: var(--color-text-white);
+}
+
 
 .history__container .row {
   /* gap: 1rem */
