@@ -6,7 +6,9 @@ export default defineConfig({
         laravel({
             input: [
               "public/css/app.css", 
-              "public/js/app.js"
+              "public/js/app.js",
+              'resources/js/app.js',
+              'resources/sass/app.scss'
             ], // Add your CSS and JS entry points here
             refresh: true,
         }),
