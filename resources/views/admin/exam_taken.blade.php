@@ -11,14 +11,7 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h1 class="mt-2">Exams</h1>
-                    </div><!-- /.col -->
-                    {{-- <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Exam</li>
-                        </ol>
-                    </div> --}}
-                    <!-- /.col -->
+                    </div>
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
 
@@ -47,26 +40,21 @@
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
                                                         <td>{{ $attempt->exam->title ?? 'Unknown Exam' }}</td>
-                                                        <td><p style="width:10rem">{{ \Carbon\Carbon::parse($attempt->updated_at)->format('d M Y H:i') }}</p> 
+                                                        <td>
+                                                            <p style="width:10rem">
+                                                                {{ \Carbon\Carbon::parse($attempt->updated_at)->format('d M Y H:i') }}
+                                                            </p>
                                                         </td>
-                                                        {{-- <td>{{ $attempt->status }}</td> --}}
                                                         <td>Completed</td>
                                                         <td>
-                                                            {{-- @if ($attempt->exam_joined == 1) --}}
                                                             <a href="{{ url('/view_result', ['data' => $attempt]) }}"
-                                                                class="btn btn-info btn-sm" style="width:6rem">View Result</a>
-                                                            {{-- @endif --}}
+                                                                class="btn btn-secondary btn-sm" style="width:6rem">View
+                                                                Result</a>
                                                         </td>
                                                         <td>
-                                                            {{-- @if (\Carbon\Carbon::parse($attempt->exam_date)->isToday())
-                                                            @if ($attempt->exam_joined == 0)
-                                                                <a href="{{ url('/join_exam/' . $attempt->exam_id) }}"
-                                                                    class="btn btn-primary btn-sm">Join Exam</a>
-                                                            @else --}}
                                                             <a href="{{ url('/view_answer', ['data' => $attempt]) }}"
-                                                                class="btn btn-primary btn-sm" style="width:7rem">View Answers</a>
-                                                            {{-- @endif --}}
-                                                            {{-- @endif --}}
+                                                                class="btn btn-primary btn-sm" style="width:7rem">View
+                                                                Answers</a>
                                                         </td>
                                                     </tr>
                                                 @endforeach
