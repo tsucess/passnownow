@@ -26,8 +26,10 @@
         class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center px-3 pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Subjects</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
-            <div class="btn-group me-2" id="topButton">
-                <a href="/adexams" class="btn btn-secondary p-1 px-5 shadow">Back</a>
+            <div class="btn-group me-2">
+                {{-- <a href="/adexams" class="btn btn-secondary p-1 px-5 shadow">Back</a> --}}
+                <a href="{{ URL::previous() }}" class="btn btn-secondary p-1 px-5 shadow">Back</a>
+
             </div>
         </div>
     </div>
@@ -56,10 +58,14 @@
                                         class="btn btn-outline-primary mb-3 py-2 px-4 sub w-50 apply_exam"> Apply &nbsp;<i
                                             class="fas fa-arrow-circle-right"></i> </button>
                                 @else
-                                    {{-- data-subject_id="{{ $subject->id }}" --}}
-                                    <a href="{{ url('start_exam/' . $subject->id) }}"
-                                        class="btn btn-primary mb-3 py-2 px-4 sub start_exam">Start Exam &nbsp;<i
-                                            class="fas fa-check"></i> </a>
+                                    {{-- <button class="btn btn-primary mb-3 py-2 px-4 sub start_exam" data-bs-toggle="modal"
+                                        data-bs-target="#exam-instruction" data-id="{{ $subject->id }}">Start Exam &nbsp;<i
+                                            class="fas fa-check"></i>
+                                    </button> --}}
+                                    <button class="btn btn-primary mb-3 py-2 px-4 sub start_exam" data-bs-toggle="modal"
+                                        data-bs-target="#exam-instruction" data-subject-id="{{ $subject->id }}">
+                                        Start Exam &nbsp;<i class="fas fa-play"></i>
+                                    </button>
                                 @endif
                             @else
                                 <button type="button" class="btn btn-outline-primary sub" data-bs-toggle="modal"
@@ -74,6 +80,8 @@
                     <p>No Subjects uploaded yet check back later !</p>
                 </div>
             @endif
+
+
         </div>
     @endif
 
@@ -86,10 +94,7 @@
     <script src="{{ url('js/table/jquery.dataTables.min.js') }}"></script>
     <script src="{{ url('js/table/dataTables.bootstrap.min.js') }}"></script>
 
-
     <script>
-        let table = new DataTable('#admin-table');
-
         // $(document).on('click', '.start_exam', function() {
         //     var id = $(this).attr('data-subject_id');
         //     console.log(id);
@@ -105,6 +110,22 @@
         //         }
         //     })
         // })
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const examModal = document.getElementById('exam-instruction');
+            const startExamLink = document.getElementById('modal-start-exam-link');
+
+            examModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget; // The button that triggered the modal
+                const subjectId = button.getAttribute('data-subject-id');
+
+                // Update the link in the modal
+                startExamLink.setAttribute('href', `/start_exam/${subjectId}`);
+            });
+        });
+
+
+
 
         $(document).on('click', '.apply_exam', function() {
             var id = $(this).attr('data-id');
@@ -153,6 +174,61 @@
         });
     </script>
 
+
+    <!-- Large modal -->
+    <div class="modal fade" id="exam-instruction" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close border-radius-50 p-2" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="row justify-content-start ms-2">
+                    <div class="col-12 col-md-6 col-lg-6 mt-4">
+                        <h3>Welcome {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }}!</h3>
+                    </div>
+                </div>
+
+                <div class = "container-fluid my-4">
+                    <div class = "row">
+                        <div class = "col-12 col-md-12 col-lg-12 bg-white d-flex flex-column p-5 w-100 h-75">
+                            <h5 class = "fw-bold align-items-start">Instructions</h5>
+                            <p>
+                                Please read the instructions before starting your examination.
+                            </p>
+                            <p>
+                                1. This is a timed examination. Your countdown begin as soon as
+                                you begin the exam. The Exam time is located at the top left
+                                corner of your screen and the timer at the center.
+                            </p>
+                            <p>
+                                2. You can only select one answer per question. If you are not sure
+                                of a question, you can skip by pressing the next button and
+                                return by using the previous button.
+                            </p>
+                            <p>
+                                3. Once you have completed your test, click the submit button
+                                located at the last page of your exam on the left corner below your question.
+                            </p>
+                            <div class="text-center mt-4 startexambutton">
+                                {{-- <button class = "btn p-2" style = "background:#1A69AF; color: #fff;">Start
+                                    Examination</button> --}}
+                                {{-- <a href="{{ url('start_exam/' . $subject->id) }}"
+                                    class="btn btn-primary mb-3 py-2 px-4 sub start_exam" data-bs-toggle="modal"
+                                    data-bs-target="#exam-instruction">Start Exam &nbsp;<i class="fas fa-check"></i> </a> --}}
+                                <a href="#" id="modal-start-exam-link" class="btn btn-primary mb-3 py-2 px-4 sub">
+                                    Start Exam &nbsp;<i class="fas fa-check-circle"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Subscribe Modal -->
     <div class="modal fade" id="subscribeModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
         aria-hidden="true">
@@ -178,4 +254,5 @@
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection

@@ -3,15 +3,19 @@
 @section('admincontent')
     <style>
         /* .select2-container--default .select2-selection--single {
-                            height: auto !important;
-                            padding: 0.7rem 0.5rem  !important;
-                            border: 1px solid #ced4da;
-                            border-radius: 0.375rem;
-                        }
+            height: auto !important;
+            padding: 0.7rem 0.5rem  !important;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+        }
 
-                        .select2-selection__rendered {
-                            line-height: normal !important;
-                        } */
+        .select2-selection__rendered {
+            line-height: normal !important;
+        } */
+
+        .button-save {
+            background-color: #1A69AF;
+        }
     </style>
     <section class="container-fluid profile__container">
         <div class="row">
@@ -229,14 +233,33 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-12 col-lg-5 profile">
-                <div class="image_wrapper">
-                    <img src="{{ asset('images/avatar.png') }}" class="profile_image" alt="">
+                <div class="image_wrapper" style="position: relative;">
+                    <img src="{{ Auth::user()->profile_photo ? asset('storage/' . Auth::user()->profile_photo) : asset('images/avatar.png') }}"
+                        class="profile_image" alt="Profile Photo" id="profilePreview"
+                        onclick="document.getElementById('profilePhotoInput').click();" />
+                    <i class="fa fa-pencil"
+                        style="position: absolute; bottom: 10px; right: 10px; background: rgba(0, 0, 0, 0.5); color: white; padding: 5px; border-radius: 50%; cursor: pointer;"
+                        onclick="document.getElementById('profilePhotoInput').click();"></i>
                 </div>
                 <h5>{{ $user->first_name . ' ' . $user->last_name }}</h5>
-                <button class="btn">Change profile photo</button>
-                <br>
-                <a href="#">Delete profile photo</a href="#">
+
+                <!-- Profile Photo Form -->
+                <form action="{{ route('profile.photo.update') }}" method="POST" enctype="multipart/form-data"
+                    id="photoForm">
+                    @csrf
+                    <input type="file" id="profilePhotoInput" name="photo" accept="image/*" style="display: none;"
+                        onchange="previewProfilePhoto(event)" required>
+                    <button type="submit" class="btn w-50 button-save" id="saveButton" disabled>Change
+                        photo</button>
+                </form>
+                <!-- Delete Profile Photo Form -->
+                <form action="{{ route('profile.photo.delete') }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="bg-transparent border-0 text-danger">Delete Profile Photo</button>
+                </form>
             </div>
 
 
@@ -303,6 +326,49 @@
                 allowClear: true
             });
         });
+    </script>
+
+    <script>
+        // Preview the selected profile photo
+        function previewProfilePhoto(event) {
+            const file = event.target.files[0]; // Get the selected file
+
+            // Check if a file is selected
+            if (!file) {
+                console.error("No file selected.");
+                return;
+            }
+
+            // Ensure the file is an image
+            if (!file.type.startsWith('image/')) {
+                console.error("The selected file is not an image.");
+                alert("Please select a valid image file.");
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const profilePreview = document.getElementById('profilePreview');
+
+                // Update the image preview
+                profilePreview.src = e.target.result;
+
+                // Enable the save button
+                const saveButton = document.getElementById('saveButton');
+                saveButton.textContent = 'Save Picture';
+                saveButton.disabled = false;
+                saveButton.style.backgroundColor = "#1A69AF";
+                saveButton.style.color = "#FFFFFF";
+            };
+
+            reader.onerror = function(e) {
+                console.error("Error reading file:", e);
+                alert("There was an error reading the file. Please try again.");
+            };
+
+            reader.readAsDataURL(file); // Read the file as a data URL
+        }
     </script>
 
 

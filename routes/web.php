@@ -174,7 +174,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    Route::post('/profile/photo', [ProfileController::class, 'updatePhoto'])->name('profile.photo.update');
+    Route::delete('/profile/photo', [ProfileController::class, 'deletePhoto'])->name('profile.photo.delete');
 
     // Route::get('/detailedstat', function () {
     //     return view('admin.detailedstat');
@@ -621,6 +622,10 @@ Route::get('/dashboard', function () {
 //     ]);
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::get('/examinstruction', function () {
+    return view('admin.examinstruction');
+});
 
 
 Route::middleware('guest')->group(function () {

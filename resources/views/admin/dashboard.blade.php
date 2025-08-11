@@ -92,7 +92,8 @@
     <section class="container-fluid greeting__containter mt-3 animate__animated animate__slideInLeft">
         <div class="row greet__user">
             <div class="col-12 col-md-6 greetings ">
-                <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2>
+                {{-- <h2>Hello {{ ucfirst(Auth::user()->username) }} !</h2> --}}
+                <h2>Hello {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }}!</h2>
                 @if (Auth::user()->role === 'user')
                     <p>Let's learn something today</p>
                     <br>
@@ -163,7 +164,7 @@
                 @foreach ($topExams as $exam)
                     <div class="col-12 col-md-6 col-lg-4 px-0 pb-3" style="width:32%;">
                         <div class="card courses subHere">
-                            <span class="w-100 text-end fs-4 "><b>{{$exam->subjects_count}}</b></span>
+                            <span class="w-100 text-end fs-4 "><b>{{ $exam->subjects_count }}</b></span>
                             <div class="image_wrapper m-0 p-0" style="">
                                 <img src="{{ asset('storage/' . $exam->avatar) }}" class=" mb-3" alt="{{ $exam->title }}"
                                     style="height: 8rem;">
@@ -245,13 +246,20 @@
                         <a href="/adexams">See All</a>
                     </div>
                     @foreach ($appliedExams as $subject)
-                        <div class="subject sub">
-                            <span><i class="fa-solid fa-graduation-cap"></i></span>
-                            <span>
-                                <h6>{{ $subject->title }}</h6>
-                                <a href="{{ url('start_exam/' . $subject->id) }}" class="mb-0">Start Exam</a>
+                        <button class="subject sub w-100 start_exam justify-content-between" data-bs-toggle="modal"
+                            data-bs-target="#exam-instruction" data-subject-id="{{ $subject->id }}">
+                            <span class="d-flex align-items-center gap-2">
+                                <span><i class="fa-solid fa-graduation-cap"></i></span>
+                                <span>
+                                    <h6>{{ $subject->title }}</h6>
+                                    {{-- <a href="{{ url('start_exam/' . $subject->id) }}" class="mb-0">Start Exam</a> --}}
+                                </span>
                             </span>
-                        </div>
+                            <span class="w-50 text-end">
+                                Start Exam &nbsp;
+                                {{-- <i class="fas fa-play text-center" style="padding: 0.6rem 0.75rem"></i> --}}
+                            </span>
+                        </button>
                     @endforeach
                 </div>
             </div>
@@ -281,6 +289,76 @@
                 </div>
             </div>
         </div>
+        <!-- Large modal -->
+        <div class="modal fade" id="exam-instruction" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close border-radius-50 p-2" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="row justify-content-start ms-2">
+                        <div class="col-12 col-md-6 col-lg-6 mt-4">
+                            <h3>Welcome {{ ucfirst(Auth::user()->first_name) }} {{ ucfirst(Auth::user()->last_name) }}!
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div class = "container-fluid my-4">
+                        <div class = "row">
+                            <div class = "col-12 col-md-12 col-lg-12 bg-white d-flex flex-column p-5 w-100 h-75">
+                                <h5 class = "fw-bold align-items-start">Instructions</h5>
+                                <p>
+                                    Please read the instructions before starting your examination.
+                                </p>
+                                <p>
+                                    1. This is a timed examination. Your countdown begin as soon as
+                                    you begin the exam. The Exam time is located at the top left
+                                    corner of your screen and the timer at the center.
+                                </p>
+                                <p>
+                                    2. You can only select one answer per question. If you are not sure
+                                    of a question, you can skip by pressing the next button and
+                                    return by using the previous button.
+                                </p>
+                                <p>
+                                    3. Once you have completed your test, click the submit button
+                                    located at the last page of your exam on the left corner below your question.
+                                </p>
+                                <div class="text-center mt-4 startexambutton">
+                                    {{-- <button class = "btn p-2" style = "background:#1A69AF; color: #fff;">Start
+                                    Examination</button> --}}
+                                    {{-- <a href="{{ url('start_exam/' . $subject->id) }}"
+                                    class="btn btn-primary mb-3 py-2 px-4 sub start_exam" data-bs-toggle="modal"
+                                    data-bs-target="#exam-instruction">Start Exam &nbsp;<i class="fas fa-check"></i> </a> --}}
+                                    <a href="#" id="modal-start-exam-link"
+                                        class="btn btn-primary mb-3 py-2 px-4 sub">
+                                        Start Exam &nbsp;<i class="fas fa-check-circle"></i>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const examModal = document.getElementById('exam-instruction');
+                const startExamLink = document.getElementById('modal-start-exam-link');
+
+                examModal.addEventListener('show.bs.modal', function(event) {
+                    const button = event.relatedTarget; // The button that triggered the modal
+                    const subjectId = button.getAttribute('data-subject-id');
+
+                    // Update the link in the modal
+                    startExamLink.setAttribute('href', `/start_exam/${subjectId}`);
+                });
+            });
+        </script>
     @else
         <div class ="row mx-3  gap-2">
             <div class = "col-12 col-md-4 col-lg-4 mt-3 mb-2 bg-white border border-start-0 border-end-0 border-3 calculationBox"
@@ -517,6 +595,7 @@
                 </div>
             </div>
         </div>
+
 
         <script type="module">
             // Visitor Chart 
