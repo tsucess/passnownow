@@ -112,7 +112,7 @@ class StudentOperation extends Controller
                 }
             } elseif ($questionType === 'theory') {
                 try {
-                    $response = Http::post("http://16.171.198.174:8000/score_result", [
+                    $response = Http::post("http://13.60.163.82:8000/score_result", [
                         'question_id' => $questionId,
                         'type'        => 'theory',
                         'answer'      => $userAnswer,
