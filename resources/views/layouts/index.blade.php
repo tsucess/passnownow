@@ -351,13 +351,13 @@
                 });
             });
 
-            document.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', e => {
-                    if (link.getAttribute('target') === '_blank' || link.href.startsWith(
-                            'javascript:')) return;
-                    loader.classList.remove('hidden');
-                });
-            });
+            // document.querySelectorAll('a').forEach(link => {
+            //     link.addEventListener('click', e => {
+            //         if (link.getAttribute('target') === '_blank' || link.href.startsWith(
+            //                 'javascript:')) return;
+            //         loader.classList.remove('hidden');
+            //     });
+            // });
         });
     </script>
 
