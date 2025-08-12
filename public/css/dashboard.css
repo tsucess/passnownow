@@ -790,6 +790,15 @@ main {
 
   }
 
+
+  .top-courses__containter .row .column {
+    width: 17rem;
+  }
+
+  .courses {
+  height: 24rem;
+}
+
   .form-control-dark {
     width: 30%;
   }
@@ -840,6 +849,15 @@ main {
   .greeting__containter .row .greeting-img img {
     width: 21rem;
   }
+
+
+   .top-courses__containter .row .column {
+    width: 32.5%;
+  }
+
+
+
+
 
   .calculationBox {
     width: 32% !important;
@@ -997,4 +1015,8 @@ main {
   .examcard {
     width: 24rem !important;
   }
+
+      .courses {
+  height: 22rem;
+}
 }
