@@ -171,7 +171,6 @@ class PaymentController extends Controller
         ]);
 
         $page = Transaction::where('reference', $reference)->get();
-        // dd($page);
 
         $userID = Auth::user()->unique_id;
         Admin::where('unique_id', $userID)->where('role', 'user')->update(['status' => 1]);
