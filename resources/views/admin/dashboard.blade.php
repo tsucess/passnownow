@@ -201,7 +201,7 @@
                             </div>
                             <div class="card-body pb-2">
                                 <div class="courses-tag">Passnownow</div>
-                                <h5 class="card-title">{{ $exam->title }} </h5>
+                                <h5 class="card-title">{{ Str::limit($exam->title, 38) }} </h5>
                                 @if (Auth::user()->status === 1)
                                     <a href="{{ route('showsubjects', ['data' => $exam]) }}" class="btn buton w-100">Select
                                         Exam</a>
