@@ -4,9 +4,9 @@
 # {{ $greeting }}
 @else
 @if ($level === 'error')
-# Whoops!
+# @lang('Whoops!')
 @else
-# Hi {{ $user->name ?? 'there' }},
+# @lang('Hello!')
 @endif
 @endif
 
@@ -35,15 +35,24 @@
 
 @endforeach
 
-{{-- Closing --}}
-Thanks,  
-**{{ config('app.name') }}** Team
+{{-- Salutation --}}
+@if (! empty($salutation))
+{{ $salutation }}
+@else
+@lang('Regards'),<br>
+{{ config('app.name') }}
+@endif
 
 {{-- Subcopy --}}
 @isset($actionText)
 <x-slot:subcopy>
-If you have trouble clicking **{{ $actionText }}**, copy and paste this link in your browser:  
-<span class="break-all">{{ $displayableActionUrl }}</span>
+@lang(
+    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
+    'into your web browser:',
+    [
+        'actionText' => $actionText,
+    ]
+) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
 </x-slot:subcopy>
 @endisset
 </x-mail::message>

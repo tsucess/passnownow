@@ -466,7 +466,6 @@ Route::post('/email/verification-notification', function (Request $request) {
 
 
 // DASHBOARD ROUTING
-// DASHBOARD ROUTING
 Route::get('/dashboard', function () {
 
     $userUniqueID = Auth::user()->unique_id;
