@@ -6,60 +6,6 @@
     @endphp
     <section class="container-fluid sub_detail__container">
         <div class="row">
-            {{-- <div class="col-12 mb-md-0 subscription_details">
-                @php
-                    $exp = date_create($exp_date[0]->expiry_date);
-                    $exp_d = date_format($exp, 'Y-m-d');
-                    $now = date('Y-m-d');
-                @endphp
-                <table>
-                    <tbody>
-                        @if (!empty($exp_date[0]))
-                        @php
-                            $exp = date_create($exp_date[0]->expiry_date);
-                            $exp_d = date_format($exp, 'Y-m-d');
-                            $now = date('Y-m-d');
-                        @endphp
-
-                        <tr>
-                            <td>
-                                <h6>YOUR CURRENT PLAN</h6>
-                            </td>
-                            <td>
-                                <h6>{{ $exp_date[0]->plan_name }} plan, N{{ number_format($exp_date[0]->amount) }}</h6>
-                            </td>
-                            <td><a href="#">Change plan</a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>BILLING CYCLE</h6>
-                            </td>
-                            <td>
-                                <h6>You will be charge N{{ number_format($exp_date[0]->amount) }},
-                                    {{ date_format($exp, 'd F Y') }} Enable automatic renewal</h6>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <h6>PAYMENT METHOD</h6>
-                            </td>
-                            <td>
-                                <h6>{{ ucfirst($exp_date[0]->payment_method) }}</h6>
-                            </td>
-                            <td><a href="#">Change method</a></td>
-                        </tr>
-                    @else
-                        <tr>
-                            <td>
-                                <h6> No Subscription done yet</h6>
-                            </td>
-                            <td><a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a></td>
-                        </tr>
-                    @endif
-                    </tbody>
-                </table>
-            </div> --}}
 
             <div class="col-12 mb-md-0 subscription_details">
                 <table>
@@ -102,7 +48,7 @@
                             </tr>
                         @else
                             <tr>
-                                <td>
+                                <td colspan="2">
                                     <h6> No Subscription done yet</h6>
                                 </td>
                                 <td><a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a></td>
