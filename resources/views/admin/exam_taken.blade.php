@@ -76,7 +76,7 @@
                                             <h4>No Exams Found</h4>
                                             <p>You haven’t attempted any exams yet. Once you do, your results will appear
                                                 here.</p>
-                                            <a href="/adexams" class="btn primary_color">Browse Available Exams</a>
+                                            <a href="/adexams" class="btn primary_color text-light">Browse Available Exams</a>
                                         </div>
                                     @endif
                                 </div>
