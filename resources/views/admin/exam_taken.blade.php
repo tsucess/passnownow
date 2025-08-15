@@ -67,8 +67,6 @@
                                             </table>
                                         </div>
                                     @else
-
-                                    @else
                                         {{-- <p class="text-center">No Exams attempted yet!</p> --}}
                                         <div class="alert alert-info text-center">
                                             <h4>No Exams Found</h4>
@@ -76,7 +74,6 @@
                                                 here.</p>
                                             <a href="/adexams" class="btn btn-primary">Browse Available Exams</a>
                                         </div>
-                                    @endif
                                     @endif
                                 </div>
                                 <!-- /.card-body -->
