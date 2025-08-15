@@ -80,9 +80,11 @@
                     </div>
                 @endforeach
             @else
-                <div class = "col-12 col-md-6 col-lg-4 border bg-white rounded py-3 subject">
-                    <p>No Exams uploaded yet!</p>
+                <div class="alert alert-primary text-center">
+                    <p>No Exams uploaded yet! Check back later</p>
                 </div>
+                {{-- <div class = "col-12 col-md-6 col-lg-4 border bg-white rounded py-3 subject">
+                </div> --}}
             @endif
         </div>
     @else

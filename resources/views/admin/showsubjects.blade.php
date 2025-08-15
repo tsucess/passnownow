@@ -41,12 +41,12 @@
 
     @if (Auth::user()->role === 'user')
         <p class="px-3">Apply for your preferred subjects</p>
-        <div class = "row mt-3 gap-2 px-4">
-            <?php
-            $i = 0;
-            ?>
+        @if ($userFetchSubjects->isNotEmpty())
+            <div class = "row mt-3 gap-2 px-4">
+                <?php
+                $i = 0;
+                ?>
 
-            @if ($userFetchSubjects->isNotEmpty())
                 @foreach ($userFetchSubjects as $subject)
                     <div class = "col-12 col-md-6 col-lg-4 border bg-white rounded py-3 subject">
                         <div class="w-100 text-end pb-2 fs-3"><b>{{ $subject->questions_count }}</b></div>
@@ -80,14 +80,15 @@
                         </div>
                     </div>
                 @endforeach
-            @else
-                <div class = "col-12 border bg-white rounded py-3 text-center">
-                    <p>No Subjects uploaded yet check back later !</p>
-                </div>
-            @endif
-
-
-        </div>
+            </div>
+        @else
+            <div class="alert alert-primary text-center">
+                <p>No Subjects uploaded yet check back later !</p>
+            </div>
+            {{-- <div class = "col-12 border bg-white rounded py-3 text-center">
+                <p>No Exams uploaded yet! Check back later</p>
+            </div> --}}
+        @endif
     @endif
 
 

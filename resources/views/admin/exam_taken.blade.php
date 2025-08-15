@@ -71,7 +71,6 @@
                                             </table>
                                         </div>
                                     @else
-                                        {{-- <p class="text-center">No Exams attempted yet!</p> --}}
                                         <div class="alert alert-primary text-center">
                                             <h4>No Exams Found</h4>
                                             <p>You haven’t attempted any exams yet. Once you do, your results will appear
