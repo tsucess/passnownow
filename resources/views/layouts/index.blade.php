@@ -149,18 +149,6 @@
             animation: slideDownFadeOut 0.6s ease forwards;
         }
 
-        /* Optional: Slide and fade out loader content */
-        /* @keyframes slideDownFadeOut {
-            0% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            100% {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-        } */
     </style>
 </head>
 
