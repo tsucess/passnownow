@@ -10,7 +10,6 @@
         @endif
     @endif
 
-    We’re excited to have you! Please verify your email to get started.
     
     {{-- Intro Lines --}}
     @foreach ($introLines as $line)
