@@ -46,13 +46,12 @@
                                 {{-- <td><a href="#">Change method</a></td> --}}
                                 <td><a href="#">Active</a></td>
                             </tr>
-                            @else
+                        @else
                             <tr>
                                 <td colspan="2">
                                     <h6> No Subscription done yet</h6>
                                 </td>
-                                <td></td>
-                                <td ><a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a></td>
+                                <td class="text-end"><a href="/checkoutdetails" class="btn upgrade-btn ">Subscribe Now</a></td>
                             </tr>
                         @endif
                     </tbody>
