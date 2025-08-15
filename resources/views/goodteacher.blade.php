@@ -19,7 +19,7 @@
             <div class="col-12 col-md-6 header">
                 <h6 class="text-start">Qualities of A Good Teacher</h6>
                 <div class="image-wrapped linechart">
-                    <img src="{{ asset('images/linechart.png') }}" alt="" />
+                    <img src="{{ asset('images/linechart.png') }}" alt="Line Chart" />
                 </div>
             </div>
             <div class="col-12 col-md-6 header mb-3">
