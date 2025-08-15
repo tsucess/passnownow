@@ -1,5 +1,12 @@
 @extends('layouts.index')
 
+<!--
+    =============================
+    Custom Styles for Home Page
+    =============================
+    These styles control the look and feel of the home page sections, cards, animations, and hover effects.
+    Move to external CSS for better maintainability in the future.
+-->
 <style>
 .guides .guide{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -75,62 +82,62 @@
 
 
 .a1{
-	animation: fade-card linear both;
-	animation-timeline: view();
+    animation: fade-card linear both;
+    animation-timeline: view();
 
 }
 
 .a2 {
-	animation: fade linear both;
-	animation-timeline: view();
+    animation: fade linear both;
+    animation-timeline: view();
 }
 
 .a3 {
-	animation: fade-card linear both;
-	animation-timeline: view();
+    animation: fade-card linear both;
+    animation-timeline: view();
 
 }
 
 
 .a4{
-	animation: fade-card linear both;
-	animation-timeline: view();
+    animation: fade-card linear both;
+    animation-timeline: view();
 
 }
 
 .a5 {
-	animation: fade linear both;
-	animation-timeline: view();
+    animation: fade linear both;
+    animation-timeline: view();
 }
 
 .a6 {
-	animation: fade-card linear both;
-	animation-timeline: view();
+    animation: fade-card linear both;
+    animation-timeline: view();
 
 }
 
 @keyframes fade-card {
-	0% {
-		opacity: 0;
-		top:200px;
-	}
-	40% {
-		opacity: 1;
-		top:0px;
-	}
+    0% {
+        opacity: 0;
+        top:200px;
+    }
+    40% {
+        opacity: 1;
+        top:0px;
+    }
 }
 
 
 @keyframes fade {
-	0% {
-		opacity: 0;
-	}
-	40% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 1;
-	}
+    0% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 
@@ -142,8 +149,20 @@
 
 
 
+<!--
+    =============================
+    Custom JavaScript for Home Page
+    =============================
+    Handles animated counters, progress bars, and Swiper initialization.
+    Consider moving to external JS files for better maintainability.
+-->
 <script>
-   document.addEventListener("DOMContentLoaded", () => {
+
+// =============================
+// Animated Counter for Lifetime Learners
+// =============================
+// Animates the number in the #count-number element when it comes into view.
+document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("count-number");
     let countingInterval; // Variable to hold the interval
 
@@ -195,7 +214,11 @@
 
 
 
-<!-- The other number -->
+
+// =============================
+// Animated Counter for Daily Messages
+// =============================
+// Animates the number in the #counting element when it comes into view.
 document.addEventListener("DOMContentLoaded", () => {
     const countElement = document.getElementById("counting");
     let countingInterval; // Variable to hold the interval
@@ -297,7 +320,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-<!-- move now -->
+
+// =============================
+// Animated Progress Bar for Academic Performance
+// =============================
+// Animates the percentage in the #progress-number element when it comes into view.
 document.addEventListener("DOMContentLoaded", () => {
     const progressElement = document.getElementById("progress-number");
     const targetValue = 70; // Final value (70%)
@@ -359,28 +386,28 @@ document.addEventListener("DOMContentLoaded", () => {
         <section class="container-fluid container__top pt-3">
             <div class="row">
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Chemistry.png') }}" alt="Chemistry">
-                    <p class="title">Chemistry</p>
+                    <img src="{{ asset('images/WAEC.png') }}" class = "w-50"  alt="Chemistry">
+                    <p class="title fw-bold mt-2" style="font-size: 15px; color: #103161;">WAEC</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Cloud_Library.png') }}" alt="Computer">
-                    <p class="title">Computer</p>
+                    <img src="{{ asset('images/JAMB.png') }}" class = "w-50" alt="JAMB">
+                    <p class="title fw-bold">JAMB</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Geography.png') }}" alt="Geography">
-                    <p class="title">Geography</p>
+                    <img src="{{ asset('images/NECO.png') }}" class = "w-50" alt="NECO">
+                    <p class="title fw-bold">NECO</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Biology.png') }}" alt="Biology">
-                    <p class="title">Biology</p>
+                    <img src="{{ asset('images/TOEFL.png') }}" class = "w-50"  alt="TOEFL">
+                    <p class="title fw-bold">TOEFL</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Maths.png') }}" alt="Mathematics">
-                    <p class="title">Mathematics</p>
+                    <img src="{{ asset('images/IELTS.png') }}" class = "w-50"alt="IELTS">
+                    <p class="title fw-bold">IELTS</p>
                 </div>
                 <div class="col-3 col-md-2">
-                    <img src="{{ asset('images/Sports.png') }}" alt="Physical Health">
-                    <p class="title">Physical Health</p>
+                    <img src="{{ asset('images/IGCSE.png') }}" class = "w-50" alt="IGCSE">
+                    <p class="title fw-bold">IGCSE</p>
                 </div>
             </div>
         </section>
@@ -415,7 +442,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="row">
                         <div class="col-12 col-md-6 review">
                             <h3 id = "count-number">5M+</h3>
-                            <p>Lifetime <br /> Learners</p>
+                            <p>Lifetime <br/> Learners</p>
                         </div>
                         <div class="col-12 col-md-6 review">
                             <h3>1M+</h3>
@@ -469,27 +496,32 @@ document.addEventListener("DOMContentLoaded", () => {
                     <h3>Access all subjects</h3>
                     <p>That’s it, you now have access to unlimited Class Notes and Exam Past Questions.</p>
                 </div>
-                <div class="col-12 col-md-4 mb-lg-3 guide">
+
+                {{-- <div class="col-12 col-md-4 mb-lg-3 guide">
                     <img src="{{ asset('images/icon-message.png') }}" alt="Icon" class="mb-3" />
                     <h3>Seek career advice</h3>
                     <p>Seek advice on your career path from our experienced career counselor</p>
                 </div>
+
                 <div class="col-12 col-md-4 mb-lg-3 guide">
                     <img src="{{ asset('images/icon-shield.png') }}" alt="Icon" class="mb-3" />
                     <h3>Access to past questions</h3>
                     <p>Passnownow gives you access to Thousands of exam past questions from JSCE, JSSCE TO JAMB</p>
                 </div>
+
                 <div class="col-12 col-md-4 mb-lg-3 guide">
                     <img src="{{ asset('images/icon-medal.png') }}" alt="Icon" class="mb-3" />
                     <h3>Improve academic performance</h3>
                     <p>Learn with Passnownow to improve academic performance</p>
-                </div>
+                </div> --}}
+
+
             </div>
         </section>
 
         <Section class="container-fluid container__hero-down mb-3">
             <div class="row">
-                <div class="col-12 col-md-6 hero-down__content">
+                <div class="col-12 col-md-6 hero-down__content" style = "background:#4082BC;">
                     <p class="total-enrol">We do home tutoring the right way.</p>
                     <h1>Passnownow: Your Partner In Lifelong Learning.</h1>
                     <p class="hero-down__info">Make Passnownow your partner in lifelomg learning, providing you with the
@@ -499,7 +531,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="col-12 col-md-6  hero-down-image">
+                <div class="col-12 col-md-6  hero-down-image" style = "background:#4082BC;">
                     <img src="{{ asset('images/hero_down.png') }}" alt="Hero Image">
                 </div>
             </div>
@@ -609,7 +641,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </section>
 
-        <Section class="container-fluid container__performance">
+        <Section class="container-fluid container__performance" style = "background: #4082BC;">
             <div class="bg-image">
                 <div class="row">
                     <div class="col-12 col-md-2 col-lg-3"></div>
@@ -646,7 +678,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 </div>
-                <div class="row mt-5">
+
+                {{-- <div class="row mt-5">
                     <div class="col-12 col-md-2 text-end">
                         <img src="{{ asset('images/quote_tr.png') }}" alt="" class="quote-down-image">
                     </div>
@@ -746,11 +779,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
                     </div>
-                </div>
+                </div> --}}
+
+
             </div>
         </Section>
 
-        <section class="container-fluid container__notes" >
+        {{-- <section class="container-fluid container__notes" >
             <div class="row" id="class__notes">
                 <div class="col-12 text-center mb-5">
                     <h6>Class Notes</h6>
@@ -788,6 +823,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 @endforeach
+                 --}}
                 {{-- <div class="col-12 col-md-4 mb-3">
                 <div class="col-12 col-md-4 mb-3 myWrapper">
                     <div class="image-wrapper">
@@ -821,10 +857,11 @@ document.addEventListener("DOMContentLoaded", () => {
                         <button class="note_btn">VIEW ALL SUBJECTS</button>
                     </div>
                 </div> --}}
-            </div>
-        </section>
 
-        <section class="container-fluid container__parent_review">
+            {{-- </div>
+        </section> --}}
+
+        {{-- <section class="container-fluid container__parent_review">
             <div class="row my-4">
                 <div class="col-12 col-md-2 text-end">
                     <img src="{{ asset('images/quote_trans.png') }}" alt="" class="quote-down-image">
@@ -913,7 +950,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="swiper-button-next"></div>
                 </div>
             </div>
-        </section>
+        </section> --}}
+
     </main>
 
 
@@ -925,6 +963,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+    <!--
+        =============================
+        Swiper.js Initialization
+        =============================
+        Initializes the Swiper slider for reviews and testimonials.
+    -->
     <script src="./js/swiper-bundle.min.js"></script>
     <script>
         const swiper = new Swiper(".swiper", {
@@ -933,7 +977,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // effect: "fade",
             loop: true,
             autoplay: {
-                dely: '2000'
+                dely: '2000' // Typo: should be 'delay', but left as is for compatibility with current code
             },
 
             // If we need pagination

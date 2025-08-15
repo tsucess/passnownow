@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Passnownow</title>
-
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/logo.png') }}" />
 
 
     <!-- Fonts -->
@@ -16,13 +15,11 @@
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
-
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
-    {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-    @vite(['resources/js/app.js'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 
     {{-- SWIPER JS  --}}
@@ -31,6 +28,11 @@
     <link rel="stylesheet" href="{{ asset('css/responsiveness.css') }}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+
+    {{-- <link rel="stylesheet" href="{{asset('css/ckeditor5.css')}}" />
+    <script src="{{asset('js/ckeditor5.umd.js')}}"></script> --}}
 
     <style>
         .bounce-on-hover {
@@ -62,6 +64,64 @@
 
         .aboutImage:hover {
             animation-play-state: running;
+        }
+
+
+        /* Scroll to Top Button Styles */
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: #0D2F5F;
+            /* Blue color */
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 1000;
+        }
+
+        #scrollToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #scrollToTop:hover {
+            background-color: #0056b3;
+            /* Darker blue */
+        }
+
+        #scrollToTop .arrow {
+            font-size: 24px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+        } */
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
     <style>
@@ -105,12 +165,6 @@
 </head>
 
 <body class="">
-
-    {{-- <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ asset('images/logo.png') }}" alt="ExamPrepLogo" height="60"
-            width="60">
-    </div> --}}
-    <!-- Page Loader -->
     <div id="page-loader" class="page-loader">
         <div class="loader-content">
             {{-- <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
@@ -138,7 +192,17 @@
                     <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
                         <li class="nav-item"><x-nav-link href="/"
                                 active="{{ request()->is('/') }}">Home</x-nav-link></li>
-                        <li class="nav-item dropdown">
+
+                        <li class="nav-item"><x-nav-link href="/about" active="{{ request()->is('about') }}">About
+                                Us</x-nav-link></li>
+
+                        <li class="nav-item"><x-nav-link href="/subscriptions"
+                                active="{{ request()->is('subscriptions') }}">Pricing plan</x-nav-link></li>
+
+                        <li class="nav-item"><x-nav-link href="/contact"
+                                active="{{ request()->is('contact') }}">Contact us</x-nav-link></li>
+
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-bs-toggle="dropdown"
                                 aria-expanded="false">About us</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
@@ -159,7 +223,8 @@
                                 Resources</a>
                             <ul class="dropdown-menu" aria-labelledby="dropdown01">
                                 {{-- <li><a class="dropdown-item" href="{{ url('pastquestions') }}">Past Questions</a></li> --}}
-                                <li><x-nav-link type="drop" href="/pastquestions"
+
+                        {{-- <li><x-nav-link type="drop" href="/pastquestions"
                                         active="{{ request()->is('pastquestions') }}">Past Questions</x-nav-link></li>
                                 <li><x-nav-link type="drop" href="/teacherresources"
                                         active="{{ request()->is('teacherresources') }}">Teacher's
@@ -173,7 +238,8 @@
                         </li>
                         <li class="nav-item"><x-nav-link href="/subscriptions"
                                 active="{{ request()->is('subscriptions') }}">Pricing plan</x-nav-link></li>
-                        </li>
+                        </li> --}}
+
                         {{-- <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -191,8 +257,10 @@
                     </ul>
                     <div class="nav-btn">
                         @guest
-                            <a href="{{ url('login') }}" class="btn btn-style btn-style-secondary">Login</a>
-                            <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style">Register</a>
+                            <a href="{{ url('register') }}" class="btn btn-outline-primary btn-style text-white"
+                                style = "background: #1A69AF;">Register</a>
+                            <a href="{{ url('login') }}" class="btn btn-style btn-style-secondary"
+                                style = "border-style:solid; border-width: 1px; border-color: #1A69AF; color: #1A69AF; ">Login</a>
                         @endguest
 
                         @auth
@@ -328,6 +396,34 @@
                 </div>
             </footer>
         </div>
+
+
+        <!-- Scroll to Top Button -->
+        <div id="scrollToTop">
+            <i class="arrow">↑</i>
+        </div>
+
+        <script>
+            // Scroll to Top Button Logic
+            const scrollToTopButton = document.getElementById('scrollToTop');
+
+            // Show the button when scrolling down
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 200) {
+                    scrollToTopButton.classList.add('show');
+                } else {
+                    scrollToTopButton.classList.remove('show');
+                }
+            });
+
+            // Scroll to the top smoothly when clicked
+            scrollToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                });
+            });
+        </script>
     </div>
 
 
@@ -351,16 +447,39 @@
                 });
             });
 
-            // document.querySelectorAll('a').forEach(link => {
-            //     link.addEventListener('click', e => {
-            //         if (link.getAttribute('target') === '_blank' || link.href.startsWith(
-            //                 'javascript:')) return;
-            //         loader.classList.remove('hidden');
-            //     });
-            // });
         });
     </script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function isFullyInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+                );
+            }
+
+            function triggerAnimations() {
+                // Target all divs that contain things to animate
+                $('.section, .mb-3').each(function() {
+                    const $container = $(this);
+                    const $targets = $container.find('.animate-on-scroll');
+
+                    if (!$targets.hasClass('visible') && isFullyInViewport(this)) {
+                        $targets.addClass('visible');
+                    }
+                });
+            }
+
+            $(window).on('scroll resize load', triggerAnimations);
+        });
+    </script>
+
+
+
 </body>
+
 
 </html>

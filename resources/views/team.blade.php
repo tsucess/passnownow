@@ -1,3 +1,10 @@
+<!--
+    =============================
+    Team Page Blade Template
+    =============================
+    Displays the team members and their roles.
+    Add more documentation as needed for maintainability.
+-->
 @extends('layouts.index')
 
 @section('content')
