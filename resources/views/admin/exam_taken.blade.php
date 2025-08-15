@@ -1,7 +1,11 @@
 @extends('layouts.dasboardtemp')
 @section('title', 'Exams Completed')
 @section('admincontent')
-
+<style>
+     .primary_color {
+            background-color: #1A69AF;
+        }
+</style>
     <!-- /.content-header -->
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -68,11 +72,11 @@
                                         </div>
                                     @else
                                         {{-- <p class="text-center">No Exams attempted yet!</p> --}}
-                                        <div class="alert alert-info text-center">
+                                        <div class="alert alert-primary text-center">
                                             <h4>No Exams Found</h4>
                                             <p>You haven’t attempted any exams yet. Once you do, your results will appear
                                                 here.</p>
-                                            <a href="/adexams" class="btn btn-primary">Browse Available Exams</a>
+                                            <a href="/adexams" class="btn primary_color">Browse Available Exams</a>
                                         </div>
                                     @endif
                                 </div>
