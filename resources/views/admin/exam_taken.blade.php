@@ -23,7 +23,7 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    @if ($results)
+                                    @if ($results->isNotEmpty())
                                         <div class="table-responsive">
                                             <table class="table table-striped table-bordered table-hover datatable">
                                                 <thead>
