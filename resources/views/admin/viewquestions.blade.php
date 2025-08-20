@@ -23,7 +23,7 @@
         <h1 class="h2">Questions for {{ $subject_name }}</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
-                <a href="/adsubjects" class="btn btn-secondary p-1 px-5 shadow">Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-secondary p-1 px-5 shadow">Back</a>
                 <button type="button" class="btn btn-md btn-outline-primary addTopic px-4"
                     data-subject_id="{{ $subject_id }}" data-subject_name="{{ $subject_name }}"
                     data-id="{{ $sub_id }}" data-bs-toggle="modal" data-bs-target="#addModal">Upload Question</button>

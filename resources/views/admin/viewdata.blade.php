@@ -5,11 +5,11 @@
         <div class="row">
             <div class="col-12 col-lg-7 profile_data">
                 <div class="top">
-                    @if ($user->role !== 'user')
-                        <a href="/admins" class="btn btn-secondary p-2 px-5 mb-5 shadow">Back</a>
-                    @else
-                        <a href="/users" class="btn btn-secondary p-2 px-5 mb-5 shadow">Back</a>
-                    @endif
+                    {{-- @if ($user->role !== 'user') --}}
+                        <a href="{{ URL::previous() }}" class="btn btn-secondary p-2 px-5 mb-5 shadow">Back</a>
+                    {{-- @else
+                        <a href="{{ URL::previous() }}" class="btn btn-secondary p-2 px-5 mb-5 shadow">Back</a>
+                    @endif --}}
                     <h5>Account Information</h5>
                 </div>
                 <form method="POST" action="{{ route('admin.update', $user->id) }}">

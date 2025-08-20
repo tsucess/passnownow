@@ -49,7 +49,7 @@
         <h1 class="h2">Subjects</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
-                <a href="/classes" class="btn btn-secondary p-1 px-5 shadow">Back</a>
+                <a href="{{ URL::previous() }}" class="btn btn-secondary p-1 px-5 shadow">Back</a>
             </div>
         </div>
     </div>
