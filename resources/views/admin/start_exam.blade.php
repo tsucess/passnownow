@@ -106,7 +106,10 @@
             color: #ffffff;
             width: 10rem;
             padding: 0.3rem;
-            /* border-radius: 0.5rem; */
+        }
+        .submitConfirm:hover {
+            background: #1A69AF;
+            color: #ffffff;
         }
 
         #myCheck {
@@ -118,7 +121,6 @@
             top: 390px;
         }
 
-        .submitConfirm:hover,
         #myCheck:hover {
             background: #135fa1;
         }

@@ -4,5 +4,3 @@
 @else
 <a class="{{$active ? 'dropdown-item active' : 'dropdown-item'}}" aria-current="{{ $active ? 'page' : 'false' }}" {{ $attributes }}>{{$slot}}</a>
 @endif
-    
-

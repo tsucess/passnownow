@@ -18,14 +18,14 @@
 
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-    
+
     <!-- Fontawesome icons -->
     <link rel="stylesheet" href="{{ asset('fonts/css/fontawesome.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/solid.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/brands.css') }} ">
     <link rel="stylesheet" href="{{ asset('fonts/css/regular.css') }} ">
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-    
+
     <!-- Select2 CSS -->
     <link rel="stylesheet" href="{{ asset('css/select2.min.css') }}">
 
@@ -200,7 +200,8 @@
             {{-- <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="visually-hidden">Loading...</span>
             </div> --}}
-            <img class="animation__shake" src="{{ asset('images/logo-loader.gif') }}" alt="ExamPrepLogo" width="400">
+            <img class="animation__shake" src="{{ asset('images/logo-loader.gif') }}" alt="ExamPrepLogo"
+                width="400">
             {{-- <p class="text-primary mt-3">Loading, please wait...</p> --}}
         </div>
     </div>
@@ -232,13 +233,17 @@
                                 </x-sidebar-link>
                             </li> --}}
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
+                                <x-sidebar-link :active="request()->is('adexams') ||
+                                    request()->routeIs('showsubjects') ||
+                                    request()->routeIs('start_exam')" href="/adexams">
                                     <i class="fa-solid fa-list"></i>
                                     Exams
                                 </x-sidebar-link>
                             </li>
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('exam_taken') }}" href="/exam_taken">
+                                <x-sidebar-link :active="request()->Is('exam_taken') ||
+                                    request()->Is('view_result') ||
+                                    request()->Is('view_answer')" href="/exam_taken">
                                     <i class="fa-solid fa-clock-rotate-left"></i>
                                     Exams Completed
                                 </x-sidebar-link>
@@ -287,52 +292,26 @@
                                 </x-sidebar-link>
                             </li>
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
+                                {{-- <x-sidebar-link :active="request()->routeIs('adsubjects') || request()->routeIs('showsubjects')" href="/adsubjects"> --}}
+                                <x-sidebar-link :active="request()->routeIs('adsubjects') || request()->routeIs('viewquestions')" href="/adsubjects">
                                     <i class="fa-solid fa-swatchbook"></i>
                                     Subjects
                                 </x-sidebar-link>
                             </li>
 
                             {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{url('adpastquestions')}}">
-                                <i class="fa-solid fa-list"></i>
-                                Pass Questions
-                            </a>
-                        </li> --}}
+                                    <a class="nav-link" href="{{url('adpastquestions')}}">
+                                        <i class="fa-solid fa-list"></i>
+                                        Pass Questions
+                                    </a>
+                                </li> --}}
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('subscriptionhistory') }}"
                                     href="/subscriptionhistory">
-                                    {{-- <i class="fa-solid fa-hand-holding-dollar"></i> --}}
                                     <i class="fa-solid fa-credit-card"></i>
                                     Subscription History
                                 </x-sidebar-link>
                             </li>
-                            {{-- <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('subscription') }}" href="/subscription">
-                                    <i class="fa-solid fa-dollar"></i>
-                                    Pricing
-                                </x-sidebar-link>
-                            </li> --}}
-                            {{-- <li class="nav-item">
-                            <x-sidebar-link active="{{ request()->is('#') }}" href="#">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                                History
-                            </x-sidebar-link>
-                        </li> --}}
-                            {{-- <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                                Signout
-                            </a>
-                        </li> --}}
-                            {{-- <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('servicesubscription') }}"
-                                    href="/servicesubscription">
-                                    <i class="fa-solid fa-hand-holding-dollar"></i>
-                                    <i class="fas fa-camera"></i>
-                                    Service Subscription
-                                </x-sidebar-link>
-                            </li> --}}
                         @endif
                     </ul>
                 </div>
@@ -398,7 +377,7 @@
         </div>
     </div>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-   
+
     <script>
         window.addEventListener('load', function() {
             const loader = document.getElementById('page-loader');

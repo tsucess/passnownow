@@ -139,9 +139,7 @@
 
 
             <span class = "float-end  mb-2 me-2">
-                {{-- <button class="btn btn-light dropdown-toggle mt-1 mb-2 me-1 p-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                By day
-                              </button> --}}
+               
                 <select>
                     <option>By Day</option>
                     <option>By Month</option>
@@ -167,19 +165,6 @@
 
     <script>
         const salesData = @json($salesData); // Data passed from the controller
-
-        // Prepare data for Chart.js
-        // const months = ['0',  'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        // var a = [0];
-        // var b = [0];
-        //var data = a.concat(salesData.map(data => months[data.month]));
-        // const labels = data; // Extract month names
-
-
-        // const labels = a.concat(salesData.map(data => months[data.month])); // Extract month names
-
-
-        //     const dataValues = salesData.map(data => data.total_sales); // Extract sales totals
 
         const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -233,54 +218,6 @@
             }
         });
     </script>
-
-    <!-- Another chart -->
-    {{--
-    <script>
-        const ctxs = document.getElementById('parabolaAreaCharts').getContext('2d');
-
-        const parabolaAreaCharts = new Chart(ctxs, {
-            type: 'line',
-            data: {
-                labels: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 6, 0], // X-axis labels
-                datasets: [{
-                    label: '',
-                    data: [0, 3, 2, 5, 3, 4, 5, 2, 2, 5, 5, 4, 0], // Y-axis values forming parabolas
-                    borderColor: '#1699dd',
-                    backgroundColor: '#1699dd',
-                    fill: true,
-                    tension: 0 // Smooth curve
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            display: false
-                        },
-                    },
-                    y: {
-                        ticks: {
-                            display: true,
-                            stepSize: 20,
-                            padding: 15
-                        },
-                        beginAtZero: true,
-                        // Adjusted Y-axis range for better visibility of parabola shapes
-                        suggestedMin: 0,
-                        suggestedMax: 100
-
-                    }
-                }
-            }
-        });
-    </script> --}}
 
 
     {{-- <script type="text/javascript" src="{{'./js/bootstrap.bundle.min.js'}}"></script>  --}}
