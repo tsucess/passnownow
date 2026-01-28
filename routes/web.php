@@ -449,12 +449,10 @@ Route::get('/email/verifys', function () {
 
 
 
-// Route to verify email upon clicking the email link
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect('/dashboard'); // Adjust this to wherever you want users redirected after verification
-})->middleware(['auth', 'signed'])->name('verification.verify');
+// Route to verify email upon clicking the email link (without requiring authentication)
+Route::get('/email/verify/{id}/{hash}', [App\Http\Controllers\Auth\GuestVerifyEmailController::class, '__invoke'])
+    ->middleware(['signed', 'throttle:6,1'])
+    ->name('verification.verify.guest');
 
 // Route to resend the verification email
 Route::post('/email/verification-notification', function (Request $request) {

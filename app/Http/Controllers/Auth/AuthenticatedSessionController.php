@@ -29,10 +29,21 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        
+
         $request->authenticate();
         $request->session()->regenerate();
-       
+
+        // Check if user's email is verified
+        if (Auth::user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail &&
+            !Auth::user()->hasVerifiedEmail()) {
+            // Send verification email
+            Auth::user()->sendEmailVerificationNotification();
+
+            // Redirect to verification notice page
+            return redirect()->route('verification.notice')
+                ->with('status', 'verification-link-sent');
+        }
+
         $userID = Auth::user()->unique_id;
         if (Auth::user()->role === 'user'){
             $subHistory = Transaction::where('user_unique_id', $userID)->where('payment_status', 'success')->get();
