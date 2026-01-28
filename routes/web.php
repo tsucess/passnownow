@@ -363,27 +363,8 @@ Route::get('/pqexams', function () {
 // Route::get('home', [UserController::class, 'getHome']);
 
 
-// Route to prompt users to verify their email
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-
-
-
-
-// Route to verify email upon clicking the email link
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-
-    return redirect('/dashboard'); // Adjust this to wherever you want users redirected after verification
-})->middleware(['auth', 'signed'])->name('verification.verify');
-
-// Route to resend the verification email
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-
-    return back()->with('status', 'verification-link-sent');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+// Email verification routes are now handled in routes/auth.php
+// These duplicate routes have been removed to avoid conflicts
 
 
 

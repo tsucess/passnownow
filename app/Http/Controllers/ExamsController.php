@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-
 use App\Models\Classes;
 use App\Models\Exams;
 use Illuminate\Http\Request;
@@ -43,10 +41,9 @@ class ExamsController extends Controller
             'avatar' => ['required', 'mimes:jpeg,jpg,png', 'max:2048']
         ]);
 
-
-
         $avatar = $request->file('avatar')->store('upload');
 
+        
 
         // Add class
         $done = Exams::create([
@@ -146,41 +143,3 @@ class ExamsController extends Controller
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

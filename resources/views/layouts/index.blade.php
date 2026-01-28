@@ -220,12 +220,7 @@
                                                 @csrf
 
                                         <li>
-<<<<<<< HEAD
-                                            <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')"
-                                                onclick="event.preventDefault();                                              this.closest('form').submit();">
-=======
                                             <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')" onclick="event.preventDefault();">                                              this.closest('form').submit();">
->>>>>>> eb473bf8dda6e44e15f40a86ff52d912730936c9
                                                 {{ __('Signout') }}
                                             </x-dropdown-link>
                                         </li>
