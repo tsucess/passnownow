@@ -17,17 +17,6 @@
         }
     }
 
-    /* Animation applied to each card */
-    .cardhover {
-        animation: fadeIn 0.6s ease-in-out;
-        transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    /* Hover effect */
-    .cardhover:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
 
     /* Smoothly animate the button's appearance */
     .sub {
@@ -73,11 +62,11 @@
     @else
         <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Exams</h1>
+            <h1 class="h2">Questions</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
                 <div class="btn-group me-2">
                     <button type="button" class="btn btn-md btn-outline-primary" data-bs-toggle="modal"
-                        data-bs-target="#addModal">Add Exams</button>
+                        data-bs-target="#addModal">Upload Exam</button>
                 </div>
             </div>
         </div>

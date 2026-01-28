@@ -38,155 +38,104 @@
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --}}
 
      <link rel="stylesheet" href="{{ asset('css/ckeditor5.css')}}" />
-    
+
 
     <style>
-        @media (min-width: 768px) {
-            /* .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          } */
-        }
 
-        .profit {
-            padding: 6px;
-        }
-
-        .profit:hover {
-            background-color: #1A69AF;
-            color: #fff;
-        }
-
-
-        .profit:hover a {
-            color: #fff !important;
-        }
-
-
-        .profit:hover span {
-            color: #fff;
-        }
-
-
-
-        .detailedstat:hover {
-            background-color: #1A69AF;
-            color: #fff;
-            border-radius: 10px;
-        }
-
-
-        .detailedstat {
-            color: #1A69AF;
-            font-weight: 600;
-            padding: 6px;
-        }
-
-        .product:hover {
-            background-color: #1A69AF;
-            color: #fff;
-            border-radius: 10px;
-            padding: 6px;
-        }
-
-        .order:hover {
-            background-color: #1A69AF;
-            color: #fff;
-            border-radius: 10px;
-            padding: 6px;
-        }
-
-        /* @media only screen and (max-width: 320px) { */
-        /* .show {
-                margin-left: 0;
-                background: red;
-            } */
-        }
-
-        */ .sub:hover {
-            background-color: #1A69AF;
-        }
-
-        /* Smooth animation for buttons */
-        .sub {
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        /* Hover effect for buttons */
-        .sub:hover {
-            background-color: #0056b3;
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        /* Applying animation to the cards */
-        .sty {
-            animation: fadeIn 0.8s ease-in-out;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        /* Hover effect on the card */
-        .sty:hover {
-            transform: scale(1.03);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Apply the animation to the div */
-        /* .sty {}
-  animation: slideInFromRight 1s ease-out; /* 1s duration, ease-out timing */
-        */
     </style>
 </head>
 
 <body>
 
-    <header class="navbar sticky-top bg-white flex-md-nowrap p-1 g-1 shadow pe-md-3">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ url('/') }}">
-            <img src="{{ asset('images/logo.png') }}" alt="">
+
+<div class="container-fluid sticky-top">
+  <div class="row align-items-center">
+
+        <!-- Logo (col-3) -->
+        <div class="position-sticky top-0 col-md-2 col-12 logo-box d-flex justify-content-between align-items-center bg-white opacity-100 z-3">
+        {{-- <a class="navbar-brand col-md-3 col-lg-2 me-5 px-3" href="{{ url('/') }}"> --}}
+        <a class="mx-auto mt-1" href="{{ url('/') }}">
+        <img src="{{ asset('images/logo.png') }}" alt="logo" class = "img-fluid" style="max-height: 60px; width: 100px;">
         </a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed mt-2" type="button"
-            data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+
+         <button class="navbar-toggler d-md-none  ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon fa fa-bars"></span>
         </button>
-        {{-- <input class="form-control form-control-dark" type="text" placeholder="Search" aria-label="Search"> --}}
-        <div class="navbar-nav">
-            {{-- <span class="top_icon">
-                <i class="fa-regular fa-bell"></i>
-            </span>
-            <span class="top_icon">
-                <i class="fa-solid fa-globe"></i>
-            </span> --}}
-            <div class="nav-item text-nowrap py-1">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle profile" href="#" id="dropdown01" data-bs-toggle="dropdown"
+
+    </div>
+
+    <!-- Blue Top Section (col-9) -->
+    {{-- <div class="col-md-10 col-12 d-flex justify-content-between align-items-center" style = "margin-top: -20px; background: #1A69AF;"> --}}
+        <div class="col-12 col-md-10 d-flex flex-column flex-md-row justify-content-between align-items-center px-3 py-2" style="background: #1A69AF;">
+        <form class="d-none d-md-block w-50">
+        {{-- <input class="form-control mt-3 me-2" type="search" placeholder="Search" aria-label="Search"/> --}}
+      </form>
+
+
+      <div class = "d-flex align-items-center gap-3">
+      <span class="top_icon" style = "background: #1A69AF; font-size: 20px;">
+                                <i class="fa-regular fa-bell"></i>
+                            </span>
+                            <span class="top_icon" style = "background: #1A69AF; font-size: 20px;">
+                                <i class="fa-solid fa-globe"></i>
+                            </span>
+
+
+        <div class="dropdown">
+
+            {{-- <div class = "nav-item text-nowrap py-1"> --}}
+
+                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="dropdownProfile" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="{{ asset('images/profile.png') }}" alt="">
+                        <img src="{{ asset('images/profile.png') }}" alt="" class="rounded-circle" width="32" height="32">
                     </a>
+
                     <ul class="dropdown-menu w-50" aria-labelledby="dropdown01">
-                        <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a>
-                        <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a>
+                        <li><a class="dropdown-item" href="{{ url('dashboard') }}">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="{{ url('profile') }}">Profile</a></li>
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-
                         <li>
                             <x-dropdown-link class="dropdown-item ps-3" :href="route('logout')"
-                                onclick="event.preventDefault();                                              this.closest('form').submit();">
+                                onclick="event.preventDefault();  this.closest('form').submit();">
                                 {{ __('Signout') }}
                             </x-dropdown-link>
                         </li>
                         </form>
                     </ul>
-                </li>
-            </div>
-        </div>
-    </header>
+            {{-- </div> --}}
+
+    </div>
+      </div>
+
+    </div>
+    {{-- </div> --}}
+    </div>
+</div>  <!-- new sticky top div -->
+
+    {{-- <div class="container-fluid"> --}}
+
+
 
     <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse" style = "width:220px;">
-                <div class="position-sticky">
-                    <ul class="nav flex-column">
+        <div class="row position-relative">
+
+            {{-- <div class="col-md-2 col-12 collapse d-md-block sidebar"> --}}
+            {{-- <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  sidebar collapse" > --}}
+                    {{-- <nav id="sidebarMenu" class="col-md-2 col-12 collapse d-md-block sidebar"> --}}
+                        <nav id="sidebarMenu" class="col-md-2 col-12 collapse d-md-block sidebar bg-white p-3 shadow z-3">
+
+                {{-- <div class="position-sticky"> --}}
+                    <div class = "pt-4">
+                    <ul class="nav flex-column pt-3">
+
+                        {{-- <li class = "nav-item">
+                        <a class="navbar-brand col-md-3 col-lg-2 me-5 px-3" href="{{ url('/') }}">
+                        <img src="{{ asset('images/logo.png') }}" alt="" class = "w-75">
+                        </li> --}}
+
                         <li class="nav-item">
                             <x-sidebar-link active="{{ request()->is('dashboard') }}" href="/dashboard">
                                 <i class="fa-solid fa-table-list"></i>
@@ -195,16 +144,18 @@
                         </li>
                         @if (Auth::user()->role === 'user')
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
-                                    href="/classes">
+                                {{-- <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
+                                    href="/classes"> --}}
+                                    <x-sidebar-link active="{{ request()->is('profile') }}"
+                                    href="/profile">
                                     <i class="fa-solid fa-layer-group"></i>
-                                    Classes
+                                    Candidate Profile
                                 </x-sidebar-link>
                             </li>
                             <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
+                                <x-sidebar-link active="{{ request()->is('examupload') }}" href="/examupload">
                                     <i class="fa-solid fa-list"></i>
-                                    Exams
+                                    Examination
                                 </x-sidebar-link>
                             </li>
                             <li class="nav-item">
@@ -235,28 +186,43 @@
                             <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('users') }}" href="/users">
                                     <i class="fa-regular fa-user"></i>
-                                    Users
+                                    Candidate
                                 </x-sidebar-link>
                             </li>
+
                             <li class="nav-item">
+                                <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
+                                    <i class="fa-solid fa-swatchbook"></i>
+                                    Subject
+                                </x-sidebar-link>
+                            </li>
+
+                             <li class="nav-item">
+                                <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
+                                    <i class="fa-regular fa-list"></i>
+                                    Question
+                                </x-sidebar-link>
+                            </li>
+
+
+
+
+
+                            {{-- <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('classes') || request()->is('subject') }}"
                                     href="/classes">
                                     <i class="fa-solid fa-layer-group"></i>
                                     Classes
                                 </x-sidebar-link>
-                            </li>
-                            <li class="nav-item">
-                                <x-sidebar-link active="{{ request()->is('adsubjects') }}" href="/adsubjects">
-                                    <i class="fa-solid fa-swatchbook"></i>
-                                    Subjects
-                                </x-sidebar-link>
-                            </li>
-                            <li class="nav-item">
+                            </li> --}}
+
+                            {{-- <li class="nav-item">
                                 <x-sidebar-link active="{{ request()->is('adexams') }}" href="/adexams">
                                     <i class="fa-solid fa-list"></i>
                                     Exams
                                 </x-sidebar-link>
-                            </li>
+                            </li> --}}
+
                             {{-- <li class="nav-item">
                             <a class="nav-link" href="{{url('adpastquestions')}}">
                                 <i class="fa-solid fa-list"></i>
@@ -268,7 +234,7 @@
                                     href="/subscriptionhistory">
                                     {{-- <i class="fa-solid fa-hand-holding-dollar"></i> --}}
                                     <i class="fa-solid fa-credit-card"></i>
-                                    Subscription History
+                                    Subscription
                                 </x-sidebar-link>
                             </li>
                             {{-- <li class="nav-item">
@@ -294,17 +260,18 @@
                                     href="/servicesubscription">
                                     {{-- <i class="fa-solid fa-hand-holding-dollar"></i> --}}
                                     <i class="fas fa-camera"></i>
-                                    Service Subscription
+                                    History
                                 </x-sidebar-link>
                             </li>
                         @endif
                     </ul>
                 </div>
-            </nav>
+                </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4" style = "background: #f1f1f1">
+                 {{-- <main class="col-md-10 col-12 py-4 px-4"> --}}
+                 @yield('admincontent')
 
-                @yield('admincontent')
 
                 <section class="container-fluid footer__container">
                     <div class="row">
@@ -319,8 +286,13 @@
                     </div>
                 </section>
             </main>
-        </div>
+
+
+             {{-- </div> --}}
+            </div>
     </div>
+
+
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 </body>
 

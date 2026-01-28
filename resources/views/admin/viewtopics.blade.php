@@ -1,7 +1,15 @@
 @extends('layouts.dasboardtemp')
 
+<style>
+#form_add
+{
+    width: 100%;
+}
+</style>
+
 @section('admincontent')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Topics</h1>
         <h1 class="h2">Topics</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2" id="topButton">
@@ -91,8 +99,8 @@
     <!-- Add User Modal -->
     <div class="modal fade" id="addModal" tabindex="-1" data-bs-backdrop="static" aria-labelledby="addModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen">
-            <div class="modal-content" id="form_add" style="overflow-y:scroll;">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content" id="form_add">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="addModalLabel">Add new topic</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -346,29 +354,22 @@
             });
 
 
-            $('#admin-table tbody').on('click', '.edit-btn', function() {
-                var subjectu_id = $(this).data('subjectu_id');
-                var id = $(this).data('id');
-                var title = $(this).data('title');
-                var url = $(this).data('url');
-                var content = $(this).data('content');
-                var content_type = $(this).data('content_type');
-                var editorder = $(this).data('order');
-                var editterm = $(this).data('term');
+        $('#admin-table tbody').on('click', '.edit-btn', function() {
+            var subjectu_id = $(this).data('subjectu_id');
+            var id = $(this).data('id');
+            var title = $(this).data('title');
+            var url = $(this).data('url');
+            var editorder = $(this).data('order');
+            var editterm = $(this).data('term');
 
-                console.log(content)
+            $('#subjectu_id').val(subjectu_id);
+            $('#edit-id').val(id);
+            $('#edit-title').val(title);
+            $('#edit-url').val(url);
+            $('#edit-order').val(editorder);
+            $('#prev-term').val(editterm);
 
-
-                $('#subjectu_id').val(subjectu_id);
-                $('#edit-id').val(id);
-                $('#edit-title').val(title);
-                $('#editor2').val(content);
-                $('#edit-content-type').val(content_type);
-                $('#edit-url').val(url);
-                $('#edit-order').val(editorder);
-                $('#prev-term').val(editterm);
-
-            });
+        });
 
 
 
@@ -379,4 +380,5 @@
 
 
 
+</script>
 @endsection

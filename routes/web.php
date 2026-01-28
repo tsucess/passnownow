@@ -152,6 +152,14 @@ Route::get('/checkout', function () {
 });
 
 
+Route::get('/policy', function () {
+    return view('policy');
+});
+
+Route::get('/terms', function () {
+    return view('terms');
+});
+
 
 Route::get('/subscribeform', function () {
     return view('subscribeform');
@@ -318,9 +326,21 @@ Route::get('/pastquestion', function () {
     return view('admin.pastquestion');
 });
 
+Route::get('/questions', function () {
+    return view('admin.questions');
+});
+
 
 Route::get('/class', function () {
     return view('admin.class');
+});
+
+Route::get('/questionsubject', function () {
+    return view('admin.questionsubject');
+});
+
+Route::get('/englishupload', function () {
+    return view('admin.englishupload');
 });
 
 
@@ -341,6 +361,34 @@ Route::get('/pqexams', function () {
     return view('pqexams');
 });
 
+Route::get('/examupload', function () {
+    return view('admin.examupload');
+});
+
+Route::get('/examclass', function () {
+    return view('admin.examclass');
+});
+
+Route::get('/examinstruction', function () {
+    return view('admin.examinstruction');
+});
+
+Route::get('/candidate', function () {
+    return view('admin.candidate');
+});
+
+
+Route::get('/testdashboard', function () {
+    return view('admin.testdashboard');
+});
+
+Route::get('/dasboardtemp', function () {
+    return view('layouts.dasboardtemp');
+});
+
+Route::get('/noadministrator', function () {
+    return view('admin.noadministrator');
+});
 
 
 
